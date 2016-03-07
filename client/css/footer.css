@@ -25,5 +25,5 @@ footer p {
 }
 
 .customizedFooter {
-    background-color: #555555;
+    background: rgba( 0, 0, 0, 0.2 );
 }
