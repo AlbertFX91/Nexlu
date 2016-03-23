@@ -15,12 +15,14 @@
 label {
     float: left;
     font-size: 1rem !important;
-    /*width: 100px;*/
     line-height: 40px;
     padding-right: 10px;
     font-weight: 100;
     text-align: right;
     letter-spacing: 1px;
+	margin-left: auto;
+	margin-right: 0px;
+	width: 100%;
 }
 input[type="text"], input[type="password"] {
     padding: 0 10px;
