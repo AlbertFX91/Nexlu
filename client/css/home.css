@@ -1,5 +1,4 @@
 .cardbg {
-    background-image: url("/home-background.png");
     background-size: cover;
     display: block;
     filter: blur(1px);
@@ -9,4 +8,8 @@
     position: fixed;
     right: 0;
     z-index: -1;
+}
+
+body{
+	background: #171a21;
 }
