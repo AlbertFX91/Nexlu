@@ -10,6 +10,7 @@ Template.login.events({
                     $("#error-container").css("display","inline");
                 }else{
                     Session.set('alert', null);
+                    Router.go('home');
                 }
             });
         }else{
@@ -32,4 +33,4 @@ Template.login.helpers({
     'alert': function(){
         return Session.get("alert");
     }
-})
+});
