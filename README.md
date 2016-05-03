@@ -1,4 +1,4 @@
-# nexlu
+# Nexlu
 
 Web information system powered by https://www.meteor.com/
 
