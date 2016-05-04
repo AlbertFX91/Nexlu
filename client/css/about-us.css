@@ -1,0 +1,61 @@
+#about-us-container{
+	margin-top: 15px;
+}
+
+.member-container{
+	padding: 10px;
+	text-align: center;
+}
+
+.team-img {
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 75%;
+    height: 75%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+	border-color: #b0bec5  !important;
+	border-width: 10px !important;
+	border-style: solid !important;
+}
+
+.team-name {
+    font-size: 2.0rem;
+    line-height: 110%;
+    font-weight: 300;
+    margin-right: 2%;
+}
+
+.team-role {
+    font-size: 1.25rem;
+    line-height: 110%;
+    font-weight: 300;
+    color: #616161;
+}
+
+.team-blue-line {
+    background-color: #00a2d3;
+    height: 2px;
+    width: 35%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 10%;
+}
+.beauty-line-row{
+	margin-top:0px;
+	margin-bottom: 0px;
+}
+.member-name{
+	margin-bottom: 2px !important;
+}
+
+.member-role{
+	margin-bottom: 7px !important;
+}
+
+.member-bio{
+	text-align: left;
+}
