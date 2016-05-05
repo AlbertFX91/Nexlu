@@ -66,3 +66,9 @@
 .faqs-answer {
     display: none;
 }
+
+a:link, a:visited, a:hover, a:active, a:focus {
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+}
