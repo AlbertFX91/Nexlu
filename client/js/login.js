@@ -7,7 +7,7 @@ Template.login.events({
             Meteor.loginWithPassword(usernameval, passwordval, function(err){
                 if(err){
                     Session.set('alert', "login_error_credentials_wrong");
-                    $("#error-container").css("display","inline");
+                    $("#error-container").fadeIn("fast");
                 }else{
                     Session.set('alert', null);
                     Router.go('home');
@@ -15,21 +15,18 @@ Template.login.events({
             });
         }else{
              Session.set('alert', "login_error_credentials_wrong");
-             $("#error-container").css("display","inline");
+             $("#error-container").fadeIn("fast");
         }
     },
     'click #close-error': function(event){
         $error_container = $("#error-container");
-        if($error_container.css("display") == "inline"){
-            $error_container.css("display", "none");
+        if($error_container.css("display") != "none"){
+            $error_container.fadeOut("fast");
         }
 
     }
 });
 Template.login.helpers({
-    'hasErrors': function(){
-        return Session.get("alert") != null;
-    },
     'alert': function(){
         return Session.get("alert");
     }

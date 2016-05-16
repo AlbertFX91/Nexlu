@@ -1,13 +1,13 @@
 <Template name="login">
 	<form id="login-form" >
-		{{#if hasErrors}}
-			<div id="error-container" class="row" style="display:inline;">
+		
+			<div id="error-container" class="row" style="display:none;">
 				<div id="errors" class="col s11 offset-s1">
 					<i id="close-error" class="material-icons">clear</i>
 					{{_ alert}}
 				</div>
 			</div>
-		{{/if}}
+	
 		<div class="row">
 			<div class="col s11">
 				<div class="row">
@@ -37,10 +37,10 @@
 			</div>
 		</div>
 		<div class="hide-on-med-and-up" style="margin-top:-50px;">
-			<div id="div-buttom" style="margin-left: auto; margin-right: auto; margin-bottom: 15px; box-shadow: 0 0 0 rgba(0, 0, 0, 0.35);">
-				<div id="login-buttom">
-					<i class="material-icons" id="login-icon" style="top: -15px;left: 12px;">videogame_asset</i>
-				</div>
+			<div id="div-buttom-low">
+				<button type="submit" id="login-buttom">
+					<i class="material-icons" id="login-icon">videogame_asset</i>
+				</button>
 			</div>
 		</div>
 	</form>
