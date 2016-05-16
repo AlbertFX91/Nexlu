@@ -177,8 +177,6 @@ input, button, label {
 	color: white;
 	font-size: 3.5rem;
 	position: relative;
-	top: 11px;
-	left: 10px
 }
 
 #errors{
