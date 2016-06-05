@@ -6,28 +6,13 @@ Template.login.events({
         if(usernameval!="" && passwordval!=""){
             Meteor.loginWithPassword(usernameval, passwordval, function(err){
                 if(err){
-                    Session.set('alert', "login_error_credentials_wrong");
-                    $("#error-container").fadeIn("fast");
+                    throwErrorTranslated("login_error_credentials_wrong");
                 }else{
-                    Session.set('alert', null);
                     Router.go('home');
                 }
             });
         }else{
-             Session.set('alert', "login_error_credentials_wrong");
-             $("#error-container").fadeIn("fast");
+            throwErrorTranslated("login_error_credentials_wrong");
         }
     },
-    'click #close-error': function(event){
-        $error_container = $("#error-container");
-        if($error_container.css("display") != "none"){
-            $error_container.fadeOut("fast");
-        }
-
-    }
-});
-Template.login.helpers({
-    'alert': function(){
-        return Session.get("alert");
-    }
 });
