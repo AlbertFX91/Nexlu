@@ -25,3 +25,5 @@ alanning:roles
 fortawesome:fontawesome
 standard-minifier-css
 standard-minifier-js
+service-configuration
+underscore
