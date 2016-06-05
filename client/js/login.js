@@ -8,6 +8,7 @@ Template.login.events({
                 if(err){
                     throwErrorTranslated("login_error_credentials_wrong");
                 }else{
+                    toastTrans("login_success");
                     Router.go('home');
                 }
             });
