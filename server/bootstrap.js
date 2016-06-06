@@ -1,5 +1,14 @@
 Meteor.startup(function () {
     // code to run on server at startup
+    var smtp = {
+        username: Meteor.settings.mail.user,
+        password: Meteor.settings.mail.password,
+        server: 'smtp.gmail.com',
+        port: 587
+    };
+    //Configuración de variable de entorno para servidor de correo electrónico
+    process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+
     if (Meteor.users.find().count() === 0) {
         createUsers();
     }
