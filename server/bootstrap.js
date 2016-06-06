@@ -1,14 +1,14 @@
 Meteor.startup(function () {
     // code to run on server at startup
-    if (Meteor.users.find().count() === 0) {ç
+    if (Meteor.users.find().count() === 0) {
         createUsers();
     }
 
-    if (FriendRequests.find().count() === 0){ç
+    if (FriendRequests.find().count() === 0){
         createFriendRequests();
     }
 
-    if (ChatRooms.find().count() === 0){ç
+    if (ChatRooms.find().count() === 0){
         createChatRooms();
     }
     
@@ -176,3 +176,4 @@ function createChatRooms(){
         ]
     });
 }
+
