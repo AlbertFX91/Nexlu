@@ -14,6 +14,7 @@ getUserLanguage = function () {
     var lang = "en";
     if (currentLang) {
         lang = currentLang;
+        console.log(lang);
     }
     Session.setPersistent("currentLang", lang);
     /*Añadimos tambien la variable en el servidor, de esta forma, reconoceremos el lenguaje que está usando cada cliente

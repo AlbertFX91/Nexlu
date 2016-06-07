@@ -30,3 +30,4 @@ underscore
 email
 u2622:persistent-session
 auweb:server-session
+meteorhacks:ssr

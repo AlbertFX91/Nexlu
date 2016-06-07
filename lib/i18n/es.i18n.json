@@ -13,5 +13,11 @@
 
   "login_error_credentials_wrong": "usuario y/o contraseña erronea",
   "login_success": "Estás dentro!",
-  "logout_success": "Nos vemos!"
+  "logout_success": "Nos vemos!",
+
+  //Test
+  "test_message": "Mensaje de prueba",
+  "test_message1": "Mensaje numero 1",
+  "test_message2": "Mensaje numero 2",
+  "test_message3": "Mensaje numero 3"
 }
