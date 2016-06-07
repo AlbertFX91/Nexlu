@@ -24,8 +24,55 @@ Template.login.events({
             $error_container.css("display", "none");
         }
 
+    },
+    'click #facebook-login': function(event) {
+        Meteor.loginWithFacebook({}, function(err){
+            if (err) {
+                throw new Meteor.Error("Facebook login failed");
+            }
+        });
+    },
+    'click #google-login': function(event) {
+        Meteor.loginWithGoogle ({}, function(err){
+            if (err) {
+                throw new Meteor.Error("Google login failed");
+            }
+        });
+    },
+    'click #logout': function(event) {
+        Meteor.logout(function(err){
+            if (err) {
+                throw new Meteor.Error("Logout failed");
+            }
+        })
     }
 });
+
+Template.login.onRendered(function () {
+        ServiceConfiguration.configurations.remove({
+            service: 'facebook'
+        });
+
+        ServiceConfiguration.configurations.insert({
+            service: 'facebook',
+            appId: '12345678901234567890',
+            secret: 'secret12345678901234567890'
+        });
+
+        ServiceConfiguration.configurations.insert({
+            service: "google"
+        });
+
+        ServiceConfiguration.configurations.insert({
+            service: "google",
+            clientId: "761927564374-umhq0tua7577ttp8757t677aks1i99b7.apps.googleusercontent.com",
+            secret: "nvWWuwqnNZziIOn7fADAUlbl"
+        });
+    }
+);
+
+
+
 Template.login.helpers({
     'hasErrors': function(){
         return Session.get("alert") != null;

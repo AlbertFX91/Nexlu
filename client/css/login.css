@@ -1,11 +1,33 @@
-#login-form {
+#login-form{
     font-weight: 300;
     color: #a8a7a8;
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
     margin-right: 37%;
-    margin-left: 30%;
     margin-top: 4%;
     margin-bottom: 4%;
+}
+
+#row-facebook-gmail{
+    margin-top: -4%;
+    margin-left: 20%;
+}
+
+.buttom-facebook{
+    background-color: #3b5998 !important;
+}
+
+.buttom-gmail{
+    background-color: #cc181e !important;
+}
+
+@media(max-width: 1400px){
+    #buttom-image{
+        visibility: hidden;
+    }
+}
+
+#errors{
+    color:white;
 }
 
 @media (max-width: 1400px) {
@@ -201,3 +223,4 @@ input, button, label {
     right: 0;
     cursor: pointer;
 }
+
