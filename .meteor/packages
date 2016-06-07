@@ -28,3 +28,5 @@ standard-minifier-js
 service-configuration
 underscore
 email
+u2622:persistent-session
+auweb:server-session
