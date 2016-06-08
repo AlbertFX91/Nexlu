@@ -39,6 +39,13 @@ Template.login.events({
             }
         });
     },
+    'click #twitter-login': function(event) {
+        Meteor.loginWithTwitter ({}, function(err){
+            if (err) {
+                throw new Meteor.Error("Twitter login failed");
+            }
+        });
+    },
     'click #logout': function(event) {
         Meteor.logout(function(err){
             if (err) {
@@ -55,8 +62,8 @@ Template.login.onRendered(function () {
 
         ServiceConfiguration.configurations.insert({
             service: 'facebook',
-            appId: '12345678901234567890',
-            secret: 'secret12345678901234567890'
+            appId: '552878074884212',
+            secret: '34ce8f878c155cb9dc839fcf7397e7c8'
         });
 
         ServiceConfiguration.configurations.insert({
@@ -66,7 +73,18 @@ Template.login.onRendered(function () {
         ServiceConfiguration.configurations.insert({
             service: "google",
             clientId: "761927564374-umhq0tua7577ttp8757t677aks1i99b7.apps.googleusercontent.com",
-            secret: "nvWWuwqnNZziIOn7fADAUlbl"
+            secret: "edPJyzYT1_K_XZ5eR7BaGsCr",
+            loginStyle: "popup"
+        });
+        ServiceConfiguration.configurations.insert({
+            service: "twitter"
+        });
+
+        ServiceConfiguration.configurations.insert({
+            service: "twitter",
+            consumerKey: "WHvxoAhHb7bKczbqwvOv3xBf8",
+            loginStyle: "popup",
+            secret: "bgEQGKpaDg3RsBqvkoZhtSQ70lk0PyJjWVpdyv5kkD8R566YZ6"
         });
     }
 );

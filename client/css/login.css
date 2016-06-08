@@ -20,6 +20,10 @@
     background-color: #cc181e !important;
 }
 
+.buttom-twitter{
+    background-color: #2290bf !important;
+}
+
 @media(max-width: 1400px){
     #buttom-image{
         visibility: hidden;

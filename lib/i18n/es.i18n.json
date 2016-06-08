@@ -27,10 +27,11 @@
   "faqs_question_seven": "¿Con cuanta antelacion debo realizar una reserva?",
   "faqs_answer_seven": "Lo normal en las mudanzas es de 5 dias. ¡Pero esto es muy inflexible! ¡Si necesita ayuda mañana para descargar o cargar cosas no le serviria! Con nosotros, con un minimo de 24 horas podras tener a un estuforce listo para ayudarte en tu tarea.",
 
-
+  "logou": "Salir",
   "login_error_credentials_wrong": "usuario y/o contraseña erronea",
   "login-facebook": "Iniciar con Facebook",
   "login-gmail": "Iniciar con Gmail",
+  "login-twitter": "Iniciar con Twitter",
   "password": "Contraseña",
   "username": "Usuario"
 }

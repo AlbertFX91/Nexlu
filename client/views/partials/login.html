@@ -50,20 +50,29 @@
             {{/if}}
         </form>
         <div class="row" id="row-facebook-gmail">
-            <div class="col s6 m3">
+            <div class="col s4 m3">
                 {{#if currentUser}}
                     {{currentUser.services.facebook.name}} -
                     {{currentUser.services.facebook.gender}}
-                    <button id="logout">Logout</button>
+                    <button id="logout">{{_ "logout"}}</button>
                 {{else}}
                     <button id="facebook-login"  class="buttom-facebook btn btn-default">{{_ "login-facebook"}}</button>
                 {{/if}}
             </div>
-            <div class="col s6 m3">
+            <div class="col s4 m3">
+                {{#if currentUser}}
+                    {{currentUser.services.twitter.name}} -
+                    {{currentUser.services.twitter.gender}}
+                    <button id="logout">{{_ "logout"}}</button>
+                {{else}}
+                    <button id="twitter-login"  class="buttom-twitter btn btn-default">{{_ "login-twitter"}}</button>
+                {{/if}}
+            </div>
+            <div class="col s4 m3">
                 {{#if currentUser}}
                     {{currentUser.services.google.given_name}} -
                     {{currentUser.services.google.gender}}
-                    <button id="logout">Logout</button>
+                    <button id="logout">{{_ "logout"}}</button>
                 {{else}}
                     <button id="google-login" class="buttom-gmail btn btn-default">{{_ "login-gmail"}}</button>
                 {{/if}}

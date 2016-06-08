@@ -3,6 +3,33 @@ Meteor.startup(function () {
     if (Meteor.users.find().count() === 0) {
         createUsers();
     }
+    Accounts.loginServiceConfiguration.remove({
+        service: 'facebook'
+    });
+
+    Accounts.loginServiceConfiguration.insert({
+        service: "facebook",
+        appId: '552878074884212',
+        secret: '34ce8f878c155cb9dc839fcf7397e7c8'
+    });
+    Accounts.loginServiceConfiguration.remove({
+        service: 'twitter'
+    });
+
+    Accounts.loginServiceConfiguration.insert({
+        service: "twitter",
+        consumerKey: "WHvxoAhHb7bKczbqwvOv3xBf8",
+        secret: "bgEQGKpaDg3RsBqvkoZhtSQ70lk0PyJjWVpdyv5kkD8R566YZ6"
+    });
+    Accounts.loginServiceConfiguration.remove({
+        service: 'google'
+    });
+
+    Accounts.loginServiceConfiguration.insert({
+        service: "google",
+        clientId: "761927564374-umhq0tua7577ttp8757t677aks1i99b7.apps.googleusercontent.com",
+        secret: "edPJyzYT1_K_XZ5eR7BaGsCr"
+    });
     
 });
 
