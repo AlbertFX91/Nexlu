@@ -9,7 +9,7 @@ Template.login.events({
                     throwErrorTranslated("error.login_credentials_wrong");
                 }else{
                     toastTrans("toast.login_success");
-                    Meteor.call('sendEmail');
+                    Meteor.call('sendExampleEmail');
                     Router.go('home');
                 }
             });
