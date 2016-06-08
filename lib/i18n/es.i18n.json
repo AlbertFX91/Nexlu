@@ -33,5 +33,58 @@
   "login-gmail": "Iniciar con Gmail",
   "login-twitter": "Iniciar con Twitter",
   "password": "Contraseña",
-  "username": "Usuario"
+  "username": "Usuario",
+
+  "toast": {
+
+    "lang_changed": "Idioma cambiado",
+    "undo": "Deshacer",
+    "login_success": "Estás dentro!",
+    "logout_success": "Nos vemos!"
+
+  },
+
+  "error": {
+
+    "not_found": "404. Oops, la ruta no pudo ser encontrada.",
+    "login_credentials_wrong": "usuario y/o contraseña erronea"
+
+  },
+
+  "tag": {
+
+    "company": "EMPRESA",
+    "services": "Servicios",
+    "prices": "precios",
+    "team": "EQUIPO",
+    "about_us": "Sobre nosotros",
+    "legal": "LEGAL",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto",
+    "private": "Privado",
+    "friends": "Amigos"
+
+  },
+
+  "about_us": {
+
+    "ar": "Estudiante de ingeniería del software. Especializado en desarrollo de aplicaciones web y amante de la guitarra y la música. Actualmente cursando el último año de carrera y empleado en prácticas en Everis.",
+    "cp": "Estudiante de ingeniería del software. Especializado en desarrollo de aplicaciones web y apasionado de los videjuegos. Actualmente cursando el último año de carrera y empleado en prácticas en Everis.",
+    "fjv": "Estudiante de ingeniería del software. Especializado en desarrollo de aplicaciones web y apasionado del futbol. Actualmente cursando el último año de carrera y empleado en prácticas en Everis."
+
+  },
+
+  "home": {
+
+    "intro": "Juega y disfruta con nosotros!"
+
+  },
+
+  "email": {
+    "test_message": "Mensaje de prueba",
+    "test_message1": "Mensaje numero 1",
+    "test_message2": "Mensaje numero 2",
+    "test_message3": "Mensaje numero 3"
+  }
 }

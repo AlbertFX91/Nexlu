@@ -33,5 +33,59 @@
   "login-gmail": "Login with Gmail",
   "login-twitter": "Login with Twitter",
   "password": "Password",
-  "username": "Username"
+  "username": "Username",
+
+  "toast": {
+
+    "lang_changed": "Language changed",
+    "undo": "Undo",
+    "login_success": "You're logged!",
+    "logout_success": "See you soon!"
+
+  },
+
+  "error": {
+
+    "not_found": "404. Oops, the route could not be found.",
+    "login_credentials_wrong": "username and/or password wrong"
+
+  },
+
+  "tag": {
+
+    "company": "COMPANY",
+    "services": "Services",
+    "prices": "Prices",
+    "team": "TEAM",
+    "about_us": "About us",
+    "legal": "LEGAL",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "private": "Private",
+    "friends": "Friends"
+
+  },
+
+  "about_us": {
+
+    "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
+    "cp": "Software engineering student. Specializing in web application development and a videogames lover. Currently in the final year career and working in everis.",
+    "fjv": "Software engineering student. Specializing in web application development and a football lover. Currently in the final year career and working in everis."
+
+  },
+
+  "home": {
+
+    "intro": "Play and enjoy with us!"
+
+  },
+
+  "email": {
+    "test_message": "Test message",
+    "test_message1": "Message number 1",
+    "test_message2": "Message number 2",
+    "test_message3": "Message number 3"
+
+  }
 }
