@@ -8,7 +8,7 @@ Template.login.events({
                 if(err){
                     throwErrorTranslated("error.login_credentials_wrong");
                 }else{
-                    toast.Trans("toast.login_success");
+                    toastTrans("toast.login_success");
                     Router.go('home');
                 }
             });
@@ -25,22 +25,31 @@ Template.login.events({
     },
     'click #facebook-login': function(event) {
         Meteor.loginWithFacebook({}, function(err){
-            if (err) {
-                throw new Meteor.Error("Facebook login failed");
+            if(err){
+                throwErrorTranslated("error.login_credentials-facebook_wrong");
+            }else{
+                toastTrans("toast.login_success");
+                Router.go('home');
             }
         });
     },
     'click #google-login': function(event) {
         Meteor.loginWithGoogle ({}, function(err){
-            if (err) {
-                throw new Meteor.Error("Google login failed");
+            if(err){
+                throwErrorTranslated("error.login_credentials-google_wrong");
+            }else{
+                toastTrans("toast.login_success");
+                Router.go('home');
             }
         });
     },
     'click #twitter-login': function(event) {
         Meteor.loginWithTwitter ({}, function(err){
-            if (err) {
-                throw new Meteor.Error("Twitter login failed");
+            if(err){
+                throwErrorTranslated("error.login_credentials-twitter_wrong");
+            }else{
+                toastTrans("toast.login_success");
+                Router.go('home');
             }
         });
     },

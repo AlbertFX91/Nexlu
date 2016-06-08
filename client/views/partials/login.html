@@ -1,8 +1,8 @@
 <Template name="login">
     <div class="container">
-        <form id="login-form" class="row">
-            <div>
-                <div class="col m11 s12">
+        <form id="login-form" >
+            <div class="row">
+                <div class="col s11">
                     <div class="row">
                         <div class="col m4 s4" >
                             <label for="login">{{_ "username"}}:</label>
@@ -20,40 +20,26 @@
                         </div>
                     </div>
                 </div>
-                <div id="buttom-image">
-                    <div class="col m1 s12 valign-wrapper hide-on-small-only" id="col-buttom">
-                        <div id="div-buttom">
-                            <div id="login-buttom">
-                                <i class="material-icons" id="login-icon">videogame_asset</i>
-                            </div>
-                        </div>
-                        <div id="mask"></div>
+                <div class="col s1 valign-wrapper hide-on-small-only" id="col-buttom">
+                    <div id="div-buttom">
+                        <button type="submit" id="login-buttom">
+                            <i class="material-icons" id="login-icon">videogame_asset</i>
+                        </button>
                     </div>
-                    <!--<p style="position: absolute;left: 67%;bottom: 62%;width: 100px;height: 100px;background-color: white;border-radius: 100%;"></p>-->
-
-                    <div class="hide-on-med-and-up" style="margin-top:-50px;">
-                        <div id="div-buttom" style="margin-left: auto; margin-right: auto; margin-bottom: 15px; box-shadow: 0 0 0 rgba(0, 0, 0, 0.35);">
-                            <div id="login-buttom">
-                                <i class="material-icons" id="login-icon" style="top: -15px;left: 12px;">videogame_asset</i>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="mask"></div>
                 </div>
             </div>
-            {{#if hasErrors}}
-                <div id="error-container" class="row" style="display:inline;">
-                    <div id="errors" class="col s11 offset-s1">
-                        <i id="close-error" class="material-icons">clear</i>
-                        {{_ alert}}
-                    </div>
+            <div class="hide-on-med-and-up" style="margin-top:-50px;">
+                <div id="div-buttom-low">
+                    <button type="submit" id="login-buttom">
+                        <i class="material-icons" id="login-icon">videogame_asset</i>
+                    </button>
                 </div>
-            {{/if}}
+            </div>
         </form>
         <div class="row" id="row-facebook-gmail">
             <div class="col s4 m3">
                 {{#if currentUser}}
-                    {{currentUser.services.facebook.name}} -
-                    {{currentUser.services.facebook.gender}}
                     <button id="logout">{{_ "logout"}}</button>
                 {{else}}
                     <button id="facebook-login"  class="buttom-facebook btn btn-default">{{_ "login-facebook"}}</button>
@@ -61,8 +47,6 @@
             </div>
             <div class="col s4 m3">
                 {{#if currentUser}}
-                    {{currentUser.services.twitter.name}} -
-                    {{currentUser.services.twitter.gender}}
                     <button id="logout">{{_ "logout"}}</button>
                 {{else}}
                     <button id="twitter-login"  class="buttom-twitter btn btn-default">{{_ "login-twitter"}}</button>
@@ -70,8 +54,6 @@
             </div>
             <div class="col s4 m3">
                 {{#if currentUser}}
-                    {{currentUser.services.google.given_name}} -
-                    {{currentUser.services.google.gender}}
                     <button id="logout">{{_ "logout"}}</button>
                 {{else}}
                     <button id="google-login" class="buttom-gmail btn btn-default">{{_ "login-gmail"}}</button>

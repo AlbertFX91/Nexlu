@@ -27,7 +27,8 @@
   "faqs_question_seven": "How far in advance should I make a reservation?",
   "faqs_answer_seven": "Normal in removals is 5 days. But this is very inflexible! If you need help to load or unload your things tomorrow it wouldn't serve you! With us, with a minimum 24 hours you can have a estuforce ready to help you in your task.",
 
-  "logou": "Log out",
+  "logout": "Logout",
+  "login": "Login",
   "login_error_credentials_wrong": "username and/or password wrong",
   "login-facebook": "Login with Facebook",
   "login-gmail": "Login with Gmail",
@@ -47,7 +48,10 @@
   "error": {
 
     "not_found": "404. Oops, the route could not be found.",
-    "login_credentials_wrong": "username and/or password wrong"
+    "login_credentials_wrong": "username and/or password wrong",
+    "login_credentials-facebook_wrong": "Login with Facebook canceled",
+    "login_credentials-google_wrong": "Login with Google canceled",
+    "login_credentials-twitter_wrong": "Login with Twitter canceled"
 
   },
 
