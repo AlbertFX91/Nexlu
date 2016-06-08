@@ -44,6 +44,13 @@
 
     "intro": "Play and enjoy with us!"
 
-  }
+  },
 
+  "email": {
+    "test_message": "Test message",
+    "test_message1": "Message number 1",
+    "test_message2": "Message number 2",
+    "test_message3": "Message number 3"
+
+  }
 }

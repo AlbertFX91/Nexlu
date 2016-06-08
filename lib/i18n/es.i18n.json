@@ -1,5 +1,4 @@
 {
-
   "toast": {
 
     "lang_changed": "Idioma cambiado",
@@ -44,7 +43,12 @@
 
     "intro": "Juega y disfruta con nosotros!"
 
+  },
+
+  "email": {
+    "test_message": "Mensaje de prueba",
+    "test_message1": "Mensaje numero 1",
+    "test_message2": "Mensaje numero 2",
+    "test_message3": "Mensaje numero 3"
   }
-
-
 }
