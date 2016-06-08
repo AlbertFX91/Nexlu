@@ -1,21 +1,49 @@
 {
-  "lang_changed": "Language changed",
-  "undo": "Undo",
 
-  // About us
+  "toast": {
 
-  "about_us_header": "About us",
-  "about_us_vjm": "Student at the University of Seville",
-  "about_us_rdr": "Student at the University of Seville",
-  "about_us_ab": "Student at the University of Seville",
-  "about_us_ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
-  "about_us_cp": "Software engineering student. Specializing in web application development and a videogames lover. Currently in the final year career and working in everis.",
-  "about_us_fjv": "Software engineering student. Specializing in web application development and a football lover. Currently in the final year career and working in everis.",
-  "about_us_am": "Student at the University of Seville",
+    "lang_changed": "Language changed",
+    "undo": "Undo",
+    "login_success": "You're logged!",
+    "logout_success": "See you soon!"
 
-  // Login
+  },
 
-  "login_error_credentials_wrong": "username and/or password wrong",
-  "login_success": "You're logged!",
-  "logout_success": "See you soon!"
+  "error": {
+
+    "404NotFound": "404. Oops, the route could not be found.",
+    "login_credentials_wrong": "username and/or password wrong"
+
+  },
+
+  "tag": {
+
+    "company": "COMPANY",
+    "services": "Services",
+    "prices": "Prices",
+    "team": "TEAM",
+    "about_us": "About us",
+    "legal": "LEGAL",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "private": "Private",
+    "friends": "Friends"
+
+  },
+
+  "about_us": {
+
+    "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
+    "cp": "Software engineering student. Specializing in web application development and a videogames lover. Currently in the final year career and working in everis.",
+    "fjv": "Software engineering student. Specializing in web application development and a football lover. Currently in the final year career and working in everis."
+
+  },
+
+  "home": {
+
+    "intro": "Play and enjoy with us!"
+
+  }
+
 }

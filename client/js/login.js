@@ -6,14 +6,14 @@ Template.login.events({
         if(usernameval!="" && passwordval!=""){
             Meteor.loginWithPassword(usernameval, passwordval, function(err){
                 if(err){
-                    throwErrorTranslated("login_error_credentials_wrong");
+                    throwErrorTranslated("error.login_credentials_wrong");
                 }else{
-                    toastTrans("login_success");
+                    toastTrans("toast.login_success");
                     Router.go('home');
                 }
             });
         }else{
-            throwErrorTranslated("login_error_credentials_wrong");
+            throwErrorTranslated("error.login_credentials_wrong");
         }
     },
 });
