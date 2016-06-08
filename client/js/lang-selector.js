@@ -11,8 +11,7 @@ changeLang = function (toLocale) {
     TAPi18n.setLanguage(toLocale).done(function () {
         if (currentLocale != toLocale) {
             $('.toast').remove();
-            var msg = TAPi18n.__('lang_changed')
-            Session.setPersistent("currentLang", toLocale);
+            var msg = TAPi18n.__('toast.lang_changed')
             ServerSession.set("currentLang", toLocale);
             Materialize.toast('<b><span class="truncate">' + msg + '</span></b>', 2700);
         }
