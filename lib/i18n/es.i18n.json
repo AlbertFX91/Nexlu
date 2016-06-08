@@ -11,7 +11,7 @@
 
   "error": {
 
-    "404NotFound": "404. Oops, la ruta no pudo ser encontrada.",
+    "not_found": "404. Oops, la ruta no pudo ser encontrada.",
     "login_credentials_wrong": "usuario y/o contraseña erronea"
 
   },
