@@ -22,10 +22,14 @@ aldeed:collection2
 tap:i18n
 aldeed:autoform
 alanning:roles
+accounts-facebook
+accounts-google
+accounts-ui
+service-configuration
+accounts-twitter
 fortawesome:fontawesome
 standard-minifier-css
 standard-minifier-js
-service-configuration
 underscore
 email
 u2622:persistent-session
