@@ -1,11 +1,11 @@
 {
-
   "toast": {
 
     "lang_changed": "Language changed",
     "undo": "Undo",
     "login_success": "You're logged!",
-    "logout_success": "See you soon!"
+    "logout_success": "See you soon!",
+    "verify_thanks" : "Thanks for verify your email!"
 
   },
 

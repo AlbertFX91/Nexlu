@@ -4,7 +4,8 @@
     "lang_changed": "Idioma cambiado",
     "undo": "Deshacer",
     "login_success": "Estás dentro!",
-    "logout_success": "Nos vemos!"
+    "logout_success": "Nos vemos!",
+    "verify_thanks" : "Gracias por validar tu correo!"
 
   },
 
