@@ -4,7 +4,8 @@
     "lang_changed": "Idioma cambiado",
     "undo": "Deshacer",
     "login_success": "Estás dentro!",
-    "logout_success": "Nos vemos!"
+    "logout_success": "Nos vemos!",
+    "verify_thanks" : "Gracias por validar tu correo!"
 
   },
 
@@ -46,6 +47,12 @@
   },
 
   "email": {
+    "verification-email_subject": "El último paso!",
+    "verification-email_title": "Este es el último paso, %s!",
+    "verification-email_message1": "Muchas gracias por unirte a nosotros! Estamos encantados de tu llegada!",
+    "verification-email_message2": "Lo ultimo a realizar para usar nuestra app es simplemente clicar <a href='%s'>aquí</a> y te redigiremos a <strong>Nexlu</strong>",
+    "verification-email_message3": "Esperemos que disfrutes y si te gusta nuestra app, díselo a tus colegas gamers!",
+    "verification-email_message4": "Nos vemos pronto!",
     "test_message": "Mensaje de prueba",
     "test_message1": "Mensaje numero 1",
     "test_message2": "Mensaje numero 2",

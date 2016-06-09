@@ -1,11 +1,11 @@
 {
-
   "toast": {
 
     "lang_changed": "Language changed",
     "undo": "Undo",
     "login_success": "You're logged!",
-    "logout_success": "See you soon!"
+    "logout_success": "See you soon!",
+    "verify_thanks" : "Thanks for verify your email!"
 
   },
 
@@ -47,6 +47,13 @@
   },
 
   "email": {
+    "verification-email_subject": "The last step!",
+    "verification-email_title": "The last step, %s!",
+    "verification-email_message1": "Thanks so much for joining us! We are delighted by you arrival!",
+    "verification-email_message2": "The last step for use our app is just click <a href='%s'>here</a> and we'll redirect you to <strong>Nexlu</strong>",
+    "verification-email_message3": "We hope you'll enjoyed it and if you like our app, just say it to your player friends!",
+    "verification-email_message4": "See you soon!",
+
     "test_message": "Test message",
     "test_message1": "Message number 1",
     "test_message2": "Message number 2",
