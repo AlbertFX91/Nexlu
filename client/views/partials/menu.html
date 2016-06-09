@@ -1,4 +1,73 @@
-<template name="menu">
+<template name="menuLogout">
+
+    <div class="navbar-fixed">
+        <nav class="customizedNavigation" role="navigation">
+            <div class="nav-wrapper container">
+
+                <a href="/" class="center brand-logo">Nexlu</a>
+
+                <a href="/" data-activates="mobile" class="button-collapse" style="margin-left:20px;"><i
+                        class="mdi-navigation-menu white-text" style="font-size:2.2em;"></i></a>
+
+
+                <ul class="left hide-on-med-and-down">
+                    {{> navbarLogout}}
+                </ul>
+
+                <!-- Panel de navegación lateral desplegado en dispositivos móviles -->
+                <ul class="side-nav" id="mobile">
+                    {{> navbarLogout}}
+                </ul>
+
+                <ul id="nav-mobile" class="right">
+                    <li>{{> langSelector}}</li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+
+</template>
+
+<template name="menuLogin">
+
+    <div class="navbar-fixed">
+        <nav class="customizedNavigation" role="navigation">
+            <div class="nav-wrapper container">
+
+                <a href="/" class="center brand-logo">Nexlu</a>
+
+                <a href="/" data-activates="mobile" class="button-collapse" style="margin-left:20px;"><i
+                        class="mdi-navigation-menu white-text" style="font-size:2.2em;"></i></a>
+
+
+                <ul class="left hide-on-med-and-down">
+                    {{> navbarLogin}}
+                </ul>
+
+                <!-- Panel de navegación lateral desplegado en dispositivos móviles -->
+                <ul class="side-nav" id="mobile">
+                    {{> navbarLogin}}
+                </ul>
+
+                <ul id="nav-mobile" class="right">
+                    <li>{{> langSelector}}</li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+
+</template>
+
+<template name="navbarLogout">
+
+    <li><a href="#">{{_ "tag.profile"}}</a></li>
+    <li><a href="#">{{_ "tag.friends"}}</a></li>
+
+</template>
+
+<template name="navbarLogin">
 
     <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
     <li><a href="#">{{_ "tag.friends"}}</a></li>
