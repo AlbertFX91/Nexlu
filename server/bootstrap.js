@@ -177,3 +177,114 @@ function createChatRooms(){
     });
 }
 
+function createPublications(){
+    var user1 = Meteor.users.findOne({username: 'user1'});
+    var user2 = Meteor.users.findOne({username: 'user2'});
+    var user3 = Meteor.users.findOne({username: 'user3'});
+    var user4 = Meteor.users.findOne({username: 'user4'});
+    var user5 = Meteor.users.findOne({username: 'user5'});
+
+    //User 1
+    Publications.insert({
+        owner: user1._id,
+        createdAt: new Date('09/06/2016'),
+        playersTagged: [user2._id, user3._id],
+        description: "My first publication!!!",
+        playersLike: [user1._id, user2._id, user3._id],
+        playersDislike: [user4._id],
+        comments: [
+            {
+                createdAt: new Date('09/06/2016'),
+                description: "Nice publication!",
+                player: user2._id,
+                playersLike: [user1._id],
+                playersDislike: [],
+                sons: []
+            },
+            {
+                createdAt: new Date('09/06/2016'),
+                description: "Nice one dude!",
+                player: user3._id,
+                playersLike: [user1._id],
+                playersDislike: [user2._id],
+                sons: [
+                    {
+                    createdAt: new Date('09/06/2016'),
+                    description: "Thanks men!",
+                    player: user1._id,
+                    playersLike: [user3._id],
+                    playersDislike: [],
+                    sons: []
+                    }
+                ]
+            }
+        ]
+    });
+    Publications.insert({
+        owner: user1._id,
+        createdAt: new Date('09/06/2016'),
+        playersTagged: [],
+        description: "My second publication!!!",
+        playersLike: [],
+        playersDislike: [],
+        comments: []
+    });
+    Publications.insert({
+        owner: user1._id,
+        createdAt: new Date('09/06/2016'),
+        playersTagged: [],
+        description: "My third publication!!!",
+        playersLike: [],
+        playersDislike: [],
+        comments: []
+    });
+    Publications.insert({
+        owner: user1._id,
+        createdAt: new Date('09/06/2016'),
+        playersTagged: [],
+        description: "My fourth publication!!!",
+        playersLike: [],
+        playersDislike: [],
+        comments: []
+    });
+    Publications.insert({
+        owner: user1._id,
+        createdAt: new Date('09/06/2016'),
+        playersTagged: [],
+        description: "My fifth publication!!!",
+        playersLike: [],
+        playersDislike: [],
+        comments: []
+    });
+
+    //User 2
+    Publications.insert({
+        owner: user2._id,
+        createdAt: new Date('09/06/2016'),
+        playersTagged: [user1._id],
+        description: "Hi NEXLU!!!",
+        playersLike: [],
+        playersDislike: [],
+        comments: [
+            {
+                createdAt: new Date('09/06/2016'),
+                description: "Nice to see you!",
+                player: user1._id,
+                playersLike: [user2._id],
+                playersDislike: [],
+                sons: [
+                    {
+                        createdAt: new Date('09/06/2016'),
+                        description: "Me too dude!",
+                        player: user2._id,
+                        playersLike: [],
+                        playersDislike: [],
+                        sons: []
+                    }
+                ]
+            }
+        ]
+    });
+
+
+}
