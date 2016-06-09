@@ -11,6 +11,10 @@ Meteor.startup(function () {
     if (ChatRooms.find().count() === 0){
         createChatRooms();
     }
+
+    if (Publications.find().count() === 0){
+        createPublications();
+    }
     
 });
 
@@ -90,13 +94,13 @@ function createFriendRequests(){
     var user5 = Meteor.users.findOne({username: 'user5'});
 
     FriendRequests.insert({
-        createdAt: new Date('2016-06-02'),
+        createdAt: new Date('2016-06-02T12:00:00'),
         from: user1._id,
         to: user3._id,
     });
 
     FriendRequests.insert({
-        createdAt: new Date('2016-06-03'),
+        createdAt: new Date('2016-06-03T13:00:00'),
         from: user4._id,
         to: user1._id,
     });
@@ -115,37 +119,37 @@ function createChatRooms(){
         messages: [
             {
                 order: 1,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:00:00'),
                 message: "Hola!",
                 player: user1._id
             },
             {
                 order: 2,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:05:00'),
                 message: "Hola user1! Me alegro de verte!",
                 player: user2._id
             },
             {
                 order: 3,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:07:00'),
                 message: "Igualmente! Que tal te va todo?",
                 player: user1._id
             },
             {
                 order: 4,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:08:00'),
                 message: "No puedo quejarme la verdad!!",
                 player: user2._id
             },
             {
                 order: 5,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:08:00'),
                 message: "Trabajando mucho, pero ya llega el verano!",
                 player: user2._id
             },
             {
                 order: 6,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:10:00'),
                 message: "Jaja espero verte este verano!",
                 player: user1._id
             }
@@ -157,19 +161,19 @@ function createChatRooms(){
         messages: [
             {
                 order: 1,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:00:00'),
                 message: "Hola user2!",
                 player: user2._id
             },
             {
                 order: 2,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:05:00'),
                 message: "Hola user1! que tal?! :)",
                 player: user3._id
             },
             {
                 order: 3,
-                createdAt: new Date('2016-06-03'),
+                createdAt: new Date('2016-06-03T12:07:00'),
                 message: "Muy bien! No sabia que tu usases esta aplicación!",
                 player: user2._id
             }
@@ -187,14 +191,14 @@ function createPublications(){
     //User 1
     Publications.insert({
         owner: user1._id,
-        createdAt: new Date('09/06/2016'),
+        createdAt: new Date('2016-06-03T12:00:00'),
         playersTagged: [user2._id, user3._id],
         description: "My first publication!!!",
         playersLike: [user1._id, user2._id, user3._id],
         playersDislike: [user4._id],
         comments: [
             {
-                createdAt: new Date('09/06/2016'),
+                createdAt: new Date('2016-06-03T12:05:00'),
                 description: "Nice publication!",
                 player: user2._id,
                 playersLike: [user1._id],
@@ -202,14 +206,14 @@ function createPublications(){
                 sons: []
             },
             {
-                createdAt: new Date('09/06/2016'),
+                createdAt: new Date('2016-06-03T12:08:00'),
                 description: "Nice one dude!",
                 player: user3._id,
                 playersLike: [user1._id],
                 playersDislike: [user2._id],
                 sons: [
                     {
-                    createdAt: new Date('09/06/2016'),
+                    createdAt: new Date('2016-06-03T13:00:00'),
                     description: "Thanks men!",
                     player: user1._id,
                     playersLike: [user3._id],
@@ -222,7 +226,7 @@ function createPublications(){
     });
     Publications.insert({
         owner: user1._id,
-        createdAt: new Date('09/06/2016'),
+        createdAt: new Date('2016-06-08T12:00:00'),
         playersTagged: [],
         description: "My second publication!!!",
         playersLike: [],
@@ -231,7 +235,7 @@ function createPublications(){
     });
     Publications.insert({
         owner: user1._id,
-        createdAt: new Date('09/06/2016'),
+        createdAt: new Date('2016-06-13T12:00:00'),
         playersTagged: [],
         description: "My third publication!!!",
         playersLike: [],
@@ -240,7 +244,7 @@ function createPublications(){
     });
     Publications.insert({
         owner: user1._id,
-        createdAt: new Date('09/06/2016'),
+        createdAt: new Date('2016-06-20T12:00:00'),
         playersTagged: [],
         description: "My fourth publication!!!",
         playersLike: [],
@@ -249,7 +253,7 @@ function createPublications(){
     });
     Publications.insert({
         owner: user1._id,
-        createdAt: new Date('09/06/2016'),
+        createdAt: new Date('2016-06-27T12:00:00'),
         playersTagged: [],
         description: "My fifth publication!!!",
         playersLike: [],
@@ -260,21 +264,21 @@ function createPublications(){
     //User 2
     Publications.insert({
         owner: user2._id,
-        createdAt: new Date('09/06/2016'),
+        createdAt: new Date('2016-06-03T23:00:00'),
         playersTagged: [user1._id],
         description: "Hi NEXLU!!!",
         playersLike: [],
         playersDislike: [],
         comments: [
             {
-                createdAt: new Date('09/06/2016'),
+                createdAt: new Date('2016-06-04T12:00:00'),
                 description: "Nice to see you!",
                 player: user1._id,
                 playersLike: [user2._id],
                 playersDislike: [],
                 sons: [
                     {
-                        createdAt: new Date('09/06/2016'),
+                        createdAt: new Date('2016-06-08T12:00:00'),
                         description: "Me too dude!",
                         player: user2._id,
                         playersLike: [],
