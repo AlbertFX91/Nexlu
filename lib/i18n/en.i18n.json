@@ -29,7 +29,9 @@
     "contact": "Contact",
     "private": "Private",
     "friends": "Friends",
-    "profile": "Profile"
+    "profile": "Profile",
+    "browser": "Browser",
+    "timeline": "Timeline"
 
   },
 

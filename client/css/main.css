@@ -49,3 +49,11 @@ a:link, a:visited, a:hover, a:active, a:focus {
     cursor: pointer;
     display: inline;
 }
+
+ .browser-center {
+     left: 50%;
+     -webkit-transform: translateX(-50%);
+     transform: translateX(-50%);
+     position: absolute;
+     display: inline-block;
+}
