@@ -1,4 +1,4 @@
-<template name="menuLogout">
+<template name="menu">
 
     <div class="navbar-fixed">
         <nav class="customizedNavigation" role="navigation">
@@ -11,15 +11,16 @@
 
 
                 <ul class="left hide-on-med-and-down">
-                    {{> navbarLogout}}
+                    <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
                 </ul>
 
                 <!-- Panel de navegación lateral desplegado en dispositivos móviles -->
                 <ul class="side-nav" id="mobile">
-                    {{> navbarLogout}}
+                    <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
                 </ul>
 
                 <ul id="nav-mobile" class="right">
+                    <li><a href="/login">Log In</a></li>
                     <li>{{> langSelector}}</li>
                 </ul>
 
@@ -29,7 +30,7 @@
 
 </template>
 
-<template name="menuLogin">
+<template name="menuLogged">
 
     <div class="navbar-fixed">
         <nav class="customizedNavigation" role="navigation">
@@ -42,15 +43,17 @@
 
 
                 <ul class="left hide-on-med-and-down">
-                    {{> navbarLogin}}
+                    <li><a href="#">{{_ "tag.friends"}}</a></li>
                 </ul>
 
                 <!-- Panel de navegación lateral desplegado en dispositivos móviles -->
                 <ul class="side-nav" id="mobile">
-                    {{> navbarLogin}}
-                </ul>
+                    <li><a href="#">{{_ "tag.friends"}}</a></li>
+                </ul>git
 
                 <ul id="nav-mobile" class="right">
+                    <li><a href="#">{{_ "tag.profile"}}</a></li>
+                    <li><a class="logout" href="/logout">Log Out</a></li>
                     <li>{{> langSelector}}</li>
                 </ul>
 
@@ -60,16 +63,3 @@
 
 </template>
 
-<template name="navbarLogout">
-
-    <li><a href="#">{{_ "tag.profile"}}</a></li>
-    <li><a href="#">{{_ "tag.friends"}}</a></li>
-
-</template>
-
-<template name="navbarLogin">
-
-    <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
-    <li><a href="#">{{_ "tag.friends"}}</a></li>
-
-</template>

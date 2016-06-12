@@ -3,9 +3,9 @@
     <div class="Site">
         <header>
             {{#if currentUser}}
-                {{> menuLogin}}
+                {{> menuLogged}}
             {{else}}
-                {{> menuLogout}}
+                {{> menu}}
             {{/if}}
         </header>
 
@@ -13,7 +13,11 @@
             {{> yield}}
         </main>
 
-        {{> pageFooter}}
+        {{#if currentUser}}
+            {{> pageFooterLogged}}
+        {{else}}
+            {{> pageFooter}}
+        {{/if}}
     </div>
 
 </template>

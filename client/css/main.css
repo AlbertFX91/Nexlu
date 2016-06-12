@@ -35,3 +35,17 @@ a:link, a:visited, a:hover, a:active, a:focus {
     background-color: #f44336;
     color: #fafafa !important;
 }
+
+.logout {
+    opacity: .75;
+    min-width: 93px;
+    border: 1px solid !important;
+    border-color: #8c8f9e !important;
+    border-radius: 2px;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 60%;
+    cursor: pointer;
+    display: inline;
+}
