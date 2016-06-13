@@ -1,3 +1,3 @@
-/**
- * Created by Albert_FX on 13/06/2016.
- */
+Template.profile.onRendered(function () {
+    console.log(Meteor.user());
+});
