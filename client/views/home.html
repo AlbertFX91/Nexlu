@@ -6,9 +6,9 @@
             <div class="col s12 center-align">
                 <h3 class="white-text" style="text-shadow: 2px 2px 2px #000;">{{_ "home.intro"}}</h3>
 				{{#if currentUser }}
-					<a class="btn btn-large" href="{{pathFor 'logout'}}">Logout</a>
+					<a class="btn btn-large" href="{{pathFor 'logout'}}">{{_ "logout"}}</a>
 				{{else}}
-					<a class="btn btn-large" href="{{pathFor 'login'}}">Login</a>
+					<a class="btn btn-large" href="{{pathFor 'login'}}">{{_ "login"}}</a>
 				{{/if}}
             </div>
         </div>

@@ -60,7 +60,7 @@
 }
 
 .member-bio{
-	text-align: left;
+	text-align: justify;
     padding: 2rem;
 }
 .member-social-links{
@@ -90,4 +90,16 @@
 @keyframes out {
     to {color: #9e9e9e;}
     from {color: #00a2d3;}
+}
+
+.fa-github-square:hover {
+    color: black !important;
+}
+
+.fa-linkedin-square:hover {
+    color: #0077B5 !important;
+}
+
+.fa-twitter-square:hover {
+    color: #2290bf !important;
 }
