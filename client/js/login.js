@@ -6,14 +6,14 @@ Template.login.events({
         if(usernameval!="" && passwordval!=""){
             Meteor.loginWithPassword(usernameval, passwordval, function(err){
                 if(err){
-                    throwErrorTranslated("error.login_credentials_wrong");
+                    Errors.throwErrorTranslated("error.login_credentials_wrong");
                 }else{
-                    toastTrans("toast.login_success");
+                    Toasts.throwTrans("toast.login_success");
                     Router.go('home');
                 }
             });
         }else{
-            throwErrorTranslated("error.login_credentials_wrong");
+            Errors.throwErrorTranslated("error.login_credentials_wrong");
         }
     },
     'click #close-error': function(event){
@@ -26,9 +26,9 @@ Template.login.events({
     'click #facebook-login': function(event) {
         Meteor.loginWithFacebook({}, function(err){
             if(err){
-                throwErrorTranslated("error.login_credentials-facebook_wrong");
+                Errors.throwErrorTranslated("error.login_credentials-facebook_wrong");
             }else{
-                toastTrans("toast.login_success");
+                Toasts.throwTrans("toast.login_success");
                 Router.go('home');
             }
         });
@@ -36,9 +36,9 @@ Template.login.events({
     'click #google-login': function(event) {
         Meteor.loginWithGoogle ({}, function(err){
             if(err){
-                throwErrorTranslated("error.login_credentials-google_wrong");
+                Errors.throwErrorTranslated("error.login_credentials-google_wrong");
             }else{
-                toastTrans("toast.login_success");
+                Toasts.throwTrans("toast.login_success");
                 Router.go('home');
             }
         });
@@ -46,9 +46,9 @@ Template.login.events({
     'click #twitter-login': function(event) {
         Meteor.loginWithTwitter ({}, function(err){
             if(err){
-                throwErrorTranslated("error.login_credentials-twitter_wrong");
+                Errors.throwErrorTranslated("error.login_credentials-twitter_wrong");
             }else{
-                toastTrans("toast.login_success");
+                Toasts.throwTrans("toast.login_success");
                 Router.go('home');
             }
         });
