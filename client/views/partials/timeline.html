@@ -35,7 +35,11 @@
                     </div>
                 </div>
 
-                {{> reactiveBlockGrid cursor=publications template='publication' transitionDuration='0.5s' gutter=30 columnWidth=328}}
+                {{#each publications}}
+                    {{> publication}}
+                {{/each}}
+
+
 
             </div>
 

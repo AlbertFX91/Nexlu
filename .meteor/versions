@@ -73,6 +73,7 @@ mdg:validation-error@0.5.1
 meteor@1.1.14
 meteor-base@1.0.4
 meteorhacks:ssr@2.2.0
+meteorhacks:subs-manager@1.6.4
 meteorspark:util@0.2.0
 minifier-css@1.1.11
 minifier-js@1.1.11
