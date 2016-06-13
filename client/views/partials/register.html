@@ -1,0 +1,51 @@
+<template name="register">
+    <div>
+        {{> background_register }}
+        <div class="container">
+            <form id="register_form" class="register-form">
+                <div class="row">
+                    <div class="col s11">
+                        <div class="row col-md-4 col-sm-4 col-lg-4">
+                            <div class="col m4 s4" >
+                                <label for="firstName">{{_ "username"}}:</label>
+                            </div>
+                            <div class="input-field col m8 s8">
+                                <input name="firstName" id="firstName" class="form-control" type="text" pattern="^[a-zA-Z0-9-_]+$" autocomplete="off" maxlength="20" required>
+                            </div>
+                        </div>
+                        <div class="row col-md-4 col-sm-4 col-lg-4">
+                            <div class="col m4 s4" >
+                                <label for="email">{{_ "email.email"}}:</label>
+                            </div>
+                            <div class="col m8 s8">
+                                <input  id="email" name="email" class="form-control" type="email" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="row col-md-4 col-sm-4 col-lg-4">
+                            <div class="col m4 s4" >
+                                <label for="password">{{_ "password"}}:</label>
+                            </div>
+                            <div class="col m8 s8">
+                                <input name="password_register"  id="password_register" class="form-control" type="password" required>
+                            </div>
+                        </div>
+                        <div class="row col-md-4 col-sm-4 col-lg-4">
+                            <div class="col m4 s4" >
+                                <label for="confirmpassword">{{_ "confirm_password"}}:</label>
+                            </div>
+                            <div class="col m8 s8">
+                                <input name="confirmpassword" id="confirmpassword" class="form-control" type="password" required>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row continue">
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                        <button type="submit" id="register-buttom" class="btn btn-default logbutton">{{_ "continue"}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>

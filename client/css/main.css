@@ -32,6 +32,6 @@ a:link, a:visited, a:hover, a:active, a:focus {
     outline: 0;
 }
 .toast-error{
-    background-color: #f44336;
+    background-color: #e3157f;
     color: #fafafa !important;
 }

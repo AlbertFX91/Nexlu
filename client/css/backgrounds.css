@@ -1,0 +1,45 @@
+/** Registration */
+
+.image-mobile-register{
+    visibility: hidden;
+    display: none;
+}
+
+.image-register{
+    width: 100%;
+    opacity: 0.3;
+}
+
+@media screen and (max-width: 800px) {
+    div .image-mobile-register {
+        visibility: visible;
+        width: 100%;
+    }
+    div .image-register{
+        visibility: hidden;
+        display: none;
+    }
+}
+
+/** Thanks registration */
+
+.image-mobile-thanks-register{
+    visibility: hidden;
+    display: none;
+}
+
+.image-thanks-register{
+    width: 100%;
+    opacity: 0.2;
+}
+
+@media screen and (max-width: 800px) {
+    div .image-mobile-thanks-register {
+        visibility: visible;
+        width: 100%;
+    }
+    div .image-thanks-register{
+        visibility: hidden;
+        display: none;
+    }
+}

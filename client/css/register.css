@@ -1,0 +1,42 @@
+.register-form{
+    font-size: 16px;
+    left: 30%;
+    top: 25%;
+    position: absolute;
+}
+
+.logbutton{
+    height: 50px;
+    width: 200px;
+    background-color:yellowgreen;
+    border-radius: 45px;
+    font-size: 18px;
+    color:white;
+    border: none !important;
+    margin-bottom: 5px;
+    position: absolute;
+}
+.logbutton:hover{
+    color: white;
+    background-color:darkolivegreen;
+}
+.logbutton:active{
+    color: white;
+    background-color:darkolivegreen;
+}
+
+.register-form label{
+    color: aliceblue;
+
+}
+.register-form input{
+    margin-bottom: 5px;
+    width: 430px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+#email{
+    color: #00C1C9;
+    border-radius: 0px !important;
+}

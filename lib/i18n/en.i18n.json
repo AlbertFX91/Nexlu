@@ -34,6 +34,7 @@
   "login-gmail": "Login with Gmail",
   "login-twitter": "Login with Twitter",
   "password": "Password",
+  "confirm_password": "Confirm password",
   "username": "Username",
 
   "toast": {
@@ -87,6 +88,7 @@
   },
 
   "email": {
+    "email": "Email",
     "verification-email_subject": "The last step!",
     "verification-email_title": "The last step, %s!",
     "verification-email_message1": "Thanks so much for joining us! We are delighted by you arrival!",

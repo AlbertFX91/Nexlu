@@ -52,7 +52,6 @@ Meteor.startup(function () {
     if (Publications.find().count() === 0){
         createPublications();
     }
-    git
 });
 
 
