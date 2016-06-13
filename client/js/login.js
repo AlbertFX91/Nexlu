@@ -9,7 +9,7 @@ Template.login.events({
                     throwErrorTranslated("error.login_credentials_wrong");
                 }else{
                     toastTrans("toast.login_success");
-                    Router.go('home');
+                    Router.go('timeline');
                 }
             });
         }else{
