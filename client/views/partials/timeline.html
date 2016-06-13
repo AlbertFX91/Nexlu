@@ -35,20 +35,9 @@
                     </div>
                 </div>
 
-                {{#each publications}}
-                    <div class="card web-color-1">
-                        <div class="card-content white-text">
+                {{> reactiveBlockGrid cursor=publications template='publication' transitionDuration='0.5s' gutter=30 columnWidth=328}}
 
-                        </div>
-                        <div class="card-action" style="">
-
-                        </div>
-                    </div>
-                {{/each}}
             </div>
-
-
-
 
 
         </div>
