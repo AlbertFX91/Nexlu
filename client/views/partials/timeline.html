@@ -6,9 +6,14 @@
 
                 <div class="card web-color-1">
                     <div class="card-content white-text">
-                        <span class="card-title">Card Title</span>
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+                        <img src="fjv.png" class="circle" height="auto" width="100%" style="margin-right: auto;margin-left: auto;max-width: 150px;max-height: 150px; display: block">
+                        <div class="center-align" style="padding-top:15px">FRAVIEMOR</div>
+                    </div>
+                </div>
+
+                <div class="card web-color-1">
+                    <div class="card-content white-text">
+
                     </div>
                 </div>
 
@@ -18,17 +23,34 @@
 
                 <div class="card web-color-1">
                     <div class="card-content white-text">
-                        <span class="card-title">Card Title</span>
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+
+                        <div class="input-field col s12">
+                            <textarea id="newPublication" class="materialize-textarea"></textarea>
+                            <label for="newPublication" style="text-align: left !important;">What's up?</label>
+                        </div>
+
                     </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                        <a href="#">This is a link</a>
+                    <div class="card-action" style="text-align: right !important;">
+                        <a href="#" class="post" >Post</a>
                     </div>
                 </div>
 
+                {{#each publications}}
+                    <div class="card web-color-1">
+                        <div class="card-content white-text">
+
+                        </div>
+                        <div class="card-action" style="">
+
+                        </div>
+                    </div>
+                {{/each}}
             </div>
+
+
+
+
+
         </div>
     </div>
 

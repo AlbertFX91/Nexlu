@@ -1,0 +1,15 @@
+
+.input-field label.active {
+    font-size: 0.8rem;
+    -webkit-transform: translateY(-110%) !important;
+    transform: translateY(-110%) !important;
+}
+
+.post {
+    color: rgba( 0, 0, 0, 0.8 ) !important;
+    font-weight: bold !important;
+}
+
+.post:hover {
+    color: rgba( 0, 0, 0, 0.5 ) !important;
+}
