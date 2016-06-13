@@ -1,0 +1,30 @@
+.div-profile{
+    padding: 40px 0 0 0;
+    color: white;
+}
+
+.img-profile{
+    width: 125px;
+    height: 125px;
+    border: 5px solid rgba( 103, 193, 245, 0.2 );
+}
+
+.profile-username{
+    margin-top: -15px;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.profile-resume{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-num{
+    font-weight: 800;
+}
+
+.profile-col-border{
+    border-right: 2px solid white;
+}

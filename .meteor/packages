@@ -35,3 +35,4 @@ email
 u2622:persistent-session
 auweb:server-session
 meteorhacks:ssr
+sewdn:humanize          # Usado para representar datos de una forma mas elegante (1234,1) -> 1.2K https://github.com/HubSpot/humanize
