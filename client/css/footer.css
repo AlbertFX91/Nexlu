@@ -27,3 +27,43 @@ footer p {
 .customizedFooter {
     background: rgba( 0, 0, 0, 0.2 );
 }
+
+.icon {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    margin: 4px;
+    width: 96px;
+    height: 96px;
+    font-size: 0;
+    text-indent: -9999px;
+}
+
+.icon-mono {
+    background: url("/icons1.png") !important;
+    background-image: url("/icons1.svg"), none !important;
+    background-color: #595959 !important;
+    -webkit-transition: background 0.3s !important;
+    transition: background 0.3s !important;
+}
+
+/* facebook */
+.icon-mono.facebook {
+    background-position: 0 0 !important;
+}
+
+.icon-mono.facebook:hover {
+    background-color: #3b5998 !important;
+    background-position: 0 -96px !important;
+}
+
+/* twitter */
+.icon-mono.twitter {
+    background-position: -96px 0 !important;
+}
+
+.icon-mono.twitter:hover {
+    background-color: #4099ff !important;
+    background-position: -96px -96px !important;
+}
+

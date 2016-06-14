@@ -1,3 +1,7 @@
+.web-color-1 {
+    background-color: #263238;
+}
+
 .table td {
     text-align: center;
 }
@@ -36,3 +40,34 @@ a:link, a:visited, a:hover, a:active, a:focus {
     background-color: #e3157f;
     color: #fafafa !important;
 }
+
+.logout {
+    opacity: .75;
+    min-width: 93px;
+    border: 1px solid !important;
+    border-color: #8c8f9e !important;
+    border-radius: 2px;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 60%;
+    cursor: pointer;
+    display: inline;
+}
+
+ .browser-center {
+     left: 50%;
+     -webkit-transform: translateX(-50%);
+     transform: translateX(-50%);
+     position: absolute;
+     display: inline-block;
+}
+
+ .border-top-1{
+     margin-top: 10px;
+     border-top: 1px solid rgba(160, 160, 160, 0.2);
+ }
+
+ .no-margin-bottom {
+     margin-bottom: 0px !important;
+ }

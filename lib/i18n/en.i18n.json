@@ -38,6 +38,7 @@
   "username": "Username",
 
   "register_header": "What's your name, Player?",
+  "register": "Register",
 
   "toast": {
 
@@ -71,7 +72,12 @@
     "terms": "Terms",
     "contact": "Contact",
     "private": "Private",
-    "friends": "Friends"
+    "friends": "Friends",
+    "profile": "Profile",
+    "browser": "Browser",
+    "timeline": "Timeline",
+    "contactUs": "Contact Us",
+    "faq": "FAQ"
 
   },
 

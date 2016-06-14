@@ -1,6 +1,85 @@
 <template name="menu">
 
-    <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
-    <li><a href="#">{{_ "tag.friends"}}</a></li>
+    <div class="navbar-fixed">
+        <nav class="web-color-1" role="navigation">
+            <div class="nav-wrapper container">
+
+                <a href="/" class="center brand-logo">Nexlu</a>
+
+                <a href="/" data-activates="mobile" class="button-collapse" style="margin-left:20px;"><i
+                        class="mdi-navigation-menu white-text" style="font-size:2.2em;"></i></a>
+
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
+                    <li><a href="#">{{_ "tag.browser"}}</a></li>
+                </ul>
+
+                <!-- Panel de navegación lateral desplegado en dispositivos móviles -->
+                <ul class="side-nav" id="mobile">
+                    <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
+                    <li><a href="#">{{_ "tag.browser"}}</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="right">
+                    <li><a href="/login">{{_ "login"}}</a></li>
+                    <li><a href="/register">{{_ "register"}}</a></li>
+                    <li>{{> langSelector}}</li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
 </template>
+
+<template name="menuLogged">
+
+    <div class="navbar-fixed">
+        <nav class="web-color-1" role="navigation">
+            <div class="nav-wrapper container">
+
+                <a href="/" data-activates="mobile" class="button-collapse" style="margin-left:20px;"><i
+                        class="mdi-navigation-menu white-text" style="font-size:2.2em;"></i></a>
+
+                <ul class="left">
+                    <li class="hide-on-med-and-down"><a href="/" >LOGO</a></li>
+                    <li class="hide-on-med-and-down"><a href="/timeline">{{_ "tag.timeline"}}</a></li>
+                    <li class="hide-on-med-and-up" style="padding-left: 10px;"><i class="fa fa-search fa-2x" aria-hidden="true"></i></li>
+                </ul>
+
+                <!-- TODO: Implementar buscador en diseño normal y responsive-->
+
+                <ul>
+                    <div class="browser-center hide-on-small-and-down">
+                        BUSCADOR
+                    </div>
+                </ul>
+
+                <!-- Panel de navegación lateral desplegado en dispositivos móviles -->
+                <ul class="side-nav" id="mobile">
+                    <li><a href="#">{{_ "tag.timeline"}}</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="right">
+                    <li style="height: 64px;"><a href="#" class="dropdown-button" data-activates="dropdown-profile" style="height: 100%">
+                        <img src="fjv.png" class="circle" height="auto" width="100%" style=";max-width: 50px;max-height: 50px; vertical-align: middle">
+                    </a></li>
+
+                    <ul id='dropdown-profile' class='dropdown-content web-color-1'>
+                        <li><a href="#!">one</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#!">two</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#!">three</a></li>
+                    </ul>
+
+                    <li class="hide-on-med-and-down"><a class="logout" href="/logout">{{_ "logout"}}</a></li>
+                    <li class="hide-on-large-only"><a href="/logout"><i class="fa fa-user-times fa-2x" aria-hidden="true"></i></a></li>
+                    <li>{{> langSelector}}</li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+
+</template>
+
