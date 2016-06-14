@@ -43,40 +43,38 @@
 <template name="pageFooterLogged">
     <footer class="customizedFooter">
         <div class="container">
-            <div class="row">
-                <div class="col s3 center-align">
-                    <h4 class="flow-text">LOGO GRANDE</h4>
+            <div class="row no-margin-bottom">
+                <div class="col s6 center-align">
+
                     <ul class="">
-                    </ul>
-                </div>
-                <div class="col s3 center-align">
-                    <h4 class="flow-text">{{_ "tag.company"}}</h4>
-                    <ul class="">
-                        <li><a href="{{pathFor 'AboutUs'}}">{{_ "tag.about_us"}}</a></li>
-                        <li><a href="#">{{_ "tag.services"}}</a></li>
-                        <li><a href="#">{{_ "tag.prices"}}</a></li>
-                    </ul>
-                </div>
-                <div class="col s3 center-align">
-                    <h4 class="flow-text">{{_ "tag.legal"}}</h4>
-                    <ul class="collection-item">
-                        <li><a href="#">{{_ "tag.privacy"}}</a></li>
-                        <li><a href="#">{{_ "tag.terms"}}</a></li>
-                    </ul>
-                </div>
-                <div class="col s3 center-align">
-                    <ul class="collection-item">
                         <li>
-                            <a href="#" class="icon icon-mono facebook">facebook</a>
-                            <a href="#" class="icon icon-mono twitter">twitter</a>
+                            <h4 class="flow-text" style="font-weight: bold; display: inline-block; margin:0">Nexlu</h4><span style="color: white"> &middot; </span>
+                            <a href="{{pathFor 'AboutUs'}}">{{_ "tag.about_us"}}</a><span style="color: white"> &middot; </span>
+                            <a href="”mailto:infonexlu@gmail.com" style="margin-bottom: 1em; margin-top: 1em">{{_ "tag.contact"}}</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-facebook-official fa-2x" aria-hidden="true" style="padding: 5px"></i></a>
+                            <a href="#"><i class="fa fa-twitter-square fa-2x" aria-hidden="true" style="padding: 5px"></i></a>
                         </li>
                     </ul>
                 </div>
-                <div class="center-align" style="margin-top: 1%; margin-bottom: 1%; clear: both; padding-top: 1%">
-                    <p>
-                        &copy; 2016 Nexlu, Inc. &middot; <a href="”mailto:infonexlu@gmail.com">{{_ "tag.contact"}}</a> &middot; <a href="#">{{_ "tag.private"}}</a>
-                    </p>
+
+                <div class="col s6 center-align">
+                    <ul class="" style="display: inline-block">
+                        <li>
+                            <a href="#">{{_ "tag.terms"}}</a><span style="color: white"> &middot; </span>
+                            <a href="#">{{_ "tag.faq"}}</a><span style="color: white"> &middot; </span>
+                            <a href="#">{{_ "tag.contactUs"}}</a><span style="color: white"> &middot; </span>
+                            <a href="#">{{_ "tag.prices"}}</a>
+                        </li>
+                        <li class="border-top-1">
+                            <p style="margin-top: 8px !important;">
+                                &copy; 2016 Nexlu, Inc.
+                            </p>
+                        </li>
+                    </ul>
                 </div>
+
             </div>
         </div>
     </footer>
