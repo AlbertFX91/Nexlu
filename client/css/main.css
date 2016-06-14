@@ -8,6 +8,7 @@
 
 .customizedNavigation {
     background: rgba( 103, 193, 245, 0.2 );
+    position: inherit !important;
 }
 
 .Site {

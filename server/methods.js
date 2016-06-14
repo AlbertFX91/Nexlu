@@ -14,9 +14,6 @@ Meteor.methods({
             return false;
         }
     },
-    'save_user': function(user){
-        
-    },
     'codificaString': function (noCodificado) {
         var encodedString = Base64.encode(noCodificado);
         return encodedString;

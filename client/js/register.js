@@ -1,23 +1,28 @@
 Template.register.events({
     'submit #register_form': function (event) {
         event.preventDefault();
-        var firstName = document.getElementById('firstName').value;
+        var username = document.getElementById('username').value;
         var password_register = document.getElementById('password_register').value;
         var confirmpassword = document.getElementById('confirmpassword').value;
         var email = document.getElementById('email').value;
-        if (firstName != "" && password_register != "" && password_register == confirmpassword) {
-            var passwordvalcod =  Meteor.call('codificaString', password_register);
-            var user = [firstName, passwordvalcod, email];
-            Meteor.call('save_user', user);
+        var isUnique = validate_username(username, email);
+        if (username != "" && password_register != "" && password_register == confirmpassword && isUnique == true) {
+            var user = [username, password_register, email];
+            Accounts.createUser({
+                username: user[0],
+                password: user[1],
+                email: user[2],
+                friends: []
+            });
+            Router.go('thanks_register');
         } else {
-            console.log("deben ser =");
-            throwErrorTranslated("error.register_wrong");
+            Session.set('alert', "Please, complete username, email and password.");
         }
     }
 });
 
 Template.register.onRendered(function(){
-    $('#errorTerms').css('display','none');
+
 });
 
 Template.register.helpers({
@@ -28,3 +33,17 @@ Template.register.helpers({
         return Session.get("alert");
     }
 });
+
+function validate_username(usernameRegister, emailRegister){
+    var result = true;
+    console.log(usernameRegister+ "+ " +emailRegister);
+    var usernameBD = Meteor.users.findOne({username:usernameRegister});
+    var emailDB = Meteor.users.findOne({email: emailRegister});
+    console.log(usernameBD+ "+ " +emailDB);
+    if(!(typeof usernameBD == 'undefined' || typeof emailDB == 'undefined')){
+        console.log("entro aqui!");
+        result = false;
+    }
+    console.log("me he librado!");
+    return result;
+}

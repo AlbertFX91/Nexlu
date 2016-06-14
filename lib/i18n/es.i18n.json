@@ -37,13 +37,15 @@
   "confirm_password": "Confirmar contraseña",
   "username": "Usuario",
 
+  "register_header": "¿Cúal es tu nombre, jugador?",
+
   "toast": {
 
     "lang_changed": "Idioma cambiado",
     "undo": "Deshacer",
     "login_success": "Estás dentro!",
     "logout_success": "Nos vemos!",
-    "verify_thanks" : "Gracias por validar tu correo!"
+    "verify_thanks" : "¡Gracias por validar tu correo!"
 
   },
 
@@ -89,7 +91,7 @@
 
   "email": {
     "email": "Correo electrónico",
-    "verification-email_subject": "El último paso!",
+    "verification-email_subject": "[NEXLU] El último paso!",
     "verification-email_title": "Este es el último paso, %s!",
     "verification-email_message1": "Muchas gracias por unirte a nosotros! Estamos encantados de tu llegada!",
     "verification-email_message2": "Lo ultimo a realizar para usar nuestra app es simplemente clicar <a href='%s'>aquí</a> y te redigiremos a <strong>Nexlu</strong>",
@@ -99,5 +101,100 @@
     "test_message1": "Mensaje numero 1",
     "test_message2": "Mensaje numero 2",
     "test_message3": "Mensaje numero 3"
+  },
+
+  "thanks":{
+    "register": "¡Gracias!",
+    "text-register": "Te hemos enviado un mensaje a tu correo para activar tu cuenta. ¡Nos vemos pronto!"
+  },
+
+  "simpleschema": {
+    "messages": {
+      "notUnique username": "El nombre de usuario ya existe",
+      "notUnique email": "El correo electrónico ya existe",
+      "server error": "Error de servidor",
+      "regEx phone": "Teléfono invalido",
+      "wrongPassword": "Las contraseñas no coinciden",
+      "emailNotStudent": "El email debe ser de las universidades U.S. o U.P.O.",
+      "wrongZip": "El código postal debe pertenecer a Sevilla",
+      "required": "[label] es obligatorio",
+      "minString": "[label] tiene que tener por lo menos [min] caracteres",
+      "maxString": "[label] no puede tener mas de [max] caracteres",
+      "minNumber": "[label] tiene que ser por lo menos [min]",
+      "maxNumber": "[label] no puede exceder [max]",
+      "minNumberExclusive": "[label] tiene que ser mas grande que [min]",
+      "maxNumberExclusive": "[label] tiene que ser mas chico que [max]",
+      "minDate": "[label] tiene que ser antes de [min]",
+      "maxDate": "[label] no puede ser despues de [max]",
+      "badDate": "[label] no es una fecha válida",
+      "minCount": "Tiene que especificar por lo menos [minCount] valores",
+      "maxCount": "No puede especificar mas de [maxCount] valores",
+      "noDecimal": "[label] tiene que ser un numero entero",
+      "notAllowed": "[value] no es un valor permitido",
+      "expectedString": "[label] tiene que ser una cadena de caracteres",
+      "expectedNumber": "[label] tiene que ser un numero",
+      "expectedBoolean": "[label] tiene que ser de tipo 'si/no'",
+      "expectedArray": "[label] tiene que ser un vector",
+      "expectedObject": "[label] tiene que ser un objeto",
+      "expectedConstructor": "[label] tiene que ser de tipo [type]",
+      "keyNotInSchema": "[key] no esta permitido por el esquema",
+      "regEx": {
+        "0": {
+          "msg": "[label] falló la validación por Expresión Regular (Regex)"
+        },
+        "1": {
+          "exp": "SimpleSchema.RegEx.Email",
+          "msg": "[label] tiene que ser una direccion de correo electronico válida"
+        },
+        "2": {
+          "exp": "SimpleSchema.RegEx.WeakEmail",
+          "msg": "[label] tiene que ser una direccion de correo electronico válida"
+        },
+        "3": {
+          "exp": "SimpleSchema.RegEx.Domain",
+          "msg": "[label] tiene que ser un nombre de dominio válido"
+        },
+        "4": {
+          "exp": "SimpleSchema.RegEx.WeakDomain",
+          "msg": "[label] tiene que ser un nombre de dominio válido"
+        },
+        "5": {
+          "exp": "SimpleSchema.RegEx.IP",
+          "msg": "[label] tiene que ser una dirreción de IPv4 o IPv6 válida"
+        },
+        "6": {
+          "exp": "SimpleSchema.RegEx.IPv4",
+          "msg": "[label] tiene que ser una dirreción de IPv4 válida"
+        },
+        "7": {
+          "exp": "SimpleSchema.RegEx.IPv6",
+          "msg": "[label] tiene que ser una dirreción de IPv6 válida"
+        },
+        "8": {
+          "exp": "SimpleSchema.RegEx.Url",
+          "msg": "[label] tiene que ser una URL válida"
+        },
+        "9": {
+          "exp": "SimpleSchema.RegEx.Id",
+          "msg": "[label] tiene que ser un ID alfanumerico"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "user": {
+      "username": {
+        "label": "Nombre de usuario"
+      },
+      "password": {
+        "label": "Contraseña"
+      },
+      "confirmPass": {
+        "label": "Confirmar contraseña"
+      },
+      "email": {
+        "label": "Correo universitario"
+      }
+    }
   }
 }

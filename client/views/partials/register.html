@@ -1,50 +1,58 @@
 <template name="register">
     <div>
         {{> background_register }}
-        <div class="container">
+        <div id="container-register" class="container">
             <form id="register_form" class="register-form">
-                <div class="row">
-                    <div class="col s11">
-                        <div class="row col-md-4 col-sm-4 col-lg-4">
+                <h1 id="intro_register">{{_ "register_header"}}</h1>
+                <div id="data_register" class="row">
+                    <div class="col s12">
+                        <div class="row">
                             <div class="col m4 s4" >
-                                <label for="firstName">{{_ "username"}}:</label>
+                                <label for="username">{{_ "username"}}:</label>
                             </div>
                             <div class="input-field col m8 s8">
-                                <input name="firstName" id="firstName" class="form-control" type="text" pattern="^[a-zA-Z0-9-_]+$" autocomplete="off" maxlength="20" required>
+                                <input name="username" id="username" class="form-control" type="text" pattern="^[a-zA-Z0-9-_]+$" autocomplete="off" maxlength="20">
                             </div>
                         </div>
-                        <div class="row col-md-4 col-sm-4 col-lg-4">
+                        <div class="row">
                             <div class="col m4 s4" >
                                 <label for="email">{{_ "email.email"}}:</label>
                             </div>
                             <div class="col m8 s8">
-                                <input  id="email" name="email" class="form-control" type="email" autocomplete="off" required>
+                                <input  id="email" name="email" class="form-control" type="email" autocomplete="off">
                             </div>
                         </div>
-                        <div class="row col-md-4 col-sm-4 col-lg-4">
+                        <div class="row">
                             <div class="col m4 s4" >
                                 <label for="password">{{_ "password"}}:</label>
                             </div>
                             <div class="col m8 s8">
-                                <input name="password_register"  id="password_register" class="form-control" type="password" required>
+                                <input name="password_register"  id="password_register" class="form-control" type="password">
                             </div>
                         </div>
-                        <div class="row col-md-4 col-sm-4 col-lg-4">
+                        <div class="row">
                             <div class="col m4 s4" >
                                 <label for="confirmpassword">{{_ "confirm_password"}}:</label>
                             </div>
                             <div class="col m8 s8">
-                                <input name="confirmpassword" id="confirmpassword" class="form-control" type="password" required>
+                                <input name="confirmpassword" id="confirmpassword" class="form-control" type="password">
                             </div>
                         </div>
-                        <hr>
+                        <div class="row">
+                            <hr class="col m12 s12">
+                        </div>
                     </div>
                 </div>
                 <div class="row continue">
-                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="col m12 s12">
                         <button type="submit" id="register-buttom" class="btn btn-default logbutton">{{_ "continue"}}</button>
                     </div>
                 </div>
+                {{#if hasErrors}}
+                    <div id="register-errors" class="center-align input-field col s12">
+                        {{_ alert}}
+                    </div>
+                {{/if}}
             </form>
         </div>
     </div>

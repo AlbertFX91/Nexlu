@@ -31,6 +31,9 @@
 .image-thanks-register{
     width: 100%;
     opacity: 0.2;
+    position: fixed;
+    z-index: -2;
+    box-shadow: 15px 15px 15px 20px black;
 }
 
 @media screen and (max-width: 800px) {
