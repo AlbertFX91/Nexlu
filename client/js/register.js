@@ -35,15 +35,11 @@ Template.register.helpers({
 });
 
 function validate_username(usernameRegister, emailRegister){
-    var result = true;
-    console.log(usernameRegister+ "+ " +emailRegister);
+    var result = false;
     var usernameBD = Meteor.users.findOne({username:usernameRegister});
     var emailDB = Meteor.users.findOne({email: emailRegister});
-    console.log(usernameBD+ "+ " +emailDB);
-    if(!(typeof usernameBD == 'undefined' || typeof emailDB == 'undefined')){
-        console.log("entro aqui!");
-        result = false;
+    if((typeof usernameBD) === 'undefined' && (typeof emailDB) == 'undefined'){
+        result = true;
     }
-    console.log("me he librado!");
     return result;
 }
