@@ -45,8 +45,7 @@
 
                 <ul class="left hide-on-med-and-down">
                     <li><a href="/" >LOGO</a></li>
-                    <li><a href="#">{{_ "tag.timeline"}}</a></li>
-                    <li><a href="#">{{_ "tag.browser"}}</a></li>
+                    <li><a href="/timeline">{{_ "tag.timeline"}}</a></li>
                 </ul>
 
                 <!-- TODO: Implementar buscador -->
@@ -63,7 +62,9 @@
                 </ul>
 
                 <ul id="nav-mobile" class="right">
-                    <li><a href="#">{{_ "tag.profile"}}</a></li>
+                    <li style="height: 64px;"><a href="#" style="height: 100%">
+                        <img src="fjv.png" class="circle" height="auto" width="100%" style=";max-width: 50px;max-height: 50px; vertical-align: middle">
+                    </a></li>
                     <li><a class="logout" href="/logout">Log Out</a></li>
                     <li>{{> langSelector}}</li>
                 </ul>
