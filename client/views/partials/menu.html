@@ -62,9 +62,18 @@
                 </ul>
 
                 <ul id="nav-mobile" class="right">
-                    <li style="height: 64px;"><a href="#" style="height: 100%">
+                    <li style="height: 64px;"><a href="#" class="dropdown-button" data-activates="dropdown-profile" style="height: 100%">
                         <img src="fjv.png" class="circle" height="auto" width="100%" style=";max-width: 50px;max-height: 50px; vertical-align: middle">
                     </a></li>
+
+                    <ul id='dropdown-profile' class='dropdown-content web-color-1'>
+                        <li><a href="#!">one</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#!">two</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#!">three</a></li>
+                    </ul>
+
                     <li><a class="logout" href="/logout">Log Out</a></li>
                     <li>{{> langSelector}}</li>
                 </ul>
