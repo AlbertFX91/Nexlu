@@ -1,7 +1,5 @@
 <template name="menu">
 
-    <!-- TODO: hacerlo responsive -->
-
     <div class="navbar-fixed">
         <nav class="web-color-1" role="navigation">
             <div class="nav-wrapper container">
@@ -10,7 +8,6 @@
 
                 <a href="/" data-activates="mobile" class="button-collapse" style="margin-left:20px;"><i
                         class="mdi-navigation-menu white-text" style="font-size:2.2em;"></i></a>
-
 
                 <ul class="left hide-on-med-and-down">
                     <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
@@ -43,14 +40,16 @@
                 <a href="/" data-activates="mobile" class="button-collapse" style="margin-left:20px;"><i
                         class="mdi-navigation-menu white-text" style="font-size:2.2em;"></i></a>
 
-                <ul class="left hide-on-med-and-down">
-                    <li><a href="/" >LOGO</a></li>
-                    <li><a href="/timeline">{{_ "tag.timeline"}}</a></li>
+                <ul class="left">
+                    <li class="hide-on-med-and-down"><a href="/" >LOGO</a></li>
+                    <li class="hide-on-med-and-down"><a href="/timeline">{{_ "tag.timeline"}}</a></li>
+                    <li class="hide-on-med-and-up" style="padding-left: 10px;"><i class="fa fa-search fa-2x" aria-hidden="true"></i></li>
                 </ul>
 
-                <!-- TODO: Implementar buscador -->
+                <!-- TODO: Implementar buscador en diseño normal y responsive-->
+
                 <ul>
-                    <div class="browser-center">
+                    <div class="browser-center hide-on-small-and-down">
                         BUSCADOR
                     </div>
                 </ul>
@@ -73,7 +72,8 @@
                         <li><a href="#!">three</a></li>
                     </ul>
 
-                    <li><a class="logout" href="/logout">Log Out</a></li>
+                    <li class="hide-on-med-and-down"><a class="logout" href="/logout">Log Out</a></li>
+                    <li class="hide-on-large-only"><a href="/logout"><i class="fa fa-user-times fa-2x" aria-hidden="true"></i></a></li>
                     <li>{{> langSelector}}</li>
                 </ul>
 

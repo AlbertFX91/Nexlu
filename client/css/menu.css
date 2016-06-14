@@ -1,0 +1,7 @@
+.navbar-fixed i{
+    line-height: 56px !important;
+}
+
+.navbar-fixed nav {
+    min-width: 300px;
+}

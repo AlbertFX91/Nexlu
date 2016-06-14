@@ -1,7 +1,9 @@
 <template name="pageFooter">
     <footer class="customizedFooter">
         <div class="container">
-            <div class="row">
+
+            <div class="row hide-on-small-and-down">
+
                 <div class="col s3 center-align">
                     <h4 class="flow-text">LOGO GRANDE</h4>
                     <ul class="">
@@ -35,6 +37,40 @@
                         &copy; 2016 Nexlu, Inc. &middot; <a href="”mailto:infonexlu@gmail.com">{{_ "tag.contact"}}</a> &middot; <a href="#">{{_ "tag.private"}}</a>
                     </p>
                 </div>
+
+            </div>
+
+            <div class="row hide-on-med-and-up">
+
+                <div class="col s12 center-align">
+                    <h4 class="flow-text">{{_ "tag.company"}}</h4>
+                    <ul class="">
+                        <li><a href="{{pathFor 'AboutUs'}}">{{_ "tag.about_us"}}</a></li>
+                        <li><a href="#">{{_ "tag.services"}}</a></li>
+                        <li><a href="#">{{_ "tag.prices"}}</a></li>
+                    </ul>
+                </div>
+                <div class="col s12 center-align">
+                    <h4 class="flow-text">{{_ "tag.legal"}}</h4>
+                    <ul class="collection-item">
+                        <li><a href="#">{{_ "tag.privacy"}}</a></li>
+                        <li><a href="#">{{_ "tag.terms"}}</a></li>
+                    </ul>
+                </div>
+                <div class="col s12 center-align">
+                    <ul class="collection-item">
+                        <li> <!-- TODO: hacerlo responsive -->
+                            <a href="#" class="icon icon-mono facebook">facebook</a>
+                            <a href="#" class="icon icon-mono twitter">twitter</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="center-align" style="margin-top: 1%; margin-bottom: 1%; clear: both; padding-top: 1%">
+                    <p>
+                        &copy; 2016 Nexlu, Inc. &middot; <a href="”mailto:infonexlu@gmail.com">{{_ "tag.contact"}}</a> &middot; <a href="#">{{_ "tag.private"}}</a>
+                    </p>
+                </div>
+
             </div>
         </div>
     </footer>
