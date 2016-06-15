@@ -79,7 +79,9 @@
   "profile": {
 
     "friends": "friends",
-    "publications": "publications"
+    "publications": "publications",
+    "photos": "photos",
+    "info": "Info"
 
   }
 

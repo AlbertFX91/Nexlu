@@ -79,7 +79,9 @@
   "profile": {
 
     "friends": "amigos",
-    "publications": "publicaciones"
+    "publications": "publicaciones",
+    "photos": "fotos",
+    "info": "Información"
 
   }
 }
