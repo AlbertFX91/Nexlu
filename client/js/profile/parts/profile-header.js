@@ -1,8 +1,8 @@
-Template.profile.onRendered(function () {
+Template.profileHeader.onRendered(function () {
     console.log(Meteor.user());
 });
 
-Template.profile.helpers({
+Template.profileHeader.helpers({
     friends_pretty: function(){
         return Prettify.compactInteger(this.friends.length);
     }
