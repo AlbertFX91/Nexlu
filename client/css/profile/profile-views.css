@@ -1,0 +1,23 @@
+.profile-view-icon{
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.profile-view-col{
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #90a4ae;
+}
+.profile-view-container{
+    cursor: pointer;
+}
+.profile-view-container:hover{
+    color: #00e5ff;
+}
+
+.profile-view-container.view-selected{
+    margin-bottom: -3px !important;
+    border-bottom: 3px solid #00e5ff;
+    color: #00e5ff;
+}

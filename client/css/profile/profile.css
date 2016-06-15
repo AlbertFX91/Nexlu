@@ -29,8 +29,18 @@
     border-right: 2px solid white;
 }
 
-.profile-options{
+.profile-views{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    color: #90a4ae;
+}
+@media (max-width: 800px) {
+    .profile-views {
+        width: auto;
+
+    }
+    .profile-resume{
+        width: auto;
+    }
 }
