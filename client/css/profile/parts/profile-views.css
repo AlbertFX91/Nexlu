@@ -21,3 +21,11 @@
     border-bottom: 3px solid #00e5ff;
     color: #00e5ff;
 }
+
+@media (max-width: 800px) {
+    .profile-view-col {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+    }
+}
