@@ -101,6 +101,7 @@ retry@1.0.7
 routepolicy@1.0.10
 service-configuration@1.0.9
 session@1.1.5
+sewdn:humanize@1.4.2
 sha@1.0.7
 spacebars@1.0.11
 spacebars-compiler@1.0.11
@@ -118,3 +119,4 @@ underscore@1.0.8
 url@1.0.9
 webapp@1.2.8
 webapp-hashing@1.0.9
+zimme:active-route@2.3.2
