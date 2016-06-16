@@ -9,7 +9,17 @@
   "login-gmail": "Iniciar con Gmail",
   "login-twitter": "Iniciar con Twitter",
   "password": "Contraseña",
+  "confirm_password": "Confirmar contraseña",
   "username": "Usuario",
+
+  "register_header": "Esta es mi historia...",
+  "register_header2": "Auron. Final Fantasy X",
+  "register": "Registrarse",
+  "register_header_continue": "¡Un poco más!",
+  "register_body_continue": "Cuéntanos algo sobre tí. ¡Queremos conocer al jugador que hay dentro de ti!",
+  "choose_image": "Elige un avatar",
+  "continue": "Continuar",
+  "finish": "Finalizar",
 
   "toast": {
 
@@ -17,7 +27,7 @@
     "undo": "Deshacer",
     "login_success": "Estás dentro!",
     "logout_success": "Nos vemos!",
-    "verify_thanks" : "Gracias por validar tu correo!"
+    "verify_thanks" : "¡Gracias por validar tu correo!"
 
   },
 
@@ -27,7 +37,16 @@
     "login_credentials_wrong": "usuario y/o contraseña erronea",
     "login_credentials-facebook_wrong": "Inicio de sesión con Facebook cancelada",
     "login_credentials-google_wrong": "Inicio de sesión con Google cancelada",
-    "login_credentials-twitter_wrong": "Inicio de sesión con Twitter cancelada"
+    "login_credentials-twitter_wrong": "Inicio de sesión con Twitter cancelada",
+    "username_error_empty": "Nombre de usuario vacio",
+    "password_error_empty": "Contraseña vacia",
+    "confirmpassword_error_empty": "Contraseña de confirmación vacia",
+    "username_error_duplicated": "Nombre ya utilizado",
+    "password_error_coincidence": "Las contraseñas no coinciden",
+    "email_error_empty": "Correo vacio",
+    "email_error_duplicated": "Correo ya utilizado",
+    "email_error_patron": "El patrón debe ser: ejemplo@ejemplo.com",
+    "password_error_patron": "La contraseña debe contener 6 caracteres (una letra en mayúscula y una en minúsculas)"
 
   },
 
@@ -43,7 +62,12 @@
     "terms": "Términos",
     "contact": "Contacto",
     "private": "Privado",
-    "friends": "Amigos"
+    "friends": "Amigos",
+    "profile": "Perfil",
+    "browser": "Buscador",
+    "timeline": "Muro",
+    "contactUs": "Contacto",
+    "faq": "FAQ"
 
   },
 
@@ -62,7 +86,8 @@
   },
 
   "email": {
-    "verification-email_subject": "El último paso!",
+    "email": "Correo electrónico",
+    "verification-email_subject": "[NEXLU] El último paso!",
     "verification-email_title": "Este es el último paso, %s!",
     "verification-email_message1": "Muchas gracias por unirte a nosotros! Estamos encantados de tu llegada!",
     "verification-email_message2": "Lo ultimo a realizar para usar nuestra app es simplemente clicar <a href='%s'>aquí</a> y te redigiremos a <strong>Nexlu</strong>",
@@ -73,7 +98,85 @@
     "test_message1": "Mensaje numero 1",
     "test_message2": "Mensaje numero 2",
     "test_message3": "Mensaje numero 3"
+  },
 
+  "thanks":{
+    "register": "¡Gracias!",
+    "text-register": "Te hemos enviado un mensaje a tu correo para activar tu cuenta. ¡Nos vemos pronto!"
+  },
+
+  "simpleschema": {
+    "messages": {
+      "notUnique username": "El nombre de usuario ya existe",
+      "notUnique email": "El correo electrónico ya existe",
+      "server error": "Error de servidor",
+      "regEx phone": "Teléfono invalido",
+      "wrongPassword": "Las contraseñas no coinciden",
+      "emailNotStudent": "El email debe ser de las universidades U.S. o U.P.O.",
+      "wrongZip": "El código postal debe pertenecer a Sevilla",
+      "required": "[label] es obligatorio",
+      "minString": "[label] tiene que tener por lo menos [min] caracteres",
+      "maxString": "[label] no puede tener mas de [max] caracteres",
+      "minNumber": "[label] tiene que ser por lo menos [min]",
+      "maxNumber": "[label] no puede exceder [max]",
+      "minNumberExclusive": "[label] tiene que ser mas grande que [min]",
+      "maxNumberExclusive": "[label] tiene que ser mas chico que [max]",
+      "minDate": "[label] tiene que ser antes de [min]",
+      "maxDate": "[label] no puede ser despues de [max]",
+      "badDate": "[label] no es una fecha válida",
+      "minCount": "Tiene que especificar por lo menos [minCount] valores",
+      "maxCount": "No puede especificar mas de [maxCount] valores",
+      "noDecimal": "[label] tiene que ser un numero entero",
+      "notAllowed": "[value] no es un valor permitido",
+      "expectedString": "[label] tiene que ser una cadena de caracteres",
+      "expectedNumber": "[label] tiene que ser un numero",
+      "expectedBoolean": "[label] tiene que ser de tipo 'si/no'",
+      "expectedArray": "[label] tiene que ser un vector",
+      "expectedObject": "[label] tiene que ser un objeto",
+      "expectedConstructor": "[label] tiene que ser de tipo [type]",
+      "keyNotInSchema": "[key] no esta permitido por el esquema",
+      "regEx": {
+        "0": {
+          "msg": "[label] falló la validación por Expresión Regular (Regex)"
+        },
+        "1": {
+          "exp": "SimpleSchema.RegEx.Email",
+          "msg": "[label] tiene que ser una direccion de correo electronico válida"
+        },
+        "2": {
+          "exp": "SimpleSchema.RegEx.WeakEmail",
+          "msg": "[label] tiene que ser una direccion de correo electronico válida"
+        },
+        "3": {
+          "exp": "SimpleSchema.RegEx.Domain",
+          "msg": "[label] tiene que ser un nombre de dominio válido"
+        },
+        "4": {
+          "exp": "SimpleSchema.RegEx.WeakDomain",
+          "msg": "[label] tiene que ser un nombre de dominio válido"
+        },
+        "5": {
+          "exp": "SimpleSchema.RegEx.IP",
+          "msg": "[label] tiene que ser una dirreción de IPv4 o IPv6 válida"
+        },
+        "6": {
+          "exp": "SimpleSchema.RegEx.IPv4",
+          "msg": "[label] tiene que ser una dirreción de IPv4 válida"
+        },
+        "7": {
+          "exp": "SimpleSchema.RegEx.IPv6",
+          "msg": "[label] tiene que ser una dirreción de IPv6 válida"
+        },
+        "8": {
+          "exp": "SimpleSchema.RegEx.Url",
+          "msg": "[label] tiene que ser una URL válida"
+        },
+        "9": {
+          "exp": "SimpleSchema.RegEx.Id",
+          "msg": "[label] tiene que ser un ID alfanumerico"
+        }
+      }
+    }
   },
 
   "profile": {
@@ -82,6 +185,5 @@
     "publications": "publicaciones",
     "photos": "fotos",
     "info": "Información"
-
   }
 }

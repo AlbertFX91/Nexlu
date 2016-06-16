@@ -1,9 +1,17 @@
+Meteor.publish('myPublications', function () {
 Meteor.publish('user.me', function () {
+
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
         return;
     }
+    return Publications.find({"owner": user_id});
+});
+
+Meteor.publish("allUsers", function () {
+    return Meteor.users.find({});
+});
     return Meteor.users.find(user_id, {
         fields: Fields.user.all
     });
