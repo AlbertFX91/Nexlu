@@ -1,0 +1,27 @@
+<template name="profileHeader">
+    <div class="row">
+        <div class="col s12 center-align">
+            <div class="profile-resume">
+                <div class="row">
+                    <img src="/example.png" class="circle responsive-img img-profile">
+                </div>
+                <div class="row profile-username truncate">
+                    {{username}}
+                </div>
+                <div class="row profile-numfriends">
+                    <div class="col s6 profile-col-border">
+                        <span class="profile-num">{{friends_pretty}}</span> {{_ "profile.friends" }}
+                    </div>
+                    <div class="col s6">
+                        <span class="profile-num">1.2K</span> {{_ "profile.publications" }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">
+            {{> profileViews }}
+        </div>
+    </div>
+</template>
