@@ -64,6 +64,14 @@
     font-size: 6rem;
 }
 
+#intro_register2{
+    color: #D8D8D8 ;
+    float: right;
+    font-size:1.3rem;
+    font-style: italic;
+    font-family: proxima-nova,sans-serif;
+}
+
 #data_register{
     float:left;
 }
@@ -82,3 +90,4 @@
     display: inline-block;
     color: white;
 }
+

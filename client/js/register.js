@@ -7,9 +7,9 @@ Template.register.events({
         var password_register = document.getElementById('password_register').value;
         var confirmpassword = document.getElementById('confirmpassword').value;
         var email = document.getElementById('email').value;
-        var email_no_errors = validate_email(email);
-        var username_no_errors = validate_username(username);
-        var password_no_errors = validate_password(password_register, confirmpassword);
+        var email_no_errors = Util.validate_email(email);
+        var username_no_errors = Util.validate_username(username);
+        var password_no_errors = Util.validate_password(password_register, confirmpassword);
         Session.set("validate", false);
         if (username_no_errors == true  && email_no_errors == true && password_no_errors == true) {
             Session.set("validate", true);
@@ -33,7 +33,7 @@ Template.register.events({
                 email: user[2],
                 image: null,
                 description: user[3],
-                friends: null
+                friends: []
             });
             Router.go('thanks_register');
         }else {
@@ -51,59 +51,3 @@ Template.register.onRendered(function(){
 Template.register.helpers({
 
 });
-
-
-function validate_password(password_register, confirmpassword){
-    var result = true;
-    if(password_register != confirmpassword){
-        Session.set("error_password_coincidence", Errors.throwErrorTranslated("error.password_error_coincidence", 3000));
-        result = false;
-    }
-    if(confirmpassword == ""){
-        Session.set("error_confirmpassword", Errors.throwErrorTranslated("error.confirmpassword_error_empty", 3000));
-        result = false;
-    }
-    if(password_register == ""){
-        Session.set("error_password", Errors.throwErrorTranslated("error.password_error_empty", 3000));
-        result = false;
-    }
-    re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-    if(!re.test(password_register)){
-        Session.set("error_password_patron", Errors.throwErrorTranslated("error.password_error_patron", 3000));
-        result = false;
-    }
-    return result;
-}
-
-function validate_email(emailRegister){
-    var result = true;
-    var emailDB = Meteor.users.findOne({'emails.address': emailRegister});
-    if(!((typeof emailDB) == 'undefined')){
-        Session.set("error_email_duplicated", Errors.throwErrorTranslated("error.email_error_duplicated", 3000));
-        result = false;
-    }
-    if(emailRegister == ""){
-        Session.set("error_email_empty", Errors.throwErrorTranslated("error.email_error_empty", 3000));
-        result = false;
-    }
-    re = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-    if(!re.test(emailRegister)){
-        Session.set("error_email_patron", Errors.throwErrorTranslated("error.email_error_patron", 3000));
-        result = false;
-    }
-    return result;
-}
-
-function validate_username(usernameRegister){
-    var result = true;
-    var usernameBD = Meteor.users.findOne({username:usernameRegister});
-    if(!((typeof usernameBD) == 'undefined')){
-        Session.set("error_username_duplicated", Errors.throwErrorTranslated("error.username_error_duplicated", 3000));
-        result = false;
-    }
-    if(usernameRegister == ""){
-        Session.set("error_username", Errors.throwErrorTranslated("error.username_error_empty", 3000));
-        result = false;
-    }
-    return result;
-}

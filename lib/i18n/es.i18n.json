@@ -37,7 +37,8 @@
   "confirm_password": "Confirmar contraseña",
   "username": "Usuario",
 
-  "register_header": "¿Cúal es tu nombre, jugador?",
+  "register_header": "Esta es mi historia...",
+  "register_header2": "Auron. Final Fantasy X",
   "register": "Registrarse",
   "register_header_continue": "¡Un poco más!",
   "register_body_continue": "Cuéntanos algo sobre tí. ¡Queremos conocer al jugador que hay dentro de ti!",
