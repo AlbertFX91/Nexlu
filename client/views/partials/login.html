@@ -1,39 +1,64 @@
 <Template name="login">
-	<form id="login-form" >
-		<div class="row">
-			<div class="col s11">
-				<div class="row">
-					<div class="col m4 s4" >
-						<label for="login">User:</label>
-					</div>
-					<div class="col m8 s8">
-						<input id="username" name="username" type="text">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col m4 s4">
-						<label for="password">Password:</label>
-					</div>
-					<div class="col m8 s8">
-						<input id="password" name="password" type="password">
-					</div>
-				</div>
-			</div>
-			<div class="col s1 valign-wrapper hide-on-small-only" id="col-buttom">
-				<div id="div-buttom">
-					<button type="submit" id="login-buttom">
-						<i class="material-icons" id="login-icon">videogame_asset</i>
-					</button>
-				</div>
-				<div id="mask"></div>
-			</div>
-		</div>
-		<div class="hide-on-med-and-up" style="margin-top:-50px;">
-			<div id="div-buttom-low">
-				<button type="submit" id="login-buttom">
-					<i class="material-icons" id="login-icon">videogame_asset</i>
-				</button>
-			</div>
-		</div>
-	</form>
+    <div class="container">
+        <form id="login-form" >
+            <div class="row">
+                <div class="col s11">
+                    <div class="row">
+                        <div class="col m4 s4" >
+                            <label for="login">{{_ "username"}}:</label>
+                        </div>
+                        <div class="col m8 s8">
+                            <input id="username" name="username" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m4 s4">
+                            <label for="password">{{_ "password"}}:</label>
+                        </div>
+                        <div class="col m8 s8">
+                            <input id="password" name="password" type="password">
+                        </div>
+                    </div>
+                </div>
+                <div class="col s1 valign-wrapper hide-on-small-only" id="col-buttom">
+                    <div id="div-buttom">
+                        <button type="submit" id="login-buttom">
+                            <i class="material-icons" id="login-icon">videogame_asset</i>
+                        </button>
+                    </div>
+                    <div id="mask"></div>
+                </div>
+            </div>
+            <div class="hide-on-med-and-up" style="margin-top:-50px;">
+                <div id="div-buttom-low">
+                    <button type="submit" id="login-buttom">
+                        <i class="material-icons" id="login-icon">videogame_asset</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="row" id="row-facebook-gmail">
+            <div class="col s4 m3">
+                {{#if currentUser}}
+                    <button id="logout">{{_ "logout"}}</button>
+                {{else}}
+                    <button id="facebook-login"  class="buttom-facebook btn btn-default">{{_ "login-facebook"}}</button>
+                {{/if}}
+            </div>
+            <div class="col s4 m3">
+                {{#if currentUser}}
+                    <button id="logout">{{_ "logout"}}</button>
+                {{else}}
+                    <button id="twitter-login"  class="buttom-twitter btn btn-default">{{_ "login-twitter"}}</button>
+                {{/if}}
+            </div>
+            <div class="col s4 m3">
+                {{#if currentUser}}
+                    <button id="logout">{{_ "logout"}}</button>
+                {{else}}
+                    <button id="google-login" class="buttom-gmail btn btn-default">{{_ "login-gmail"}}</button>
+                {{/if}}
+            </div>
+        </div>
+    </div>
 </Template>
