@@ -39,6 +39,11 @@
 
   "register_header": "What's your name, Player?",
   "register": "Register",
+  "register_header_continue": "A few more!",
+  "register_body_continue": "Tell us something about you. We want to know the player 's inside you!",
+  "choose_image": "Choose a avatar",
+  "continue": "Continue",
+  "finish": "Finish",
 
   "toast": {
 
@@ -56,7 +61,16 @@
     "login_credentials_wrong": "username and/or password wrong",
     "login_credentials-facebook_wrong": "Login with Facebook canceled",
     "login_credentials-google_wrong": "Login with Google canceled",
-    "login_credentials-twitter_wrong": "Login with Twitter canceled"
+    "login_credentials-twitter_wrong": "Login with Twitter canceled",
+    "username_error_empty": "Username empty",
+    "password_error_empty": "Password empty",
+    "confirmpassword_error_empty": "Confirm password empty",
+    "username_error_duplicated": "Username used",
+    "password_error_coincidence": "Passwords match",
+    "email_error_empty": "Email empty",
+    "email_error_duplicated": "Email used",
+    "email_error_patron": "The pattern must be: example@example.com",
+    "password_error_patron": "The password must contain 6 characters (one uppercase and lowercase letter)"
 
   },
 

@@ -39,6 +39,11 @@
 
   "register_header": "¿Cúal es tu nombre, jugador?",
   "register": "Registrarse",
+  "register_header_continue": "¡Un poco más!",
+  "register_body_continue": "Cuéntanos algo sobre tí. ¡Queremos conocer al jugador que hay dentro de ti!",
+  "choose_image": "Elige un avatar",
+  "continue": "Continuar",
+  "finish": "Finalizar",
 
   "toast": {
 
@@ -56,7 +61,16 @@
     "login_credentials_wrong": "usuario y/o contraseña erronea",
     "login_credentials-facebook_wrong": "Inicio de sesión con Facebook cancelada",
     "login_credentials-google_wrong": "Inicio de sesión con Google cancelada",
-    "login_credentials-twitter_wrong": "Inicio de sesión con Twitter cancelada"
+    "login_credentials-twitter_wrong": "Inicio de sesión con Twitter cancelada",
+    "username_error_empty": "Nombre de usuario vacio",
+    "password_error_empty": "Contraseña vacia",
+    "confirmpassword_error_empty": "Contraseña de confirmación vacia",
+    "username_error_duplicated": "Nombre ya utilizado",
+    "password_error_coincidence": "Las contraseñas no coinciden",
+    "email_error_empty": "Correo vacio",
+    "email_error_duplicated": "Correo ya utilizado",
+    "email_error_patron": "El patrón debe ser: ejemplo@ejemplo.com",
+    "password_error_patron": "La contraseña debe contener 6 caracteres (una letra en mayúscula y una en minúsculas)"
 
   },
 

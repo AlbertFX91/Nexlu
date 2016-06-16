@@ -16,11 +16,28 @@
     position: absolute;
     margin-left: 20%;
 }
-.logbutton:hover{
+
+#textarea1{
+    color: white;
+    font-family: proxima-nova,sans-serif;
+}
+
+#imagen_register{
+    background-color:darkolivegreen;
+    border-radius: 45px;
+    color:white;
+}
+
+.div_form_more{
+    display: none;
+    visibility: hidden;
+}
+
+.logbutton:hover, #imagen_register:hover{
     color: white;
     background-color:darkolivegreen;
 }
-.logbutton:active{
+.logbutton:active, #imagen_register:active{
     color: white;
     background-color:darkolivegreen;
 }
