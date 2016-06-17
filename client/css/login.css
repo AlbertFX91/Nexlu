@@ -17,7 +17,7 @@
 }
 
 .buttom-gmail{
-    background-color: #cc181e !important;
+    background-color: #ec5d48 !important;
 }
 
 .buttom-twitter{
@@ -203,21 +203,6 @@ input, button, label {
 	color: white;
 	font-size: 3.5rem;
 	position: relative;
-}
-
-#errors{
-    text-align: center;
-    text-shadow: 1px 1px 1px black;
-    background: #f44336;
-    border: 0;
-    border-radius: 1px;
-    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
-    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
-    margin-bottom: 30px;
-    padding: 5px;
-    position:relative;
-    display: inline-block;
-    color: white;
 }
 
 #close-error{

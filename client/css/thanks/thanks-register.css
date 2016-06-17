@@ -1,0 +1,52 @@
+.header-thanks-register{
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 4.44444rem;
+    margin-bottom: 18px;
+}
+
+.thanks-register_body{
+    font-size: 1.2em !important;
+    font-weight: normal !important;
+    margin-top: -5%;
+}
+
+.thanks-register_body img{
+    max-width: 430px;
+    margin-top:-50px
+}
+
+.header-thanks-register{
+    margin-top:0px !important;
+    padding-top: 150px;
+    font-size: 5.2rem;
+}
+
+#text-thanks-register{
+    color: white;
+    font-size: 20px;
+}
+
+@media(max-width: 800px){
+
+    .header-thanks-register{
+        font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 35px;
+        line-height: 4.44444rem;
+        text-align: center;
+    }
+
+    .thanks-register_body{
+        font-size: 1em !important;
+        font-weight: normal !important;
+    }
+
+    .thanks-register_body img{
+        max-width: 300px;
+        margin: auto;
+    }
+}

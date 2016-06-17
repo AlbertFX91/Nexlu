@@ -12,6 +12,7 @@
 
 .customizedNavigation {
     background: rgba( 103, 193, 245, 0.2 );
+    position: inherit !important;
 }
 
 .Site {
@@ -36,7 +37,7 @@ a:link, a:visited, a:hover, a:active, a:focus {
     outline: 0;
 }
 .toast-error{
-    background-color: #f44336;
+    background-color: #e3157f;
     color: #fafafa !important;
 }
 
