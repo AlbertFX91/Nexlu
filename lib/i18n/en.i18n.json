@@ -164,6 +164,8 @@
     "friends": "friends",
     "publications": "publications",
     "photos": "photos",
-    "info": "Info"
+    "info": "Info",
+    "followed": "followed",
+    "followers": "followers"
   }
 }

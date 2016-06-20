@@ -1,5 +1,8 @@
 Template.profileHeader.helpers({
-    friends_pretty: function(){
-        return Prettify.compactInteger(this.friends.length);
+    followed_pretty: function(){
+        return Prettify.compactInteger(this.followed.length);
+    },
+    followers_pretty: function(){
+        return Prettify.compactInteger(this.followers.length);
     }
 });

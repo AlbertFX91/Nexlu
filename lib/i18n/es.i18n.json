@@ -184,6 +184,8 @@
     "friends": "amigos",
     "publications": "publicaciones",
     "photos": "fotos",
-    "info": "Información"
+    "info": "Información",
+    "followed": "siguiendo",
+    "followers": "seguidores"
   }
 }

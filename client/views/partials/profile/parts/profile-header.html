@@ -9,11 +9,14 @@
                     {{username}}
                 </div>
                 <div class="row profile-numfriends">
-                    <div class="col s6 profile-col-border">
-                        <span class="profile-num">{{friends_pretty}}</span> {{_ "profile.friends" }}
+                    <div class="col s4 profile-col-border">
+                        {{_ "profile.followed" }} <span class="profile-num">{{followed_pretty}}</span>
                     </div>
-                    <div class="col s6">
-                        <span class="profile-num">1.2K</span> {{_ "profile.publications" }}
+                    <div class="col s4 profile-col-border">
+                        {{_ "profile.followers" }} <span class="profile-num">{{followers_pretty}}</span>
+                    </div>
+                    <div class="col s4">
+                        {{_ "profile.publications" }} <span class="profile-num">1.2K</span>
                     </div>
                 </div>
             </div>
