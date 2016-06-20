@@ -7,4 +7,6 @@
 .img-elem{
     height:100px;
     width:100px;
+    border: 1px solid #263238;
+    background-color: #cfd8dc;
 }
