@@ -1,5 +1,15 @@
 Meteor.startup(function () {
     // code to run on server at startup
+
+    // Inicialización de servicios amazon S3
+    S3.config = {
+        "key": Meteor.settings.amazon.key,
+        "secret": Meteor.settings.amazon.secret,
+        "bucket": Meteor.settings.amazon.bucket,
+        "region": Meteor.settings.amazon.region
+    };
+
+    // Inicialización de servicio de mensajería
     var smtp = {
         username: Meteor.settings.mail.user,
         password: Meteor.settings.mail.password,
@@ -9,10 +19,8 @@ Meteor.startup(function () {
     //Configuración de variable de entorno para servidor de correo electrónico
     process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 
-    if (Meteor.users.find().count() === 0) {
-        createUsers();
-    }
 
+    // Inicialización de servicios de redes sociales
     Accounts.loginServiceConfiguration.remove({
         service: Meteor.settings.facebook.name
     });
@@ -40,6 +48,12 @@ Meteor.startup(function () {
         consumerKey: Meteor.settings.twitter.consumerKey,
         secret: Meteor.settings.twitter.secret
     });
+
+
+    // Inicialización de datos
+    if (Meteor.users.find().count() === 0) {
+        createUsers();
+    }
 
     if (ChatRooms.find().count() === 0){
         createChatRooms();
