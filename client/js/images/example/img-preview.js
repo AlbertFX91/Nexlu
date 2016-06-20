@@ -23,3 +23,11 @@ Template.img_preview.events({
         reader.readAsDataURL(file);
     }
 });
+
+
+Template.img_preview.helpers({
+    "images": function(){
+        return ImagesLocals.find();
+    }
+
+});
