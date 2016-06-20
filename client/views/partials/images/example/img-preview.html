@@ -7,17 +7,11 @@
             </div>
         </div>
         <div class="row">
-            <!--<div class="img-holder valign-wrapper" style="height: 100px; width: 100px; overflow: hidden;">
-                <img id="preview" class="valign" src="#" alt=" " style="width: 100%;max-height:100%; max-width:100%;"/>
-            </div> -->
             <ul>
             {{#each images}}
-                <li style="height:100px;width:100px;overflow:hidden;display:inline;">
-                    <img style="height:100px; width:100px;" id="img-{{_id}}" src="{{result}}" alt=" " />
+                <li class="img-li" >
+                    <img class="img-elem"  id="img-{{_id}}" src="{{result}}" alt=" " />
                 </li>
-               <!--<div class="col s1">
-                    <img class="responsive-img" id="img-{{_id}}" src="{{result}}" alt=" " />
-                </div>-->
             {{/each}}
             </ul>
         </div>

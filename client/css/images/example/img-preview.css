@@ -1,0 +1,10 @@
+.img-li{
+    height:100px;
+    width:100px;
+    overflow:hidden;
+    display:inline;
+}
+.img-elem{
+    height:100px;
+    width:100px;
+}
