@@ -21,5 +21,5 @@ Meteor.methods({
     'deCodificaString': function (codificado) {
         var decodedString = Base64.decode(codificado);
         return decodedString;
-    },
+    }
 });
