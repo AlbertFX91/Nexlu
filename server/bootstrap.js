@@ -41,10 +41,6 @@ Meteor.startup(function () {
         secret: Meteor.settings.twitter.secret
     });
 
-    if (FriendRequests.find().count() === 0){
-        createFriendRequests();
-    }
-
     if (ChatRooms.find().count() === 0){
         createChatRooms();
     }
@@ -87,58 +83,42 @@ function createUsers(){
 
     Meteor.users.update(id_user1, {
         $set: {
-            friends: [id_user2],
+            followers: [id_user2],
+            followed: [id_user2],
             "emails.0.verified": true,
         }
     });
 
     Meteor.users.update(id_user2, {
         $set: {
-            friends: [id_user1, id_user3, id_user4, id_user5],
+            followers: [id_user1, id_user3, id_user4, id_user5],
+            followed: [id_user1, id_user3, id_user4, id_user5],
             "emails.0.verified": true,
         }
     });
 
     Meteor.users.update(id_user3, {
         $set: {
-            friends: [id_user2],
+            followers: [id_user2],
+            followed: [id_user2],
             "emails.0.verified": true,
         }
     });
 
     Meteor.users.update(id_user4, {
         $set: {
-            friends: [id_user2, id_user5],
+            followers: [id_user2, id_user5],
+            followed: [id_user2, id_user5],
             "emails.0.verified": true,
         }
     });
 
     Meteor.users.update(id_user5, {
         $set: {
-            friends: [id_user2, id_user4],
+            followers: [id_user2, id_user4],
+            followed: [id_user2, id_user4],
             "emails.0.verified": true,
         }
-    });
-
-}
-
-function createFriendRequests(){
-    var user1 = Meteor.users.findOne({username: 'user1'});
-    var user2 = Meteor.users.findOne({username: 'user2'});
-    var user3 = Meteor.users.findOne({username: 'user3'});
-    var user4 = Meteor.users.findOne({username: 'user4'});
-    var user5 = Meteor.users.findOne({username: 'user5'});
-
-    FriendRequests.insert({
-        createdAt: new Date('2016-06-02T12:00:00'),
-        from: user1._id,
-        to: user3._id,
-    });
-
-    FriendRequests.insert({
-        createdAt: new Date('2016-06-03T13:00:00'),
-        from: user4._id,
-        to: user1._id,
     });
 
 }
