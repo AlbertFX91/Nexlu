@@ -88,6 +88,7 @@ mongo@1.1.7
 mongo-id@1.0.4
 mquandalle:jade@0.4.1
 mrt:jquery-imagesloaded@0.0.2
+mrt:jquery-mousewheel@0.1.0
 nerdmed:camanjs@0.0.1
 npm-bcrypt@0.8.5
 npm-mongo@1.4.43

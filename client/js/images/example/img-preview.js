@@ -35,12 +35,25 @@ Template.img_preview.events({
         });
     },
 
-    "click .apply-filter": function(e){
+    /*"click .apply-filter": function(e){
         var image = ImagesLocals.find().fetch()[0];
         var img_id = image._id;
         Caman("#"+img_id, function () {
-            this.sunrise().render();
+            this["sunrise"]();
+            this.render();
         });
+    },*/
+    "click #filters>li>a": function(e){
+        var filter = $(e.target).attr("id");
+        var image = ImagesLocals.find().fetch()[0];
+        var img_id = image._id;
+        Caman("#"+img_id, function () {
+            this.revert();
+            if(filter!="" && filter!="normal") this[filter]();
+            this.render();
+        });
+
+
     }
 });
 

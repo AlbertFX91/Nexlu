@@ -42,3 +42,4 @@ sewdn:humanize          # Usado para representar datos de una forma mas elegante
 zimme:active-route      # Usado para saber en los templates en que ruta estamos https://github.com/zimme/meteor-active-route
 lepozepo:s3
 nerdmed:camanjs
+mrt:jquery-mousewheel
