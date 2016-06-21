@@ -9,7 +9,8 @@
         <div class="row center-align">
 
             {{#each images}}
-                <img id="{{_id}}" class="img-prev {{#if uploaded}}img-uploaded{{else}}img-ready{{/if}}" src="{{result}}" data-id="{{_id}}" />
+               <!-- <img id="FF{{_id}}" class="img-prev {{#if uploaded}}img-uploaded{{else}}img-ready{{/if}}" src="{{result}}" data-id="{{_id}}" /> -->
+                <img id="FF{{_id}}" class="img-prev " src="{{result}}" data-id="{{_id}}" />
             {{/each}}
         </div>
         <div id="filterContainer">

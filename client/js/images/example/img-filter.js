@@ -51,7 +51,7 @@ Template.img_filter.events({
         var filter = $(e.target).attr("id");
         var image = ImagesLocals.find().fetch()[0];
         var img_id = image._id;
-        Caman("#"+img_id, function () {
+        Caman("#FF"+img_id, function () {
             this.revert(false);
             if(filter!="" && filter!="normal") this[filter]();
             this.render();
