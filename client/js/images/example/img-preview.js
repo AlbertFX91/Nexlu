@@ -1,6 +1,7 @@
 Template.img_preview.events({
     "change input.file_bag": function(e){
         //Obtenemos el fichero del input
+        ImagesLocals.remove({});
         var file = $(e.target)[0].files[0];
 
         //Declaramos el objeto FileReader que usaremos para convertir el fichero en una URL para poder previsualizarlo y almacenarlo en la collection
@@ -31,6 +32,14 @@ Template.img_preview.events({
             //Asignamos uploaded = true para evitar que se vuelva a almacenar la misma imagen en S3
             ImagesLocals.update(img_id, {$set: {result: r.url, uploaded: true}});
             //console.log(r);
+        });
+    },
+
+    "click .apply-filter": function(e){
+        var image = ImagesLocals.find().fetch()[0];
+        var img_id = image._id;
+        Caman("#"+img_id, function () {
+            this.sunrise().render();
         });
     }
 });
