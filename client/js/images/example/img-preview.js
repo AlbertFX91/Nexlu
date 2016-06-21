@@ -1,7 +1,6 @@
 Template.img_preview.events({
     "change input.file_bag": function(e){
         //Obtenemos el fichero del input
-        ImagesLocals.remove({});
         var file = $(e.target)[0].files[0];
 
         //Declaramos el objeto FileReader que usaremos para convertir el fichero en una URL para poder previsualizarlo y almacenarlo en la collection
@@ -33,27 +32,6 @@ Template.img_preview.events({
             ImagesLocals.update(img_id, {$set: {result: r.url, uploaded: true}});
             //console.log(r);
         });
-    },
-
-    /*"click .apply-filter": function(e){
-        var image = ImagesLocals.find().fetch()[0];
-        var img_id = image._id;
-        Caman("#"+img_id, function () {
-            this["sunrise"]();
-            this.render();
-        });
-    },*/
-    "click #filters>li>a": function(e){
-        var filter = $(e.target).attr("id");
-        var image = ImagesLocals.find().fetch()[0];
-        var img_id = image._id;
-        Caman("#"+img_id, function () {
-            this.revert(false);
-            if(filter!="" && filter!="normal") this[filter]();
-            this.render();
-        });
-
-
     }
 });
 

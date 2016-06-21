@@ -4,26 +4,15 @@
             <div class="col s12">
                 <input type="file" accept=".jpg,.jpeg,.png" class="file_bag">
                 <button class="upload">Upload</button>
-                <button class="apply-filter">Apply filter</button>
             </div>
         </div>
         <div class="row">
 
             {{#each images}}
-                <img id="{{_id}}" class="img-prev {{#if uploaded}}img-uploaded{{else}}img-ready{{/if}}" src="{{result}}" data-id="{{_id}}" />
+                <div class="col s12 m1 white" style="padding:0;margin:2px;">
+                    <img id="{{_id}}" class="img-prev {{#if uploaded}}img-uploaded{{else}}img-ready{{/if}}" src="{{result}}" style="width:100%;height:100px" data-id="{{_id}}" />
+                </div>
             {{/each}}
-        </div>
-        <div class="row">
-            <div id="filterContainer">
-                <ul id="filters">
-                    <li> <a href="#" id="normal">Normal</a> </li>
-                    <li> <a href="#" id="vintage">Vintage</a> </li>
-                    <li> <a href="#" id="lomo">Lomo</a> </li>
-                    <li> <a href="#" id="clarity">Clarity</a> </li>
-                    <li> <a href="#" id="sinCity">Sin City</a> </li>
-                    <!-- 14 More filters go here -->
-                </ul>
-            </div>
         </div>
     </div>
 </template>
