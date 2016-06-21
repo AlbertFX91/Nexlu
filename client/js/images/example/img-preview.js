@@ -21,6 +21,17 @@ Template.img_preview.events({
             //$('#'+id).attr('src', e.target.result);
         };
         reader.readAsDataURL(file);
+    },
+    "click .img-prev": function(e){
+        var img_id = $(e.target).attr('data-id');
+        var img = ImagesLocals.findOne(img_id);
+        var file = dataURItoFile(img);
+        S3.upload({
+            file: file,
+            path:"users"
+        },function(e,r){
+            console.log(r);
+        });
     }
 });
 
@@ -31,3 +42,24 @@ Template.img_preview.helpers({
     }
 
 });
+
+function dataURItoFile(img) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var dataURI = img.result;
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new File([ia], img.name, {type: mimeString});
+}
