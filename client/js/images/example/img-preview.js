@@ -30,7 +30,8 @@ Template.img_preview.events({
             file: file,
             path:"users"
         },function(e,r){
-            console.log(r);
+            Toasts.throw("Image uploaded! click &nbsp;<a href='"+r.url+"' target='blank' />here</a>&nbsp;", 10000);
+            //console.log(r);
         });
     }
 });
