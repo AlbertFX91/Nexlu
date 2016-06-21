@@ -1,3 +1,12 @@
+.img-prev{
+    text-align: center;
+    display: inline-block;
+    border-radius: 15px;
+    border: 8px solid rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    z-index: 5;
+}
+
 #filterContainer{
     width: 650px;
     margin: 50px auto 90px;
