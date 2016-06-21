@@ -3,13 +3,13 @@ Template.img_preview.events({
         var file = $(e.target)[0].files[0];
         var reader = new FileReader();
         reader.onload = function (e){
-            var id = ImagesLocals.insert(_.extend({result: e.target.result},file));
+            var id = ImagesLocals.insert(_.extend({result: e.target.result, uploaded: false},file));
             Toasts.throw("Img loaded in your browser!",5000);
 
         };
         reader.readAsDataURL(file);
     },
-    "click .img-prev": function(e){
+    "click .img-prev.img-ready": function(e){
         var img_id = $(e.target).attr('data-id');
         var img = ImagesLocals.findOne(img_id);
         var file = dataURItoFile(img);
@@ -18,7 +18,7 @@ Template.img_preview.events({
             path:"users"
         },function(e,r){
             Toasts.throw("Image uploaded! click &nbsp;<a href='"+r.url+"' target='blank' />here</a>&nbsp;", 10000);
-            $("#"+img_id).attr("src", r.url);
+            ImagesLocals.update(img_id, {$set: {result: r.url, uploaded: true}});
             //console.log(r);
         });
     }
