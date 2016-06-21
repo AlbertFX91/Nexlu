@@ -44,7 +44,7 @@ Template.img_preview.helpers({
 });
 
 
-//http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
+//SOURCE: http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
 function dataURItoFile(img) {
     var dataURI = img.result;
     var type = dataURI.split(',')[0].split(':')[1].split(';')[0];
