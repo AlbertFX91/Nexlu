@@ -13,6 +13,7 @@ Template.img_filter.events({
             //Declaramos que una vez cargado un fichero, insertaremos en la collection local ImagesLocales los datos del fichero,
             //así como los datos del fichero en una url, y un atributo auxiliar que nos indicará si se ha subido o no
             var id = ImagesLocals.insert(_.extend({result: e.target.result, uploaded: false},file));
+            $("#filterContainer").css("display", "block");
             Toasts.throw("Img loaded in your browser!",5000);
 
         };
@@ -68,7 +69,14 @@ Template.img_filter.helpers({
 
 });
 
+Template.img_filter.onRendered(function(){
+    $("#filterContainer").find('ul').on('mousewheel',function(e, delta){
 
+        this.scrollLeft -= (delta * 50);
+        e.preventDefault();
+
+    });
+});
 //SOURCE: http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata y adaptado a Meteor
 function dataURItoFile(img) {
     var dataURI = img.result;
