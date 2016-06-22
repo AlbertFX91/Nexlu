@@ -85,6 +85,13 @@
     "register": "Thanks you!",
     "text-register": "We've sent a message to your email to activate your account . See you soon!"
   },
+  "contactUs":{
+    "header": "Get in touch with us!",
+    "name": "Name",
+    "email": "Email Address",
+    "message": "Message",
+    "sendMessage": "Send message"
+  },
   "simpleschema": {
     "messages": {
       "notUnique username": "Username already exists",

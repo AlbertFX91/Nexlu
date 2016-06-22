@@ -104,7 +104,13 @@
     "register": "¡Gracias!",
     "text-register": "Te hemos enviado un mensaje a tu correo para activar tu cuenta. ¡Nos vemos pronto!"
   },
-
+  "contactUs":{
+    "header": "¡Póngase en contacto con nosotros!",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "sendMessage": "Enviar mensaje"
+  },
   "simpleschema": {
     "messages": {
       "notUnique username": "El nombre de usuario ya existe",
