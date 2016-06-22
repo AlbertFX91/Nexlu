@@ -21,5 +21,13 @@ Meteor.methods({
     'deCodificaString': function (codificado) {
         var decodedString = Base64.decode(codificado);
         return decodedString;
+    },
+    'send_message_about': function(info){
+        Email.send({
+            to: "infonexlu@gmail.com",
+            from: "From: " + info[1],
+            subject: "Example Email " + info[0],
+            text: "From: " + info[1] + "\n\n" + info[2]
+        });
     }
 });
