@@ -20,6 +20,11 @@
   "choose_image": "Elige un avatar",
   "continue": "Continuar",
   "finish": "Finalizar",
+  "clic": "Clic ",
+  "here": "aquí ",
+  "fowardMail": "para reenviar el correo",
+  "toastMail": "¡El correo se ha vuelto a enviar!",
+
 
   "toast": {
 

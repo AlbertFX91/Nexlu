@@ -2,7 +2,7 @@
     <div>
         {{> background_register }}
         <div id="container-register" class="container">
-            <form id="register_form" class="register-form">
+            <form id="register_form" class="register-form" method="post">
                 <div id="data_register" class="row">
                     <h1 id="intro_register">"{{_ "register_header"}}"</h1>
                     <h5 id="intro_register2">{{_ "register_header2"}}</h5>
@@ -45,39 +45,11 @@
                     </div>
                     <div class="row continue">
                         <div class="col m12 s12">
-                            <button id="register-buttom" class="continue btn btn-default logbutton">{{_ "continue"}}</button>
-                        </div>
-                    </div>
-                    <br/>
-                    <br/>
-                </div>
-                <div class="col s12 m12 div_form_more">
-                    <h1 id="intro_register">{{_ "register_header_continue"}}</h1>
-                    <div class="row">
-                        <div class="file-field input-field">
-                            <div id="imagen_register" class="btn">
-                                <span>{{_ "choose_image"}}</span>
-                                <input id="imagen_register" type="file">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div>
-                            <h4 class="col m12 s12" style="color:white">{{_ "register_body_continue"}}</h4>
-                            <div class="col m12 s12 input-field">
-                                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                <label for="textarea1"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row continue">
-                        <div class="col m12 s12">
                             <button type="submit" id="register-buttom" class="finish btn btn-default logbutton">{{_ "finish"}}</button>
                         </div>
                     </div>
+                    <br/>
+                    <br/>
                 </div>
             </form>
         </div>
