@@ -79,6 +79,7 @@
     background-size: cover;
     background-position:center;
     margin: 3px 5px;
+    cursor: pointer;
 }
 .img-preview:hover{
     animation-name: fadeOutback;
