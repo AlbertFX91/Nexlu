@@ -31,6 +31,25 @@
 .label-hidden{
     padding: 0 !important;
     cursor: pointer;
+    animation-name: img-imput-color-out;
+    animation-duration: 0.5s;
+    color: #9e9e9e;
+}
+
+@keyframes img-imput-color-in {
+    from {color: #9e9e9e;}
+    to {color: black;}
+}
+
+@keyframes img-imput-color-out {
+    from {color: black;}
+    to {color: #9e9e9e;}
+}
+
+.label-hidden:hover{
+    animation-name: img-imput-color-in;
+    animation-duration: 0.5s;
+    color: black;
 }
 .images-modal-upload-img-button{
     cursor: pointer;
