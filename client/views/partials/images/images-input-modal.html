@@ -1,0 +1,30 @@
+<template name="images_input_modal">
+    <div id="input-images-modal" class="modal">
+        <div class="modal-header blue-grey lighten-5 valign-wrapper">
+            <span class="close-modal-button"><i class="fa fa-times" aria-hidden="true"></i></span>
+            <h5 class="modal-header-title valign">Upload photo</h5>
+        </div>
+        <div class="modal-body">
+            {{#if noImages}}
+                <div class="modal-no-images">
+                    <div class="images-modal-upload-img-row">
+                        <div class="images-modal-upload-img-button">
+                            <label class="label-hidden" for="image-upload">
+                                <div class="images-modal-upload-img-i">
+                                    <i class="fa fa-camera" aria-hidden="true"></i>
+                                </div>
+                                <div class="images-modal-upload-img-text">
+                                    Upload
+                                </div>
+                                <input type="file" id="image-upload" style="display:none">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+
+            {{/if}}
+        </div>
+    </div>
+
+</template>

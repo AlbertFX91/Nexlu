@@ -1,8 +1,3 @@
-#input-images-modal{
-    width: 95% !important;
-    max-height: 100% !important;
-    overflow-y: hidden !important;
-}
 #button-show-input-modal{
     padding: 0 1rem !important;
     border-radius: 10px !important;

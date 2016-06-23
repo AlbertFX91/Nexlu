@@ -1,0 +1,45 @@
+#input-images-modal{
+    width: 95% !important;
+    max-height: 100% !important;
+    overflow-y: hidden !important;
+}
+.close-modal-button{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+.modal-header{
+    height: 40px;
+}
+.modal-header-title{
+    margin: 0 0 0 20px;
+}
+
+.modal-body{
+
+}
+
+.modal-no-images{
+    text-align: center;
+    padding: 200px 0;
+}
+.images-modal-upload-img-row{
+    width: 100px;
+    margin: auto;
+}
+.label-hidden{
+    padding: 0 !important;
+    cursor: pointer;
+}
+.images-modal-upload-img-button{
+    cursor: pointer;
+}
+.images-modal-upload-img-i{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.images-modal-upload-img-text{
+    font-size: 2rem;
+}
