@@ -65,4 +65,17 @@
 
 .modal-images{
     min-height: 380px;
+    height: 600px;
+    overflow-y: scroll;
+    padding: 25px 85px;
+}
+
+.img-preview{
+    height: 150px;
+    width: 150px;
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    background-size: cover;
+    background-position:center;
+    margin: 3px 5px;
 }
