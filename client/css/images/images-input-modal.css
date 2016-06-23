@@ -22,7 +22,7 @@
 
 .modal-no-images{
     text-align: center;
-    padding: 200px 0;
+    padding: 300px 0;
 }
 .images-modal-upload-img-row{
     width: 100px;
@@ -78,4 +78,17 @@
     background-size: cover;
     background-position:center;
     margin: 3px 5px;
+}
+
+.modal-img-footer{
+    background-color: #263238;
+    border-radius: 0 0 2px 2px;
+    padding: 4px 6px;
+    height: 60px;
+    width: 100%;
+}
+
+.label-hidden-footer{
+    height: 36px !important;
+    width: auto !important;
 }
