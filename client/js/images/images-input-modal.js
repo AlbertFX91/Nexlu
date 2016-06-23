@@ -2,6 +2,8 @@ Template.images_input_modal.events({
     "click .close-modal-button": function(e){
         e.preventDefault();
         $("#input-images-modal").closeModal();
+        //Vaciamos las imagenes del navegador
+        ImagesLocals.remove({});
     },
     "change #image-upload": function(e){
         //Obtenemos los ficheros seleccionados

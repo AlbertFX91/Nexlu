@@ -5,9 +5,10 @@
 }
 .close-modal-button{
     position: absolute;
-    top: 5px;
+    top: 3px;
     right: 10px;
     cursor: pointer;
+    font-size: 1.5rem;
 }
 .modal-header{
     height: 40px;
