@@ -62,3 +62,7 @@
 .images-modal-upload-img-text{
     font-size: 2rem;
 }
+
+.modal-images{
+    min-height: 380px;
+}
