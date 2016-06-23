@@ -10,6 +10,13 @@ Template.images_input_modal.events({
         var files = $(e.target)[0].files;
         //Para cada fichero, almacenamos el fichero en el navegador
         _.each(files, saveImgInBrowserByFile);
+    },
+    "mouseenter .img-preview": function(e){
+        var img = $(e.target);
+        if(img.hasClass("animated")){
+            img.removeClass("animated");
+            img.removeClass("bounceIn");
+        }
     }
 });
 
