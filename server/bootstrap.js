@@ -208,7 +208,16 @@ function createPublications(){
     Publications.insert({
         owner: user1._id,
         createdAt: new Date('2016-06-03T12:00:00'),
-        playersTagged: [user2._id, user3._id],
+        playersTagged: [
+            {
+                id: user2._id,
+                username: user2.username
+            },
+            {
+                id: user3._id,
+                username: user3.username
+            }
+        ],
         description: "My first publication!!!",
         playersLike: [user1._id, user2._id, user3._id],
         playersDislike: [user4._id],
@@ -281,7 +290,12 @@ function createPublications(){
     Publications.insert({
         owner: user2._id,
         createdAt: new Date('2016-06-03T23:00:00'),
-        playersTagged: [user1._id],
+        playersTagged: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
         description: "Hi NEXLU!!!",
         playersLike: [],
         playersDislike: [],
