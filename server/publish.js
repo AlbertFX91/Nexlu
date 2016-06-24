@@ -4,7 +4,7 @@ Meteor.publish('myPublications', function () {
         this.ready();
         return;
     }
-    return Publications.find({"owner": user_id});
+    return Publications.find({"owner.0.id": user_id});
 });
 Meteor.publish('user.me', function () {
     var user_id = this.userId;
@@ -23,7 +23,7 @@ Meteor.publish('publication.me.none', function () {
         this.ready();
         return;
     }
-    return Publications.find({owner: user_id}, {fields: Fields.publication.none});
+    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.none});
 });
 
 

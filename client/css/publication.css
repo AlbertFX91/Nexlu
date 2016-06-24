@@ -1,0 +1,23 @@
+
+.publication-content {
+    margin: 0px !important;
+}
+
+.publication-header {
+    display: flex;
+    flex-wrap: nowrap;
+    align-self: center;
+    flex: 1;
+}
+
+.publication-header-right {
+    position: absolute;
+    right: 10px;
+    padding: 10px;
+}
+
+.publication-description {
+    margin-top: 10px !important;
+}
+
+

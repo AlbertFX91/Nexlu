@@ -1,20 +1,25 @@
 <template name="publication">
 
     <div class="card web-color-1">
-        <div class="card-content white-text">
-            <ul class="publication-content">
-                <li class="publication-header">
-                    <img src="fjv.png" class="circle" height="auto" width="100%" style=";max-width: 50px;max-height: 50px; vertical-align: middle">
-                    {{owner_username}}
-                </li>
-                <li class="publication-description">
-                    {{description}}
-                </li>
-            </ul>
+        <div class="card-content white-text publication-content">
+            <div class="text-color-1 publication-header">
+                <a>
+                    <img src="fjv.png" class="circle" height="auto" width="100%" style="max-width: 50px;max-height: 50px; vertical-align: middle;margin-right: 10px">
+                </a>
+                <div class="publication-header">
+                    <div>
+                        {{owner.[0].username}}
+                    </div>
+                    <div class="publication-header-right">
+                        Time
+                    </div>
+                </div>
+            </div>
+            <div class="publication-description">
+                {{description}}
+            </div>
         </div>
         <div class="card-action" style="">
-
-
 
         </div>
     </div>
