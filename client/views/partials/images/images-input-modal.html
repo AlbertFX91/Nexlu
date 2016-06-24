@@ -1,0 +1,42 @@
+<template name="images_input_modal">
+    <div id="input-images-modal" class="modal">
+        <div class="modal-header blue-grey lighten-5 valign-wrapper">
+            <span class="close-modal-button"><i class="fa fa-times" aria-hidden="true"></i></span>
+            <h5 class="modal-header-title valign">{{_ "images.upload-photos"}}</h5>
+        </div>
+        <div class="modal-body">
+            {{#if noImages}}
+                <div class="modal-no-images">
+                    <div class="images-modal-upload-img-row">
+                        <div class="images-modal-upload-img-button">
+                            <label class="label-hidden" for="image-upload">
+                                <div class="images-modal-upload-img-i">
+                                    <i class="fa fa-camera" aria-hidden="true"></i>
+                                </div>
+                                <div class="images-modal-upload-img-text">
+                                    Upload
+                                </div>
+                                <input type="file" id="image-upload" accept=".jpg,.jpeg,.png" style="display:none" multiple>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <div class="modal-images">
+                    <div class="img-preview-container row">
+                        {{#each images}}
+                            <div id="FF{{_id}}" class="img-preview col animated bounceIn" style="background-image: url('{{result}}');"></div>
+                        {{/each}}
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        <div class="modal-img-footer valign-wrapper">
+            <label class="label-hidden-footer" for="image-upload">
+                <a class="waves-effect waves-light btn valign" id="button-add-img"><i class="fa fa-camera" aria-hidden="true"></i></a>
+                <input type="file" id="image-upload" accept=".jpg,.jpeg,.png" style="display:none" multiple>
+            </label>
+        </div>
+    </div>
+
+</template>
