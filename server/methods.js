@@ -25,9 +25,9 @@ Meteor.methods({
     'send_message_about': function(info){
         Email.send({
             to: "infonexlu@gmail.com",
-            from: "From: " + info[1],
-            subject: "Example Email " + info[0],
-            text: "From: " + info[1] + "\n\n" + info[2]
+            from: TAPi18n.__("from") + info[1],
+            subject: TAPi18n.__("subject") + info[0],
+            text: TAPi18n.__("from") + info[1] + "\n\n" + info[2]
         });
     }
 });
