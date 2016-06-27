@@ -1,9 +1,14 @@
 Template.images_input_modal.events({
     "click .close-modal-button": function(e){
         e.preventDefault();
-        $("#input-images-modal").closeModal();
-        //Vaciamos las imagenes del navegador
-        ImagesLocals.remove({});
+        $("#input-images-modal").closeModal({
+            complete: function(){
+                //Vaciamos las imagenes del navegador
+                ImagesLocals.remove({});
+                Session.set("img-prev-edit-id",false);
+            }
+        });
+
     },
     "change #image-upload": function(e){
         //Obtenemos los ficheros seleccionados
@@ -31,6 +36,16 @@ Template.images_input_modal.events({
         var img_id = img_div[0].id.split("-")[2];
         //Eliminamos la imagen de la collection local
         ImagesLocals.remove(img_id);
+    },
+
+    "click .img-preview-edit": function(e){
+        var x = $(e.target)
+        //Recuperamos el id del div donde se está llamando al evento
+        var img_div = x.parent().parent().next();
+        //El id es img-preview-IdDeLaImagen. Por lo que recuperamos el IdDeLaImagen
+        var img_id = img_div[0].id.split("-")[2];
+
+        Session.set("img-prev-edit-id", img_id);
     }
 });
 
@@ -40,6 +55,9 @@ Template.images_input_modal.helpers({
     },
     images: function(){
         return ImagesLocals.find();
+    },
+    editing: function(){
+        return Session.get("img-prev-edit-id");
     }
 });
 

@@ -5,31 +5,22 @@
             <h5 class="modal-header-title valign">{{_ "images.upload-photos"}}</h5>
         </div>
         <div class="modal-body">
-            {{#if noImages}}
-                <div class="modal-no-images">
-                    <div class="images-modal-upload-img-row">
-                        <div class="images-modal-upload-img-button">
-                            <label class="label-hidden" for="image-upload">
-                                <div class="images-modal-upload-img-i">
-                                    <i class="fa fa-camera" aria-hidden="true"></i>
-                                </div>
-                                <div class="images-modal-upload-img-text">
-                                    Upload
-                                </div>
-                                <input type="file" id="image-upload" accept=".jpg,.jpeg,.png" style="display:none" multiple>
-                            </label>
+            {{#if editing}}
+                {{> images_preview_edit }}
+            {{else}}
+                {{#if noImages}}
+                    {{> images_modal_no_images}}
+                {{else}}
+                    <div class="modal-images">
+                        <div class="img-preview-container row">
+                            {{#each images}}
+                                {{> images_show_preview }}
+                            {{/each}}
                         </div>
                     </div>
-                </div>
-            {{else}}
-                <div class="modal-images">
-                    <div class="img-preview-container row">
-                        {{#each images}}
-                           {{> images_show_preview }}
-                        {{/each}}
-                    </div>
-                </div>
+                {{/if}}
             {{/if}}
+
         </div>
         <div class="modal-img-footer valign-wrapper">
             <label class="label-hidden-footer" for="image-upload">
@@ -39,6 +30,24 @@
         </div>
     </div>
 
+</template>
+
+<template name="images_modal_no_images">
+    <div class="modal-no-images">
+        <div class="images-modal-upload-img-row">
+            <div class="images-modal-upload-img-button">
+                <label class="label-hidden" for="image-upload">
+                    <div class="images-modal-upload-img-i">
+                        <i class="fa fa-camera" aria-hidden="true"></i>
+                    </div>
+                    <div class="images-modal-upload-img-text">
+                        Upload
+                    </div>
+                    <input type="file" id="image-upload" accept=".jpg,.jpeg,.png" style="display:none" multiple>
+                </label>
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name="images_show_preview">
@@ -52,3 +61,4 @@
         <div id="img-prev-{{_id}}" class="img-preview animated bounceIn" style="background-image: url('{{result}}');"></div>
     </div>
 </template>
+

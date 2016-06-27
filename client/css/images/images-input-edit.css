@@ -1,0 +1,10 @@
+.modal-images-edit{
+    min-height: 380px;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.img-container-center{
+    width:100%;
+    text-align: center;
+}
