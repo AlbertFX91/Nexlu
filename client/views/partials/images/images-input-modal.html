@@ -23,10 +23,23 @@
 
         </div>
         <div class="modal-img-footer valign-wrapper">
-            <label class="label-hidden-footer" for="image-upload">
-                <a class="waves-effect waves-light btn valign" id="button-add-img"><i class="fa fa-camera" aria-hidden="true"></i></a>
-                <input type="file" id="image-upload" accept=".jpg,.jpeg,.png" style="display:none" multiple>
-            </label>
+            {{#if editing}}
+                <div style="margin-left:0;margin-right:auto;">
+                    <a class="waves-effect waves-light btn valign" id="button-exit-edit"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div style="margin-left:auto;margin-right:0;">
+                    <a class="waves-effect waves-light btn valign" id="button-save-img"><i class="material-icons">done</i>
+                    </a>
+                </div>
+
+            {{else}}
+                <label class="label-hidden-footer" for="image-upload">
+                    <a class="waves-effect waves-light btn valign" id="button-add-img"><i class="fa fa-camera" aria-hidden="true"></i></a>
+                    <input type="file" id="image-upload" accept=".jpg,.jpeg,.png" style="display:none" multiple>
+                </label>
+            {{/if}}
         </div>
     </div>
 
