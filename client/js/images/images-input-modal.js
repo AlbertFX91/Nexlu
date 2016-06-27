@@ -12,7 +12,7 @@ Template.images_input_modal.events({
         _.each(files, saveImgInBrowserByFile);
     },
     "mouseenter .img-preview": function(e){
-        var img = $(e.target);
+        var img = $(e.target).parent();
         if(img.hasClass("animated")){
             img.removeClass("animated");
             img.removeClass("bounceIn");
