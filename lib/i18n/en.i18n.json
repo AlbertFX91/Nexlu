@@ -39,7 +39,8 @@
     "email_error_empty": "Email empty",
     "email_error_duplicated": "Email used",
     "email_error_patron": "The pattern must be: example@example.com",
-    "password_error_patron": "The password must contain 6 characters (one uppercase and lowercase letter)"
+    "password_error_patron": "The password must contain 6 characters (one uppercase and lowercase letter)",
+    "occurred": "Oops, an error has occurred"
   },
   "tag": {
     "company": "COMPANY",

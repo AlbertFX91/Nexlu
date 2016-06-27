@@ -50,8 +50,29 @@ Template.images_input_modal.events({
 
     "click #button-exit-edit": function(){
         Session.set("img-prev-edit-id", false);
-    }
+    },
 
+    //Source: http://stackoverflow.com/questions/15654031/saving-images-after-altering-them-by-camanjs-plugin
+    //Lo que pretendemos es comprobar que se ha editado la imagen, y de ser así, vamos a guardar la imagen resultante en un atributo nuevo en la imagen.
+    "click #button-save-img-edit": function(){
+        var img_id = Session.get("img-prev-edit-id");
+        //Se guarda en el template images_input_edit
+        var filter = Session.get("filter-apply");
+        if(filter!=""&&filter!="normal"){
+            var canvas = document.getElementById("img-edit-"+img_id);
+            var data = canvas.toDataURL();
+            if(data==""){
+                Errors.throwErrorTranslated("error.occurred")
+            }else{
+                ImagesLocals.update(img_id, {
+                    $set: {
+                        resultEdited: data
+                    }
+                });
+            }
+            Session.set("img-prev-edit-id", false);
+        }
+    }
 });
 
 Template.images_input_modal.helpers({
@@ -79,3 +100,11 @@ function saveImgInBrowserByFile(file){
     //Aquí leemos el fichero y se ejecutará la función onload una vez cargado
     reader.readAsDataURL(file);
 }
+
+Template.images_show_preview.helpers({
+    img_data: function(){
+        result = this.result;
+        resultEdited = this.resultEdited;
+        return resultEdited? resultEdited: result;
+    }
+});

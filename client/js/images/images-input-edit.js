@@ -80,6 +80,7 @@ Template.images_preview_edit.events({
             this.revert(false);
             if(filter!="" && filter!="normal") this[filter]();
             this.render();
+            Session.set("filter-apply", filter);
         });
     }
 });
