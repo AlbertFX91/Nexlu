@@ -11,12 +11,26 @@ Template.images_input_modal.events({
         //Para cada fichero, almacenamos el fichero en el navegador
         _.each(files, saveImgInBrowserByFile);
     },
-    "mouseenter .img-preview": function(e){
-        var img = $(e.target).parent();
-        if(img.hasClass("animated")){
+    "mouseenter .img-preview-element": function(e) {
+        var img = $(e.target)
+        if (img.hasClass("animated")) {
             img.removeClass("animated");
             img.removeClass("bounceIn");
         }
+        $(e.target).children(".img-preview-options").addClass("img-preview-options-show");
+    },
+    "mouseleave .img-preview-options": function(e){
+        $(e.target).removeClass("img-preview-options-show");
+    },
+
+    "click .img-preview-remove": function(e){
+        var x = $(e.target)
+        //Recuperamos el id del div donde se está llamando al evento
+        var img_div = x.parent().parent().next();
+        //El id es img-preview-IdDeLaImagen. Por lo que recuperamos el IdDeLaImagen
+        var img_id = img_div[0].id.split("-")[2];
+        //Eliminamos la imagen de la collection local
+        ImagesLocals.remove(img_id);
     }
 });
 

@@ -108,3 +108,30 @@
     height: 36px !important;
     width: auto !important;
 }
+
+.img-preview-options{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    z-index: 50;
+    background-color: #eceff1;
+    display:none;
+}
+
+.img-preview-options-show{
+    display: block;
+    opacity: 0.6 !important;
+    animation-name: fadeIn;
+    animation-duration: 0.2s;
+}
+
+.img-preview-remove{
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    font-size: 1.5rem;
+}
+@keyframes fadeIn{
+    0% {opacity: 0;}
+    100% {opacity: 0.6;}
+}
