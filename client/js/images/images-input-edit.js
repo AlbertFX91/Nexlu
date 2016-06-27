@@ -72,6 +72,19 @@ Template.images_preview_edit.onRendered(function(){
 });
 
 
+Template.images_preview_edit.events({
+    "click #filters>li>a": function(e){
+        var filter = $(e.target).attr("id");
+        var img_id = Session.get("img-prev-edit-id");
+        Caman("#img-edit-"+img_id, function () {
+            this.revert(false);
+            if(filter!="" && filter!="normal") this[filter]();
+            this.render();
+        });
+    }
+});
+
+
 //SOURCE: http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata y adaptado a Meteor
 function dataURItoFile(img) {
     var dataURI = img.result;
