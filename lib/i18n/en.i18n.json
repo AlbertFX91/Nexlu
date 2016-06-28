@@ -48,7 +48,10 @@
     "email_error_empty": "Email empty",
     "email_error_duplicated": "Email used",
     "email_error_patron": "The pattern must be: example@example.com",
-    "password_error_patron": "The pattern must be: Example1969"
+    "password_error_patron": "The pattern must be: Example1969",
+    "message_error_empty": "Message can not be empty",
+    "message_error_minlength": "Message must be contains 20 characters minimum",
+    "message_error_maxlength": "Message must be contains 300 characters maximum"
   },
   "tag": {
     "company": "COMPANY",

@@ -55,7 +55,10 @@
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
     "email_error_patron": "El patrón debe ser: ejemplo@ejemplo.com",
-    "password_error_patron": "El patrón debe ser: Ejemplo1969"
+    "password_error_patron": "El patrón debe ser: Ejemplo1969",
+    "message_error_empty": "El mensaje no puede estar vacío",
+    "message_error_minlength": "El mensaje debe tener un mínimo de 20 caracteres",
+    "message_error_maxlength": "El mensaje debe tener un mínimo de 300 caracteres"
   },
 
   "tag": {
