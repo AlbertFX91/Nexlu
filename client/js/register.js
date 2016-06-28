@@ -12,18 +12,16 @@ Template.register.events({
         }
 });
 
-/**$.validator.addMethod("usernameUnique", function() {
-    var username = document.getElementById('username').value;
-    var exists = Meteor.subscribe("findUser", username);
-    console.log(exists);
-    return exists ? false : true;
+$.validator.addMethod("usernameUnique", function() {
+    var usernameRegister = document.getElementById('username').value;
+    return Meteor.call("checkUniqueUser", usernameRegister);
 });
-*/
-/**$.validator.addMethod("emailUnique", function(email) {
-    var exists = Meteor.users.findOne( { "emails.address": email }, { fields: { "username": 1 } } );
-    return exists ? false : true;
+
+$.validator.addMethod("emailUnique", function() {
+    var emailRegister = document.getElementById('email').value;
+    return Meteor.call("checkUniqueEmail", emailRegister);
 });
-*/
+
 $.validator.addMethod("coincidencePassword", function() {
     var password_register = document.getElementById('password_register').value;
     var confirmpassword = document.getElementById('confirmpassword').value;
@@ -41,11 +39,11 @@ Template.register.onRendered(function(){
                 required: true,
                 minlength: 2,
                 maxlength: 15,
-               // usernameUnique: true
+                //usernameUnique: true
             },
             email: {
                 required: true,
-               // emailUnique: true
+                //emailUnique: true
             },
             password_register: {
                 required: true,
@@ -64,11 +62,11 @@ Template.register.onRendered(function(){
                 required: TAPi18n.__("error.username_error_empty"),
                 minlength: TAPi18n.__("error.username_error_minlength"),
                 maxlength: TAPi18n.__("error.username_error_maxlength"),
-               // usernameUnique: TAPi18n.__("error.username_error_duplicated")
+                //usernameUnique: TAPi18n.__("error.username_error_duplicated")
             },
             email: {
                 required: TAPi18n.__("error.email_error_empty"),
-              //  emailUnique: TAPi18n.__("error.email_error_duplicated"),
+                //emailUnique: TAPi18n.__("error.email_error_duplicated"),
             },
             password_register: {
                 required: TAPi18n.__("error.password_error_empty"),

@@ -23,9 +23,27 @@ Meteor.methods({
             Accounts.sendVerificationEmail(userId);
         }
     },
-
+    
     'send_email_verification': function(user){
         var userDB = Meteor.users.findOne({'username': user[0]});
         Accounts.sendVerificationEmail(userDB._id);
+    },
+    
+    'checkUniqueUser': function(usernameRegister){
+        var userDB = Meteor.users.find({'username': usernameRegister});
+        var result = true;
+        if(typeof userDB == 'undefined'){
+            result = false;
+        }
+        return result;
+    },
+
+    'checkUniqueEmail': function(emailRegister){
+        var userDB = Meteor.users.find({'emails.address': emailRegister});
+        var result = true;
+        if(typeof userDB == 'undefined'){
+            result = false;
+        }
+        return result;
     }
 });
