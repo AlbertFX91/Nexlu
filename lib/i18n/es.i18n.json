@@ -44,15 +44,18 @@
     "login_credentials-google_wrong": "Inicio de sesión con Google cancelada",
     "login_credentials-twitter_wrong": "Inicio de sesión con Twitter cancelada",
     "username_error_empty": "Nombre de usuario vacio",
+    "username_error_minlength": "2 caracteres como mínimo",
+    "username_error_maxlength": "15 caracteres como máximo",
     "password_error_empty": "Contraseña vacia",
     "confirmpassword_error_empty": "Contraseña de confirmación vacia",
     "username_error_duplicated": "Nombre ya utilizado",
     "password_error_coincidence": "Las contraseñas no coinciden",
+    "password_error_minlength": "8 caracteres como mínimo",
+    "password_error_maxlength": "20 caracteres como máximo",
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
     "email_error_patron": "El patrón debe ser: ejemplo@ejemplo.com",
-    "password_error_patron": "La contraseña debe contener 6 caracteres (una letra en mayúscula y una en minúsculas)"
-
+    "password_error_patron": "El patrón debe ser: Ejemplo1969"
   },
 
   "tag": {

@@ -12,6 +12,28 @@ Template.register.events({
         }
 });
 
+/**$.validator.addMethod("usernameUnique", function() {
+    var username = document.getElementById('username').value;
+    var exists = Meteor.subscribe("findUser", username);
+    console.log(exists);
+    return exists ? false : true;
+});
+*/
+/**$.validator.addMethod("emailUnique", function(email) {
+    var exists = Meteor.users.findOne( { "emails.address": email }, { fields: { "username": 1 } } );
+    return exists ? false : true;
+});
+*/
+$.validator.addMethod("coincidencePassword", function() {
+    var password_register = document.getElementById('password_register').value;
+    var confirmpassword = document.getElementById('confirmpassword').value;
+    var coindicende = true;
+    if(password_register != confirmpassword){
+        coindicende = false;
+    }
+    return coindicende;
+});
+
 Template.register.onRendered(function(){
     $( "#register_form" ).validate({
         rules: {
@@ -19,56 +41,50 @@ Template.register.onRendered(function(){
                 required: true,
                 minlength: 2,
                 maxlength: 15,
-                usernameUnique: true
+               // usernameUnique: true
             },
             email: {
                 required: true,
-                emailUnique: true
+               // emailUnique: true
             },
-            password: {
+            password_register: {
                 required: true,
                 minlength: 8,
-                maxlength: 15
+                maxlength: 20,
+                coincidencePassword: true
             },
             confirmpassword: {
                 required: true,
                 minlength: 8,
-                maxlength: 15
+                maxlength: 20,
             }
         },
         messages: {
             username: {
                 required: TAPi18n.__("error.username_error_empty"),
-                minlength: TAPi18n.__("error.username_minlength"),
-                maxlength: TAPi18n.__("error.username_maxlength"),
-                usernameUnique: TAPi18n.__("error.username_error_duplicated")
+                minlength: TAPi18n.__("error.username_error_minlength"),
+                maxlength: TAPi18n.__("error.username_error_maxlength"),
+               // usernameUnique: TAPi18n.__("error.username_error_duplicated")
             },
             email: {
                 required: TAPi18n.__("error.email_error_empty"),
-                emailUnique: TAPi18n.__("error.email_error_duplicated")
+              //  emailUnique: TAPi18n.__("error.email_error_duplicated"),
             },
-            password: {
+            password_register: {
                 required: TAPi18n.__("error.password_error_empty"),
-                minlength: TAPi18n.__("error.password_minlength"),
-                maxlength: TAPi18n.__("error.password_maxlength")
+                minlength: TAPi18n.__("error.password_error_minlength"),
+                maxlength: TAPi18n.__("error.password_error_maxlength"),
+                pattern: TAPi18n.__("error.password_error_patron"),
+                coincidencePassword: TAPi18n.__("error.password_error_coincidence")
             },
             confirmpassword: {
                 required: TAPi18n.__("error.confirmpassword_error_empty"),
-                minlength: TAPi18n.__("error.confirmpassword_minlength"),
-                maxlength: TAPi18n.__("error.confirmpassword_maxlength")
+                minlength: TAPi18n.__("error.password_error_minlength"),
+                maxlength: TAPi18n.__("error.password_error_maxlength"),
+                pattern: TAPi18n.__("error.password_error_patron")
             }
         }
     });
-});
-
-$.validator.addMethod("usernameUnique", function(username) {
-    var exists = Meteor.users.findOne( { "username": username }, { fields: { "username": 1 } } );
-    return exists ? false : true;
-});
-
-$.validator.addMethod("emailUnique", function(email) {
-    var exists = Meteor.users.findOne( { "emails.address": email }, { fields: { "username": 1 } } );
-    return exists ? false : true;
 });
 
 Template.register.helpers({

@@ -26,11 +26,9 @@ Meteor.publish('publication.me.none', function () {
     return Publications.find({owner: user_id}, {fields: Fields.publication.none});
 });
 
-
-Meteor.publish("allUsers", function () {
-    return Meteor.users.find({});
+Meteor.publish("findUser", function(username) {
+    return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
 });
-
 
 
 /*
