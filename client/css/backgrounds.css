@@ -3,10 +3,12 @@
 .image-register{
     width: 100%;
     opacity: 0.3;
+    position: fixed;
+    z-index: -2;
 }
 
-@media screen and (max-width: 800px) {
-    div .image-register {
+@media screen and (max-width: 1600px) {
+    div .image-register{
         visibility: hidden;
         display: none;
     }
