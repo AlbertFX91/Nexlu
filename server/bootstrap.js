@@ -210,9 +210,23 @@ function createPublications(){
 
     //User 1
     Publications.insert({
-        owner: user1._id,
+        owner: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
         createdAt: new Date('2016-06-03T12:00:00'),
-        playersTagged: [user2._id, user3._id],
+        playersTagged: [
+            {
+                id: user2._id,
+                username: user2.username
+            },
+            {
+                id: user3._id,
+                username: user3.username
+            }
+        ],
         description: "My first publication!!!",
         playersLike: [user1._id, user2._id, user3._id],
         playersDislike: [user4._id],
@@ -245,7 +259,12 @@ function createPublications(){
         ]
     });
     Publications.insert({
-        owner: user1._id,
+        owner: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
         createdAt: new Date('2016-06-08T12:00:00'),
         playersTagged: [],
         description: "My second publication!!!",
@@ -254,7 +273,12 @@ function createPublications(){
         comments: []
     });
     Publications.insert({
-        owner: user1._id,
+        owner: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
         createdAt: new Date('2016-06-13T12:00:00'),
         playersTagged: [],
         description: "My third publication!!!",
@@ -263,7 +287,12 @@ function createPublications(){
         comments: []
     });
     Publications.insert({
-        owner: user1._id,
+        owner: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
         createdAt: new Date('2016-06-20T12:00:00'),
         playersTagged: [],
         description: "My fourth publication!!!",
@@ -272,7 +301,12 @@ function createPublications(){
         comments: []
     });
     Publications.insert({
-        owner: user1._id,
+        owner: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
         createdAt: new Date('2016-06-27T12:00:00'),
         playersTagged: [],
         description: "My fifth publication!!!",
@@ -283,9 +317,19 @@ function createPublications(){
 
     //User 2
     Publications.insert({
-        owner: user2._id,
+        owner: [
+            {
+                id: user2._id,
+                username: user2.username
+            }
+        ],
         createdAt: new Date('2016-06-03T23:00:00'),
-        playersTagged: [user1._id],
+        playersTagged: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
         description: "Hi NEXLU!!!",
         playersLike: [],
         playersDislike: [],
