@@ -27,8 +27,8 @@ Meteor.publish('publication.me.none', function () {
 });
 
 
-Meteor.publish("allUsers", function () {
-    return Meteor.users.find({});
+Meteor.publish("findBio", function () {
+    return Meteor.users.find({"user": this.userId});
 });
 
 
