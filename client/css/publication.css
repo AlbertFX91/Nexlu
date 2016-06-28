@@ -19,3 +19,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.publication-comments{
+    border-top: 1px dashed rgba(160, 160, 160, 0.2) !important;
+}
