@@ -22,8 +22,13 @@
                 {{/if}}
             </div>
             <div class="text-color-1">
-
-            </div>
+                {{#if playersLike}}
+                    <i class="fa fa-thumbs-o-up fa-1" aria-hidden="true"></i> {{playersLike.length}}
+                {{/if}}
+                {{#if playersDislike}}
+                    <i class="fa fa-thumbs-o-down fa-1" aria-hidden="true"></i> {{playersDislike.length}}
+                {{/if}}
+                </div>
         </div>
     </div>
 
