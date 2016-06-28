@@ -9,7 +9,7 @@
 
 #filterContainer{
     width: 650px;
-    margin: 50px auto 90px;
+    margin: 0 auto 0;
     position: relative;
     display: none;
 }

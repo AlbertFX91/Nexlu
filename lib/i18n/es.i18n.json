@@ -46,7 +46,8 @@
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
     "email_error_patron": "El patrón debe ser: ejemplo@ejemplo.com",
-    "password_error_patron": "La contraseña debe contener 6 caracteres (una letra en mayúscula y una en minúsculas)"
+    "password_error_patron": "La contraseña debe contener 6 caracteres (una letra en mayúscula y una en minúsculas)",
+    "occurred": "Ups, un error ha ocurrido"
 
   },
 
