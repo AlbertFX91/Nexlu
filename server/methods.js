@@ -23,6 +23,15 @@ Meteor.methods({
             Accounts.sendVerificationEmail(userId);
         }
     },
+    
+    'modify_bio': function(bio){
+        var userId = Meteor.userId();
+        Meteor.users.update(userId, {
+            $set: {
+                bio: bio
+            }
+        });
+    },
 
     'send_email_verification': function(user){
         var userDB = Meteor.users.findOne({'username': user[0]});
