@@ -6,18 +6,16 @@
 .publication-header {
     display: flex;
     flex-wrap: nowrap;
-    align-self: center;
-    flex: 1;
-}
-
-.publication-header-right {
-    position: absolute;
-    right: 10px;
-    padding: 10px;
+    align-items: center;
 }
 
 .publication-description {
     margin-top: 10px !important;
 }
 
-
+.publication-details{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
