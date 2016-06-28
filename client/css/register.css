@@ -53,6 +53,7 @@
 #email{
     color: #00C1C9;
     border-radius: 0px !important;
+    margin-top:10px;
 }
 
 #intro_register{
@@ -78,8 +79,9 @@
     color: #e3157f !important;
 }
 
-#username-error{
+#username-error, #username-error:active{
     margin-top: 6%;
+    transform: translateY(0%) !important;
 }
 
 #email, #username, #password, #confirmpassword{

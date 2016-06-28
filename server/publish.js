@@ -34,7 +34,6 @@ Meteor.publish("findUser", function(username) {
     return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
 });
 
-
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
