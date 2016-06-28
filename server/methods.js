@@ -1,25 +1,31 @@
 Meteor.methods({
-    sendExampleEmail: function(){
-       MailService.send("email.test_message","test-template",{},"alberto.rojas.fndez@gmail.com");
-    },
-    'checkPassword': function(digest) {
-        check(digest, String);
-
-        if (this.userId) {
-            var user = Meteor.user();
-            var password = {digest: digest, algorithm: 'sha-256'};
-            var result = Accounts._checkPassword(user, password);
-            return result.error == null;
-        } else {
-            return false;
+    'user_create':function (user) {
+        var username_no_errors = Util.validate_username(user[0]);
+        var password_no_errors = Util.validate_password(user[1], user[3]);
+        var email_no_errors = Util.validate_email(user[2]);
+        if(username_no_errors == true  && email_no_errors == true && password_no_errors == true){
+            try {
+                userId = Accounts.createUser({
+                    username: user[0],
+                    password: user[1],
+                    email: user[2]
+                });
+                Meteor.users.update(userId, {
+                    $set: {
+                        bio: "",
+                        followers: [],
+                        followed: []
+                    }
+                });
+            } catch (error) {
+                throw new Meteor.Error("Server error", error);
+            }
+            Accounts.sendVerificationEmail(userId);
         }
     },
-    'codificaString': function (noCodificado) {
-        var encodedString = Base64.encode(noCodificado);
-        return encodedString;
-    },
-    'deCodificaString': function (codificado) {
-        var decodedString = Base64.decode(codificado);
-        return decodedString;
+
+    'send_email_verification': function(user){
+        var userDB = Meteor.users.findOne({'username': user[0]});
+        Accounts.sendVerificationEmail(userDB._id);
     }
 });

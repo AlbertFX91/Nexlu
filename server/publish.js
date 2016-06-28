@@ -26,11 +26,13 @@ Meteor.publish('publication.me.none', function () {
     return Publications.find({owner: user_id}, {fields: Fields.publication.none});
 });
 
-
 Meteor.publish("findBio", function () {
-    return Meteor.users.find({"user": this.userId});
+    return Meteor.users.findOne(this.userId);
 });
 
+Meteor.publish("findUser", function(username) {
+    return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
+});
 
 
 /*
@@ -44,6 +46,7 @@ Fields = {
             _id: 1,
             username: 1,
             emails: 1,
+            bio: 1,
             followed: 1,
             followers: 1,
         }

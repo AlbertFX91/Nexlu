@@ -14,7 +14,7 @@ Template.profileViews.events({
 Template.profileInfo.helpers({
     'bio': function(){
         var user_id = Meteor.userId();
-        var user = Meteor.users.find({"user": user_id});
+        var user = Meteor.users.findOne(user_id);
         return user.bio;
     }
 });
