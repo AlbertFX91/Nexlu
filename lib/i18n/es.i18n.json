@@ -191,6 +191,7 @@
 
   "timeline": {
     "more-tags": "y otros jugadores",
-    "with": "Con"
+    "with": "Con",
+    "no-tags": "Sin etiquetas"
   }
 }

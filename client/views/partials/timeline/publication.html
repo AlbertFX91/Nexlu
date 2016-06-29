@@ -1,13 +1,13 @@
 <template name="publication">
 
     <div class="card web-color-1">
-        <div class="card-content white-text publication-content">
+        <div class="card-content text-color-3 publication-content">
             <div class="text-color-1 publication-header">
                 <a>
                     <img src="example.png" class="circle" height="auto" width="100%" style="max-width: 50px;max-height: 50px; vertical-align: middle;margin-right: 10px">
                 </a>
                 <div style="flex:1">
-                    {{owner.[0].username}}
+                    <a>{{owner.[0].username}}</a>
                 </div>
                 <span data-livestamp="{{createdAt}}"></span>
             </div>
@@ -15,24 +15,25 @@
                 {{description}}
             </div>
         </div>
-        <div class="card-action white-text publication-details">
+        <div class="card-action text-color-1 publication-details">
             <div class="text-color-1">
                 {{#if tagged_pretty}}
+                    <i class="fa fa-tags fa-1" aria-hidden="true"></i>
                     {{_ "timeline.with"}} {{tagged_pretty}}
+                {{else}}
+                    <i class="fa fa-tags fa-1" aria-hidden="true"></i>
+                    {{_ "timeline.no-tags"}}
                 {{/if}}
             </div>
             <div class="text-color-1">
-                {{#if playersLike}}
-                    <i class="fa fa-thumbs-o-up fa-1" aria-hidden="true"></i> {{playersLike.length}}
-                {{/if}}
-                {{#if playersDislike}}
-                    <i class="fa fa-thumbs-o-down fa-1" aria-hidden="true"></i> {{playersDislike.length}}
-                {{/if}}
-                </div>
+                <i class="fa fa-thumbs-o-up fa-1" aria-hidden="true"></i> {{playersLike.length}}
+                <i class="fa fa-thumbs-o-down fa-1" aria-hidden="true"></i> {{playersDislike.length}}
+            </div>
         </div>
         <div class="card-action publication-comments">
-
-
+            {{#each comments}}
+                {{> comment}}
+            {{/each}}
         </div>
     </div>
 

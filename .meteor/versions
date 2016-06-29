@@ -108,6 +108,7 @@ service-configuration@1.0.9
 session@1.1.5
 sewdn:humanize@1.4.2
 sha@1.0.7
+simple:reactive-method@1.0.2
 smeevil:reactive-block-grid@1.0.3
 spacebars@1.0.11
 spacebars-compiler@1.0.11
