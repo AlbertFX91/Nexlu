@@ -1,6 +1,7 @@
 .register-form{
     font-size: 16px;
     top: 15%;
+    position: absolute;
 }
 
 .logbutton{
@@ -12,7 +13,8 @@
     color:white;
     border: none !important;
     margin-bottom: 5px;
-    margin-left: 50%;
+    position: absolute;
+    margin-left: 20%;
 }
 
 #textarea1{
@@ -46,6 +48,7 @@
 }
 .register-form input{
     margin-bottom: 5px;
+    width: 430px;
     height: 40px;
     border-radius: 10px;
 }
@@ -53,7 +56,6 @@
 #email{
     color: #00C1C9;
     border-radius: 0px !important;
-    margin-top:10px;
 }
 
 #intro_register{
@@ -74,25 +76,18 @@
     float:left;
 }
 
-#username-error, #confirmpassword-error, #email-error, #password_register-error{
-    text-align: left;
-    color: #e3157f !important;
-}
-
-#username-error, #username-error:active{
-    margin-top: 6%;
-    transform: translateY(0%) !important;
-}
-
-#email, #username, #password, #confirmpassword{
+#register-errors{
+    text-align: center;
+    float: right;
+    text-shadow: 1px 1px 1px black;
+    background: #e3157f;
+    border: 0;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    margin-bottom: 30px;
+    padding: 5px;
+    display: inline-block;
     color: white;
 }
 
-@media screen and (max-width: 800px) {
-    div #intro_register{
-        font-size: 3rem;
-    }
-    div #intro_register2{
-        float: left;
-    }
-}

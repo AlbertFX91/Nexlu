@@ -27,7 +27,7 @@ Meteor.publish('publication.me.none', function () {
 });
 
 Meteor.publish("findBio", function () {
-    return Meteor.users.findOne(this.userId);
+    return Meteor.users.find(this.userId);
 });
 
 Meteor.publish("findUser", function(username) {
@@ -45,9 +45,8 @@ Fields = {
             _id: 1,
             username: 1,
             emails: 1,
-            bio: 1,
             followed: 1,
-            followers: 1,
+            followers: 1
         }
     },
     publication: {
@@ -59,10 +58,10 @@ Fields = {
             description: 1,
             playersLike: 1,
             playersDislike: 1,
-            comments: 1,
+            comments: 1
         },
         none: {
             _id: 1
         }
     }
-}
+};

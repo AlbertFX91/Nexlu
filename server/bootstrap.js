@@ -52,21 +52,21 @@ Meteor.startup(function () {
 
 
 function createUsers(){
-	var id_user1 = Accounts.createUser({
-            username: 'user1',
-            email: 'user1@gmail.com',
-            password: 'user1'
+    var id_user1 = Accounts.createUser({
+        username: 'user1',
+        email: 'user1@gmail.com',
+        password: 'user1'
     });
 
     var id_user2 = Accounts.createUser({
-            username: 'user2',
-            email: 'user2@gmail.com',
-            password: 'user2'
+        username: 'user2',
+        email: 'user2@gmail.com',
+        password: 'user2'
     });
     var id_user3 = Accounts.createUser({
-            username: 'user3',
-            email: 'user3@gmail.com',
-            password: 'user3'
+        username: 'user3',
+        email: 'user3@gmail.com',
+        password: 'user3'
     });
 
     var id_user4 = Accounts.createUser({
@@ -247,12 +247,12 @@ function createPublications(){
                 playersDislike: [user2._id],
                 sons: [
                     {
-                    createdAt: new Date('2016-06-03T13:00:00'),
-                    description: "Thanks men!",
-                    player: user1._id,
-                    playersLike: [user3._id],
-                    playersDislike: [],
-                    sons: []
+                        createdAt: new Date('2016-06-03T13:00:00'),
+                        description: "Thanks men!",
+                        player: user1._id,
+                        playersLike: [user3._id],
+                        playersDislike: [],
+                        sons: []
                     }
                 ]
             }
