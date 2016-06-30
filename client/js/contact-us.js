@@ -1,13 +1,13 @@
 Template.ContactUs.events({
 	'submit #contact_us_form': function(event){
-        event.preventDefault();
-        var user = $("#user").val();
-        var email = $("#email").val();
-        var message = $("#message").val();
-        var info = [user, email, message];
+		event.preventDefault();
+		var user = $("#user").val();
+		var email = $("#email").val();
+		var message = $("#message").val();
+		var info = [user, email, message];
 		Meteor.call("send_message_about", info);
 		Materialize.toast(TAPi18n.__("email.email-sent"), 3000);
-        Router.go('/');
+		Router.go('/');
 	}
 });
 
@@ -29,7 +29,7 @@ Template.ContactUs.onRendered(function(){
 			}
 		},
 		messages: {
-            user: {
+			user: {
 				required: TAPi18n.__("error.username_error_empty"),
 				minlength: TAPi18n.__("error.username_error_minlength"),
 				maxlength: TAPi18n.__("error.username_error_maxlength")
