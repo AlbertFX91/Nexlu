@@ -1,13 +1,20 @@
 /** Registration */
 
+.image-mobile-register{
+    visibility: hidden;
+    display: none;
+}
+
 .image-register{
     width: 100%;
     opacity: 0.3;
-    position: fixed;
-    z-index: -2;
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 800px) {
+    div .image-mobile-register {
+        visibility: visible;
+        width: 100%;
+    }
     div .image-register{
         visibility: hidden;
         display: none;
@@ -15,6 +22,11 @@
 }
 
 /** Thanks registration */
+
+.image-mobile-thanks-register{
+    visibility: hidden;
+    display: none;
+}
 
 .image-thanks-register{
     width: 100%;
@@ -25,12 +37,11 @@
 }
 
 @media screen and (max-width: 800px) {
-    div .image-thanks-register{
-        visibility: hidden;
-        display: none;
+    div .image-mobile-thanks-register {
+        visibility: visible;
+        width: 100%;
     }
 }
-
 /** Contact us */
 
 .image-about_us{
