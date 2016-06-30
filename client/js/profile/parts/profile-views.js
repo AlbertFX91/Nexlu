@@ -13,10 +13,19 @@ Template.profileViews.events({
 
 Template.profileInfo.helpers({
     'bio': function(){
+        Session.set("firt_bio", false);
         var user_id = Meteor.userId();
         var user = Meteor.users.findOne(user_id);
-        return user.bio;
+        var bio = user.bio;
+        if(Session.get("firt_bio") == false) {
+            document.getElementById('textarea1').value = bio;
+        }
+        return bio;
     }
+});
+
+Template.profileInfo.onRendered(function(){
+    Session.set("firt_bio", true);
 });
 
 Template.profileInfo.events({

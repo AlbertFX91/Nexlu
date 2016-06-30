@@ -45,6 +45,7 @@ Fields = {
             _id: 1,
             username: 1,
             emails: 1,
+            bio: 1,
             followed: 1,
             followers: 1
         }

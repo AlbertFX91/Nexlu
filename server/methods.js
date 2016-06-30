@@ -24,12 +24,19 @@ Meteor.methods({
         }
     },
     'modify_bio': function(bio){
+        if(bio == ""){
+            bio = TAPi18n.__(" ");
+        }
         var userId = Meteor.userId();
         Meteor.users.update(userId, {
             $set: {
                 bio: bio
             }
         });
+    },
+    'info_bio': function(){
+        var bio = Meteor.user().bio;
+        Session.set("bio", bio);
     },
     'send_email_verification': function(user) {
         var userDB = Meteor.users.findOne({'username': user[0]});

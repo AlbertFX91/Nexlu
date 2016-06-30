@@ -22,9 +22,12 @@
   "here": "here ",
   "fowardMail": "to foward mail",
   "toastMail": "Email has been sent again!",
-  "modify_bio": "Modify biography",
   "send": "Send",
   "close": "Close",
+
+  "bio":{
+    "modify_bio": "Modify biography"
+  },
 
   "toast": {
     "lang_changed": "Language changed",
