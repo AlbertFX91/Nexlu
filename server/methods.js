@@ -38,9 +38,27 @@ Meteor.methods({
         var bio = Meteor.user().bio;
         Session.set("bio", bio);
     },
-    'send_email_verification': function(user) {
+    'send_email_verification': function(user){
         var userDB = Meteor.users.findOne({'username': user[0]});
         Accounts.sendVerificationEmail(userDB._id);
+    },
+
+    'checkUniqueUser': function(usernameRegister){
+        var userDB = Meteor.users.find({'username': usernameRegister});
+        var result = true;
+        if(typeof userDB == 'undefined'){
+            result = false;
+        }
+        return result;
+    },
+
+    'checkUniqueEmail': function(emailRegister){
+        var userDB = Meteor.users.find({'emails.address': emailRegister});
+        var result = true;
+        if(typeof userDB == 'undefined'){
+            result = false;
+        }
+        return result;
     },
     'send_message_about': function(info) {
         Email.send({

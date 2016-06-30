@@ -21,7 +21,7 @@
   "clic": "Click ",
   "here": "here ",
   "fowardMail": "to foward mail",
-  "toastMail": "Email has been sent again!",
+  "toastMail": "Email has been sent!",
   "send": "Send",
   "close": "Close",
 
@@ -43,14 +43,21 @@
     "login_credentials-google_wrong": "Login with Google canceled",
     "login_credentials-twitter_wrong": "Login with Twitter canceled",
     "username_error_empty": "Username empty",
+    "username_error_minlength": "Minimun 2 characters",
+    "username_error_maxlength": "Maximun 15 characters",
     "password_error_empty": "Password empty",
     "confirmpassword_error_empty": "Confirm password empty",
     "username_error_duplicated": "Username used",
-    "password_error_coincidence": "Passwords match",
+    "password_error_coincidence": "Passwords mismatch",
+    "password_error_minlength": "Minimun 8 characters",
+    "password_error_maxlength": "Maximun 20 characters",
     "email_error_empty": "Email empty",
     "email_error_duplicated": "Email used",
     "email_error_patron": "The pattern must be: example@example.com",
-    "password_error_patron": "The password must contain 6 characters (one uppercase and lowercase letter)"
+    "password_error_patron": "The pattern must be: Example99",
+    "message_error_empty": "Message can not be empty",
+    "message_error_minlength": "Message must be 20 characters minimum",
+    "message_error_maxlength": "Message must be 300 characters maximum"
   },
   "tag": {
     "company": "COMPANY",

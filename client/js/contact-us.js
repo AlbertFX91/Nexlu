@@ -20,12 +20,12 @@ Template.ContactUs.onRendered(function(){
 				maxlength: 15
 			},
 			email: {
-				required: true
+				required: true,
 			},
 			message: {
 				required: true,
-				minlength: 10,
-				maxlength: 180
+				minlength: 20,
+				maxlength: 300
 			}
 		},
 		messages: {
@@ -35,7 +35,8 @@ Template.ContactUs.onRendered(function(){
 				maxlength: TAPi18n.__("error.username_error_maxlength")
 			},
 			email: {
-				required: TAPi18n.__("error.email_error_empty")
+				required: TAPi18n.__("error.email_error_empty"),
+				pattern: TAPi18n.__("error.email_error_patron"),
 			},
 			message: {
 				required: TAPi18n.__("error.message_error_empty"),
