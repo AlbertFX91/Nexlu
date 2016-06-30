@@ -26,12 +26,13 @@ Meteor.publish('publication.me.none', function () {
     return Publications.find({owner: user_id}, {fields: Fields.publication.none});
 });
 
-
-Meteor.publish("allUsers", function () {
-    return Meteor.users.find({});
+Meteor.publish("findBio", function () {
+    return Meteor.users.find(this.userId);
 });
 
-
+Meteor.publish("findUser", function(username) {
+    return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
+});
 
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
@@ -44,8 +45,9 @@ Fields = {
             _id: 1,
             username: 1,
             emails: 1,
+            bio: 1,
             followed: 1,
-            followers: 1,
+            followers: 1
         }
     },
     publication: {
@@ -57,10 +59,10 @@ Fields = {
             description: 1,
             playersLike: 1,
             playersDislike: 1,
-            comments: 1,
+            comments: 1
         },
         none: {
             _id: 1
         }
     }
-}
+};

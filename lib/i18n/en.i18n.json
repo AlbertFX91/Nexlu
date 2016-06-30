@@ -18,6 +18,17 @@
   "choose_image": "Choose a avatar",
   "continue": "Continue",
   "finish": "Finish",
+  "clic": "Click ",
+  "here": "here ",
+  "fowardMail": "to foward mail",
+  "toastMail": "Email has been sent again!",
+  "send": "Send",
+  "close": "Close",
+
+  "bio":{
+    "modify_bio": "Modify biography"
+  },
+
   "toast": {
     "lang_changed": "Language changed",
     "undo": "Undo",
