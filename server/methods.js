@@ -23,38 +23,12 @@ Meteor.methods({
             Accounts.sendVerificationEmail(userId);
         }
     },
-    
-    'send_email_verification': function(user){
-        var userDB = Meteor.users.findOne({'username': user[0]});
-        Accounts.sendVerificationEmail(userDB._id);
-    },
-    
-    'checkUniqueUser': function(usernameRegister){
-        var userDB = Meteor.users.find({'username': usernameRegister});
-        var result = true;
-        if(typeof userDB == 'undefined'){
-            result = false;
-        }
-        return result;
-    },
-    'deCodificaString': function (codificado) {
-        var decodedString = Base64.decode(codificado);
-        return decodedString;
-    },
     'send_message_about': function(info) {
         Email.send({
             to: "infonexlu@gmail.com",
-            from: TAPi18n.__("from") + info[1],
-            subject: TAPi18n.__("subject") + info[0],
-            text: TAPi18n.__("from") + info[1] + "\n\n" + info[2]
+            from: info[0],
+            subject: info[0],
+            text: info[1] + "\n\n" + info[2]
         });
-    },
-    'checkUniqueEmail': function(emailRegister){
-        var userDB = Meteor.users.find({'emails.address': emailRegister});
-        var result = true;
-        if(typeof userDB == 'undefined'){
-            result = false;
-        }
-        return result;
     }
 });

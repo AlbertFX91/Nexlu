@@ -6,7 +6,7 @@ Template.ContactUs.events({
         var message = $("#message").val();
         var info = [user, email, message];
 		Meteor.call("send_message_about", info);
-		Materialize.toast(TAPi18n.__("toastMail"), 3000);
+		Materialize.toast(TAPi18n.__("email.email-sent"), 3000);
         Router.go('/');
 	}
 });
