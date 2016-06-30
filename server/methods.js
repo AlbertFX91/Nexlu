@@ -12,7 +12,7 @@ Meteor.methods({
                 });
                 Meteor.users.update(userId, {
                     $set: {
-                        bio: "",
+                        bio: TAPi18n.__(" "),
                         followers: [],
                         followed: []
                     }
@@ -33,10 +33,6 @@ Meteor.methods({
                 bio: bio
             }
         });
-    },
-    'info_bio': function(){
-        var bio = Meteor.user().bio;
-        Session.set("bio", bio);
     },
     'send_email_verification': function(user){
         var userDB = Meteor.users.findOne({'username': user[0]});

@@ -45,7 +45,6 @@ Template.register.onRendered(function(){
             },
             email: {
                 required: true,
-                pattern: "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$",
                 //emailUnique: true
             },
             password_register: {
@@ -69,7 +68,6 @@ Template.register.onRendered(function(){
             },
             email: {
                 required: TAPi18n.__("error.email_error_empty"),
-                pattern: TAPi18n.__("error.email_error_patron"),
                 //emailUnique: TAPi18n.__("error.email_error_duplicated"),
             },
             password_register: {
