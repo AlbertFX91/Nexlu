@@ -26,13 +26,6 @@ Meteor.publish('publication.me.none', function () {
     return Publications.find({owner: user_id}, {fields: Fields.publication.none});
 });
 
-
-Meteor.publish("allUsers", function () {
-    return Meteor.users.find({});
-});
-
-
-
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
@@ -44,6 +37,7 @@ Fields = {
             _id: 1,
             username: 1,
             emails: 1,
+            bio: 1,
             followed: 1,
             followers: 1,
         }
