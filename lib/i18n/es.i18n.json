@@ -187,5 +187,11 @@
     "info": "Información",
     "followed": "siguiendo",
     "followers": "seguidores"
+  },
+
+  "timeline": {
+    "more-tags": "y otros jugadores",
+    "with": "Con",
+    "no-tags": "Sin etiquetas"
   }
 }

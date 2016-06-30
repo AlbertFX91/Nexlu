@@ -21,5 +21,9 @@ Meteor.methods({
     'deCodificaString': function (codificado) {
         var decodedString = Base64.decode(codificado);
         return decodedString;
+    },
+    'getUsernameById': function(id){
+        var user = Meteor.users.findOne(id, {fields:{username:1}});
+        return user.username;
     }
 });

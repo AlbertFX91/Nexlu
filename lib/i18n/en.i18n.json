@@ -167,5 +167,12 @@
     "info": "Info",
     "followed": "followed",
     "followers": "followers"
+  },
+
+  "timeline": {
+    "more-tags": "and other gamers",
+    "with": "With",
+    "no-tags": "No tags"
   }
+
 }
