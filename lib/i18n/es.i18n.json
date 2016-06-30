@@ -104,13 +104,22 @@
     "test_message": "Mensaje de prueba",
     "test_message1": "Mensaje numero 1",
     "test_message2": "Mensaje numero 2",
-    "test_message3": "Mensaje numero 3"
+    "test_message3": "Mensaje numero 3",
+
+    "email-sent": "¡El correo ha sido enviado!"
   },
 
   "thanks":{
     "register": "¡Gracias!",
     "text-register": "Te hemos enviado un mensaje a tu correo para activar tu cuenta. ¡Nos vemos pronto!"
   },
+  "contactUs":{
+    "header": "¡Póngase en contacto con nosotros!",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "sendMessage": "Enviar mensaje",
+
   "profile": {
 
     "friends": "amigos",
@@ -119,5 +128,6 @@
     "info": "Información",
     "followed": "siguiendo",
     "followers": "seguidores"
+  }
   }
 }

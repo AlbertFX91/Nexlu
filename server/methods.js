@@ -31,8 +31,16 @@ Meteor.methods({
             }
         });
     },
-    'send_email_verification': function(user){
+    'send_email_verification': function(user) {
         var userDB = Meteor.users.findOne({'username': user[0]});
         Accounts.sendVerificationEmail(userDB._id);
+    },
+    'send_message_about': function(info) {
+        Email.send({
+            to: "infonexlu@gmail.com",
+            from: info[0],
+            subject: info[0],
+            text: info[1] + "\n\n" + info[2]
+        });
     }
 });
