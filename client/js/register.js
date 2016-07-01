@@ -35,6 +35,8 @@ $.validator.addMethod("coincidencePassword", function() {
 });
 
 Template.register.onRendered(function(){
+    var paco =  TAPi18n.__("error.username_error_empty")
+    console.log(paco);
     $( "#register_form" ).validate({
         rules: {
             username: {
