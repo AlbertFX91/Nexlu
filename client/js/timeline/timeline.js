@@ -11,9 +11,10 @@ Template.timeline.events({
         var userId = Meteor.userId();
         var username = Meteor.user().username;
         var valido = true;
-        if (description == ""){
+        if (description.trim() == ""){
             var texto = TAPi18n.__("error.post-notBlank");
             document.getElementById('post-error').innerHTML = texto;
+            $("#post-label").removeClass("active");
             valido = false;
         }
         var publication = {
