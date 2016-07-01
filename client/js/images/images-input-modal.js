@@ -60,7 +60,7 @@ Template.images_input_modal.events({
         var filter = Session.get("filter-apply");
         if(filter!=""){
             var canvas = document.getElementById("img-edit-"+img_id);
-            var data = canvas.toDataURL();
+            var data = canvas.toDataURL();;
             if(data==""){
                 Errors.throwErrorTranslated("error.occurred")
             }else{
@@ -84,6 +84,9 @@ Template.images_input_modal.helpers({
     },
     editing: function(){
         return Session.get("img-prev-edit-id");
+    },
+    canSave: function(){
+        return Session.get("filter-apply");
     }
 });
 

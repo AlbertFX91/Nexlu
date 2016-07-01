@@ -30,8 +30,9 @@
                 </div>
 
                 <div style="margin-left:auto;margin-right:0;">
-                    <a class="waves-effect waves-light btn valign" id="button-save-img-edit"><i class="material-icons">done</i>
-                    </a>
+                    {{#if canSave}}
+                        <a class="waves-effect waves-light btn valign" id="button-save-img-edit"><i class="material-icons">done</i> </a>
+                    {{/if}}
                 </div>
 
             {{else}}
