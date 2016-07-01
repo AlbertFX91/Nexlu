@@ -61,10 +61,14 @@
 
 .edit-pub-modal {
     margin: 0px;
-
 }
 
 #edit-pub-modal {
     width: 40%;
+    background-color: transparent !important;
+}
+
+#remove-pub-modal {
+    width: 30%;
     background-color: transparent !important;
 }

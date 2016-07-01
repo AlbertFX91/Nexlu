@@ -37,6 +37,9 @@ Template.publication.events({
         textarea.value = this.description;
         $("#edit-post-label").addClass("active");
     },
+    'click #remove-pub': function () {
+        $('#remove-pub-modal').openModal();
+    },
     'submit .edit-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('editPublication').value;
@@ -60,6 +63,11 @@ Template.publication.events({
     'click #editPublication': function(e) {
         e.preventDefault();
         document.getElementById('edit-post-error').innerHTML = "";
+    },
+    'submit .remove-post': function(e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        Meteor.call('removePublication', publicationId);
     }
 
 });

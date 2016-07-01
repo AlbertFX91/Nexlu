@@ -69,7 +69,8 @@
     "timeline": "Muro",
     "contactUs": "Contacto",
     "faq": "FAQ",
-    "post": "Enviar"
+    "post": "Enviar",
+    "remove": "Borrar"
 
   },
 
@@ -197,6 +198,7 @@
     "no-tags": "Sin etiquetas",
     "whatsup": "¿Qué pasa?",
     "new-post": "Nueva publicación",
-    "edit-post": "Editar publicación"
+    "edit-post": "Editar publicación",
+    "remove-post": "¿Está seguro de eliminar esta publicación?"
   }
 }

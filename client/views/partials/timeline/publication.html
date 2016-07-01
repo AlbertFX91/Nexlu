@@ -35,12 +35,12 @@
                         </div>
                         <div id="remove-pub-modal" class="modal">
                             <div class="card web-color-1 edit-pub-modal">
-                                <div class="post-header text-color-1">
-                                    {{_ "timeline.edit-post"}}
-                                </div>
-                                <div class="post-action">
-                                    <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>
-                                </div>
+                                <form class="remove-post">
+                                    <div class="post-header text-color-1">
+                                        {{_ "timeline.remove-post"}}
+                                        <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.remove"}}<i class="material-icons right">mode_edit</i></button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     {{/if}}

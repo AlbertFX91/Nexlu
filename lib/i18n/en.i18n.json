@@ -59,7 +59,8 @@
     "timeline": "Timeline",
     "contactUs": "Contact Us",
     "faq": "FAQ",
-    "post": "Post"
+    "post": "Post",
+    "remove": "Delete"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -177,7 +178,8 @@
     "no-tags": "No tags",
     "whatsup": "What's up?",
     "new-post": "New post",
-    "edit-post": "Edit publication"
+    "edit-post": "Edit publication",
+    "remove-post": "are you sure to delete this publication?"
   }
 
 }
