@@ -1,0 +1,45 @@
+.header-contact-us{
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 4.44444rem;
+    margin-bottom: 18px;
+    color: white;
+    margin-top: 0px !important;
+    padding-top: 35px;
+}
+
+.contact-us-button{
+    height: 50px;
+    width: 250px;
+    background-color:#00C1C9;
+    border-radius: 45px;
+    font-size: 18px;
+    color:white;
+    border: none !important;
+    margin-bottom: 5px;
+    position: absolute;
+    margin-left: 30%;
+}
+
+#user-error, #email-error, #message-error{
+    text-align: left;
+    color: #e3157f !important;
+}
+
+@media(max-width: 800px){
+
+    .header-contact-us{
+        font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 35px;
+        line-height: 4.44444rem;
+        text-align: center;
+    }
+}
+
+#contact_us_form{
+    width: 100%
+}

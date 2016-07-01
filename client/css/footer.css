@@ -24,6 +24,25 @@ footer p {
     color: white;
 }
 
+.footer{
+    margin: 0px !important;
+}
+
+.footer-flex{
+    margin: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.footer-bottom{
+    flex:1;
+}
+
+.company-box{
+    margin: 5px 0 10px 0 !important;
+}
+
 .customizedFooter {
     background: rgba( 0, 0, 0, 0.2 );
 }
