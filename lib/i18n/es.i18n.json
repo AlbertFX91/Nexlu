@@ -123,21 +123,30 @@
     "text-register": "Te hemos enviado un mensaje a tu correo para activar tu cuenta. ¡Nos vemos pronto!"
   },
 
-  "contactUs":{
+  "contactUs": {
     "header": "¡Póngase en contacto con nosotros!",
     "name": "Nombre",
     "email": "Correo electrónico",
     "message": "Mensaje",
-    "sendMessage": "Enviar mensaje",
+    "sendMessage": "Enviar mensaje"
+  },
 
   "profile": {
-
     "friends": "amigos",
     "publications": "publicaciones",
     "photos": "fotos",
     "info": "Información",
     "followed": "siguiendo",
     "followers": "seguidores"
-  }
+  },
+
+  "faq": {
+    "header": "Faq",
+    "question_one": "¿En que consiste?",
+    "answer_one": "Somos una red social especializada en videojuegos. Aun estamos en desarrollo pero pronto tendremos mejoras enfocadas al area de los videojuegos!",
+    "question_two": "¿Qué puedo realizar?",
+    "answer_two": "El comportamiento es similar al de otras redes sociales, por lo que todo lo que puedes hacer en las demas puedes hacerlas aqui! La ventaja es que todo lo que encontrarás aqui estará relacionado con los videojuegos!",
+    "question_three": "¿Puedo formar parte del equipo?",
+    "answer_three": "Claro que si! Tenemos las puertas abiertas! No tienes mas que mandarnos un correo!"
   }
 }

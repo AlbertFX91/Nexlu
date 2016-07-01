@@ -118,5 +118,14 @@
     "info": "Info",
     "followed": "followed",
     "followers": "followers"
+  },
+  "faq": {
+    "header": "Faq",
+    "question_one": "What does it consist of?",
+    "answer_one": "We are a social network specializing in video games. We are still in development but will soon have focused improvements to the area of video games!",
+    "question_two": "What I can do?",
+    "answer_two": "The behavior is similar to other social networks, so all you can do in the other can make them here! The advantage is that all you'll find here will be related to video games!",
+    "question_three": "Can I join the team?",
+    "answer_three": "    Of course! We open doors! Simply send us an email!"
   }
 }
