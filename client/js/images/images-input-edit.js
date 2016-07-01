@@ -8,7 +8,14 @@ Template.images_preview_edit.helpers({
 });
 
 //SOURCE: http://tutorialzine.com/2013/02/instagram-filter-app/
-Template.images_preview_edit.onRendered(function(){
+Template.images_preview_edit.onRendered(function(e){
+    $("#filterContainer").find('ul').on('mousewheel',function(e, delta){
+        this.scrollLeft -= (delta * 50);
+        e.preventDefault();
+
+    });
+
+
     //En esta parte vamos a mostrar la imagen para que no se deforme y se ajuste en función del dispositivo
 
     //Obtenemos los valores de la pantalla

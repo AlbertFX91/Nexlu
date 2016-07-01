@@ -38,15 +38,6 @@ Template.img_filter.events({
             //console.log(r);
         });
     },
-
-    /*"click .apply-filter": function(e){
-     var image = ImagesLocals.find().fetch()[0];
-     var img_id = image._id;
-     Caman("#"+img_id, function () {
-     this["sunrise"]();
-     this.render();
-     });
-     },*/
     "click #filters>li>a": function(e){
         var filter = $(e.target).attr("id");
         var image = ImagesLocals.find().fetch()[0];
