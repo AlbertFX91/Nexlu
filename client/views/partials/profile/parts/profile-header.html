@@ -5,24 +5,25 @@
                 <div class="row">
                     <img src="/example.png" class="circle responsive-img img-profile">
                 </div>
-                <div class="bio">
-                    {{_ bio}}
-                    <a href="#" id="a_bio"><i style="visibility: hidden" id="bio" class="small material-icons">mode_edit</i></a>
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                            <h4 style="color:black">{{_ "bio.modify_bio"}}</h4>
-                            <div class="col m12 s12 input-field">
-                                <textarea id="textarea1" class="materialize-textarea" maxlength="150"></textarea>
-                                <label for="textarea1"></label>
+                <div class="row bio">
+                    <div class="col s12 m12">
+                        {{_ bio}}
+                        <a href="#" id="a_bio"><i style="visibility: hidden" id="bio" class="small material-icons">mode_edit</i></a>
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <h4 style="color:black">{{_ "bio.modify_bio"}}</h4>
+                                <div class="col m12 s12 input-field">
+                                    <textarea id="textarea1" class="materialize-textarea" maxlength="150"></textarea>
+                                    <label for="textarea1"></label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" id="edit_bio" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
-                            <a href="../me/info" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                            <div class="modal-footer">
+                                <a href="#!" id="edit_bio" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
+                                <a href="../me/info" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <br/>
                 <div class="row profile-username truncate">
                     {{username}}
                 </div>
