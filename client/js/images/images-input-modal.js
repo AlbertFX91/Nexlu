@@ -58,7 +58,7 @@ Template.images_input_modal.events({
         var img_id = Session.get("img-prev-edit-id");
         //Se guarda en el template images_input_edit
         var filter = Session.get("filter-apply");
-        if(filter!=""&&filter!="normal"){
+        if(filter!=""){
             var canvas = document.getElementById("img-edit-"+img_id);
             var data = canvas.toDataURL();
             if(data==""){
