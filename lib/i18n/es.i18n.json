@@ -59,8 +59,8 @@
     "password_error_maxlength": "20 caracteres como máximo",
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
-    "email_error_patron": "El patrón debe ser: ejemplo@ejemplo.com",
-    "password_error_patron": "El patrón debe ser: Ejemplo99",
+    "email_error_patron": "El correo debe ser del tipo ejemplo@ejemplo.com",
+    "password_error_patron": "La contraseña debe tener minúsculas, mayúsculas y números",
     "message_error_empty": "El mensaje no puede estar vacio",
     "message_error_minlength": "El mensaje debe tener más de 20 caracteres",
     "message_error_maxlength": "El mensaje no puede superar los 300 caracteres"

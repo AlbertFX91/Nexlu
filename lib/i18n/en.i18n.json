@@ -53,8 +53,8 @@
     "password_error_maxlength": "Maximun 20 characters",
     "email_error_empty": "Email empty",
     "email_error_duplicated": "Email used",
-    "email_error_patron": "The pattern must be: example@example.com",
-    "password_error_patron": "The pattern must be: Example99",
+    "email_error_patron": "The email must be like example@example.com",
+    "password_error_patron": "The password must have lowercase, uppercase and numbers",
     "message_error_empty": "Message can not be empty",
     "message_error_minlength": "Message must be 20 characters minimum",
     "message_error_maxlength": "Message must be 300 characters maximum"
