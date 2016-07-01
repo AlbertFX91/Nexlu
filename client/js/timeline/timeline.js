@@ -10,7 +10,12 @@ Template.timeline.events({
         var description = document.getElementById('newPublication').value;
         var userId = Meteor.userId();
         var username = Meteor.user().username;
-
+        var valido = true;
+        if (description == ""){
+            var texto = TAPi18n.__("error.post-notBlank");
+            document.getElementById('post-error').innerHTML = texto;
+            valido = false;
+        }
         var publication = {
             owner: [
                 {
@@ -25,6 +30,18 @@ Template.timeline.events({
             playersDislike: [],
             comments: []
         };
-        //Meteor.call('postPublication', publication);
+        if (valido) {
+            Meteor.call('postPublication', publication, function(err, response) {
+                if (!err){
+                    var textarea = document.getElementById('newPublication');
+                    textarea.value = "";
+                    $("#post-label").removeClass("active");
+                }
+            });
+        }
+    },
+    'click #newPublication': function(e) {
+        e.preventDefault();
+        document.getElementById('post-error').innerHTML = "";
     }
 })

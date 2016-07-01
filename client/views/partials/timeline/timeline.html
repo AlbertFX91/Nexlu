@@ -3,7 +3,6 @@
     <div class="container" style="margin-top: 3%">
         <div class="row">
             <div class="col s12 m4" style="">
-
                 <div class="card web-color-1">
                     <div class="card-content white-text">
                         <img src="fjv.png" class="circle" height="auto" width="100%" style="margin-right: auto;margin-left: auto;max-width: 150px;max-height: 150px; display: block">
@@ -12,35 +11,28 @@
                 </div>
                 <div class="card web-color-1">
                     <div class="card-content white-text">
-
                     </div>
                 </div>
             </div>
             <div class="col s12 m8" style="">
-
-
                 <div class="card web-color-1">
                     <form class="confirm-post">
-                        <div class="post-header">
+                        <div class="post-header text-color-1">
                             <span id="post-error"></span>
-                            New post
+                            {{_ "timeline.new-post"}}
                         </div>
                         <div class="white-text post-content">
-
                                 <div class="input-field col s12 post-input">
                                     <textarea id="newPublication" class="materialize-textarea"></textarea>
-                                    <label for="newPublication" style="text-align: left !important;">{{_ "timeline.whatsup"}}</label>
+                                    <label id="post-label" for="newPublication" style="text-align: left !important;">{{_ "timeline.whatsup"}}</label>
                                 </div>
-
                         </div>
                         <div class="post-action">
-                            <div>tags</div>
+                            <div></div> <!-- TAGS -->
                             <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>
                         </div>
                     </form>
                 </div>
-
-
                 {{#each publications}}
                     {{> publication}}
                 {{/each}}
