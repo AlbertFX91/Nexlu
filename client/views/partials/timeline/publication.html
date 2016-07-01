@@ -13,9 +13,7 @@
                             <a id="edit-pub" href="#"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a>
                             <a id="remove-pub"><i class="fa fa-trash fa-2" aria-hidden="true"></i></a>
                         </div>
-
                         <div id="edit-pub-modal" class="modal">
-
                             <div class="card web-color-1 edit-pub-modal">
                                 <form class="edit-post">
                                     <div class="post-header text-color-1">
@@ -34,7 +32,16 @@
                                     </div>
                                 </form>
                             </div>
-
+                        </div>
+                        <div id="remove-pub-modal" class="modal">
+                            <div class="card web-color-1 edit-pub-modal">
+                                <div class="post-header text-color-1">
+                                    {{_ "timeline.edit-post"}}
+                                </div>
+                                <div class="post-action">
+                                    <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>
+                                </div>
+                            </div>
                         </div>
                     {{/if}}
                 </div>
