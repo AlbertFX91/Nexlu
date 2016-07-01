@@ -39,7 +39,8 @@
     "email_error_empty": "Email empty",
     "email_error_duplicated": "Email used",
     "email_error_patron": "The pattern must be: example@example.com",
-    "password_error_patron": "The password must contain 6 characters (one uppercase and lowercase letter)"
+    "password_error_patron": "The password must contain 6 characters (one uppercase and lowercase letter)",
+    "post-notBlank": "Post cannot be blank"
   },
   "tag": {
     "company": "COMPANY",
@@ -57,7 +58,8 @@
     "browser": "Browser",
     "timeline": "Timeline",
     "contactUs": "Contact Us",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "post": "Post"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -172,7 +174,8 @@
   "timeline": {
     "more-tags": "and other gamers",
     "with": "With",
-    "no-tags": "No tags"
+    "no-tags": "No tags",
+    "whatsup": "What's up?"
   }
 
 }
