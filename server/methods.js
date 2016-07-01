@@ -33,7 +33,14 @@ Meteor.methods({
             }
         })
     },
-    'removePublication': function(publicationId){
+    'removePublication': function(publicationId) {
         Publications.remove(publicationId);
+    },
+    'postPublication': function (publication) {
+        Publications.insert(publication, function(err, response){
+            if(err){
+                console.log(err);
+            }
+        })
     }
 });
