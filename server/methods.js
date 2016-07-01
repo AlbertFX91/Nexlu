@@ -40,12 +40,15 @@ Meteor.methods({
     },
 
     'checkUniqueUser': function(usernameRegister){
+        /**console.log("UsernameAEntrar: "+usernameRegister);
         var userDB = Meteor.users.find({'username': usernameRegister});
+        console.log(userDB);
         var result = true;
         if(typeof userDB == 'undefined'){
             result = false;
         }
-        return result;
+        return result;*/
+        return Meteor.users.find({'username': usernameRegister}).fetch().length==0
     },
 
     'checkUniqueEmail': function(emailRegister){

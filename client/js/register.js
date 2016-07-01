@@ -14,7 +14,11 @@ Template.register.events({
 
 $.validator.addMethod("usernameUnique", function() {
     var usernameRegister = document.getElementById('username').value;
-    var result = Meteor.call("checkUniqueUser", usernameRegister);
+    var result = "ard";
+    Meteor.call("checkUniqueUser", usernameRegister, function(e,r){
+        Session.set("usernameUnique",r);
+    });
+    var result = Session.get("usernameUnique");
     return result;
 });
 
@@ -43,7 +47,7 @@ Template.register.onRendered(function(){
                 required: true,
                 minlength: 2,
                 maxlength: 15,
-                //usernameUnique: true
+                usernameUnique: true
             },
             email: {
                 required: true,
@@ -66,7 +70,7 @@ Template.register.onRendered(function(){
                 required: TAPi18n.__("error.username_error_empty"),
                 minlength: TAPi18n.__("error.username_error_minlength"),
                 maxlength: TAPi18n.__("error.username_error_maxlength"),
-                //usernameUnique: TAPi18n.__("error.username_error_duplicated")
+                usernameUnique: TAPi18n.__("error.username_error_duplicated")
             },
             email: {
                 required: TAPi18n.__("error.email_error_empty"),
