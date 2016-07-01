@@ -2,6 +2,13 @@ Template.publication.helpers({
     tagged_pretty: function(){
         return Prettify.compactTags(this.playersTagged);
     },
+    isMine: function() {
+        if (this.owner[0].id.trim() === Meteor.userId().trim())
+            return true;
+        return false;
+    },
+
+
 
 
     // TODO: Esto hay que hacerlo en el lado del server (methods):

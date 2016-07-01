@@ -9,6 +9,11 @@
     align-items: center;
 }
 
+.publication-header-center {
+    flex:1;
+    display:flex;
+}
+
 .publication-description {
     margin-top: 10px !important;
 }
@@ -33,5 +38,23 @@
 
 .card a:hover{
     color: #7db3ce !important;
+    cursor: pointer !important;
+}
+
+.edit-publication {
+    margin-left: 10px;
+}
+
+.edit-publication a {
+    margin-left: 5px;
+}
+
+#edit-pub:hover {
+    color: #76ce88 !important;
+    cursor: pointer !important;
+}
+
+#remove-pub:hover {
+    color: #b1070c !important;
     cursor: pointer !important;
 }

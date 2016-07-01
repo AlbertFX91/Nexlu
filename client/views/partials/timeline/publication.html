@@ -6,8 +6,14 @@
                 <a>
                     <img src="example.png" class="circle" height="auto" width="100%" style="max-width: 50px;max-height: 50px; vertical-align: middle;margin-right: 10px">
                 </a>
-                <div style="flex:1">
+                <div class="publication-header-center">
                     <a>{{owner.[0].username}}</a>
+                    {{#if isMine}}
+                        <div class="edit-publication">
+                            <a id="edit-pub"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a>
+                            <a id="remove-pub"><i class="fa fa-trash fa-2" aria-hidden="true"></i></a>
+                        </div>
+                    {{/if}}
                 </div>
                 <span data-livestamp="{{createdAt}}"></span>
             </div>
