@@ -1,5 +1,5 @@
 Template.timeline.helpers({
-    publications: function () {
+    publications: function() {
         var user_id = Meteor.userId();
 
         return Publications.find({},{sort: {createdAt: -1}});

@@ -46,7 +46,8 @@
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
     "email_error_patron": "El patrón debe ser: ejemplo@ejemplo.com",
-    "password_error_patron": "La contraseña debe contener 6 caracteres (una letra en mayúscula y una en minúsculas)"
+    "password_error_patron": "La contraseña debe contener 6 caracteres (una letra en mayúscula y una en minúsculas)",
+    "post-notBlank": "La publicación no debe estar vacía"
 
   },
 
@@ -67,7 +68,9 @@
     "browser": "Buscador",
     "timeline": "Muro",
     "contactUs": "Contacto",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "post": "Enviar",
+    "remove": "Borrar"
 
   },
 
@@ -192,6 +195,10 @@
   "timeline": {
     "more-tags": "y otros jugadores",
     "with": "Con",
-    "no-tags": "Sin etiquetas"
+    "no-tags": "Sin etiquetas",
+    "whatsup": "¿Qué pasa?",
+    "new-post": "Nueva publicación",
+    "edit-post": "Editar publicación",
+    "remove-post": "¿Está seguro de eliminar esta publicación?"
   }
 }
