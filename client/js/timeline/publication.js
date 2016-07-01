@@ -39,7 +39,8 @@ Template.publication.events({
     },
     'click #remove-pub': function () {
         $('#remove-pub-modal').openModal();
-    },
+    }
+    ,
     'submit .edit-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('editPublication').value;
@@ -67,7 +68,12 @@ Template.publication.events({
     'submit .remove-post': function(e) {
         e.preventDefault();
         var publicationId = this._id;
-        Meteor.call('removePublication', publicationId);
+        Meteor.call('removePublication', publicationId, function(err, response){
+            if (!err){
+                $('#remove-pub-modal').closeModal();
+                $('.lean-overlay').remove();
+            }
+        });
     }
 
 });
