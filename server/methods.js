@@ -25,5 +25,12 @@ Meteor.methods({
     'getUsernameById': function(id){
         var user = Meteor.users.findOne(id, {fields:{username:1}});
         return user.username;
+    },
+    'editPublication': function(publicationId, description){
+        Publications.update(publicationId, {
+            $set: {
+                description: description
+            }
+        })
     }
 });

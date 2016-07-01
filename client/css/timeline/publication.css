@@ -58,3 +58,13 @@
     color: #b1070c !important;
     cursor: pointer !important;
 }
+
+.edit-pub-modal {
+    margin: 0px;
+
+}
+
+#edit-pub-modal {
+    width: 40%;
+    background-color: transparent !important;
+}
