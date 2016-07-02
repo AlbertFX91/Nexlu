@@ -12,15 +12,18 @@
 .modal-col-img{
     flex: 3;
     -webkit-flex: 3;
-    /*align-items: center;
-    -webkit-align-items: center;
-    justify-content: center;
-    -webkit-justify-content: center;*/
     flex-direction: column;
     -webkit-flex-direction: column;
     flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap;
     display: flex;
+
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ffffff 0%, #e8e8e8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ffffff 0%,#e8e8e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ffffff 0%,#e8e8e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    
 }
 .row-1{
     align-items: center;

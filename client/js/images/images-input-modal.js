@@ -46,6 +46,7 @@ Template.images_input_modal.events({
         var img_id = img_div[0].id.split("-")[2];
 
         Session.set("img-prev-edit-id", img_id);
+        Session.set("filter-apply", false);
     },
 
     "click #button-exit-edit": function(){
