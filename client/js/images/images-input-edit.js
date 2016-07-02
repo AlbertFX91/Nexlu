@@ -89,6 +89,18 @@ Template.images_preview_edit.events({
             this.render();
             Session.set("filter-apply", filter);
         });
+    },
+    "click #show-filters": function(e){
+        var div = $("#filters-div")
+        if(div.css("display")=="none"){
+            $("#filters-div").css("display", "block");
+        }else{
+            //div.addClass("fadeOutDown");
+            div.removeClass("fadeInUp").addClass("fadeOutDown");
+            setTimeout(function(){
+                div.css("display","none").removeClass("fadeOutDown").addClass("fadeInUp");
+            }, 800);
+        }
     }
 });
 

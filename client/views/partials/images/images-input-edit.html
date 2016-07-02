@@ -5,7 +5,7 @@
                 <div class="img-container-tag">
                     <img id="img-edit-{{img._id}}" src="{{img.result}}" data-id="{{img._id}}" />
                 </div>
-                <div class="filter-container">
+                <div class="filter-container animated fadeInUp" id="filters-div" style="display:none">
                     <div id="filterContainer" style="display: block;">
                         <ul id="filters">
                             <li> <a href="#" id="normal" class="">Normal</a> </li>
@@ -34,6 +34,7 @@
         </div>
         <div class="blue modal-col-opt">
             &nbsp;
+            <a class="waves-effect waves-light btn" id="show-filters">Filters to me!</a>
         </div>
         <!--<div class="img-container col s10">
             <div class="row valign-wrapper">
