@@ -6,7 +6,7 @@
     box-sizing: border-box;
     z-index: 5;
 }
-
+/*
 #filterContainer{
     width: 650px;
     margin: 0 auto 0;
@@ -141,4 +141,4 @@
 }
 #filters li #concentrate {
     background-image: url('filters/concentrate.png');
-}
+}*/
