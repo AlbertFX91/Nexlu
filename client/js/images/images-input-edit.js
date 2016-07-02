@@ -2,7 +2,6 @@ Template.images_preview_edit.helpers({
    img: function(){
        var id = Session.get("img-prev-edit-id");
        var result = ImagesLocals.findOne(id);
-       console.log(result);
        return result;
    }
 });
