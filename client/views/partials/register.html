@@ -7,7 +7,7 @@
                     <h1 id="intro_register" class="s12">"{{_ "register_header"}}"</h1>
                     <h5 id="intro_register2">{{_ "register_header2"}}</h5>
                     <div class="col s12">
-                        <div class="row">
+                        <div class="row usre">
                             <div class="col m4 s12" >
                                 <label for="username">{{_ "username"}}:</label>
                             </div>
@@ -25,7 +25,12 @@
                         </div>
                         <div class="row">
                             <div class="col m4 s12" >
-                                <label for="password_register">{{_ "password"}}:</label>
+                                <span class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{_ "error.password_error_patron"}}">
+                                        <label for="password_register">
+                                            <i class="material-icons">info_outline</i>
+                                            {{_ "password"}}:
+                                        </label>
+                                </span>
                             </div>
                             <div class="col m8 s12">
                                 <input name="password_register"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password_register" class="form-control" type="password">
@@ -33,7 +38,9 @@
                         </div>
                         <div class="row">
                             <div class="col m4 s12" >
-                                <label for="confirmpassword">{{_ "confirm_password"}}:</label>
+                                <label for="confirmpassword">
+                                    {{_ "confirm_password"}}:
+                                </label>
                             </div>
                             <div class="col m8 s12">
                                 <input name="confirmpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirmpassword" class="form-control" type="password">

@@ -14,22 +14,18 @@ Template.register.events({
 
 $.validator.addMethod("usernameUnique", function() {
     var usernameRegister = document.getElementById('username').value;
-    var result = false;
     Meteor.call("checkUniqueUser", usernameRegister, function(e,r){
         Session.set("usernameUnique",r);
     });
-    var result = Session.get("usernameUnique");
-    return result;
+    return Session.get("usernameUnique");
 });
 
 $.validator.addMethod("emailUnique", function() {
     var emailRegister = document.getElementById('email').value;
-    var result = false;
     Meteor.call("checkUniqueEmail", emailRegister, function(e,r){
         Session.set("emailUnique",r);
     });
-    var result = Session.get("emailUnique");
-    return result;
+    return Session.get("emailUnique");
 });
 
 $.validator.addMethod("coincidencePassword", function() {
@@ -43,8 +39,7 @@ $.validator.addMethod("coincidencePassword", function() {
 });
 
 Template.register.onRendered(function(){
-    var paco =  TAPi18n.__("error.username_error_empty")
-    console.log(paco);
+    $('.tooltipped').tooltip({delay: 50});
     $( "#register_form" ).validate({
         rules: {
             username: {
@@ -84,13 +79,13 @@ Template.register.onRendered(function(){
                 required: TAPi18n.__("error.password_error_empty"),
                 minlength: TAPi18n.__("error.password_error_minlength"),
                 maxlength: TAPi18n.__("error.password_error_maxlength"),
-                pattern: TAPi18n.__("error.password_error_patron")
+                pattern: TAPi18n.__("error.password_error_pattern"),
             },
             confirmpassword: {
                 required: TAPi18n.__("error.confirmpassword_error_empty"),
                 minlength: TAPi18n.__("error.password_error_minlength"),
                 maxlength: TAPi18n.__("error.password_error_maxlength"),
-                pattern: TAPi18n.__("error.password_error_patron"),
+                pattern: TAPi18n.__("error.password_error_pattern"),
                 coincidencePassword: TAPi18n.__("error.password_error_coincidence")
             }
         }
