@@ -107,7 +107,8 @@
   },
 
   "images": {
-    "upload-photos": "Subida de fotos"
+    "upload-photos": "Subida de fotos",
+    "filters": "filtros"
   },
 
   "profile": {

@@ -12,11 +12,34 @@
 .modal-col-img{
     flex: 3;
     -webkit-flex: 3;
+    /*align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;*/
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    display: flex;
+}
+.row-1{
     align-items: center;
     -webkit-align-items: center;
     justify-content: center;
     -webkit-justify-content: center;
     display: flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    margin-bottom: auto;
+    flex: 5;
+}
+.row-2{
+    display: flex;
+    align-self: center;
+    -webkit-align-self: center;
+    margin-top: auto;
 }
 .img-container-center{
     display: flex;
