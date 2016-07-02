@@ -1,6 +1,41 @@
 <template name="images_preview_edit">
-    <div class="modal-images-edit row" style="margin:30px">
-        <div class="img-container col s10">
+    <div class="modal-images-edit" style="">
+        <div class="red modal-col-img">
+            <div class="img-container-center">
+                <div class="img-container-tag">
+                    <img id="img-edit-{{img._id}}" src="{{img.result}}" data-id="{{img._id}}" />
+                </div>
+                <div class="filter-container">
+                    <div id="filterContainer" style="display: block;">
+                        <ul id="filters">
+                            <li> <a href="#" id="normal" class="">Normal</a> </li>
+                            <li> <a href="#" id="vintage" class="">Vintage</a> </li>
+                            <li> <a href="#" id="lomo" class="">Lomo</a> </li>
+                            <li> <a href="#" id="clarity" class="">Clarity</a> </li>
+                            <li> <a href="#" id="sinCity" class="">Sin City</a> </li>
+                            <li> <a href="#" id="sunrise" class="">Sunrise</a> </li>
+                            <li> <a href="#" id="crossProcess" class="">Cross Process</a> </li>
+                            <li> <a href="#" id="orangePeel" class="">Orange Peel</a> </li>
+                            <li> <a href="#" id="love" class="">Love</a> </li>
+                            <li> <a href="#" id="grungy" class="">Grungy</a> </li>
+                            <li> <a href="#" id="jarques" class="">Jarques</a> </li>
+                            <li> <a href="#" id="pinhole" class="">Pinhole</a> </li>
+                            <li> <a href="#" id="oldBoot" class="">Old Boot</a> </li>
+                            <li> <a href="#" id="glowingSun" class="">Glowing Sun</a> </li>
+                            <li> <a href="#" id="hazyDays" class="">Hazy Days</a> </li>
+                            <li> <a href="#" id="herMajesty" class="">Her Majesty</a> </li>
+                            <li> <a href="#" id="nostalgia" class="">Nostalgia</a> </li>
+                            <li> <a href="#" id="hemingway" class="active">Hemingway</a> </li>
+                            <li> <a href="#" id="concentrate">Concentrate</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blue modal-col-opt">
+            &nbsp;
+        </div>
+        <!--<div class="img-container col s10">
             <div class="row valign-wrapper">
                 <div class="img-container-center valign" style="width:100%;text-align:center">
                     <img id="img-edit-{{img._id}}" src="{{img.result}}" data-id="{{img._id}}" />
@@ -35,7 +70,7 @@
         </div>
         <div class="img-options blue-grey lighten-5 col s2">
             <h1>The best picture!</h1>
-        </div>
+        </div>-->
 
 
     </div>
