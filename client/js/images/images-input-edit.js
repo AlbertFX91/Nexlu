@@ -108,6 +108,9 @@ Template.images_preview_edit.events({
     "click #edit-img-description-icon": function () {
         Session.set("img-prev-edit-description", true);
     },
+    "click #img-edit-description-cancel": function() {
+        Session.set("img-prev-edit-description", false);
+    },
     "click #img-edit-description-save": function() {
         var description = document.getElementById("img-edit-description-input").value;
         var id = Session.get("img-prev-edit-id");

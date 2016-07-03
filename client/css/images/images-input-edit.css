@@ -138,7 +138,7 @@
     color: black;
 }
 
-#img-edit-description-save{
+#img-edit-description-save, #img-edit-description-cancel{
     padding: 0 1rem !important;
     border-radius: 10px !important;
 }
