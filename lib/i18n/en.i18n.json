@@ -23,7 +23,8 @@
     "undo": "Undo",
     "login_success": "You're logged!",
     "logout_success": "See you soon!",
-    "verify_thanks": "Thanks for verify your email!"
+    "verify_thanks": "Thanks for verify your email!",
+    "description_added": "Description added"
   },
   "error": {
     "not_found": "404. Oops, the route could not be found.",
@@ -40,7 +41,8 @@
     "email_error_duplicated": "Email used",
     "email_error_patron": "The pattern must be: example@example.com",
     "password_error_patron": "The password must contain 6 characters (one uppercase and lowercase letter)",
-    "occurred": "Oops, an error has occurred"
+    "occurred": "Oops, an error has occurred",
+    "description_empty": "Add a description"
   },
   "tag": {
     "company": "COMPANY",
@@ -89,7 +91,8 @@
 
   "images": {
     "upload-photos": "Upload photos",
-    "filters": "filters"
+    "filters": "filters",
+    "description": "Description"
   },
 
   "profile": {

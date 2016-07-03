@@ -60,6 +60,8 @@
     flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap;
     padding-left: 8px;
+    align-items: stretch;
+    -webkit-align-items: stretch;
 }
 
 .img-container-tag{
@@ -110,6 +112,37 @@
     -webkit-justify-content: center;
     display: flex;
 }
+#img-edit-description-form{
+    display: flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height:109px;
+}
+#img-edit-description-form-save{
+    display: flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+.img-edit-input-col{
+    display: flex;
+    flex: 4;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+#img-edit-description-input{
+    color: black;
+}
+
+#img-edit-description-save{
+    padding: 0 1rem !important;
+    border-radius: 10px !important;
+}
+
 @media (max-width: 1200px) {
     #filterContainer{
         width: 350px !important;
@@ -134,7 +167,7 @@
     }
 }
 
-/** FILTROS **/
+/************************ FILTROS ************************/
 
 #filterContainer{
     width: 650px;

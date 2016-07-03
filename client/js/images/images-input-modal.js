@@ -39,7 +39,7 @@ Template.images_input_modal.events({
     },
 
     "click .img-preview-edit": function(e){
-        var x = $(e.target)
+        var x = $(e.target);
         //Recuperamos el id del div donde se está llamando al evento
         var img_div = x.parent().parent().next();
         //El id es img-preview-IdDeLaImagen. Por lo que recuperamos el IdDeLaImagen

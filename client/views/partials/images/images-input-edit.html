@@ -42,15 +42,24 @@
             <div class="img-edit-description-container">
                 <div class="img-edit-description-header">
                     <div class="img-edit-description-title">
-                        <h5>Description</h5>
+                        <h5>{{_ "images.description"}}</h5>
                     </div>
                     <div>
-                        <a id="edit-img-description-icon" href="#"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a>
+                        {{#if editing_description}}
+                            <a class="waves-effect waves-light btn" id="img-edit-description-save"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                        {{else}}
+                            <a id="edit-img-description-icon" href="#"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a>
+                        {{/if}}
                     </div>
 
                 </div>
                 <div class="img-edit-description-val">
                     {{#if editing_description}}
+                        <form id="img-edit-description-form" class="img-edit-description-form">
+                            <div class="img-edit-input-col">
+                                <textarea id="img-edit-description-input" class="materialize-textarea">{{img.description}}</textarea>
+                            </div>
+                        </form>
                     {{else}}
                         {{img.description}}
                     {{/if}}

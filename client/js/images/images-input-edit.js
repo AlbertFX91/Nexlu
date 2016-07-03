@@ -1,14 +1,17 @@
 Template.images_preview_edit.helpers({
-   img: function(){
-       var id = Session.get("img-prev-edit-id");
-       var result = ImagesLocals.findOne(id);
-       return result;
-   }
+    img: function(){
+        var id = Session.get("img-prev-edit-id");
+        var result = ImagesLocals.findOne(id);
+        return result;
+    },
+    editing_description: function(){
+        return Session.get("img-prev-edit-description");
+    }
 });
 
 //SOURCE: http://tutorialzine.com/2013/02/instagram-filter-app/
 Template.images_preview_edit.onRendered(function(e){
-    console.log(Session.get("img-prev-edit-id"));
+    Session.set("img-prev-edit-description", false);
     $("#filterContainer").find('ul').on('mousewheel',function(e, delta){
         this.scrollLeft -= (delta * 50);
         e.preventDefault();
@@ -103,7 +106,20 @@ Template.images_preview_edit.events({
         }
     },
     "click #edit-img-description-icon": function () {
-
+        Session.set("img-prev-edit-description", true);
+    },
+    "click #img-edit-description-save": function() {
+        var description = document.getElementById("img-edit-description-input").value;
+        var id = Session.get("img-prev-edit-id");
+        if(description.length==0){
+            Errors.throwErrorTranslated("error.description_empty");
+        }else{
+            ImagesLocals.update(id, {
+                $set: { description: description }
+            });
+            Session.set("img-prev-edit-description", false);
+            Toasts.throwTrans("toast.description_added");
+        }
     }
 });
 
