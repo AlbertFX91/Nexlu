@@ -28,7 +28,8 @@
   "close": "Cerrar",
 
   "bio":{
-    "modify_bio": "Modificar biografía"
+    "modify_bio": "Modificar biografía",
+    "add_bio": "Puedes añadir una breve biografía"
   },
 
   "toast": {

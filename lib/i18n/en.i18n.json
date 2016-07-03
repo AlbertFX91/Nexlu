@@ -26,7 +26,8 @@
   "close": "Close",
 
   "bio":{
-    "modify_bio": "Modify biography"
+    "modify_bio": "Modify biography",
+    "add_bio": "You can add a brief biography"
   },
 
   "toast": {

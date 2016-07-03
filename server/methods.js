@@ -12,7 +12,7 @@ Meteor.methods({
                 });
                 Meteor.users.update(userId, {
                     $set: {
-                        bio: TAPi18n.__(" "),
+                        bio: TAPi18n.__("bio.add_bio"),
                         followers: [],
                         followed: []
                     }
