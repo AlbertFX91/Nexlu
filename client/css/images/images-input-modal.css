@@ -96,6 +96,13 @@
     0% {transform: scale(1);}
     100% {transform: scale(1.1);}
 }
+
+.modal-img-saving-images{
+    background-color: deepskyblue;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
 .modal-img-footer{
     background-color: #263238;
     border-radius: 0 0 2px 2px;

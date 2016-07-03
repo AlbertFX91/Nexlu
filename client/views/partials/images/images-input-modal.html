@@ -22,6 +22,11 @@
             {{/if}}
 
         </div>
+        {{#if uploadingImages}}
+            <div class="modal-img-saving-images animated fadeInUp">
+                Saving the images
+            </div>
+        {{/if}}
         <div class="modal-img-footer valign-wrapper">
             {{#if editing}}
                 <div style="margin-left:0;margin-right:auto;">

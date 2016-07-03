@@ -76,7 +76,8 @@ Template.images_input_modal.events({
     },
 
     "click #button-save-images": function(){
-        var images = ImagesLocals.find({}).fetch()
+        Session.set("uploadingImages", true);
+        /*var images = ImagesLocals.find({}).fetch()
         _.each(images, function(img){
             var img_file = Util.dataURItoFile(img);
             S3.upload({
@@ -85,7 +86,7 @@ Template.images_input_modal.events({
             },function(e,r){
                 console.log(r);
             });
-        });
+        });*/
     }
 });
 
@@ -104,9 +105,15 @@ Template.images_input_modal.helpers({
     },
     cantSaveS3: function(){
         return ImagesLocals.find({}).fetch().length != 0;
+    },
+    uploadingImages: function(){
+        return Session.get("uploadingImages");
     }
 });
 
+Template.images_input_modal.onRendered(function(){
+    Session.set("uploadingImages", false);
+})
 
 function saveImgInBrowserByFile(file){
     //Declaramos el objeto FileReader que usaremos para convertir el fichero en una URL para poder previsualizarlo y almacenarlo en la collection
