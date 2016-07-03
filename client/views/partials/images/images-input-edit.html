@@ -44,10 +44,16 @@
                     <div class="img-edit-description-title">
                         <h5>Description</h5>
                     </div>
-                    <div><a id="edit-img-description-icon" href="#"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a></div>
+                    <div>
+                        <a id="edit-img-description-icon" href="#"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a>
+                    </div>
+
                 </div>
                 <div class="img-edit-description-val">
-                    This is my awesome description men!
+                    {{#if editing_description}}
+                    {{else}}
+                        {{img.description}}
+                    {{/if}}
                 </div>
             </div>
         </div>

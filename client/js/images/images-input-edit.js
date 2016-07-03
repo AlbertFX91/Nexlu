@@ -8,6 +8,7 @@ Template.images_preview_edit.helpers({
 
 //SOURCE: http://tutorialzine.com/2013/02/instagram-filter-app/
 Template.images_preview_edit.onRendered(function(e){
+    console.log(Session.get("img-prev-edit-id"));
     $("#filterContainer").find('ul').on('mousewheel',function(e, delta){
         this.scrollLeft -= (delta * 50);
         e.preventDefault();
@@ -100,6 +101,9 @@ Template.images_preview_edit.events({
                 div.css("display","none").removeClass("fadeOutDown").addClass("fadeInUp");
             }, 800);
         }
+    },
+    "click #edit-img-description-icon": function () {
+
     }
 });
 
