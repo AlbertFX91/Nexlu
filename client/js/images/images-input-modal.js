@@ -73,6 +73,13 @@ Template.images_input_modal.events({
             }
             Session.set("img-prev-edit-id", false);
         }
+    },
+
+    "click #button-save-images": function(){
+        var images = ImagesLocals.find({}).fetch()
+        _.each(images, function(img){
+
+        });
     }
 });
 
@@ -88,6 +95,9 @@ Template.images_input_modal.helpers({
     },
     canSave: function(){
         return Session.get("filter-apply");
+    },
+    cantSaveS3: function(){
+        return ImagesLocals.find({}).fetch().length != 0;
     }
 });
 
