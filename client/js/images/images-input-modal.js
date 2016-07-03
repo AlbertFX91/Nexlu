@@ -78,7 +78,13 @@ Template.images_input_modal.events({
     "click #button-save-images": function(){
         var images = ImagesLocals.find({}).fetch()
         _.each(images, function(img){
-
+            var img_file = Util.dataURItoFile(img);
+            S3.upload({
+                file:img_file,
+                path:"users"
+            },function(e,r){
+                console.log(r);
+            });
         });
     }
 });
