@@ -98,7 +98,6 @@ function saveImgInBrowserByFile(file){
     reader.onload = function (e){
         //Declaramos que una vez cargado un fichero, insertaremos en la collection local ImagesLocales los datos del fichero,
         //así como los datos del fichero en una url, y un atributo auxiliar que nos indicará si se ha subido o no
-        console.log(file);
         var id = ImagesLocals.insert(_.extend({result: e.target.result, uploaded: false, description: file.name},file));
 
     };
