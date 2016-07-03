@@ -104,12 +104,12 @@
 
   "email": {
     "email": "Correo electrónico",
-    "verification-email_subject": "[NEXLU] El último paso!",
-    "verification-email_title": "Este es el último paso, %s!",
-    "verification-email_message1": "Muchas gracias por unirte a nosotros! Estamos encantados de tu llegada!",
+    "verification-email_subject": "[NEXLU] El último paso.",
+    "verification-email_title": "¡Este es el último paso, %s!",
+    "verification-email_message1": "Muchas gracias por unirte a nosotros. Estamos encantados de tu llegada!",
     "verification-email_message2": "Lo ultimo a realizar para usar nuestra app es simplemente clicar <a href='%s'>aquí</a> y te redigiremos a <strong>Nexlu</strong>",
-    "verification-email_message3": "Esperemos que disfrutes y si te gusta nuestra app, díselo a tus colegas gamers!",
-    "verification-email_message4": "Nos vemos pronto!",
+    "verification-email_message3": "Esperemos que disfrutes y si te gusta nuestra app, ¡díselo a tus colegas gamers!",
+    "verification-email_message4": "¡Nos vemos pronto!",
 
     "test_message": "Mensaje de prueba",
     "test_message1": "Mensaje numero 1",
@@ -148,7 +148,7 @@
     "question_two": "¿Qué puedo realizar?",
     "answer_two": "El comportamiento es similar al de otras redes sociales, por lo que todo lo que puedes hacer en las demas puedes hacerlas aqui! La ventaja es que todo lo que encontrarás aqui estará relacionado con los videojuegos!",
     "question_three": "¿Puedo formar parte del equipo?",
-    "answer_three": "Claro que si! Tenemos las puertas abiertas! No tienes mas que mandarnos un correo!"
+    "answer_three": "¡Claro que si! Tenemos las puertas abiertas. No tienes mas que mandarnos un correo."
   },
 
   "terms": {

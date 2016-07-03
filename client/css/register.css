@@ -96,4 +96,10 @@
     div #intro_register2{
         float: left;
     }
+    div .logbutton{
+        margin-left: 25%;
+    }
+    div #username-label, #confirmpassword-label, #email-label, #password-label{
+        text-align: left;
+    }
 }
