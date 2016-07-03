@@ -92,7 +92,8 @@
   "images": {
     "upload-photos": "Upload photos",
     "filters": "filters",
-    "description": "Description"
+    "description": "Description",
+    "uploaded": "Images uploaded"
   },
 
   "profile": {

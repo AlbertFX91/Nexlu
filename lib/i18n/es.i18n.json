@@ -111,7 +111,8 @@
   "images": {
     "upload-photos": "Subida de fotos",
     "filters": "filtros",
-    "description": "Descripción"
+    "description": "Descripción",
+    "uploaded": "Imágenes guardadas"
   },
 
   "profile": {

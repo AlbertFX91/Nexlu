@@ -77,8 +77,9 @@ Template.images_input_modal.events({
 
     "click #button-save-images": function(){
         Session.set("uploadingImages", true);
-        /*var images = ImagesLocals.find({}).fetch()
+        var images = ImagesLocals.find({}).fetch()
         _.each(images, function(img){
+            console.log("Guardando imagen!");
             var img_file = Util.dataURItoFile(img);
             S3.upload({
                 file:img_file,
@@ -86,7 +87,7 @@ Template.images_input_modal.events({
             },function(e,r){
                 console.log(r);
             });
-        });*/
+        });
     }
 });
 
