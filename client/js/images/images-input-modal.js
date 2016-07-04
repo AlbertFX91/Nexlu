@@ -83,7 +83,12 @@ Template.images_input_modal.events({
             },function(e,r){
                 var numImagesUploaded =  Session.get("numImagesUploaded");
                 Session.set("numImagesUploaded", numImagesUploaded+1);
-                //console.log(r);
+                var data = {
+                    url: r.url,
+                    description: img.description
+                };
+                Meteor.call("image.new", data, function(e,r){
+                });
             });
         });
         Tracker.autorun(function(){
