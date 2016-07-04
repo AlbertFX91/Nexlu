@@ -379,7 +379,7 @@ function createImages(){
     var user4 = Meteor.users.findOne({username: 'user4'});
 
     //User 1
-    Images.insert({
+    var img1_id = Images.insert({
         owner: [
             {
                 id: user1._id,
@@ -435,4 +435,15 @@ function createImages(){
         comments: [],
         url: "https://s3-us-west-2.amazonaws.com/nexlu/users/nexlu-filter.png"
     });
+
+    //Avatar User1
+    Meteor.users.update(user1, {
+        $set: {
+            avatar:{
+                id: img1_id,
+                url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
+            }
+        }
+    });
+
 }
