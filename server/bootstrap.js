@@ -62,6 +62,10 @@ Meteor.startup(function () {
     if (Publications.find().count() === 0){
         createPublications();
     }
+
+    if (Images.find().count() === 0){
+        createImages();
+    }
 });
 
 
@@ -321,4 +325,60 @@ function createPublications(){
     });
 
 
+}
+
+
+function createImages(){
+    var user1 = Meteor.users.findOne({username: 'user1'});
+    var user2 = Meteor.users.findOne({username: 'user2'});
+    var user3 = Meteor.users.findOne({username: 'user3'});
+    var user4 = Meteor.users.findOne({username: 'user4'});
+
+    //User 1
+    Images.insert({
+        owner: user1._id,
+        createdAt: new Date('2016-06-03T12:00:00'),
+        playersTagged: [user2._id, user3._id],
+        description: "My first image!!!",
+        playersLike: [user1._id, user2._id, user3._id],
+        playersDislike: [user4._id],
+        comments: [
+            {
+                createdAt: new Date('2016-06-03T12:05:00'),
+                description: "Nice publication!",
+                player: user2._id,
+                playersLike: [user1._id],
+                playersDislike: [],
+                sons: []
+            },
+            {
+                createdAt: new Date('2016-06-03T12:08:00'),
+                description: "Nice one dude!",
+                player: user3._id,
+                playersLike: [user1._id],
+                playersDislike: [user2._id],
+                sons: [
+                    {
+                        createdAt: new Date('2016-06-03T13:00:00'),
+                        description: "Thanks men!",
+                        player: user1._id,
+                        playersLike: [user3._id],
+                        playersDislike: [],
+                        sons: []
+                    }
+                ]
+            }
+        ],
+        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
+    });
+    Images.insert({
+        owner: user1._id,
+        createdAt: new Date('2016-06-08T12:00:00'),
+        playersTagged: [],
+        description: "My second publication!!!",
+        playersLike: [],
+        playersDislike: [],
+        comments: [],
+        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/nexlu-filter.png"
+    });
 }
