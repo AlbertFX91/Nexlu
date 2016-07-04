@@ -1,13 +1,7 @@
 Template.images_input_modal.events({
     "click .close-modal-button": function(e){
         e.preventDefault();
-        $("#input-images-modal").closeModal({
-            complete: function(){
-                //Vaciamos las imagenes del navegador
-                ImagesLocals.remove({});
-                Session.set("img-prev-edit-id",false);
-            }
-        });
+        closeMainModal();
 
     },
     "change #image-upload": function(e){
@@ -95,7 +89,11 @@ Template.images_input_modal.events({
         Tracker.autorun(function(){
             var numImagesUploaded = Session.get("numImagesUploaded");
             var numImagesToUpload = Session.get("numImagesToUpload");
-            console.log("Subiendo imagen "+numImagesUploaded+" de "+numImagesToUpload);
+            if(numImagesToUpload === numImagesUploaded){
+                Toasts.throwTrans("images.uploaded_finished");
+                setTimeout(closeMainModal, 1000);
+                
+            }
         })
     }
 });
@@ -135,6 +133,8 @@ Template.images_input_modal.helpers({
 
 Template.images_input_modal.onRendered(function(){
     Session.set("uploadingImages", false);
+    Session.set("numImagesUploaded", false);
+    Session.set("numImagesToUpload", false);
 });
 
 function saveImgInBrowserByFile(file){
@@ -157,3 +157,16 @@ Template.images_show_preview.helpers({
         return resultEdited? resultEdited: result;
     }
 });
+
+function closeMainModal(){
+    Session.set("uploadingImages", false);
+    Session.set("numImagesUploaded", false);
+    Session.set("numImagesToUpload", false);
+    $("#input-images-modal").closeModal({
+        complete: function(){
+            //Vaciamos las imagenes del navegador
+            ImagesLocals.remove({});
+            Session.set("img-prev-edit-id",false);
+        }
+    });
+}

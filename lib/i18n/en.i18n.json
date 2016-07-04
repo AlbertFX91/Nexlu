@@ -94,7 +94,8 @@
     "filters": "filters",
     "description": "Description",
     "uploaded": "Images uploaded",
-    "uploading_progress": "Uploading image <strong>%s</strong> of <strong>%s</strong>"
+    "uploading_progress": "Uploading image <strong>%s</strong> of <strong>%s</strong>",
+    "uploaded_finished": "Uploaded finished"
   },
 
   "profile": {
