@@ -31,6 +31,14 @@ Meteor.publish("allUsers", function () {
     return Meteor.users.find({});
 });
 
+Meteor.publish('image.me.miniature', function(){
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+});
 
 
 /*
@@ -41,26 +49,35 @@ cambiando solo en este diccionario cambiaremos todas las publicaciones automatic
 Fields = {
     user: {
         all: {
-            _id: 1,
-            username: 1,
-            emails: 1,
-            followed: 1,
-            followers: 1,
+            all: {
+                _id: 1,
+                username: 1,
+                emails: 1,
+                followed: 1,
+                followers: 1,
+            }
+        },
+        publication: {
+            all: {
+                _id: 1,
+                owner: 1,
+                createdAt: 1,
+                playersTagged: 1,
+                description: 1,
+                playersLike: 1,
+                playersDislike: 1,
+                comments: 1,
+            },
+            none: {
+                _id: 1
+            }
         }
     },
-    publication: {
-        all: {
+    image: {
+        miniature: {
             _id: 1,
             owner: 1,
-            createdAt: 1,
-            playersTagged: 1,
-            description: 1,
-            playersLike: 1,
-            playersDislike: 1,
-            comments: 1,
-        },
-        none: {
-            _id: 1
+            url: 1
         }
     }
-}
+};
