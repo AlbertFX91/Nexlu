@@ -8,7 +8,7 @@ Template.images_avatar.helpers({
         }
     },
     size: function(){
-        var size = this.tam;
+        var size = this.max_size;
         if(size == undefined){
             return "150px";
         }else{
