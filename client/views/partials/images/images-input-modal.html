@@ -25,7 +25,8 @@
         {{#if uploadingImages}}
             <div class="modal-img-saving-images animated fadeInUp">
                 <div class="progress-bar red lighten-2">
-                    <div class="progress-bar-done light-blue lighten-3" style="width:35%;">
+                    <div class="progress-bar-message">{{{_ "images.uploading_progress" numImagesUploaded numImagesToUpload}}}</div>
+                    <div class="progress-bar-done light-blue lighten-3" style="width:{{progressUploading}}%;">
                         &nbsp;
                     </div>
                 </div>

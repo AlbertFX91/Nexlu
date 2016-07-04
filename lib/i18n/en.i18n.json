@@ -93,7 +93,8 @@
     "upload-photos": "Upload photos",
     "filters": "filters",
     "description": "Description",
-    "uploaded": "Images uploaded"
+    "uploaded": "Images uploaded",
+    "uploading_progress": "Uploading image <strong>%s</strong> of <strong>%s</strong>"
   },
 
   "profile": {

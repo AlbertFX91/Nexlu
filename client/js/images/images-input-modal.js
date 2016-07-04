@@ -77,7 +77,9 @@ Template.images_input_modal.events({
 
     "click #button-save-images": function(){
         Session.set("uploadingImages", true);
-        var images = ImagesLocals.find({}).fetch()
+        var images = ImagesLocals.find({}).fetch();
+        Session.set("numImagesToUpload", images.length);
+        Session.set("numImagesUploaded", 0);
         _.each(images, function(img){
             console.log("Guardando imagen!");
             var img_file = Util.dataURItoFile(img);
@@ -85,9 +87,16 @@ Template.images_input_modal.events({
                 file:img_file,
                 path:"users"
             },function(e,r){
-                console.log(r);
+                var numImagesUploaded =  Session.get("numImagesUploaded");
+                Session.set("numImagesUploaded", numImagesUploaded+1);
+                //console.log(r);
             });
         });
+        Tracker.autorun(function(){
+            var numImagesUploaded = Session.get("numImagesUploaded");
+            var numImagesToUpload = Session.get("numImagesToUpload");
+            console.log("Subiendo imagen "+numImagesUploaded+" de "+numImagesToUpload);
+        })
     }
 });
 
@@ -109,12 +118,24 @@ Template.images_input_modal.helpers({
     },
     uploadingImages: function(){
         return Session.get("uploadingImages");
+    },
+    progressUploading: function(){
+        var numImagesUploaded = Session.get("numImagesUploaded");
+        var numImagesToUpload = Session.get("numImagesToUpload");
+        var res = numImagesUploaded*100.0/numImagesToUpload;
+        return res ;
+    },
+    numImagesUploaded: function(){
+        return Session.get("numImagesUploaded");
+    },
+    numImagesToUpload: function(){
+        return Session.get("numImagesToUpload");
     }
 });
 
 Template.images_input_modal.onRendered(function(){
     Session.set("uploadingImages", false);
-})
+});
 
 function saveImgInBrowserByFile(file){
     //Declaramos el objeto FileReader que usaremos para convertir el fichero en una URL para poder previsualizarlo y almacenarlo en la collection

@@ -112,7 +112,8 @@
     "upload-photos": "Subida de fotos",
     "filters": "filtros",
     "description": "Descripción",
-    "uploaded": "Imágenes guardadas"
+    "uploaded": "Imágenes guardadas",
+    "uploading_progress": "Subiendo imagen <strong>%s</strong> de <strong>%s</strong>"
   },
 
   "profile": {
