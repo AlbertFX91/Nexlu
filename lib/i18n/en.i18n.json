@@ -18,6 +18,18 @@
   "choose_image": "Choose a avatar",
   "continue": "Continue",
   "finish": "Finish",
+  "clic": "Click ",
+  "here": "here ",
+  "fowardMail": "to foward mail",
+  "toastMail": "Email has been sent!",
+  "send": "Send",
+  "close": "Close",
+
+  "bio":{
+    "modify_bio": "Modify biography",
+    "add_bio": "You can add a brief biography"
+  },
+
   "toast": {
     "lang_changed": "Language changed",
     "undo": "Undo",
@@ -32,15 +44,23 @@
     "login_credentials-google_wrong": "Login with Google canceled",
     "login_credentials-twitter_wrong": "Login with Twitter canceled",
     "username_error_empty": "Username empty",
+    "username_error_minlength": "Minimun 2 characters",
+    "username_error_maxlength": "Maximun 15 characters",
     "password_error_empty": "Password empty",
     "confirmpassword_error_empty": "Confirm password empty",
     "username_error_duplicated": "Username used",
-    "password_error_coincidence": "Passwords match",
+    "password_error_coincidence": "Passwords mismatch",
+    "password_error_minlength": "Minimun 8 characters",
+    "password_error_maxlength": "Maximun 20 characters",
     "email_error_empty": "Email empty",
     "email_error_duplicated": "Email used",
-    "email_error_patron": "The pattern must be: example@example.com",
-    "password_error_patron": "The password must contain 6 characters (one uppercase and lowercase letter)",
-    "post-notBlank": "The publication cannot be blank"
+    "post-notBlank": "The publication cannot be blank",
+    "email_error_patron": "The email must be like example@example.com",
+    "password_error_pattern": "Invalid format",
+    "password_error_patron": "The password must have lowercase, two uppercase and numbers",
+    "message_error_empty": "Message can not be empty",
+    "message_error_minlength": "Message must be 20 characters minimum",
+    "message_error_maxlength": "Message must be 300 characters maximum"
   },
   "tag": {
     "company": "COMPANY",
@@ -82,87 +102,20 @@
     "test_message": "Test message",
     "test_message1": "Message number 1",
     "test_message2": "Message number 2",
-    "test_message3": "Message number 3"
+    "test_message3": "Message number 3",
+    "email-sent": "Email has been sent!"
   },
   "thanks": {
     "register": "Thanks you!",
     "text-register": "We've sent a message to your email to activate your account . See you soon!"
   },
-  "simpleschema": {
-    "messages": {
-      "notUnique username": "Username already exists",
-      "notUnique email": "Email already exists",
-      "server error": "Server error",
-      "regEx phone": "Invalid Phone",
-      "wrongPassword": "Passwords mismatch",
-      "emailNotStudent": "Email must be an U.S. or U.P.O. university.",
-      "wrongZip": "ZIP Code must be a Seville ZIP",
-      "required": "[label] is required",
-      "minString": "[label] must be at least [min] characters",
-      "maxString": "[label] cannot exceed [max] characters",
-      "minNumber": "[label] must be at least [min]",
-      "maxNumber": "[label] cannot exceed [max]",
-      "minNumberExclusive": "[label] must be greater than [min]",
-      "maxNumberExclusive": "[label] must be less than [max]",
-      "minDate": "[label] must be on or after [min]",
-      "maxDate": "[label] cannot be after [max]",
-      "badDate": "[label] is not a valid date",
-      "minCount": "You must specify at least [minCount] values",
-      "maxCount": "You cannot specify more than [maxCount] values",
-      "noDecimal": "[label] must be an integer",
-      "notAllowed": "[value] is not an allowed value",
-      "expectedString": "[label] must be a string",
-      "expectedNumber": "[label] must be a number",
-      "expectedBoolean": "[label] must be a boolean",
-      "expectedArray": "[label] must be an array",
-      "expectedObject": "[label] must be an object",
-      "expectedConstructor": "[label] must be a [type]",
-      "keyNotInSchema": "[key] is not allowed by the schema",
-      "notUnique": "[label] must be unique",
-      "regEx": {
-        "0": {
-          "msg": "[label] failed regular expression validation"
-        },
-        "1": {
-          "exp": "SimpleSchema.RegEx.Email",
-          "msg": "[label] must be a valid e-mail address"
-        },
-        "2": {
-          "exp": "SimpleSchema.RegEx.WeakEmail",
-          "msg": "[label] must be a valid e-mail address"
-        },
-        "3": {
-          "exp": "SimpleSchema.RegEx.Domain",
-          "msg": "[label] must be a valid domain"
-        },
-        "4": {
-          "exp": "SimpleSchema.RegEx.WeakDomain",
-          "msg": "[label] must be a valid domain"
-        },
-        "5": {
-          "exp": "SimpleSchema.RegEx.IP",
-          "msg": "[label] must be a valid IPv4 or IPv6 address"
-        },
-        "6": {
-          "exp": "SimpleSchema.RegEx.IPv4",
-          "msg": "[label] must be a valid IPv4 address"
-        },
-        "7": {
-          "exp": "SimpleSchema.RegEx.IPv6",
-          "msg": "[label] must be a valid IPv6 address"
-        },
-        "8": {
-          "exp": "SimpleSchema.RegEx.Url",
-          "msg": "[label] must be a valid URL"
-        },
-        "9": {
-          "exp": "SimpleSchema.RegEx.Id",
-          "msg": "[label] must be a valid alphanumeric ID"
-        }
-      }
-    }
+  "contactUs":{
+    "header": "Get in touch with us!",
+    "name": "Name",
+    "email": "Email Address",
+    "message": "Message",
+    "sendMessage": "Send message"
   },
-
   "profile": {
     "friends": "friends",
     "publications": "publications",
@@ -180,6 +133,44 @@
     "new-post": "New post",
     "edit-post": "Edit publication",
     "remove-post": "are you sure to delete this publication?"
+  },
+
+  "faq": {
+    "header": "Faq",
+    "question_one": "What does it consist of?",
+    "answer_one": "We are a social network specializing in video games. We are still in development but will soon have focused improvements to the area of video games!",
+    "question_two": "What I can do?",
+    "answer_two": "The behavior is similar to other social networks, so all you can do in the other can make them here! The advantage is that all you'll find here will be related to video games!",
+    "question_three": "Can I join the team?",
+    "answer_three": "    Of course! We open doors! Simply send us an email!"
+  },
+
+  "terms": {
+    "terms_header": "TERMS OF SERVICE",
+    "terms1": "1. CONTRACTUAL RELATIONSHIP",
+    "terms11": "These Terms of Service (“Terms”) govern your use of the services offered by Nexlu, Inc., a Seville corporation (\"Nexlu\") via the Nexlu website, any Nexlu mobile application (the “Application”) or any other services offered by Nexlu (collectively, the “Services”). These Terms are entered into by you and Nexlu. PLEASE READ THESE TERMS CAREFULLY BEFORE ACCESSING OR USING THE SERVICES. In these Terms, the words “including” and “include” mean “including, but not limited to“.",
+    "terms12": "By using the Services, you agree to be bound by these Terms and acknowledge the Terms of Use, which govern access to and use of the Website and the Application (the “Terms of Use”), and the Privacy Policy, which explains how Nexlu, collects, uses, and shares your information (the “Privacy Policy”). If you do not wish to agree to these Terms, the Terms of Use or the Privacy Policy, you must not access or use the Services. Nexlu may immediately terminate these Terms or any of the Services with respect to you, or generally cease offering or deny access to the Services or any portion thereof, at any time for any reason.",
+    "terms13": "The Services are offered and available to users who are 18 years of age or older and reside in Spain or any of its territories or possessions. By using the Services, you represent and warrant that you are of legal age to form a binding contract with Nexlu. If you do not meet all of these requirements, you may not access or use the Services.",
+    "terms14": "In certain situations, the Services may require supplemental terms, such as policies for a particular event, activity or promotion. These supplemental terms will be disclosed to you in connection with the applicable Services. Supplemental terms are in addition to, and shall be deemed a part of, these Terms for the purposes of the applicable Services. In the event of a conflict between any supplemental terms and these Terms, the supplemental terms shall prevail over these Terms only with respect to the applicable services.",
+    "terms15": "Nexlu reserves the right, at its sole discretion, to modify the Website, the Application, or the Services, or to modify these Terms, including any fees for the Services, at any time and without prior notice to you. If Nexlu modifies these Terms, it will either post the modification on the Website or the Application or otherwise provide you with notice of the modification. Nexlu will also update the “Last Updated Date” at the top of these Terms. By continuing to access or use the Website, the Application or the Services after Nexlu has posted a modification, you are indicating that you agree to be bound by the modified Terms. If the modified Terms are not acceptable to you, your only recourse is to cease using the Website, the Application, and the Services.",
+    "terms2": "2. THE SERVICES",
+    "terms21": "The Services are communication platforms that facilitate the connection between you, the user of the Services, and third party providers, including independent third party labor providers under agreement with Nexlu (“Third Party Providers”), to arrange and schedule labor services performed by such Third Party Providers and NOT Nexlu. YOU ACKNOWLEDGE THAT Nexlu DOES NOT PROVIDE ANY LABOR OR MOVING SERVICES OR FUNCTION AS A MOVING CARRIER. The Services may be used by you to request and schedule moving or labor services with Third Party Providers, but you agree that Nexlu has no responsibility or liability to you related to any moving or labor provided to you by Third Party Providers facilitated by your use of the Services other than expressly set forth in these Terms. Unless otherwise agreed by Nexlu in a separate written agreement with you, the Services are made available solely for your personal, noncommercial use.",
+    "terms22": "Nexlu does not have control over the quality, timing, legality, acts or omissions or any aspect of the labor or moving services provided by Third Party Providers. THEREFORE, Nexlu MAKES NO REPRESENTATION AS TO THE QUALITY, SUITABILITY, ACCURACY, TIMING EFFECTIVENESS, SAFETY, RELIABILITY OR ANY OTHER CHARACTERISTIC OF THE SERVICES PROVIDED BY THIRD PARTY PROVIDERS. Although Nexlu may screen Third Party Providers, Nexlu cannot confirm that each Third Party Provider has the qualifications they claim to have. THEREFORE, Nexlu MAKES NO REPRESENTATION AS TO THE QUALIFICATIONS, SUITABILITY, ACCURACY, TIMELINESS, EFFECTIVENESS, SAFETY, RELIABILITY, PROFESSIONAL ACCREDITATION, REGISTRATION, OR LICENSE OR ANY OTHER ABILITY OF THIRD PARTY PROVIDERS.",
+    "terms23": "Nexlu will not participate in disputes between you and a Third Party Provider. By using the Services, you acknowledge that you may be exposed to situations involving Third Party Providers that are potentially unsafe, offensive, harmful to minors, or otherwise objectionable, and that use of Third Party Providers arranged or scheduled using the Services is at your own risk and judgment. When interacting with Third Party Providers, you should exercise caution and common sense to protect your personal safety and that of others and your property and that of others. Nexlu SHALL NOT HAVE ANY LIABILITY ARISING FROM OR IN ANY WAY RELATED TO YOUR TRANSACTIONS OR RELATIONSHIPS WITH THIRD PARTY PROVIDERS.",
+    "terms24": "LICENSE & RESTRICTIONS",
+    "terms241": "Nexlu grants you a limited, non-exclusive, non-transferable, and revocable license to use the Services solely for their intended purposes subject to your compliance with these Terms and our policies. You may not copy, download, use, modify, redesign, reconfigure, distribute, sell or lease the Services or any part thereof. Unless law prohibits such restriction or you have our written permission, you may not reverse engineer or attempt to extract the source code of the Website, the Application, or the Services or create or attempt to create modifications or derivative works from the object code or the underlying source code. You may only access the Services through the interfaces that we provide for that purpose, and you may not interfere or attempt to disrupt our Services. Any rights not expressly granted herein are reserved by Nexlu. You may not copy, use or remove any of Nexlu’s company names, logos, product or service names, trademarks, or service marks.",
+    "terms25": "OWNERSHIP",
+    "terms26": "All text, graphics, editorial content, data, formatting, graphs, designs, HTML, look and feel, photographs, music, sounds, images, software, videos, typefaces and other content (collectively, “Proprietary Material”) that you see or read through the Services is owned by Nexlu, excluding Under Content (defined below) that Nexlu has the right to use. Proprietary Material is protected in all forms, media and technologies now known or hereinafter developed. Nexlu owns all Proprietary Material, as well as the coordination, selection, arrangement and enhancement of such Proprietary Material as a Collective Work under the Spain Copyright Act, as amended. The Proprietary Material is protected by the domestic and international laws of copyright, patents, and other proprietary rights and laws. The Proprietary Material, the Services and all rights therein (including without limitation intellectual property rights and other proprietary rights) are and shall remain Nexlu’s property. Neither these Terms nor your use of the Services convey or grant to you any rights in or related to the Proprietary Material or the Services except for the limited license granted above. Nor do these Terms or your use of the Services grant you use or reference in any manner to Nexlu’s company names, logos, product, and service names, trademarks, or service marks.",
+    "terms3": "3. YOUR USE OF THE SERVICES",
+    "terms31": "USER REQUIREMENTS AND CONDUCT",
+    "terms32": "The Services are not available for use by persons under the age of 18. You may not authorize third parties to use your Account, and you may not allow persons under the age of 18 to receive labor services from Third Party Providers unless they are accompanied by you. You may not assign or otherwise transfer your Account to any other person or entity. You agree to comply with all applicable laws when using the Services, and you may only use the Services for lawful purposes. You will not in your use of the Services cause nuisance, annoyance, inconvenience, or property damage whether to the Third Party Providers or any other party. In certain instances Nexlu may require you to provide proof of identity to access or use the Services, and you agree that you may be denied access or use of the Services if you refuse to provide proof of identity.",
+    "terms33": "TEXT MESSAGING & PHONE CALLS",
+    "terms34": "By creating an Account, using the Services or affirmatively agreeing to the Terms of Use, you affirmatively consent to Nexlu’s use of the mobile phone number provided by you for calls and texts in order to perform and improve upon the Services. Nexlu will not assess any charges for calls or texts, but standard message charges or other charges from your wireless carrier may apply. You may opt-out of receiving text messages, calls or emails from us by emailing hello@nexlu.com.",
+    "terms35": "PROMOTIONAL CODES",
+    "terms36": "Nexlu may, in Nexlu’s sole discretion, create promotional codes that may be redeemed for a discount. You agree that these promotional codes must be used for the intended audience and purpose, and in a lawful manner. They may not be duplicated, sold, or transferred in any manner, or made available to the general public, unless expressly permitted by Nexlu. Promotional codes may be disabled by Nexlu at any time, for any reason, without liability to Nexlu. Promotional codes may only be used pursuant to the specific terms that Nexlu establishes for such promotional codes. Promotional codes are not valid for cash and may expire prior to your use. Nexlu reserves the right to withhold discounts obtained through the use of promotional codes by you or any other user in the event that Nexlu determines or believes that the use or redemption of the promotional code was in error, fraudulent, illegal or in violation of the applicable promotional code terms or these Terms.",
+    "terms37": "USER PROVIDED CONTENT",
+    "terms38": "Nexlu may, in Nexlu’s sole discretion, permit you from time to time to submit, upload, publish or otherwise make available to Nexlu through the Services, or otherwise, textual, audio and/or visual content and information, including commentary and feedback related to the Services, initiation of support requests and submissions of entries for competitions and promotions (“User Content”). Any User Content provided by you remains your property. However, by providing User Content to Nexlu, you grant Nexlu a worldwide, perpetual, irrevocable, transferable, royalty-free license, with the right to sublicense, to use, copy, modify, create derivative works of, distribute, publicly display, publicly perform, and otherwise exploit in any manner such User Content in all formats and distribution channels now known or hereafter devised (including in connection with the Services and Nexlu’s business and on third- party sites and services), without further notice to or consent from you, and without the requirement of payment to you or any other person or entity.",
+    "termsFinal": "Thank you for visiting the Website."
   }
 
 }

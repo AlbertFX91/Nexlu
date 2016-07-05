@@ -1,7 +1,7 @@
 Template.profileViews.events({
-    'click .profile-view-container': function(e){
-        var comp = $(e.target);
-        var route = ""
+    'click .profile-view-container': function(event){
+        var comp = $(event.target);
+        var route = "";
         if(comp.attr('data-view') === undefined){
             route = comp.closest(".profile-view-container").attr('data-view');
         }else {

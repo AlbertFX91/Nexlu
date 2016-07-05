@@ -2,41 +2,48 @@
     <div>
         {{> background_register }}
         <div id="container-register" class="container">
-            <form id="register_form" class="register-form">
+            <form id="register_form" class="register-form" method="post">
                 <div id="data_register" class="row">
-                    <h1 id="intro_register">"{{_ "register_header"}}"</h1>
+                    <h1 id="intro_register" class="s12">"{{_ "register_header"}}"</h1>
                     <h5 id="intro_register2">{{_ "register_header2"}}</h5>
                     <div class="col s12">
-                        <div class="row">
-                            <div class="col m4 s4" >
-                                <label for="username">{{_ "username"}}:</label>
+                        <div class="row usre">
+                            <div class="col m4 s12" >
+                                <label id="username-label" for="username">{{_ "username"}}:</label>
                             </div>
-                            <div class="input-field col m8 s8">
-                                <input name="username" id="username" class="form-control" type="text" pattern="^[a-zA-Z0-9-_]+$" autocomplete="off" maxlength="20">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col m4 s4" >
-                                <label for="email">{{_ "email.email"}}:</label>
-                            </div>
-                            <div class="col m8 s8">
-                                <input  id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" class="form-control" type="email" autocomplete="off">
+                            <div class="input-field col m8 s12">
+                                <input name="username" id="username" class="form-control" type="text" autocomplete="off" maxlength="15">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col m4 s4" >
-                                <label for="password">{{_ "password"}}:</label>
+                            <div class="col m4 s12" >
+                                <label id="email-label" for="email">{{_ "email.email"}}:</label>
                             </div>
-                            <div class="col m8 s8">
+                            <div class="col m8 s12">
+                                <input  id="email" name="email" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" class="form-control" type="email" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col m4 s12" >
+                                <span class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{_ "error.password_error_patron"}}">
+                                        <label id="password-label" for="password_register">
+                                            <i class="material-icons">info_outline</i>
+                                            {{_ "password"}}:
+                                        </label>
+                                </span>
+                            </div>
+                            <div class="col m8 s12">
                                 <input name="password_register"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password_register" class="form-control" type="password">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col m4 s4" >
-                                <label for="confirmpassword">{{_ "confirm_password"}}:</label>
+                            <div class="col m4 s12" >
+                                <label id="confirmpassword-label" for="confirmpassword">
+                                    {{_ "confirm_password"}}:
+                                </label>
                             </div>
-                            <div class="col m8 s8">
-                                <input name="confirmpassword" id="confirmpassword" class="form-control" type="password">
+                            <div class="col m8 s12">
+                                <input name="confirmpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirmpassword" class="form-control" type="password">
                             </div>
                         </div>
                         <div class="row">
@@ -45,39 +52,11 @@
                     </div>
                     <div class="row continue">
                         <div class="col m12 s12">
-                            <button id="register-buttom" class="continue btn btn-default logbutton">{{_ "continue"}}</button>
-                        </div>
-                    </div>
-                    <br/>
-                    <br/>
-                </div>
-                <div class="col s12 m12 div_form_more">
-                    <h1 id="intro_register">{{_ "register_header_continue"}}</h1>
-                    <div class="row">
-                        <div class="file-field input-field">
-                            <div id="imagen_register" class="btn">
-                                <span>{{_ "choose_image"}}</span>
-                                <input id="imagen_register" type="file">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div>
-                            <h4 class="col m12 s12" style="color:white">{{_ "register_body_continue"}}</h4>
-                            <div class="col m12 s12 input-field">
-                                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                <label for="textarea1"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row continue">
-                        <div class="col m12 s12">
                             <button type="submit" id="register-buttom" class="finish btn btn-default logbutton">{{_ "finish"}}</button>
                         </div>
                     </div>
+                    <br/>
+                    <br/>
                 </div>
             </form>
         </div>

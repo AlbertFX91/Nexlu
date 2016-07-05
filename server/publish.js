@@ -27,9 +27,8 @@ Meteor.publish('publication.me.none', function () {
     return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.none});
 });
 
-
-Meteor.publish("allUsers", function () {
-    return Meteor.users.find({});
+Meteor.publish("findBio", function () {
+    return Meteor.users.find(this.userId);
 });
 
 Meteor.publish('publication.followed.all', function () {
@@ -40,6 +39,10 @@ Meteor.publish('publication.followed.all', function () {
     }
     var followed_id = Meteor.users.find(user_id, {fields: Fields.user.followed}).fetch();
     return Publications.find({"owner.0.id": {"$in": [followed_id.followed]}}, {fields: Fields.publication.all});
+});
+
+Meteor.publish("findUser", function(username) {
+    return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
 });
 
 /*
@@ -53,6 +56,7 @@ Fields = {
             _id: 1,
             username: 1,
             emails: 1,
+            bio: 1,
             followed: 1,
             followers: 1,
         },
@@ -69,10 +73,10 @@ Fields = {
             description: 1,
             playersLike: 1,
             playersDislike: 1,
-            comments: 1,
+            comments: 1
         },
         none: {
             _id: 1
         }
     }
-}
+};

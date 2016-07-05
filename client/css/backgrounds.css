@@ -1,48 +1,27 @@
 /** Registration */
 
-.image-mobile-register{
-    visibility: hidden;
-    display: none;
-}
-
 .image-register{
-    width: 100%;
     opacity: 0.3;
-}
-
-@media screen and (max-width: 800px) {
-    div .image-mobile-register {
-        visibility: visible;
-        width: 100%;
-    }
-    div .image-register{
-        visibility: hidden;
-        display: none;
-    }
+    position: fixed;
+    z-index: -2;
+    object-fit: cover;
 }
 
 /** Thanks registration */
 
-.image-mobile-thanks-register{
-    visibility: hidden;
-    display: none;
-}
-
 .image-thanks-register{
-    width: 100%;
+    object-fit: cover;
     opacity: 0.2;
     position: fixed;
     z-index: -2;
     box-shadow: 15px 15px 15px 20px black;
 }
 
-@media screen and (max-width: 800px) {
-    div .image-mobile-thanks-register {
-        visibility: visible;
-        width: 100%;
-    }
-    div .image-thanks-register{
-        visibility: hidden;
-        display: none;
-    }
+/** Contact us */
+
+.image-about_us{
+    object-fit: cover;
+    opacity: 0.1;
+    position: fixed;
+    z-index: -2;
 }

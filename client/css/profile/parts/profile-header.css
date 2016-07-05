@@ -44,3 +44,11 @@
         width: auto;
     }
 }
+
+#textarea1{
+    color: black !important;
+}
+
+.bio{
+    text-align: center;
+}
