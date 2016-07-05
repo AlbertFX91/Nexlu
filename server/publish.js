@@ -1,11 +1,12 @@
-Meteor.publish('myPublications', function () {
+Meteor.publish('publication.me.all', function () {
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
         return;
     }
-    return Publications.find({"owner": user_id});
+    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.all});
 });
+
 Meteor.publish('user.me', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -23,11 +24,21 @@ Meteor.publish('publication.me.none', function () {
         this.ready();
         return;
     }
-    return Publications.find({owner: user_id}, {fields: Fields.publication.none});
+    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.none});
 });
 
 Meteor.publish("findBio", function () {
     return Meteor.users.find(this.userId);
+});
+
+Meteor.publish('publication.followed.all', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    var followed_id = Meteor.users.find(user_id, {fields: Fields.user.followed}).fetch();
+    return Publications.find({"owner.0.id": {"$in": [followed_id.followed]}}, {fields: Fields.publication.all});
 });
 
 Meteor.publish("findUser", function(username) {
@@ -47,7 +58,10 @@ Fields = {
             emails: 1,
             bio: 1,
             followed: 1,
-            followers: 1
+            followers: 1,
+        },
+        followed: {
+            followed: 1
         }
     },
     publication: {
