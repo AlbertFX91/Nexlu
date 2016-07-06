@@ -66,7 +66,8 @@
     "password_error_patron": "La contraseña debe tener minúsculas, dos mayúsculas y números",
     "message_error_empty": "El mensaje no puede estar vacio",
     "message_error_minlength": "El mensaje debe tener más de 20 caracteres",
-    "message_error_maxlength": "El mensaje no puede superar los 300 caracteres"
+    "message_error_maxlength": "El mensaje no puede superar los 300 caracteres",
+    "post-maxlength": "La publicación no puede superar los 5000 caracteres"
   },
 
   "tag": {

@@ -60,7 +60,8 @@
     "password_error_patron": "The password must have lowercase, two uppercase and numbers",
     "message_error_empty": "Message can not be empty",
     "message_error_minlength": "Message must be 20 characters minimum",
-    "message_error_maxlength": "Message must be 300 characters maximum"
+    "message_error_maxlength": "Message must be 300 characters maximum",
+    "post-maxlength": "Publication must be 5000 characters maximum"
   },
   "tag": {
     "company": "COMPANY",

@@ -53,6 +53,11 @@ Template.publication.events({
             document.getElementById('edit-post-error').innerHTML = texto;
             $("#edit-post-label").removeClass("active");
             valido = false;
+        } else if (description.length > 5000) {
+            var texto = TAPi18n.__("error.post-maxlength");
+            document.getElementById('edit-post-error').innerHTML = texto;
+            $("#edit-post-label").hide();
+            valido = false;
         }
         if (valido) {
            Meteor.call('editPublication', publicationId, description, function(err, response){
@@ -65,6 +70,7 @@ Template.publication.events({
     'click #editPublication': function(e) {
         e.preventDefault();
         document.getElementById('edit-post-error').innerHTML = "";
+        $("#edit-post-label").show();
     },
     'submit .remove-post': function(e) {
         e.preventDefault();
