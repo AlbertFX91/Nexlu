@@ -35,6 +35,7 @@ Template.publication.events({
         }})
         var textarea = document.getElementById('editPublication');
         textarea.value = this.description;
+        $("#editPublication").trigger('autoresize');
         $("#edit-post-label").addClass("active");
     },
     'click #remove-pub': function () {
