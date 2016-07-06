@@ -66,13 +66,43 @@
 #edit-pub-modal {
     width: 40%;
     background-color: transparent !important;
+    max-height: none !important;
+}
+
+@media screen and (max-width: 1024px){
+    #edit-pub-modal {
+        width: 65% !important;
+    }
+}
+
+@media screen and (max-width: 425px){
+    #edit-pub-modal {
+        width: 80% !important;
+    }
 }
 
 #remove-pub-modal {
-    width: 30%;
+    width: 40%;
     background-color: transparent !important;
+    text-align: justify;
+}
+
+@media screen and (max-width: 1024px){
+    #remove-pub-modal {
+        width: 65% !important;
+    }
+}
+
+@media screen and (max-width: 425px){
+    #remove-pub-modal {
+        width: 80% !important;
+    }
 }
 
 #edit-post-error {
     color: #b1070c;
+}
+
+#confirm-remove-pub {
+    margin-left: 20px;
 }
