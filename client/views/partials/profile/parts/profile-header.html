@@ -31,10 +31,10 @@
                 </div>
                 <div class="row profile-numfriends">
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followed" }} <span class="profile-num">{{followed_pretty}}</span>
+                        {{_ "profile.followed" }} <span class="profile-num"><a href="../me/followed">{{followed_pretty}}</a></span>
                     </div>
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followers" }} <span class="profile-num">{{followers_pretty}}</span>
+                        {{_ "profile.followers" }} <span class="profile-num"><a href="../me/followers">{{followers_pretty}}</a></span>
                     </div>
                     <div class="col s4">
                         {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty}}</span>
@@ -46,6 +46,44 @@
     <div class="row">
         <div class="col s12 center-align">
             {{> profileViews }}
+        </div>
+    </div>
+</template>
+
+<template name="profileUserHeader">
+    <div class="row">
+        <div class="col s12 center-align">
+            <div class="profile-resume">
+                <div class="row">
+                    <img src="/example.png" class="circle responsive-img img-profile">
+                </div>
+                <div class="row">
+                    <div class="col s12 m12">
+                        <img src="../comillas_inicio.png" height="22" width="22"/>
+                        {{_ bio}}
+                        <img src="../comillas_fin.png" height="22" width="22"/>
+                    </div>
+                </div>
+                <div class="row profile-username truncate">
+                    {{username}}
+                </div>
+                <div class="row profile-numfriends">
+                    <div class="col s4 profile-col-border">
+                        {{_ "profile.followed" }} <span class="profile-num">{{followed_pretty_user}}</span>
+                    </div>
+                    <div class="col s4 profile-col-border">
+                        {{_ "profile.followers" }} <span class="profile-num">{{followers_pretty_user}}</span>
+                    </div>
+                    <div class="col s4">
+                        {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty_user}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">
+            {{> profileUserViews }}
         </div>
     </div>
 </template>

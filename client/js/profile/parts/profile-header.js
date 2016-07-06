@@ -8,6 +8,15 @@ Template.profileHeader.helpers({
     publications_pretty: function(){
         return Prettify.compactInteger(this.numPublication);
     },
+    followed_pretty_user: function(){
+        return Prettify.compactInteger(this.user.followed.length);
+    },
+    followers_pretty_user: function(){
+        return Prettify.compactInteger(this.user.followers.length);
+    },
+    publications_pretty_user: function(){
+        return Prettify.compactInteger(this.numPublication);
+    },
     'bio': function(){
         Session.set("firt_bio", false);
         var user_id = Meteor.userId();

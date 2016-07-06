@@ -134,12 +134,12 @@
   },
 
   "profile": {
-    "friends": "amigos",
-    "publications": "publicaciones",
-    "photos": "fotos",
+    "friends": "Amigos",
+    "publications": "Publicaciones",
+    "photos": "Fotos",
     "info": "Información",
-    "followed": "siguiendo",
-    "followers": "seguidores"
+    "followed": "Siguiendo",
+    "followers": "Seguidores"
   },
 
   "faq": {

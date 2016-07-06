@@ -114,12 +114,12 @@
     "sendMessage": "Send message"
   },
   "profile": {
-    "friends": "friends",
-    "publications": "publications",
-    "photos": "photos",
+    "friends": "Friends",
+    "publications": "Publications",
+    "photos": "Photos",
     "info": "Info",
-    "followed": "followed",
-    "followers": "followers"
+    "followed": "Followed",
+    "followers": "Followers"
   },
   "faq": {
     "header": "Faq",

@@ -6,6 +6,7 @@ Meteor.publish('myPublications', function () {
     }
     return Publications.find({"owner": user_id});
 });
+
 Meteor.publish('user.me', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -17,8 +18,30 @@ Meteor.publish('user.me', function () {
     });
 });
 
+Meteor.publish('user.user', function (usernameUser) {
+    var user = Meteor.users.find({'username':usernameUser});
+    var user_id = user._id;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Meteor.users.find(user_id, {
+        fields: Fields.user.all
+    });
+});
+
 Meteor.publish('publication.me.none', function () {
     var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Publications.find({owner: user_id}, {fields: Fields.publication.none});
+});
+
+Meteor.publish('publication.user.none', function (usernameUser) {
+    var user = Meteor.users.find({'username':usernameUser});
+    var user_id = user._id;
     if (!user_id) {
         this.ready();
         return;
