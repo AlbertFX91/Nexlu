@@ -36,6 +36,7 @@ Template.timeline.events({
                 if (!err){
                     var textarea = document.getElementById('newPublication');
                     textarea.value = "";
+                    $("#newPublication").trigger('autoresize');
                     $("#post-label").removeClass("active");
                 }
             });
