@@ -1,6 +1,25 @@
 Template.timeline.helpers({
     publications: function () {
         return Publications.find({},{sort: {createdAt: -1}});
+    },
+    placeholder: function() {
+        return TAPi18n.__("timeline.whatsup");
+    },
+    settingsTextarea: function () {
+        return {
+            position: top,
+            limit: 5,
+            rules: [
+                {
+                    token: '@',
+                    collection: Meteor.users,
+                    field: 'username',
+                    options: '',
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
+                }
+            ]
+        }
     }
 });
 
@@ -51,6 +70,9 @@ Template.timeline.events({
         e.preventDefault();
         $("#post-label").show();
         document.getElementById('post-error').innerHTML = "";
+    },
+    'autocompleteselect textarea': function(e, t, doc) {
+        console.log("selected", doc);
     }
 });
 

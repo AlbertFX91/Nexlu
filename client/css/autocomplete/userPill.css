@@ -1,0 +1,9 @@
+.-autocomplete-container {
+    position: absolute;
+    background: #384951 !important;
+    border: 1px solid #2a3b43 !important;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 1000;
+}
