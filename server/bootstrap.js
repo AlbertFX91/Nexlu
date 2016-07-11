@@ -94,7 +94,7 @@ function createUsers(){
         $set: {
             bio: "Biography 2",
             followers: [id_user1, id_user3, id_user4, id_user5],
-            followed: [id_user1, id_user3, id_user4, id_user5],
+            followed: [id_user1, id_user4, id_user5],
             "emails.0.verified": true
         }
     });
@@ -102,7 +102,7 @@ function createUsers(){
     Meteor.users.update(id_user3, {
         $set: {
             followers: [id_user2],
-            followed: [id_user2],
+            followed: [],
             "emails.0.verified": true
         }
     });

@@ -1,0 +1,15 @@
+#title-following{
+    color: white;
+}
+
+#following{
+    color: white;
+    background-color: #263238;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+    padding: 5px 0 5px 0;
+}
+
+#followings{
+    margin-top:50px;
+}
