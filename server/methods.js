@@ -56,14 +56,13 @@ Meteor.methods({
     },
     'findUsers': function(){
         var user = Meteor.user();
-        var followers = user.followers;
         var result = [];
-        followers.forEach(function(item){
-            var userFollowers = Meteor.users.findOne({"_id": item});
+        user.followed.forEach(function(item){
+            var userFollowed = Meteor.users.findOne({"_id": item});
             var aux = {
-                "username": userFollowers.username,
-                "bio": userFollowers.bio,
-                //TODO: "image": userFollowers.image
+                "username": userFollowed.username,
+                "bio": userFollowed.bio,
+                //TODO: "image": userFollowed.image
             };
             result.push(aux);
         });
