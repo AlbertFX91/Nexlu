@@ -70,9 +70,6 @@ Template.timeline.events({
         e.preventDefault();
         $("#post-label").show();
         document.getElementById('post-error').innerHTML = "";
-    },
-    'autocompleteselect textarea': function(e, t, doc) {
-        console.log("selected", doc);
     }
 });
 
