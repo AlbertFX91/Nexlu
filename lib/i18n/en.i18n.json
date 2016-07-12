@@ -77,7 +77,9 @@
     "browser": "Browser",
     "timeline": "Timeline",
     "contactUs": "Contact Us",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "unfollow": "Unfollow",
+    "following": "Following to..."
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",

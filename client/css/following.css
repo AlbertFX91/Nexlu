@@ -13,3 +13,13 @@
 #followings{
     margin-top:50px;
 }
+
+.button-unfollow{
+    background-color: #688826;
+    white-space: normal !important;
+}
+
+.button-profile{
+    background-color: #688826;
+    white-space: normal !important;
+}

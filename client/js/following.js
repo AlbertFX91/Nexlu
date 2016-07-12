@@ -7,3 +7,13 @@ Template.following.helpers({
         return users;
     }
 });
+
+Template.following.events({
+    'click .button-unfollow': function (event) {
+        event.preventDefault();
+        var username = document.getElementById('usernameFollowing').innerHTML;
+        console.log(username);
+        Meteor.call("unfollow", username);
+        location.reload();
+    }
+});

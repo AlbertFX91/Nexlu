@@ -67,5 +67,24 @@ Meteor.methods({
             result.push(aux);
         });
         return result;
+    },
+    'unfollow': function(username){
+        var user = Meteor.user();
+        var userUnfollow = Meteor.users.findOne({"username":username});
+        console.log(userUnfollow);
+        Meteor.users.update(user, {
+            "$pop": {
+                "followed": {
+                    "_id": userUnfollow._id
+                }
+            }
+        });
+        Meteor.users.update(userUnfollow, {
+            "$pop": {
+                "followers": {
+                    "_id": user._id
+                }
+            }
+        });
     }
 });

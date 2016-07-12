@@ -85,7 +85,9 @@
     "browser": "Buscador",
     "timeline": "Muro",
     "contactUs": "Contacto",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "unfollow": "Dejar de seguir",
+    "following": "Siguiendo a..."
 
   },
 
