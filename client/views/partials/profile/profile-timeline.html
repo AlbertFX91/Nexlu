@@ -2,9 +2,12 @@
     <div class="container div-profile">
         {{> profileHeader}}
         <div class="row profile-content">
-            {{#each publications}}
-                {{> publication}}
-            {{/each}}
+            <div class="col s12" style="">
+                {{> newPublication}}
+                {{#each publications}}
+                    {{> publication}}
+                {{/each}}
+            </div>
         </div>
     </div>
 </template>
