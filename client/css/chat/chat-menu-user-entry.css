@@ -7,8 +7,8 @@
     cursor: pointer;
 }
 .chat-menu-user-entry-username{
-    flex: 5;
-}
+     flex: 5;
+ }
 .chat-menu-user-entry:hover{
     background-color: lightgrey;
 }
