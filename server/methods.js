@@ -78,5 +78,14 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'chatroom.exists': function(follower_id, my_id){
+        return ChatRooms.findOne({players: {$all: [follower_id, my_id]}})._id;
+    },
+    'chatroom.new': function(follower_id, my_id){
+        return ChatRooms.insert({
+            players: [follower_id, my_id],
+            messages: []
+        });
     }
 });
