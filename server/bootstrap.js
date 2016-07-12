@@ -236,8 +236,7 @@ function createPublications(){
                 description: "Nice publication!",
                 player: user2._id,
                 playersLike: [user1._id],
-                playersDislike: [],
-                sons: []
+                playersDislike: []
             },
             {
                 createdAt: new Date('2016-06-03T12:08:00'),
@@ -245,16 +244,6 @@ function createPublications(){
                 player: user3._id,
                 playersLike: [user1._id],
                 playersDislike: [user2._id],
-                sons: [
-                    {
-                        createdAt: new Date('2016-06-03T13:00:00'),
-                        description: "Thanks men!",
-                        player: user1._id,
-                        playersLike: [user3._id],
-                        playersDislike: [],
-                        sons: []
-                    }
-                ]
             }
         ]
     });
@@ -339,17 +328,7 @@ function createPublications(){
                 description: "Nice to see you!",
                 player: user1._id,
                 playersLike: [user2._id],
-                playersDislike: [],
-                sons: [
-                    {
-                        createdAt: new Date('2016-06-08T12:00:00'),
-                        description: "Me too dude!",
-                        player: user2._id,
-                        playersLike: [],
-                        playersDislike: [],
-                        sons: []
-                    }
-                ]
+                playersDislike: []
             }
         ]
     });

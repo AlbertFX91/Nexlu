@@ -95,5 +95,47 @@ Meteor.methods({
                 playersTagged: playersTagged
             }
         })
+    },
+    'likePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $push: {
+                playersLike: userId
+            }
+        });
+        Publications.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
+    },
+    'dislikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $push: {
+                playersDislike: userId
+            }
+        });
+        Publications.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'removeLikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'removeDislikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
     }
 });
