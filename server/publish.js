@@ -49,28 +49,26 @@ cambiando solo en este diccionario cambiaremos todas las publicaciones automatic
 Fields = {
     user: {
         all: {
-            all: {
-                _id: 1,
-                username: 1,
-                emails: 1,
-                followed: 1,
-                followers: 1,
-            }
+            _id: 1,
+            username: 1,
+            emails: 1,
+            followed: 1,
+            followers: 1
         },
-        publication: {
-            all: {
-                _id: 1,
-                owner: 1,
-                createdAt: 1,
-                playersTagged: 1,
-                description: 1,
-                playersLike: 1,
-                playersDislike: 1,
-                comments: 1,
-            },
-            none: {
-                _id: 1
-            }
+    },
+    publication: {
+        all: {
+            _id: 1,
+            owner: 1,
+            createdAt: 1,
+            playersTagged: 1,
+            description: 1,
+            playersLike: 1,
+            playersDislike: 1,
+            comments: 1
+        },
+        none: {
+            _id: 1
         }
     },
     image: {
