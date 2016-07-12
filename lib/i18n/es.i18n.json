@@ -61,7 +61,7 @@
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
     "occurred": "Ups, un error ha ocurrido",
-    "description_empty": "Añade una descripción"
+    "description_empty": "Añade una descripción",
     "email_error_patron": "El correo debe ser del tipo ejemplo@ejemplo.com",
     "password_error_patron": "La contraseña debe tener minúsculas, mayúsculas y números",
     "message_error_empty": "El mensaje no puede estar vacio",
