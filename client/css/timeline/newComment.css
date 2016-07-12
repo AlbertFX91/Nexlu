@@ -25,3 +25,7 @@
     border: none !important;
     padding-top: 10px !important;
 }
+
+#comment-error {
+    color: #b1070c;
+}

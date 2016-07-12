@@ -1,53 +1,37 @@
 Template.newComment.events({
-    'submit .confirm-post': function(e) {
+    'submit form': function(e) {
         e.preventDefault();
-        var description = document.getElementById('newPublication').value;
+        var description = $("textarea#newComment").val();
         var userId = Meteor.userId();
-        var username = Meteor.user().username;
+        var publicationId = this._id;
         var valido = true;
         if (description.trim() == ""){
             var texto = TAPi18n.__("error.post-notBlank");
-            document.getElementById('post-error').innerHTML = texto;
-            $("#post-label").removeClass("active");
+            document.getElementById('comment-error').innerHTML = texto;
             valido = false;
-        } else if (description.length > 5000) {
+        } else if (description.length > 2000) {
             var texto = TAPi18n.__("error.post-maxlength");
-            document.getElementById('post-error').innerHTML = texto;
-            $("#post-label").hide();
+            document.getElementById('comment-error').innerHTML = texto;
             valido = false;
         }
-        var publication = {
-            owner: [
-                {
-                    id: userId,
-                    username: username
-                }
-            ],
+        var comment = {
             createdAt: new Date(),
-            playersTagged: [], //TODO: Añadir etiquetas
             description: description,
+            player: userId,
             playersLike: [],
-            playersDislike: [],
-            comments: []
+            playersDislike: []
         };
         if (valido) {
-            Meteor.call('postPublication', publication, function(err, response) {
+            Meteor.call('postComment', publicationId, comment, function(err, response) {
                 if (!err){
-                    var textarea = document.getElementById('newPublication');
-                    textarea.value = "";
+                    var textarea = $("textarea#newComment").val("");
                     $("#newPublication").trigger('autoresize');
-                    $("#post-label").removeClass("active");
                 }
             });
         }
     },
-    'click #newPublication': function(e) {
+    'click #newComment': function(e) {
         e.preventDefault();
-        $("#post-label").show();
-        document.getElementById('post-error').innerHTML = "";
+        $(e.target).parent().parent().next().children('#comment-error').text("");
     }
 });
-
-Template.newComment.onRendered(function(){
-    $('#newPublication').characterCounter();
-})

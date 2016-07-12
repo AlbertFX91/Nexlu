@@ -82,7 +82,9 @@
             {{/each}}
         </div>
         <div class="card-action new-comment">
-            {{> newComment}}
+            {{#with this}}
+                {{> newComment}}
+            {{/with}}
         </div>
     </div>
 

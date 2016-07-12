@@ -120,5 +120,12 @@ Meteor.methods({
                 playersDislike: userId
             }
         })
+    },
+    'postComment': function (publicationId, comment) {
+        Publications.update(publicationId, {
+            $push: {
+                comments: comment
+            }
+        });
     }
 });
