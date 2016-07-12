@@ -40,9 +40,7 @@ Template.timeline.events({
         }
 
         //Comprobación del etiquetado con '@'
-        var playersTagged = Util.validateTag(description);
-
-
+        var usernamesTagged = Util.validateTag(description);
 
         var publication = {
             owner: [
@@ -52,21 +50,21 @@ Template.timeline.events({
                 }
             ],
             createdAt: new Date(),
-            playersTagged: [], //TODO: Añadir etiquetas
+            playersTagged: [], //Se inicializa vacio y en servidor se modifica
             description: description,
             playersLike: [],
             playersDislike: [],
             comments: []
         };
         if (valido) {
-            /**Meteor.call('postPublication', publication, function(err, response) {
+            Meteor.call('postPublication', publication, usernamesTagged, function(err, response) {
                 if (!err){
                     var textarea = document.getElementById('newPublication');
                     textarea.value = "";
                     $("#newPublication").trigger('autoresize');
                     $("#post-label").removeClass("active");
                 }
-            });**/
+            });
         }
     },
     'click #newPublication': function(e) {
