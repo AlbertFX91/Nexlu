@@ -39,9 +39,13 @@ Meteor.publish('image.me.miniature', function(){
     return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
 });
 
+Meteor.publish('image.one', function(img_id){
+    return Images.find(img_id, {fields: Fields.image.all});
+});
+
 Meteor.publish("findUser", function(username) {
     return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
-})
+});
 
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
@@ -79,6 +83,17 @@ Fields = {
             _id: 1,
             owner: 1,
             url: 1
+        },
+        all: {
+            _id: 1,
+            owner: 1,
+            url: 1,
+            createdAt: 1,
+            playersTagged: 1,
+            description: 1,
+            playersLike: 1,
+            playersDislike: 1,
+            comments: 1
         }
     }
 };
