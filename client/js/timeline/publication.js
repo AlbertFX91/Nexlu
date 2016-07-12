@@ -90,20 +90,45 @@ Template.publication.events({
     'click #like': function (e) {
         e.preventDefault();
         var publicationId = this._id;
-        Meteor.call('likePublication', publicationId, function(err, response){
-            if(err){
-                console.log(err);
-            }
-        });
+        if (!_.contains(this.playersLike, Meteor.userId())){
+            Meteor.call('likePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
     },
     'click #dislike': function (e) {
         e.preventDefault();
         var publicationId = this._id;
-        Meteor.call('dislikePublication', publicationId, function(err, response){
-            if(err){
-                console.log(err);
-            }
-        });
+        if (!_.contains(this.playersDislike, Meteor.userId())){
+            Meteor.call('dislikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #i-like': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (_.contains(this.playersLike, Meteor.userId())){
+            Meteor.call('removeLikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #i-dislike': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (_.contains(this.playersDislike, Meteor.userId())){
+            Meteor.call('removeDislikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
     }
-
 });

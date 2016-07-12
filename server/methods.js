@@ -104,5 +104,21 @@ Meteor.methods({
                 playersLike: userId
             }
         })
+    },
+    'removeLikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'removeDislikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
     }
 });
