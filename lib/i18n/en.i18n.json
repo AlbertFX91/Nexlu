@@ -129,7 +129,9 @@
     "photos": "photos",
     "info": "Info",
     "followed": "followed",
-    "followers": "followers"
+    "followers": "followers",
+    "images": "images",
+    "Images": "Images"
   },
   "faq": {
     "header": "Faq",
