@@ -17,7 +17,6 @@
 #chat-list-body{
     overflow-y: scroll;
     max-height: 100%;
-    padding: 3px;
 }
 #chat-list-title{
     margin-left: auto;

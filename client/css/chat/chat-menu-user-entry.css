@@ -1,0 +1,14 @@
+.chat-menu-user-entry{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.chat-menu-user-entry-username{
+    flex: 5;
+}
+.chat-menu-user-entry:hover{
+    background-color: lightgrey;
+}
