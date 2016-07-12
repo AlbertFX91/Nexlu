@@ -20,6 +20,9 @@ Template.publication.helpers({
     iDislike: function() {
         return _.contains(this.playersDislike, Meteor.userId().trim());
     },
+    hasComments: function() {
+      return this.comments.length > 0;
+    },
 
 
 

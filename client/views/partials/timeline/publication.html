@@ -74,10 +74,16 @@
                 {{/if}}
             </div>
         </div>
+
         <div class="card-action publication-comments">
-            {{#each comments}}
-                {{> comment}}
-            {{/each}}
+            {{#if hasComments}}
+                <div class="truncate-comments"><a id="truncate-comments">View Comments</a></div>
+                <div class="hiddendiv">
+                    {{#each comments}}
+                        {{> comment}}
+                    {{/each}}
+                </div>
+            {{/if}}
         </div>
     </div>
 
