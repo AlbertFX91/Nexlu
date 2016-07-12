@@ -1,13 +1,7 @@
 Template.images_input_modal.events({
     "click .close-modal-button": function(e){
         e.preventDefault();
-        $("#input-images-modal").closeModal({
-            complete: function(){
-                //Vaciamos las imagenes del navegador
-                ImagesLocals.remove({});
-                Session.set("img-prev-edit-id",false);
-            }
-        });
+        closeMainModal();
 
     },
     "change #image-upload": function(e){
@@ -73,6 +67,39 @@ Template.images_input_modal.events({
             }
             Session.set("img-prev-edit-id", false);
         }
+    },
+
+    "click #button-save-images": function(){
+        Session.set("uploadingImages", true);
+        var images = ImagesLocals.find({}).fetch();
+        Session.set("numImagesToUpload", images.length);
+        Session.set("numImagesUploaded", 0);
+        _.each(images, function(img){
+            console.log("Guardando imagen!");
+            var img_file = Util.dataURItoFile(img);
+            S3.upload({
+                file:img_file,
+                path:"users"
+            },function(e,r){
+                var numImagesUploaded =  Session.get("numImagesUploaded");
+                Session.set("numImagesUploaded", numImagesUploaded+1);
+                var data = {
+                    url: r.url,
+                    description: img.description
+                };
+                Meteor.call("image.new", data, function(e,r){
+                });
+            });
+        });
+        Tracker.autorun(function(){
+            var numImagesUploaded = Session.get("numImagesUploaded");
+            var numImagesToUpload = Session.get("numImagesToUpload");
+            if(numImagesToUpload === numImagesUploaded){
+                Toasts.throwTrans("images.uploaded_finished");
+                setTimeout(closeMainModal, 1000);
+                
+            }
+        })
     }
 });
 
@@ -88,9 +115,32 @@ Template.images_input_modal.helpers({
     },
     canSave: function(){
         return Session.get("filter-apply");
+    },
+    cantSaveS3: function(){
+        return ImagesLocals.find({}).fetch().length != 0;
+    },
+    uploadingImages: function(){
+        return Session.get("uploadingImages");
+    },
+    progressUploading: function(){
+        var numImagesUploaded = Session.get("numImagesUploaded");
+        var numImagesToUpload = Session.get("numImagesToUpload");
+        var res = numImagesUploaded*100.0/numImagesToUpload;
+        return res ;
+    },
+    numImagesUploaded: function(){
+        return Session.get("numImagesUploaded");
+    },
+    numImagesToUpload: function(){
+        return Session.get("numImagesToUpload");
     }
 });
 
+Template.images_input_modal.onRendered(function(){
+    Session.set("uploadingImages", false);
+    Session.set("numImagesUploaded", false);
+    Session.set("numImagesToUpload", false);
+});
 
 function saveImgInBrowserByFile(file){
     //Declaramos el objeto FileReader que usaremos para convertir el fichero en una URL para poder previsualizarlo y almacenarlo en la collection
@@ -112,3 +162,16 @@ Template.images_show_preview.helpers({
         return resultEdited? resultEdited: result;
     }
 });
+
+function closeMainModal(){
+    Session.set("uploadingImages", false);
+    Session.set("numImagesUploaded", false);
+    Session.set("numImagesToUpload", false);
+    $("#input-images-modal").closeModal({
+        complete: function(){
+            //Vaciamos las imagenes del navegador
+            ImagesLocals.remove({});
+            Session.set("img-prev-edit-id",false);
+        }
+    });
+}

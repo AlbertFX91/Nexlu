@@ -32,7 +32,7 @@ Template.images_preview_edit.onRendered(function(e){
     var _URL = window.URL || window.webkitURL;
     var img_id = Session.get("img-prev-edit-id");
     var image = ImagesLocals.findOne(img_id);
-    var file = dataURItoFile(image);
+    var file = Util.dataURItoFile(image);
 
     //Creamos un objeto de tipo Image para poder obtener el width y el height de la imagen
     var img = new Image();
@@ -127,14 +127,3 @@ Template.images_preview_edit.events({
 });
 
 
-//SOURCE: http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata y adaptado a Meteor
-function dataURItoFile(img) {
-    var dataURI = img.result;
-    var type = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    var binary = atob(dataURI.split(',')[1]);
-    var array = [];
-    for(var i = 0; i < binary.length; i++) {
-        array.push(binary.charCodeAt(i));
-    }
-    return new File([new Uint8Array(array)], img.name, {type: type});
-}

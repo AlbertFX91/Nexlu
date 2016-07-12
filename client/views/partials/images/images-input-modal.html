@@ -22,6 +22,16 @@
             {{/if}}
 
         </div>
+        {{#if uploadingImages}}
+            <div class="modal-img-saving-images animated fadeInUp">
+                <div class="progress-bar red lighten-2">
+                    <div class="progress-bar-message">{{{_ "images.uploading_progress" numImagesUploaded numImagesToUpload}}}</div>
+                    <div class="progress-bar-done light-blue lighten-3" style="width:{{progressUploading}}%;">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        {{/if}}
         <div class="modal-img-footer valign-wrapper">
             {{#if editing}}
                 <div style="margin-left:0;margin-right:auto;">
@@ -37,9 +47,11 @@
 
             {{else}}
                 <label class="label-hidden-footer" for="image-upload">
-                    <a class="waves-effect waves-light btn valign" id="button-add-img"><i class="fa fa-camera" aria-hidden="true"></i></a>
+                    <a class="waves-effect waves-light btn valign" id="button-add-img"><i class="fa fa-plus" aria-hidden="true"></i></a>
                     <input type="file" id="image-upload" accept=".jpg,.jpeg,.png" style="display:none" multiple>
                 </label>
+                <a class="waves-effect waves-light btn light-blue lighten-2 {{#unless cantSaveS3}}disabled{{/unless}}" id="button-save-images"> <i class="fa fa-cloud-upload" aria-hidden="true"></i></a>
+
             {{/if}}
         </div>
     </div>
