@@ -70,48 +70,50 @@ Meteor.startup(function () {
 
 
 function createUsers(){
-	var id_user1 = Accounts.createUser({
-            username: 'user1',
-            email: 'user1@gmail.com',
-            password: 'user1'
+    var id_user1 = Accounts.createUser({
+        username: 'user1',
+        email: 'user1@gmail.com',
+        password: 'user1'
     });
 
     var id_user2 = Accounts.createUser({
-            username: 'user2',
-            email: 'user2@gmail.com',
-            password: 'user2'
+        username: 'user2',
+        email: 'user2@gmail.com',
+        password: 'user2'
     });
     var id_user3 = Accounts.createUser({
-            username: 'user3',
-            email: 'user3@gmail.com',
-            password: 'user3'
+        username: 'user3',
+        email: 'user3@gmail.com',
+        password: 'user3'
     });
 
     var id_user4 = Accounts.createUser({
         username: 'user4',
         email: 'user4@gmail.com',
-        password: 'user4',
+        password: 'user4'
     });
 
     var id_user5 = Accounts.createUser({
         username: 'user5',
         email: 'user5@gmail.com',
-        password: 'user5',
+        password: 'user5'
     });
 
     Meteor.users.update(id_user1, {
         $set: {
+            bio: "Biography 1",
             followers: [id_user2],
             followed: [id_user2],
-            "emails.0.verified": true,
+            "emails.0.verified": true
         }
     });
 
     Meteor.users.update(id_user2, {
         $set: {
+            bio: "Biography 2",
             followers: [id_user1, id_user3, id_user4, id_user5],
             followed: [id_user1, id_user3, id_user4, id_user5],
-            "emails.0.verified": true,
+            "emails.0.verified": true
         }
     });
 
@@ -119,23 +121,25 @@ function createUsers(){
         $set: {
             followers: [id_user2],
             followed: [id_user2],
-            "emails.0.verified": true,
+            "emails.0.verified": true
         }
     });
 
     Meteor.users.update(id_user4, {
         $set: {
+            bio: "Biography 4",
             followers: [id_user2, id_user5],
             followed: [id_user2, id_user5],
-            "emails.0.verified": true,
+            "emails.0.verified": true
         }
     });
 
     Meteor.users.update(id_user5, {
         $set: {
+            bio: "Biography 5",
             followers: [id_user2, id_user4],
             followed: [id_user2, id_user4],
-            "emails.0.verified": true,
+            "emails.0.verified": true
         }
     });
 
