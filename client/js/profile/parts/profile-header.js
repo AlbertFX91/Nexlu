@@ -10,9 +10,7 @@ Template.profileHeader.helpers({
     },
     bio: function(){
         Session.set("firt_bio", false);
-        var user_id = Meteor.userId();
-        var user = Meteor.users.findOne(user_id);
-        var bio = user.bio;
+        var bio = Meteor.user().bio;
         if(Session.get("firt_bio") == false) {
             document.getElementById('textarea1').value = bio;
         }
