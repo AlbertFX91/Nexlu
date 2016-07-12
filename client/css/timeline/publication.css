@@ -108,3 +108,20 @@
     margin-left: 20px;
 }
 
+#like, #dislike {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+#i-like, #i-dislike {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+#like:hover, #i-like {
+    color: #00a2d3 !important;
+}
+
+#dislike:hover, #i-dislike {
+    color: #b1070c !important;
+}

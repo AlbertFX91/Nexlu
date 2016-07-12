@@ -14,6 +14,13 @@ Template.publication.helpers({
     descriptionTruncate: function() {
       return this.description.length >= 200;
     },
+    iLike: function() {
+        return _.contains(this.playersLike, Meteor.userId().trim());
+    },
+    iDislike: function() {
+        return _.contains(this.playersDislike, Meteor.userId().trim());
+    },
+
 
 
     // TODO: Esto hay que hacerlo en el lado del server (methods):
@@ -98,10 +105,49 @@ Template.publication.events({
         var descriptionTruncated = Humanize.truncate(description, 200);
         var readMore = "<a id='read-more'> " + TAPi18n.__("timeline.read-more") + "</a>";
         $(e.target).parent().empty().append(descriptionTruncated, readMore);
+    },
+    'click #like': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (!_.contains(this.playersLike, Meteor.userId())){
+            Meteor.call('likePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #dislike': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (!_.contains(this.playersDislike, Meteor.userId())){
+            Meteor.call('dislikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #i-like': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (_.contains(this.playersLike, Meteor.userId())){
+            Meteor.call('removeLikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #i-dislike': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (_.contains(this.playersDislike, Meteor.userId())){
+            Meteor.call('removeDislikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
     }
-});
-
-Template.publication.onRendered(function(){
-
-
 });
