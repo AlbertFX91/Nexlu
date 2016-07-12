@@ -86,6 +86,11 @@ Meteor.methods({
                 playersLike: userId
             }
         });
+        Publications.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
     },
     'dislikePublication': function(publicationId) {
         var userId = Meteor.userId();
@@ -94,5 +99,10 @@ Meteor.methods({
                 playersDislike: userId
             }
         });
+        Publications.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
     }
 });

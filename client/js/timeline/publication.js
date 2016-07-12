@@ -15,6 +15,7 @@ Template.publication.helpers({
     },
 
 
+
     // TODO: Esto hay que hacerlo en el lado del server (methods):
     listLikes: function(likes){
         var likes_username = _.map(likes, function(id){
