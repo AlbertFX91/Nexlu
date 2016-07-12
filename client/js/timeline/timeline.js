@@ -2,9 +2,6 @@ Template.timeline.helpers({
     publications: function () {
         return Publications.find({},{sort: {createdAt: -1}});
     },
-    placeholder: function() {
-        return TAPi18n.__("timeline.whatsup");
-    },
     settingsTextarea: function () {
         return {
             position: top,
@@ -41,6 +38,12 @@ Template.timeline.events({
             $("#post-label").hide();
             valido = false;
         }
+
+        //Comprobación del etiquetado con '@'
+        var playersTagged = Util.validateTag(description);
+
+
+
         var publication = {
             owner: [
                 {
@@ -56,14 +59,14 @@ Template.timeline.events({
             comments: []
         };
         if (valido) {
-            Meteor.call('postPublication', publication, function(err, response) {
+            /**Meteor.call('postPublication', publication, function(err, response) {
                 if (!err){
                     var textarea = document.getElementById('newPublication');
                     textarea.value = "";
                     $("#newPublication").trigger('autoresize');
                     $("#post-label").removeClass("active");
                 }
-            });
+            });**/
         }
     },
     'click #newPublication': function(e) {
