@@ -12,7 +12,7 @@ Meteor.methods({
                 });
                 Meteor.users.update(userId, {
                     $set: {
-                        bio: TAPi18n.__(" "),
+                        bio: TAPi18n.__("bio.add_bio"),
                         followers: [],
                         followed: []
                     }
@@ -50,9 +50,9 @@ Meteor.methods({
         var decodedString = Base64.decode(codificado);
         return decodedString;
     },
-    "image.new": function(data){
+    "image.new": function(data) {
         var user = Meteor.user();
-        if(user!=undefined){
+        if (user != undefined) {
             var image = {
                 owner: [
                     {
@@ -69,9 +69,85 @@ Meteor.methods({
                 url: data.url
             };
             return Images.insert(image);
-        }else{
+        } else {
             throw Meteor.Error("User not logued");
         }
+    },
+    'image.edit': function(imgId, description){
+        Images.update(imgId, {
+            $set: {
+                description: description
+            }
+        })
+    },
+    'image.remove': function(publicationId) {
+        Images.remove(publicationId);
+    },
+    'image.like': function(publicationId) {
+        var userId = Meteor.userId();
+        Images.update(publicationId, {
+            $push: {
+                playersLike: userId
+            }
+        });
+        Images.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
+    },
+    'image.dislike': function(publicationId) {
+        var userId = Meteor.userId();
+        Images.update(publicationId, {
+            $push: {
+                playersDislike: userId
+            }
+        });
+        Images.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'image.remove.like': function(publicationId) {
+        var userId = Meteor.userId();
+        Images.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'image.remove.dislike': function(publicationId) {
+        var userId = Meteor.userId();
+        Images.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
+    },
+    'image.remove': function(publicationId) {
+        Images.remove(publicationId);
+    },
+    'getUsernameById': function(id){
+        var user = Meteor.users.findOne(id, {fields:{username:1}});
+        return user.username;
+    },
+    'editPublication': function(publicationId, description){
+        Publications.update(publicationId, {
+            $set: {
+                description: description
+            }
+        })
+    },
+    'removePublication': function(publicationId) {
+        Publications.remove(publicationId);
+    },
+    'postPublication': function (publication) {
+        Publications.insert(publication, function (err, response) {
+            if (err) {
+                console.log(err);
+            }
+        })
     },
     'send_message_about': function(info) {
         Email.send({
@@ -80,5 +156,47 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'likePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $push: {
+                playersLike: userId
+            }
+        });
+        Publications.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
+    },
+    'dislikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $push: {
+                playersDislike: userId
+            }
+        });
+        Publications.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'removeLikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'removeDislikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
     }
 });

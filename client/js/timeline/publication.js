@@ -1,4 +1,4 @@
-Template.images_show.helpers({
+Template.publication.helpers({
     tagged_pretty: function(){
         return Prettify.compactTags(this.playersTagged);
     },
@@ -33,7 +33,7 @@ Template.images_show.helpers({
     }
 });
 
-Template.images_show.events({
+Template.publication.events({
     'click #edit-pub': function () {
         $('#edit-pub-modal').openModal({complete:function(){
             document.getElementById('edit-post-error').innerHTML = "";
@@ -65,11 +65,11 @@ Template.images_show.events({
             valido = false;
         }
         if (valido) {
-            Meteor.call('image.edit', publicationId, description, function(err, response){
-                if (!err){
-                    $('#edit-pub-modal').closeModal();
-                }
-            });
+           Meteor.call('editPublication', publicationId, description, function(err, response){
+               if (!err){
+                   $('#edit-pub-modal').closeModal();
+               }
+           });
         }
     },
     'click #editPublication': function(e) {
@@ -80,11 +80,10 @@ Template.images_show.events({
     'submit .remove-post': function(e) {
         e.preventDefault();
         var publicationId = this._id;
-        Meteor.call('image.remove', publicationId, function(err, response){
+        Meteor.call('removePublication', publicationId, function(err, response){
             if (!err){
                 $('#remove-pub-modal').closeModal();
                 $('.lean-overlay').remove();
-                Router.go("home");
             }
         });
     },
@@ -92,7 +91,7 @@ Template.images_show.events({
         e.preventDefault();
         var publicationId = this._id;
         if (!_.contains(this.playersLike, Meteor.userId())){
-            Meteor.call('image.like', publicationId, function(err, response){
+            Meteor.call('likePublication', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -103,7 +102,7 @@ Template.images_show.events({
         e.preventDefault();
         var publicationId = this._id;
         if (!_.contains(this.playersDislike, Meteor.userId())){
-            Meteor.call('image.dislike', publicationId, function(err, response){
+            Meteor.call('dislikePublication', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -114,7 +113,7 @@ Template.images_show.events({
         e.preventDefault();
         var publicationId = this._id;
         if (_.contains(this.playersLike, Meteor.userId())){
-            Meteor.call('image.remove.like', publicationId, function(err, response){
+            Meteor.call('removeLikePublication', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -125,17 +124,11 @@ Template.images_show.events({
         e.preventDefault();
         var publicationId = this._id;
         if (_.contains(this.playersDislike, Meteor.userId())){
-            Meteor.call('image.remove.dislike', publicationId, function(err, response){
+            Meteor.call('removeDislikePublication', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
             });
         }
     }
-});
-
-Template.images_show.onRendered(function (){
-   if(this.data == null){
-       Router.go('home');
-   }
 });
