@@ -78,5 +78,21 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'likePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $push: {
+                playersLike: userId
+            }
+        });
+    },
+    'dislikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $push: {
+                playersDislike: userId
+            }
+        });
     }
 });

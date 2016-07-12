@@ -85,6 +85,24 @@ Template.publication.events({
                 $('.lean-overlay').remove();
             }
         });
+    },
+    'click #like': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        Meteor.call('likePublication', publicationId, function(err, response){
+            if(err){
+                console.log(err);
+            }
+        });
+    },
+    'click #dislike': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        Meteor.call('dislikePublication', publicationId, function(err, response){
+            if(err){
+                console.log(err);
+            }
+        });
     }
 
 });
