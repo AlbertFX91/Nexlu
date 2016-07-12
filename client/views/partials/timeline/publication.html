@@ -77,8 +77,11 @@
 
         <div class="card-action publication-comments">
             {{#if hasComments}}
-                <div class="truncate-comments"><a id="truncate-comments">View Comments</a></div>
-                <div class="hiddendiv">
+                <div class="truncate-comments">
+                    <a id="view-comments">{{_ "timeline.view-comments"}}</a>
+                    <a id="hide-comments" class="hide">{{_ "timeline.hide-comments"}}</a>
+                </div>
+                <div class="hide">
                     {{#each comments}}
                         {{> comment}}
                     {{/each}}

@@ -153,10 +153,16 @@ Template.publication.events({
             });
         }
     },
-    'click #truncate-comments': function (e) {
+    'click #view-comments': function (e) {
         e.preventDefault();
-        console.log($(e.target).parent().next(".hiddendiv"));
-        $(e.target).parent().next(".hiddendiv").removeClass("hiddendiv");
-
+        $(e.target).next().removeClass('hide');
+        $(e.target).parent().next().removeClass('hide');
+        $(e.target).addClass('hide');
+    },
+    'click #hide-comments': function (e) {
+        e.preventDefault();
+        $(e.target).prev().removeClass('hide');
+        $(e.target).parent().next().addClass('hide');
+        $(e.target).addClass('hide');
     }
 });

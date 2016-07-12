@@ -155,7 +155,9 @@
     "remove-post": "¿Está seguro de eliminar esta publicación?",
     "new-post": "Nueva publicación",
     "read-more": "Seguir leyendo!",
-    "read-less": "Mostrar menos!"
+    "read-less": "Mostrar menos!",
+    "view-comments": "Mostrar comentarios",
+    "hide-comments": "Ocultar comentarios"
   },
 
   "faq": {
