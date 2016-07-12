@@ -80,7 +80,12 @@ Meteor.methods({
         });
     },
     'chatroom.exists': function(follower_id, my_id){
-        return ChatRooms.findOne({players: {$all: [follower_id, my_id]}})._id;
+        var res = ChatRooms.findOne({players: {$all: [follower_id, my_id]}});
+        if (res == undefined){
+            return undefined;
+        }else{
+            return res._id;
+        }
     },
     'chatroom.new': function(follower_id, my_id){
         return ChatRooms.insert({

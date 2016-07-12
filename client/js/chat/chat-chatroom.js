@@ -1,5 +1,6 @@
 Template.chat_chatroom.onRendered(function(){
     $("#chatroom-body").niceScroll();
+    Meteor.subscribe("chatroom.mine");
 });
 
 Template.chat_chatroom.events({
@@ -11,3 +12,9 @@ Template.chat_chatroom.events({
     }
 });
 
+Template.chat_chatroom.helpers({
+    chatroom: function(){
+        var chatRoomId = Session.get("ChatRoom.id");
+        return ChatRooms.findOne(chatRoomId);
+    }
+});
