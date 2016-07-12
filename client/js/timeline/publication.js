@@ -152,5 +152,11 @@ Template.publication.events({
                 }
             });
         }
+    },
+    'click #truncate-comments': function (e) {
+        e.preventDefault();
+        console.log($(e.target).parent().next(".hiddendiv"));
+        $(e.target).parent().next(".hiddendiv").removeClass("hiddendiv");
+
     }
 });
