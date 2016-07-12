@@ -45,3 +45,4 @@ simple:reactive-method  # Usado para devolver el valor resultante de una llamada
 themeteorchef:jquery-validation #Usado para la validacion de formularios con validación jQuery
 
 jackyqiu:meteor-jquery-nicescroll
+webtempest:animate
