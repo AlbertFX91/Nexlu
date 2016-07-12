@@ -3,6 +3,7 @@ Template.publication.helpers({
         return Prettify.compactTags(this.playersTagged);
     },
     isMine: function() {
+        console.log(this);
         if (this.owner[0].id.trim() === Meteor.userId().trim())
             return true;
         return false;
