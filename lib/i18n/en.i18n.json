@@ -133,7 +133,9 @@
     "whatsup": "What's up?",
     "new-post": "New post",
     "edit-post": "Edit publication",
-    "remove-post": "Are you sure to delete this publication?"
+    "remove-post": "Are you sure to delete this publication?",
+    "read-more": "Read more!",
+    "read-less": "View less!"
   },
 
   "faq": {

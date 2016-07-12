@@ -16,6 +16,7 @@
 
 .publication-description {
     margin-top: 10px !important;
+    white-space: pre-wrap;
 }
 
 .publication-details{

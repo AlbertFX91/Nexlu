@@ -153,7 +153,9 @@
     "whatsup": "¿Qué pasa?",
     "edit-post": "Editar publicación",
     "remove-post": "¿Está seguro de eliminar esta publicación?",
-    "new-post": "Nueva publicación"
+    "new-post": "Nueva publicación",
+    "read-more": "Seguir leyendo!",
+    "read-less": "Mostrar menos!"
   },
 
   "faq": {
