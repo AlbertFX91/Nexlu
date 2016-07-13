@@ -53,7 +53,6 @@ Template.publication.events({
         var description = document.getElementById('editPublication').value;
         var publicationId = this._id;
         var valido = true;
-        //var playersTagged: [], //TODO: Añadir etiquetas
         if (description.trim() == ""){
             var texto = TAPi18n.__("error.post-notBlank");
             document.getElementById('edit-post-error').innerHTML = texto;
@@ -65,8 +64,10 @@ Template.publication.events({
             $("#edit-post-label").hide();
             valido = false;
         }
+        //Comprobación del etiquetado con '@'
+        var usernamesTagged = Util.validateTag(description);
         if (valido) {
-           Meteor.call('editPublication', publicationId, description, function(err, response){
+           Meteor.call('editPublication', publicationId, description, usernamesTagged, function(err, response){
                if (!err){
                    $('#edit-pub-modal').closeModal();
                }

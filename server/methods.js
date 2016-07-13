@@ -54,10 +54,12 @@ Meteor.methods({
         var user = Meteor.users.findOne(id, {fields:{username:1}});
         return user.username;
     },
-    'editPublication': function(publicationId, description){
+    'editPublication': function(publicationId, description, usernamesTagged){
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Publications.update(publicationId, {
             $set: {
-                description: description
+                description: description,
+                playersTagged: playersTagged
             }
         })
     },
@@ -70,7 +72,12 @@ Meteor.methods({
                 console.log(err);
             }
         })
-        Meteor.call('constructPlayersTagged', usernamesTagged, publicationId);
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
+        Publications.update(publicationId, {
+            $set: {
+                playersTagged: playersTagged
+            }
+        })
     },
     'send_message_about': function(info) {
         Email.send({
@@ -80,7 +87,7 @@ Meteor.methods({
             text: info[1] + "\n\n" + info[2]
         });
     },
-    'constructPlayersTagged': function(usernamesTagged, publicationId) {
+    'constructPlayersTagged': function(usernamesTagged) {
         var usernameLength = usernamesTagged.length;
         var playersTagged = [];
         for (var i = 0; i < usernameLength; i++){
@@ -90,11 +97,7 @@ Meteor.methods({
                 username: usernamesTagged[i]
             })
         }
-        Publications.update(publicationId, {
-            $set: {
-                playersTagged: playersTagged
-            }
-        })
+        return playersTagged;
     },
     'likePublication': function(publicationId) {
         var userId = Meteor.userId();
