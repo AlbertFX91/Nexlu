@@ -5,6 +5,7 @@
     right: 305px;
     width: 400px;
     height: 300px;
+    margin-bottom: 46px;
 }
 @media (max-width: 700px){
     #chatroom-container{
@@ -28,10 +29,54 @@
     overflow-y: scroll;
     max-height: 100%;
     height: 100%;
+    background-color: white;
     /**max-height: 100px;
     height: 100px;*/
 }
 #chat-chatroom-close-button{
     margin-left: 5px;
     cursor: pointer;
+}
+
+ul.chat{
+    width: 100%;
+}
+ul.chat li {
+    padding: 10px 15px 10px 15px;
+    display: inline-flex;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    transition: all 0.18s ease-in;
+    position: relative;
+}
+ul.chat li img {
+    height: 42px;
+    width: 42px;
+    border-radius: 100%;
+}
+ul.chat li .message {
+    padding: 10px 10px 10px 20px;
+    font-size: 0.9em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    min-width: 50%;
+    position: relative;
+    background: white;
+    border-radius: 5px;
+}
+ul.chat li .message::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 8px 8px 8px 0;
+    border-color: transparent white;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -8px;
+    top: 3px;
+}
+ul.chat li:nth-child(2n) {
+    flex-direction: row-reverse;
 }
