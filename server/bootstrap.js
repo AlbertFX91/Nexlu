@@ -138,37 +138,31 @@ function createChatRooms(){
         players: [user1._id, user2._id],
         messages: [
             {
-                order: 1,
                 createdAt: new Date('2016-06-03T12:00:00'),
                 message: "Hola!",
                 player: user1._id
             },
             {
-                order: 2,
                 createdAt: new Date('2016-06-03T12:05:00'),
                 message: "Hola user1! Me alegro de verte!",
                 player: user2._id
             },
             {
-                order: 3,
                 createdAt: new Date('2016-06-03T12:07:00'),
                 message: "Igualmente! Que tal te va todo?",
                 player: user1._id
             },
             {
-                order: 4,
                 createdAt: new Date('2016-06-03T12:08:00'),
                 message: "No puedo quejarme la verdad!!",
                 player: user2._id
             },
             {
-                order: 5,
                 createdAt: new Date('2016-06-03T12:08:00'),
                 message: "Trabajando mucho, pero ya llega el verano!",
                 player: user2._id
             },
             {
-                order: 6,
                 createdAt: new Date('2016-06-03T12:10:00'),
                 message: "Jaja espero verte este verano!",
                 player: user1._id
@@ -180,19 +174,16 @@ function createChatRooms(){
         players: [user2._id, user3._id],
         messages: [
             {
-                order: 1,
                 createdAt: new Date('2016-06-03T12:00:00'),
                 message: "Hola user2!",
                 player: user2._id
             },
             {
-                order: 2,
                 createdAt: new Date('2016-06-03T12:05:00'),
                 message: "Hola user1! que tal?! :)",
                 player: user3._id
             },
             {
-                order: 3,
                 createdAt: new Date('2016-06-03T12:07:00'),
                 message: "Muy bien! No sabia que tu usases esta aplicación!",
                 player: user2._id
