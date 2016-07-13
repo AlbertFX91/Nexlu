@@ -4,8 +4,8 @@
     bottom: 0px;
     right: 305px;
     width: 400px;
-    height: 300px;
-    margin-bottom: 46px;
+    /*height: 300px;
+    margin-bottom: 46px;*/
 }
 @media (max-width: 700px){
     #chatroom-container{
@@ -29,7 +29,7 @@
 }
 #chatroom-body{
     overflow-y: scroll;
-    max-height: 100%;
+    max-height: 300px;
     height: 100%;
     background-color: white;
 }
