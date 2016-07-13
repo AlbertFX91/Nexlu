@@ -22,7 +22,8 @@
                                     </div>
                                     <div class="white-text post-content">
                                         <div class="input-field col s12 post-input">
-                                            <textarea id="editPublication" class="materialize-textarea" length="5000"></textarea>
+                                            <!--<textarea id="editPublication" class="materialize-textarea" length="5000"></textarea>-->
+                                            {{#textareaAutocomplete settings=settingsTextareaEdit id="editPublication" class="materialize-textarea" autofocus="autofocus" length="5000"}}{{/textareaAutocomplete}}
                                             <label id="edit-post-label" for="editPublication" style="text-align: left !important;">{{_ "timeline.whatsup"}}</label>
                                         </div>
                                     </div>

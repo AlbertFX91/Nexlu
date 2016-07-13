@@ -3,7 +3,6 @@ Template.publication.helpers({
         return Prettify.compactTags(this.playersTagged);
     },
     isMine: function() {
-        console.log(this);
         if (this.owner[0].id.trim() === Meteor.userId().trim())
             return true;
         return false;
@@ -14,7 +13,22 @@ Template.publication.helpers({
     iDislike: function() {
         return _.contains(this.playersDislike, Meteor.userId().trim());
     },
-
+    settingsTextareaEdit: function () {
+        return {
+            position: top,
+            limit: 5,
+            rules: [
+                {
+                    token: '@',
+                    collection: Meteor.users,
+                    field: 'username',
+                    options: '',
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
+                }
+            ]
+        }
+    },
 
 
     // TODO: Esto hay que hacerlo en el lado del server (methods):
