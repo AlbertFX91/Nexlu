@@ -78,5 +78,20 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'findUsers': function(){
+        var user = Meteor.user();
+        var followers = user.followed;
+        var result = [];
+        followers.forEach(function(item){
+            var userFollowers = Meteor.users.findOne({"_id": item});
+            var aux = {
+                "username": userFollowers.username,
+                "bio": userFollowers.bio,
+                //TODO: "image": userFollowers.image
+            };
+            result.push(aux);
+        });
+        return result;
     }
 });
