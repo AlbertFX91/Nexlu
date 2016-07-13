@@ -60,6 +60,7 @@
     "password_error_maxlength": "20 caracteres como máximo",
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
+    "post-notBlank": "La publicación no debe estar vacía",
     "email_error_patron": "El correo debe ser del tipo ejemplo@ejemplo.com",
     "password_error_pattern": "Formato inválido",
     "password_error_patron": "La contraseña debe tener minúsculas, dos mayúsculas y números",
@@ -87,7 +88,9 @@
     "contactUs": "Contacto",
     "faq": "FAQ",
     "unfollow": "Dejar de seguir",
-    "following": "Siguiendo a..."
+    "following": "Siguiendo a...",
+    "post": "Enviar",
+    "remove": "Borrar"
 
   },
 
@@ -142,6 +145,16 @@
     "info": "Información",
     "followed": "siguiendo",
     "followers": "seguidores"
+  },
+
+  "timeline": {
+    "more-tags": "y otros jugadores",
+    "with": "Con",
+    "no-tags": "Sin etiquetas",
+    "whatsup": "¿Qué pasa?",
+    "edit-post": "Editar publicación",
+    "remove-post": "¿Está seguro de eliminar esta publicación?",
+    "new-post": "Nueva publicación"
   },
 
   "faq": {

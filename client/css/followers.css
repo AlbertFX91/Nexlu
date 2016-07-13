@@ -1,0 +1,15 @@
+#title-followers{
+    color: white;
+}
+
+#follower{
+    color: white;
+    background-color: #263238;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+    padding: 5px 0 5px 0;
+}
+
+#followers{
+    margin-top:50px;
+}
