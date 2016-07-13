@@ -13,8 +13,12 @@ Template.chat_chatroom.events({
 });
 
 Template.chat_chatroom.helpers({
-    chatroom: function(){
+    chatroom: function (){
         var chatRoomId = Session.get("ChatRoom.id");
         return ChatRooms.findOne(chatRoomId);
+    },
+    messages: function (){
+        var chatRoomId = Session.get("ChatRoom.id");
+        return ChatRooms.findOne(chatRoomId).messages;
     }
 });

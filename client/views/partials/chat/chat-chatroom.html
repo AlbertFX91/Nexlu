@@ -5,7 +5,7 @@
                 <img src="/example.png" class="circle" height="auto" width="100%" style="border: 2px solid black; max-width: 35px;max-height: 35px; vertical-align: middle;margin-right: 10px">
             </div>
             <div class="chatroom-header-username truncate">
-                {{username}}
+                {{chatroom.players}}
             </div>
             <div class="chatroom-header-status">
                 <i class="fa fa-circle green-text" aria-hidden="true"></i>
@@ -13,11 +13,11 @@
             <i id="chat-chatroom-close-button" class="fa fa-times" aria-hidden="true"></i>
         </div>
         <div id="chatroom-body">
-            <!--<h1>HELLO!!!!! {{chatroom._id}}</h1>
-            <h4>NICE TO SEE YOU</h4>
-            <h2>HAVE FUN!</h2>
-            <h1>SEE YOU SOON!</h1>-->
             <ul class="chat">
+                {{#each messages}}
+                    {{>chat_chatroom_message}}
+                {{/each}}
+                <!--
                 <li>
                     <img src="http://s8.postimg.org/76bg2es2t/index.png">
                     <div class="message">o hai!</div>
@@ -37,7 +37,7 @@
                 <li>
                     <img src="http://s8.postimg.org/76bg2es2t/index.png">
                     <div class="message">Very happy to see you!</div>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>
