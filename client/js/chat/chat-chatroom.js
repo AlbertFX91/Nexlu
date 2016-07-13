@@ -19,6 +19,16 @@ Template.chat_chatroom.helpers({
     },
     messages: function (){
         var chatRoomId = Session.get("ChatRoom.id");
-        return ChatRooms.findOne(chatRoomId).messages;
+        var chatroom = ChatRooms.findOne(chatRoomId);
+        if(chatroom == undefined){return undefined}
+        return _.sortBy(chatroom.messages, function(m){return m.createdAt});
+    },
+    username: function(){
+        var chatRoomId = Session.get("ChatRoom.id");
+        var chatRoom =  ChatRooms.findOne(chatRoomId);
+        if(chatRoom == undefined){return undefined}
+        var userId = Meteor.userId();
+        var username = _.find(chatRoom.players, function(player){return player.id!=userId}).username;
+        return username;
     }
 });
