@@ -24,14 +24,14 @@
 }
 .chatroom-header-username{
     flex: 5;
+    margin-left: 5px;
+    font-weight: 600;
 }
 #chatroom-body{
     overflow-y: scroll;
     max-height: 100%;
     height: 100%;
     background-color: white;
-    /**max-height: 100px;
-    height: 100px;*/
 }
 #chat-chatroom-close-button{
     margin-left: 5px;
