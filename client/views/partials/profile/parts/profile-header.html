@@ -79,17 +79,17 @@
                     </div>
                 </div>
                 <div class="row profile-username truncate">
-                    <span data-username="usernameUserProfile">{{username}}</span>
+                    <span id="usernameUserProfile">{{username}}</span>
                 </div>
                 <div class="row profile-numfriends">
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followed" }} <span class="profile-num"><a href="../profile/following">{{followed.length}}</a></span>
+                        {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'following'}}">{{followed.length}}</a></span>
                     </div>
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followers" }} <span class="profile-num"><a href="../profile/followers">{{followers.length}}</a></span>
+                        {{_ "profile.followers" }} <span class="profile-num"><a href="{{pathFor 'followers'}}">{{followers.length}}</a></span>
                     </div>
                     <div class="col s4">
-                        {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty_user}}</span>
+                        {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty}}</span>
                     </div>
                 </div>
             </div>

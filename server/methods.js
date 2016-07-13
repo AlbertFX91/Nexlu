@@ -94,11 +94,4 @@ Meteor.methods({
         });
         return result;
     }
-    /**
-     * ,
-     'numPublicationUser': function(usernameUser){
-        var user = Meteor.users.findOne({"username":usernameUser});
-        return result;
-    }
-     */
 });

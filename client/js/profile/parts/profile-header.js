@@ -43,14 +43,7 @@ Template.profileHeader.events({
 });
 
 Template.profileHeaderUser.helpers({
-    publications_pretty_user: function(){
-        var usernameUserProfile =  $(this).attr("usernameUserProfile");
-        console.log(Session.get(usernameUserProfile));
-        Meteor.subscribe("publication.user.none", usernameUserProfile, function(e,r){
-            Session.set("numPublicationUser",r);
-        });
-        console.log(Session.get("numPublicationUser"));
-        var numPublicationUser = Session.get("numPublicationUser");
-        return numPublicationUser;
+    publications_pretty: function(){
+        return Prettify.compactInteger(this.numPublication); //TODO: Coger el nº de publicaciones del user en cuestion
     }
 });
