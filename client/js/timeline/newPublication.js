@@ -1,3 +1,22 @@
+Template.newPublication.helpers({
+    settingsTextarea: function () {
+        return {
+            position: top,
+            limit: 5,
+            rules: [
+                {
+                    token: '@',
+                    collection: Meteor.users,
+                    field: 'username',
+                    options: '',
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
+                }
+            ]
+        }
+    }
+});
+
 Template.newPublication.events({
     'submit .confirm-post': function(e) {
         e.preventDefault();
@@ -16,6 +35,10 @@ Template.newPublication.events({
             $("#post-label").hide();
             valido = false;
         }
+
+        //Comprobación del etiquetado con '@'
+        var usernamesTagged = Util.validateTag(description);
+
         var publication = {
             owner: [
                 {
@@ -24,14 +47,14 @@ Template.newPublication.events({
                 }
             ],
             createdAt: new Date(),
-            playersTagged: [], //TODO: Añadir etiquetas
+            playersTagged: [], //Se inicializa vacio y en servidor se modifica
             description: description,
             playersLike: [],
             playersDislike: [],
             comments: []
         };
         if (valido) {
-            Meteor.call('postPublication', publication, function(err, response) {
+            Meteor.call('postPublication', publication, usernamesTagged, function(err, response) {
                 if (!err){
                     var textarea = document.getElementById('newPublication');
                     textarea.value = "";
@@ -50,4 +73,4 @@ Template.newPublication.events({
 
 Template.newPublication.onRendered(function(){
     $('#newPublication').characterCounter();
-})
+});

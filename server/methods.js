@@ -54,20 +54,28 @@ Meteor.methods({
         var user = Meteor.users.findOne(id, {fields:{username:1}});
         return user.username;
     },
-    'editPublication': function(publicationId, description){
+    'editPublication': function(publicationId, description, usernamesTagged){
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Publications.update(publicationId, {
             $set: {
-                description: description
+                description: description,
+                playersTagged: playersTagged
             }
         })
     },
     'removePublication': function(publicationId) {
         Publications.remove(publicationId);
     },
-    'postPublication': function (publication) {
-        Publications.insert(publication, function (err, response) {
+    'postPublication': function (publication, usernamesTagged) {
+        var publicationId = Publications.insert(publication, function (err, response) {
             if (err) {
                 console.log(err);
+            }
+        })
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
+        Publications.update(publicationId, {
+            $set: {
+                playersTagged: playersTagged
             }
         })
     },
@@ -78,6 +86,18 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'constructPlayersTagged': function(usernamesTagged) {
+        var usernameLength = usernamesTagged.length;
+        var playersTagged = [];
+        for (var i = 0; i < usernameLength; i++){
+            var id = Meteor.users.findOne({"username": usernamesTagged[i]}, {fields:{_id:1}});
+            playersTagged.push({
+                _id: id,
+                username: usernamesTagged[i]
+            })
+        }
+        return playersTagged;
     },
     'likePublication': function(publicationId) {
         var userId = Meteor.userId();

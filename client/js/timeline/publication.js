@@ -20,12 +20,26 @@ Template.publication.helpers({
     iDislike: function() {
         return _.contains(this.playersDislike, Meteor.userId().trim());
     },
+    settingsTextareaEdit: function () {
+        return {
+            position: top,
+            limit: 5,
+            rules: [
+                {
+                    token: '@',
+                    collection: Meteor.users,
+                    field: 'username',
+                    options: '',
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
+                }
+            ]
+        }
+    },
     hasComments: function() {
       return this.comments.length > 0;
     },
-
-
-
+    
     // TODO: Esto hay que hacerlo en el lado del server (methods):
     listLikes: function(likes){
         var likes_username = _.map(likes, function(id){
@@ -62,7 +76,6 @@ Template.publication.events({
         var description = document.getElementById('editPublication').value;
         var publicationId = this._id;
         var valido = true;
-        //var playersTagged: [], //TODO: Añadir etiquetas
         if (description.trim() == ""){
             var texto = TAPi18n.__("error.post-notBlank");
             document.getElementById('edit-post-error').innerHTML = texto;
@@ -74,8 +87,10 @@ Template.publication.events({
             $("#edit-post-label").hide();
             valido = false;
         }
+        //Comprobación del etiquetado con '@'
+        var usernamesTagged = Util.validateTag(description);
         if (valido) {
-           Meteor.call('editPublication', publicationId, description, function(err, response){
+           Meteor.call('editPublication', publicationId, description, usernamesTagged, function(err, response){
                if (!err){
                    $('#edit-pub-modal').closeModal();
                }

@@ -45,6 +45,10 @@ Meteor.publish("findUser", function(username) {
     return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
 });
 
+Meteor.publish('user.all.username', function () {
+    return Meteor.users.find({}, {fields: Fields.user.username});
+});
+
 Meteor.publish('publication.someone.all', function (publicationId) {
     return Publications.find(publicationId, {fields: Fields.publication.all});
 });
@@ -66,6 +70,9 @@ Fields = {
         },
         followed: {
             followed: 1
+        },
+        username: {
+            username: 1
         }
     },
     publication: {
