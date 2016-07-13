@@ -47,9 +47,7 @@
                 </div>
                 <span data-livestamp="{{createdAt}}"></span>
             </div>
-            <div class="publication-description">
-                <pre>{{description}}</pre>
-            </div>
+            <div class="publication-description">{{#if descriptionTruncate}}{{descriptionTruncated}} <a id="read-more"> {{_ "timeline.read-more"}}</a>{{else}}{{description}}{{/if}}</div>
         </div>
         <div class="card-action text-color-1 publication-details">
             <div class="text-color-1">
@@ -76,10 +74,19 @@
                 {{/if}}
             </div>
         </div>
+
         <div class="card-action publication-comments">
-            {{#each comments}}
-                {{> comment}}
-            {{/each}}
+            {{#if hasComments}}
+                <div class="truncate-comments">
+                    <a id="view-comments">{{_ "timeline.view-comments"}}</a>
+                    <a id="hide-comments" class="hide">{{_ "timeline.hide-comments"}}</a>
+                </div>
+                <div class="hide">
+                    {{#each comments}}
+                        {{> comment}}
+                    {{/each}}
+                </div>
+            {{/if}}
         </div>
     </div>
 

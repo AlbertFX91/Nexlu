@@ -7,11 +7,21 @@ Template.publication.helpers({
             return true;
         return false;
     },
+    descriptionTruncated: function() {
+        var description = this.description;
+        return Humanize.truncate(description, 200);
+    },
+    descriptionTruncate: function() {
+      return this.description.length >= 200;
+    },
     iLike: function() {
         return _.contains(this.playersLike, Meteor.userId().trim());
     },
     iDislike: function() {
         return _.contains(this.playersDislike, Meteor.userId().trim());
+    },
+    hasComments: function() {
+      return this.comments.length > 0;
     },
 
 
@@ -87,6 +97,18 @@ Template.publication.events({
             }
         });
     },
+    'click #read-more': function(e) {
+        e.preventDefault();
+        var readLess = "<a id='read-less'> " + TAPi18n.__("timeline.read-less") + "</a>";
+        $(e.target).parent().empty().append(this.description, readLess);
+    },
+    'click #read-less': function(e) {
+        e.preventDefault();
+        var description = this.description;
+        var descriptionTruncated = Humanize.truncate(description, 200);
+        var readMore = "<a id='read-more'> " + TAPi18n.__("timeline.read-more") + "</a>";
+        $(e.target).parent().empty().append(descriptionTruncated, readMore);
+    },
     'click #like': function (e) {
         e.preventDefault();
         var publicationId = this._id;
@@ -130,5 +152,17 @@ Template.publication.events({
                 }
             });
         }
+    },
+    'click #view-comments': function (e) {
+        e.preventDefault();
+        $(e.target).next().removeClass('hide');
+        $(e.target).parent().next().removeClass('hide');
+        $(e.target).addClass('hide');
+    },
+    'click #hide-comments': function (e) {
+        e.preventDefault();
+        $(e.target).prev().removeClass('hide');
+        $(e.target).parent().next().addClass('hide');
+        $(e.target).addClass('hide');
     }
 });
