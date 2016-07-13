@@ -79,6 +79,7 @@ Meteor.methods({
             text: info[1] + "\n\n" + info[2]
         });
     },
+
     'chatroom.exists': function(follower_id, my_id){
         var res = ChatRooms.findOne(
             {$and:
@@ -111,11 +112,11 @@ Meteor.methods({
             messages: []
         });
     },
-    'chatroom.send': function(chatroom_id, messageToSend){
-        if(messageToSend.length==0) return false;
+    'chatroom.send': function(chatroom_id, messageToSend) {
+        if (messageToSend.length == 0) return false;
         var userId = Meteor.userId();
         var createdAt = new Date();
-        ChatRooms.update(chatroom_id,{
+        ChatRooms.update(chatroom_id, {
             $push: {
                 messages: {
                     createdAt: createdAt,
@@ -125,5 +126,20 @@ Meteor.methods({
             }
         });
         return true;
+    },
+    'findUsers': function(){
+        var user = Meteor.user();
+        var followers = user.followed;
+        var result = [];
+        followers.forEach(function(item){
+            var userFollowers = Meteor.users.findOne({"_id": item});
+            var aux = {
+                "username": userFollowers.username,
+                "bio": userFollowers.bio,
+                //TODO: "image": userFollowers.image
+            };
+            result.push(aux);
+        });
+        return result;
     }
 });
