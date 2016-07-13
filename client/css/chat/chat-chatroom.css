@@ -69,6 +69,7 @@ i.offline{
 }
 #chatroom-input-container{
     padding-left: 10px;
+    padding-right: 10px;
     flex: 2;
 }
 
@@ -85,4 +86,13 @@ i.offline{
 
 .emoji-picker{
     cursor: pointer;
+}
+
+#chatroom-input-save{
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    cursor: pointer;
+    color: white;
 }

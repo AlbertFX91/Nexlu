@@ -110,5 +110,20 @@ Meteor.methods({
             ],
             messages: []
         });
+    },
+    'chatroom.send': function(chatroom_id, messageToSend){
+        if(messageToSend.length==0) return false;
+        var userId = Meteor.userId();
+        var createdAt = new Date();
+        ChatRooms.update(chatroom_id,{
+            $push: {
+                messages: {
+                    createdAt: createdAt,
+                    message: messageToSend,
+                    player: userId
+                }
+            }
+        });
+        return true;
     }
 });

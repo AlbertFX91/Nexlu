@@ -28,6 +28,18 @@ Template.chat_chatroom.events({
         var emoji_id = $(e.target).parent().attr("data-id");
         var emoji = Emojis.findOne(emoji_id);
         $("#message-input").val($("#message-input").val()+":"+emoji.alias+":");
+    },
+
+    'click #chatroom-input-save': function(e){
+        var messageToSend =  $("#message-input").val();
+        if(messageToSend.length!=0){
+            var chatroom_id = Session.get("ChatRoom.id");
+            Meteor.call("chatroom.send", chatroom_id, messageToSend, function(e, r){
+                if(r){
+                    $("#message-input").val("");
+                }
+            });
+        }
     }
 });
 

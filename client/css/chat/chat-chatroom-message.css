@@ -34,11 +34,11 @@ ul.chat li .message::after {
     left: -8px;
     top: 3px;
 }
-ul.chat li.his {
+ul.chat li.my {
     flex-direction: row-reverse;
 }
 
-ul.chat li.his .message::after {
+ul.chat li.my .message::after {
     right: -8px;
     left: auto;
     border-width: 8px 0 8px 8px;
