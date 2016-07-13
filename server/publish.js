@@ -75,7 +75,7 @@ Meteor.publish("chatroom.mine", function(id){
         this.ready();
         return;
     }
-    return ChatRooms.find({players: user_id});
+    return ChatRooms.find({"players.id": user_id});
 });
 
 /*

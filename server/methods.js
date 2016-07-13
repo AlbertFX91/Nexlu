@@ -80,7 +80,14 @@ Meteor.methods({
         });
     },
     'chatroom.exists': function(follower_id, my_id){
-        var res = ChatRooms.findOne({players: {$all: [follower_id, my_id]}});
+        var res = ChatRooms.findOne(
+            {$and:
+                [
+                    {"players.id": follower_id},
+                    {"players.id": my_id}
+                ]
+            }
+        );
         if (res == undefined){
             return undefined;
         }else{
@@ -88,8 +95,19 @@ Meteor.methods({
         }
     },
     'chatroom.new': function(follower_id, my_id){
+        var follower_username = Meteor.users.findOne(follower_id).username;
+        var my_username = Meteor.users.findOne(my_id).username;
         return ChatRooms.insert({
-            players: [follower_id, my_id],
+            players: [
+                {
+                    id: follower_id,
+                    username: follower_username
+                },
+                {
+                    id: my_id,
+                    username: my_username
+                }
+            ],
             messages: []
         });
     }

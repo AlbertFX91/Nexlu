@@ -135,7 +135,16 @@ function createChatRooms(){
     var user5 = Meteor.users.findOne({username: 'user5'});
 
     ChatRooms.insert({
-        players: [user1._id, user2._id],
+        players: [
+            {
+                id: user1._id,
+                username: user1.username
+            },
+            {
+                id: user2._id,
+                username: user2.username
+            }
+        ],
         messages: [
             {
                 createdAt: new Date('2016-06-03T12:00:00'),
@@ -171,7 +180,16 @@ function createChatRooms(){
     });
 
     ChatRooms.insert({
-        players: [user2._id, user3._id],
+        players: [
+            {
+                id: user2._id,
+                username: user2.username
+            },
+            {
+                id: user3._id,
+                username: user3.username
+            }
+        ],
         messages: [
             {
                 createdAt: new Date('2016-06-03T12:00:00'),

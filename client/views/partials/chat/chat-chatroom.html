@@ -1,14 +1,11 @@
 <template name="chat_chatroom">
     <div id="chatroom-container" class="animated fadeInUp white">
         <div id="chatroom-header" class="web-color-2">
-            <div class="chatroom-header-user-img">
-                <img src="/example.png" class="circle" height="auto" width="100%" style="border: 2px solid black; max-width: 35px;max-height: 35px; vertical-align: middle;margin-right: 10px">
+            <div class="chatroom-header-user-status">
+                <i class="fa fa-circle green-text" aria-hidden="true"></i>
             </div>
             <div class="chatroom-header-username truncate">
                 {{chatroom.players}}
-            </div>
-            <div class="chatroom-header-status">
-                <i class="fa fa-circle green-text" aria-hidden="true"></i>
             </div>
             <i id="chat-chatroom-close-button" class="fa fa-times" aria-hidden="true"></i>
         </div>
