@@ -78,6 +78,10 @@ Meteor.publish("chatroom.mine", function(id){
     return ChatRooms.find({"players.id": user_id});
 });
 
+Meteor.publish("emojis", function(){
+    return Emojis.find();
+});
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,

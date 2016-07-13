@@ -47,3 +47,4 @@ themeteorchef:jquery-validation #Usado para la validacion de formularios con val
 jackyqiu:meteor-jquery-nicescroll
 webtempest:animate
 mizzao:user-status      # Usado para comprobar que usuarios estan actualmente logueados en el sistema
+lookback:emoji

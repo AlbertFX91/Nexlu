@@ -1,7 +1,9 @@
 Template.chat_chatroom.onRendered(function(){
     $("#chatroom-body").niceScroll();
     Meteor.subscribe("chatroom.mine");
+    Meteor.subscribe("emojis");
     Session.set("user.status","offline");
+
 });
 
 Template.chat_chatroom.events({
@@ -10,6 +12,22 @@ Template.chat_chatroom.events({
         setTimeout(function(){
             Session.set("ChatRoom.id", null);
         }, 1000);
+    },
+    'click #chatroom-input-options': function(){
+        var picker = $("#chatroom-emoji-picker");
+        if (picker.css("display")=="none") {
+            picker.css("display", "block");
+        }else if(picker.css("display")=="block"){
+            picker.removeClass("fadeInUp").addClass("fadeOutDown");
+            setTimeout(function(){
+                picker.removeClass("fadeOutDown").css("display","none").addClass("fadeInUp");
+            }, 1000);
+        }
+    },
+    'click span.emoji-picker': function(e){
+        var emoji_id = $(e.target).parent().attr("data-id");
+        var emoji = Emojis.findOne(emoji_id);
+        $("#message-input").val($("#message-input").val()+":"+emoji.alias+":");
     }
 });
 
@@ -45,5 +63,8 @@ Template.chat_chatroom.helpers({
         }else{
             return "offline";
         }
+    },
+    emojis: function(){
+        return Emojis.find().fetch().slice(0,20*6);
     }
 });

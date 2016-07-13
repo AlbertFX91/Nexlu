@@ -48,3 +48,41 @@ i.online{
 i.offline{
     color: grey;
 }
+#chatroom-footer{
+    border-top: solid lightgrey 2px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+}
+#chatroom-input-options{
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    cursor: pointer;
+}
+#emoji-select-button{
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+#chatroom-input-container{
+    padding-left: 10px;
+    flex: 2;
+}
+
+#chatroom-emoji-picker{
+    width: 100%;
+    height: 140px;
+    position: absolute;
+    top: 193px;
+    z-index: 2;
+    background-color: #263238;
+    display: none;
+    overflow-y: scroll;
+}
+
+.emoji-picker{
+    cursor: pointer;
+}

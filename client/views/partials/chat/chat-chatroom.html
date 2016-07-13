@@ -16,5 +16,19 @@
                 {{/each}}
             </ul>
         </div>
+
+        <div id="chatroom-emoji-picker" class="animated fadeInUp">
+            {{#each emojis}}
+                <span data-id="{{_id}}" class="emoji-picker">{{{toHTML}}}</span>
+            {{/each}}
+        </div>
+        <div id="chatroom-footer">
+            <div id="chatroom-input-options" class="web-color-1">
+                <span id="emoji-select-button"> {{> emoji ':smile:'}} </span>
+            </div>
+            <div id="chatroom-input-container">
+                <textarea id="message-input" style="resize: none;"></textarea>
+            </div>
+        </div>
     </div>
 </template>
