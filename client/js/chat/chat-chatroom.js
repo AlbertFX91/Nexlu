@@ -14,15 +14,7 @@ Template.chat_chatroom.events({
         }, 1000);
     },
     'click #chatroom-input-options': function(){
-        var picker = $("#chatroom-emoji-picker");
-        if (picker.css("display")=="none") {
-            picker.css("display", "block");
-        }else if(picker.css("display")=="block"){
-            picker.removeClass("fadeInUp").addClass("fadeOutDown");
-            setTimeout(function(){
-                picker.removeClass("fadeOutDown").css("display","none").addClass("fadeInUp");
-            }, 1000);
-        }
+        closeEmojiPicker()
     },
     'click span.emoji-picker': function(e){
         var emoji_id = $(e.target).parent().attr("data-id");
@@ -36,13 +28,24 @@ Template.chat_chatroom.events({
             var chatroom_id = Session.get("ChatRoom.id");
             Meteor.call("chatroom.send", chatroom_id, messageToSend, function(e, r){
                 if(r){
+                    closeEmojiPicker()
                     $("#message-input").val("");
                 }
             });
         }
     }
 });
-
+function closeEmojiPicker(){
+    var picker = $("#chatroom-emoji-picker");
+    if (picker.css("display")=="none") {
+        picker.css("display", "block");
+    }else if(picker.css("display")=="block"){
+        picker.removeClass("fadeInUp").addClass("fadeOutDown");
+        setTimeout(function(){
+            picker.removeClass("fadeOutDown").css("display","none").addClass("fadeInUp");
+        }, 1000);
+    }
+}
 Template.chat_chatroom.helpers({
     chatroom: function (){
         var chatRoomId = Session.get("ChatRoom.id");

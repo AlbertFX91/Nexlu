@@ -82,6 +82,7 @@ i.offline{
     background-color: #263238;
     display: none;
     overflow-y: scroll;
+    padding: 10px;
 }
 
 .emoji-picker{
