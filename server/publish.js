@@ -63,8 +63,22 @@ Meteor.publish('publication.followed.all', function () {
     return Publications.find({"owner.0.id": {"$in": [followed_id.followed]}}, {fields: Fields.publication.all});
 });
 
-Meteor.publish("findUser", function(username) {
-    return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
+Meteor.publish("userProfile",function(username){
+    var user=Meteor.users.findOne({"username":username});
+    if(!user){
+        this.ready();
+        return;
+    }
+    if(this.userId==user._id){
+        return Meteor.users.find(this.userId);
+    }
+    else{
+        return Meteor.users.find(user._id,{
+            fields:{
+                "profile":0
+            }
+        });
+    }
 });
 
 /*

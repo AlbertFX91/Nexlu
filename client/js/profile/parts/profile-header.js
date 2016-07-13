@@ -8,21 +8,12 @@ Template.profileHeader.helpers({
     publications_pretty: function(){
         return Prettify.compactInteger(this.numPublication);
     },
-    followed_pretty_user: function(){
-        return Prettify.compactInteger(this.user.followed.length);
-    },
-    followers_pretty_user: function(){
-        return Prettify.compactInteger(this.user.followers.length);
-    },
-    publications_pretty_user: function(){
-        return Prettify.compactInteger(this.numPublication);
-    },
     'bio': function(){
-        Session.set("firt_bio", false);
+        Session.set("first_bio", false);
         var user_id = Meteor.userId();
         var user = Meteor.users.findOne(user_id);
         var bio = user.bio;
-        if(Session.get("firt_bio") == false) {
+        if(Session.get("first_bio") == false) {
             document.getElementById('textarea1').value = bio;
         }
         return bio;
@@ -30,7 +21,7 @@ Template.profileHeader.helpers({
 });
 
 Template.profileHeader.onRendered(function(){
-    Session.set("firt_bio", true);
+    Session.set("first_bio", true);
 });
 
 Template.profileHeader.events({
@@ -48,5 +39,18 @@ Template.profileHeader.events({
         event.preventDefault();
         var bio = document.getElementById('textarea1').value;
         Meteor.call("modify_bio", bio);
+    }
+});
+
+Template.profileHeaderUser.helpers({
+    publications_pretty_user: function(){
+        var usernameUserProfile =  $(this).attr("usernameUserProfile");
+        console.log(Session.get(usernameUserProfile));
+        Meteor.subscribe("publication.user.none", usernameUserProfile, function(e,r){
+            Session.set("numPublicationUser",r);
+        });
+        console.log(Session.get("numPublicationUser"));
+        var numPublicationUser = Session.get("numPublicationUser");
+        return numPublicationUser;
     }
 });
