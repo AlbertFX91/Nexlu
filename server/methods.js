@@ -69,22 +69,18 @@ Meteor.methods({
         return result;
     },
     'unfollow': function(username){
-        var user = Meteor.user();
+        var userId = Meteor.userId();
         var userUnfollow = Meteor.users.findOne({"username":username});
-        console.log(userUnfollow);
-        Meteor.users.update(user, {
-            "$pop": {
-                "followed": {
-                    "_id": userUnfollow._id
-                }
+        Meteor.users.update({_id: userId}, {
+            "$pull": {
+                followed: userUnfollow._id
             }
         });
-        Meteor.users.update(userUnfollow, {
-            "$pop": {
-                "followers": {
-                    "_id": user._id
-                }
+        Meteor.users.update({_id: userUnfollow._id}, {
+            "$pull": {
+                followers: userId
             }
+
         });
     }
 });

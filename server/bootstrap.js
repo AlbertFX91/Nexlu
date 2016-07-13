@@ -85,7 +85,7 @@ function createUsers(){
         $set: {
             bio: "Biography 1",
             followers: [id_user2, id_user3],
-            followed: [id_user2],
+            followed: [id_user2, id_user3],
             "emails.0.verified": true
         }
     });
@@ -93,16 +93,16 @@ function createUsers(){
     Meteor.users.update(id_user2, {
         $set: {
             bio: "Biography 2",
-            followers: [id_user1, id_user4, id_user5],
-            followed: [id_user1, id_user3, id_user4, id_user5],
+            followers: [id_user1, id_user3],
+            followed: [id_user1, id_user3, id_user4],
             "emails.0.verified": true
         }
     });
 
     Meteor.users.update(id_user3, {
         $set: {
-            followers: [id_user2],
-            followed: [id_user1],
+            followers: [id_user1, id_user2, id_user4],
+            followed: [id_user1, id_user2],
             "emails.0.verified": true
         }
     });
@@ -111,7 +111,7 @@ function createUsers(){
         $set: {
             bio: "Biography 4",
             followers: [id_user2, id_user5],
-            followed: [id_user2, id_user5],
+            followed: [id_user3, id_user5],
             "emails.0.verified": true
         }
     });
@@ -119,8 +119,8 @@ function createUsers(){
     Meteor.users.update(id_user5, {
         $set: {
             bio: "Biography 5",
-            followers: [id_user2, id_user4],
-            followed: [id_user2, id_user4],
+            followers: [id_user4],
+            followed: [id_user4],
             "emails.0.verified": true
         }
     });

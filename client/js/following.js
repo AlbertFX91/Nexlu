@@ -11,9 +11,7 @@ Template.following.helpers({
 Template.following.events({
     'click .button-unfollow': function (event) {
         event.preventDefault();
-        var username = document.getElementById('usernameFollowing').innerHTML;
-        console.log(username);
+        var username = $(this).attr("username");
         Meteor.call("unfollow", username);
-        location.reload();
     }
 });
