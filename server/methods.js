@@ -46,6 +46,31 @@ Meteor.methods({
     'checkUniqueEmail': function(emailRegister){
         return Meteor.users.find({'emails.0.address': emailRegister}).fetch().length==0
     },
+    'deCodificaString': function (codificado) {
+        var decodedString = Base64.decode(codificado);
+        return decodedString;
+    },
+    'getUsernameById': function(id){
+        var user = Meteor.users.findOne(id, {fields:{username:1}});
+        return user.username;
+    },
+    'editPublication': function(publicationId, description){
+        Publications.update(publicationId, {
+            $set: {
+                description: description
+            }
+        })
+    },
+    'removePublication': function(publicationId) {
+        Publications.remove(publicationId);
+    },
+    'postPublication': function (publication) {
+        Publications.insert(publication, function (err, response) {
+            if (err) {
+                console.log(err);
+            }
+        })
+    },
     'send_message_about': function(info) {
         Email.send({
             to: "infonexlu@gmail.com",
@@ -53,5 +78,20 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'findUsers': function(){
+        var user = Meteor.user();
+        var followers = user.followed;
+        var result = [];
+        followers.forEach(function(item){
+            var userFollowers = Meteor.users.findOne({"_id": item});
+            var aux = {
+                "username": userFollowers.username,
+                "bio": userFollowers.bio,
+                //TODO: "image": userFollowers.image
+            };
+            result.push(aux);
+        });
+        return result;
     }
 });

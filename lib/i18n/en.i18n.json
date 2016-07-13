@@ -54,6 +54,7 @@
     "password_error_maxlength": "Maximun 20 characters",
     "email_error_empty": "Email empty",
     "email_error_duplicated": "Email used",
+    "post-notBlank": "The publication cannot be blank",
     "email_error_patron": "The email must be like example@example.com",
     "password_error_pattern": "Invalid format",
     "password_error_patron": "The password must have lowercase, two uppercase and numbers",
@@ -77,7 +78,9 @@
     "browser": "Browser",
     "timeline": "Timeline",
     "contactUs": "Contact Us",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "post": "Post",
+    "remove": "Delete"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -121,6 +124,17 @@
     "followed": "Followed",
     "followers": "Followers"
   },
+
+  "timeline": {
+    "more-tags": "and other gamers",
+    "with": "With",
+    "no-tags": "No tags",
+    "whatsup": "What's up?",
+    "new-post": "New post",
+    "edit-post": "Edit publication",
+    "remove-post": "are you sure to delete this publication?"
+  },
+
   "faq": {
     "header": "Faq",
     "question_one": "What does it consist of?",
@@ -158,4 +172,5 @@
     "terms38": "Nexlu may, in Nexlu’s sole discretion, permit you from time to time to submit, upload, publish or otherwise make available to Nexlu through the Services, or otherwise, textual, audio and/or visual content and information, including commentary and feedback related to the Services, initiation of support requests and submissions of entries for competitions and promotions (“User Content”). Any User Content provided by you remains your property. However, by providing User Content to Nexlu, you grant Nexlu a worldwide, perpetual, irrevocable, transferable, royalty-free license, with the right to sublicense, to use, copy, modify, create derivative works of, distribute, publicly display, publicly perform, and otherwise exploit in any manner such User Content in all formats and distribution channels now known or hereafter devised (including in connection with the Services and Nexlu’s business and on third- party sites and services), without further notice to or consent from you, and without the requirement of payment to you or any other person or entity.",
     "termsFinal": "Thank you for visiting the Website."
   }
+
 }
