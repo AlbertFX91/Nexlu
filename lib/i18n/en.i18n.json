@@ -80,7 +80,7 @@
     "contactUs": "Contact Us",
     "faq": "FAQ",
     "unfollow": "Unfollow",
-    "following": "Following to...",
+    "following": "Following",
     "post": "Post",
     "remove": "Delete"
   },
@@ -119,12 +119,12 @@
     "sendMessage": "Send message"
   },
   "profile": {
-    "friends": "friends",
-    "publications": "publications",
-    "photos": "photos",
+    "friends": "Friends",
+    "publications": "Publications",
+    "photos": "Photos",
     "info": "Info",
-    "followed": "followed",
-    "followers": "followers"
+    "followed": "Followed",
+    "followers": "Followers"
   },
 
   "timeline": {

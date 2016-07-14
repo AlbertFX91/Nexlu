@@ -79,7 +79,6 @@ Meteor.methods({
             text: info[1] + "\n\n" + info[2]
         });
     },
-
     'chatroom.exists': function(follower_id, my_id){
         var res = ChatRooms.findOne(
             {$and:
@@ -140,6 +139,48 @@ Meteor.methods({
             result.push(aux);
         });
         return result;
+    },
+    'findFollowing': function(usernameProfile, userProfile) {
+        var user = null;
+        if (userProfile) {
+            user = Meteor.users.findOne({"username": usernameProfile});
+        } else {
+            user = Meteor.user();
+        }
+        var result = [];
+        user.followed.forEach(function(item){
+            var userFollowed = Meteor.users.findOne({"_id": item});
+            var aux = {
+                "username": userFollowed.username,
+                "bio": userFollowed.bio,
+                //TODO: "image": userFollowed.image
+            };
+            result.push(aux);
+        });
+        return result;
+    },
+    'findFollowers': function(usernameProfile, userProfile){
+        var user = null;
+        if(userProfile){
+            user = Meteor.users.findOne({"username":usernameProfile});
+        }else{
+            user = Meteor.user();
+        }
+        var result = [];
+        user.followers.forEach(function(item){
+            var userFollower = Meteor.users.findOne({"_id": item});
+            var aux = {
+                "username": userFollower.username,
+                "bio": userFollower.bio,
+                //TODO: "image": userFollowed.image
+            };
+            result.push(aux);
+        });
+        return result;
+    },
+    'findNumPublications': function(usernameProfile){
+        var user = Meteor.users.findOne({"username":usernameProfile});
+        return Publications.find({"owner.0.id": user._id}, {fields: Fields.publication.none}).fetch().length;
     },
     'unfollow': function(username){
         var userId = Meteor.userId();
