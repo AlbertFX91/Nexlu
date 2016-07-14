@@ -13,5 +13,6 @@ Template.following.events({
         event.preventDefault();
         var username = $(this).attr("username");
         Meteor.call("unfollow", username);
+        location.reload();
     }
 });
