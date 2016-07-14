@@ -44,4 +44,7 @@ lepozepo:s3
 nerdmed:camanjs
 mrt:jquery-mousewheel
 natestrauser:animate-css
-themeteorchef:jquery-validation
+copleykj:livestamp      # Usado para que se muestre de forma automática el texto del timeago en las publicaciones.
+simple:reactive-method  # Usado para devolver el valor resultante de una llamada a un método de servidor
+themeteorchef:jquery-validation #Usado para la validacion de formularios con validación jQuery
+

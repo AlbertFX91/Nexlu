@@ -18,7 +18,7 @@ Template.images_preview_edit.onRendered(function(e){
 
     });
 
-
+    
     //En esta parte vamos a mostrar la imagen para que no se deforme y se ajuste en función del dispositivo
 
     //Obtenemos los valores de la pantalla
