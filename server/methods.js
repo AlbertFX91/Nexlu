@@ -117,6 +117,10 @@ Meteor.methods({
         });
         return result;
     },
+    'findNumPublications': function(usernameProfile){
+        var user = Meteor.users.findOne({"username":usernameProfile});
+        return Publications.find({"owner.0.id": user._id}, {fields: Fields.publication.none}).fetch().length;
+    },
     'unfollow': function(username){
         var userId = Meteor.userId();
         var userUnfollow = Meteor.users.findOne({"username":username});
