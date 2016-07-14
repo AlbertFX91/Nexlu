@@ -41,6 +41,14 @@ Meteor.publish('user.each.online', function () {
     );
 });
 
+Meteor.publish('image.me.miniature', function(){
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+});
 
 Meteor.publish('publication.me.none', function () {
     var user_id = this.userId;
@@ -49,6 +57,16 @@ Meteor.publish('publication.me.none', function () {
         return;
     }
     return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.none});
+});
+
+Meteor.publish('publication.user.none', function (usernameUser) {
+    var user = Meteor.users.find({'username':usernameUser});
+    var user_id = user._id;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Publications.find({owner: user_id}, {fields: Fields.publication.none});
 });
 
 Meteor.publish("findBio", function () {
@@ -64,9 +82,30 @@ Meteor.publish('publication.followed.all', function () {
     var followed_id = Meteor.users.find(user_id, {fields: Fields.user.followed}).fetch();
     return Publications.find({"owner.0.id": {"$in": [followed_id.followed]}}, {fields: Fields.publication.all});
 });
+Meteor.publish('image.one', function(img_id){
+    return Images.find(img_id, {fields: Fields.image.all});
+});
 
 Meteor.publish("findUser", function(username) {
     return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
+});
+
+Meteor.publish("userProfile",function(username){
+    var user=Meteor.users.findOne({"username":username});
+    if(!user){
+        this.ready();
+        return;
+    }
+    if(this.userId==user._id){
+        return Meteor.users.find(this.userId);
+    }
+    else{
+        return Meteor.users.find(user._id,{
+            fields:{
+                "profile":0
+            }
+        });
+    }
 });
 
 Meteor.publish("chatroom.mine", function(id){
