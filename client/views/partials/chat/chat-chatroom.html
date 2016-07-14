@@ -27,7 +27,10 @@
                 <span id="emoji-select-button"> {{> emoji ':smile:'}} </span>
             </div>
             <div id="chatroom-input-container">
-                <textarea id="message-input" style="resize: none;"></textarea>
+                <form id="message-input-form">
+                    <input type="text" id="message-input"/>
+                </form>
+                <!--<textarea id="message-input" style="resize: none;"></textarea>-->
             </div>
             <div id="chatroom-input-save" class="blue">
                 <i class="fa fa-paper-plane" aria-hidden="true" style="margin-top: auto;margin-bottom: auto;"></i>

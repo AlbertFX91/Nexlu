@@ -33,25 +33,35 @@ Template.chat_chatroom.events({
     },
 
     'click #chatroom-input-save': function(e){
-        var messageToSend =  $("#message-input").val();
-        if(messageToSend.length!=0){
-            var chatroom_id = Session.get("ChatRoom.id");
-            Meteor.call("chatroom.send", chatroom_id, messageToSend, function(e, r){
-                if(r){
-                    var picker = $("#chatroom-emoji-picker");
-                    if(picker.css("display")=="block"){
-                        picker.removeClass("fadeInUp").addClass("fadeOutDown");
-                        setTimeout(function(){
-                            picker.removeClass("fadeOutDown").css("display","none").addClass("fadeInUp");
-                        }, 1000);
-                    }
-                    $("#message-input").val("");
-                    scrollDown();
-                }
-            });
-        }
+        sendMessage();
+    },
+
+
+    'submit #message-input-form': function(e){
+        e.preventDefault();
+        sendMessage();
     }
 });
+
+function sendMessage(){
+    var messageToSend =  $("#message-input").val();
+    if(messageToSend.length!=0){
+        var chatroom_id = Session.get("ChatRoom.id");
+        Meteor.call("chatroom.send", chatroom_id, messageToSend, function(e, r){
+            if(r){
+                var picker = $("#chatroom-emoji-picker");
+                if(picker.css("display")=="block"){
+                    picker.removeClass("fadeInUp").addClass("fadeOutDown");
+                    setTimeout(function(){
+                        picker.removeClass("fadeOutDown").css("display","none").addClass("fadeInUp");
+                    }, 1000);
+                }
+                $("#message-input").val("");
+                scrollDown();
+            }
+        });
+    }
+}
 
 Template.chat_chatroom.helpers({
     chatroom: function (){
