@@ -3,7 +3,9 @@ Template.chat_chatroom.onRendered(function(){
     Meteor.subscribe("chatroom.mine");
     Meteor.subscribe("emojis");
     Session.set("user.status","offline");
-
+    setTimeout(function(){
+        scrollDown();
+    }, 500);
 });
 
 Template.chat_chatroom.events({
@@ -44,6 +46,7 @@ Template.chat_chatroom.events({
                         }, 1000);
                     }
                     $("#message-input").val("");
+                    scrollDown();
                 }
             });
         }
@@ -87,3 +90,14 @@ Template.chat_chatroom.helpers({
         return Emojis.find().fetch().slice(0,20*6);
     }
 });
+
+Tracker.autorun(function () {
+    var chatRoomId = Session.get("ChatRoom.id");
+    var chatRoom =  ChatRooms.findOne(chatRoomId);
+    scrollDown();
+});
+
+function scrollDown(){
+    var n = $("#chat-ul").height();
+    $('#chatroom-body').animate({ scrollTop: n }, 50);
+}
