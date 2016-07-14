@@ -1,9 +1,23 @@
 Template.following.helpers({
     searchFollowing: function(){
-        Meteor.call("findUsers", function(e,r){
-            Session.set("result",r);
+        var userProfile = false;
+        Meteor.call("findFollowing", null, userProfile, function(e,r){
+            Session.set("resultSearchFollowing",r);
         });
-        var users = Session.get("result");
+        var users = Session.get("resultSearchFollowing");
+        return users;
+    }
+});
+
+Template.followingUser.helpers({
+    searchFollowingUser: function(){
+        var userProfile = true;
+        var url = document.location.href.split("/");
+        var usernameProfile = url[4];
+        Meteor.call("findFollowing", usernameProfile, userProfile, function(e,r){
+            Session.set("resultSearchFollowingUser",r);
+        });
+        var users = Session.get("resultSearchFollowingUser");
         return users;
     }
 });

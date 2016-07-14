@@ -31,10 +31,10 @@
                 </div>
                 <div class="row profile-numfriends">
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followed" }} <span class="profile-num"><a href="../me/following">{{followed_pretty}}</a></span>
+                        {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'following'}}">{{followed_pretty}}</a></span>
                     </div>
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followers" }} <span class="profile-num"><a href="../me/followers">{{followers_pretty}}</a></span>
+                        {{_ "profile.followers" }} <span class="profile-num"><a href="{{pathFor 'followers'}}">{{followers_pretty}}</a></span>
                     </div>
                     <div class="col s4">
                         {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty}}</span>
@@ -83,10 +83,10 @@
                 </div>
                 <div class="row profile-numfriends">
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'following'}}">{{followed.length}}</a></span>
+                        {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'followingUser'}}">{{followed.length}}</a></span>
                     </div>
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followers" }} <span class="profile-num"><a href="{{pathFor 'followers'}}">{{followers.length}}</a></span>
+                        {{_ "profile.followers" }} <span class="profile-num"><a href="{{pathFor 'followersUser'}}">{{followers.length}}</a></span>
                     </div>
                     <div class="col s4">
                         {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty}}</span>

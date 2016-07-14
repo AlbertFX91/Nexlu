@@ -20,3 +20,26 @@
         </div>
     </div>
 </template>
+
+<template name="followersUser">
+    <div class="container">
+        <h1 id="title-followers">{{_ "profile.followers"}}</h1>
+        <div id="followers">
+            {{#each searchFollowersUser}}
+                <div id="follower" class="row s12 m12">
+                    <div class="col s4 m4">
+                        <a>
+                            <img src="../example.png" class="circle" height="auto" width="60%" style="margin-right: auto;margin-left: auto;max-width: 110px;max-height: 110px; display: block">
+                        </a>
+                    </div>
+                    <div class="col s4 m4" style="margin-top: 40px; text-align:center">
+                        {{username}}
+                    </div>
+                    <div class="col s42 m4" style="margin-top: 40px; text-align:left">
+                        {{bio}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>
