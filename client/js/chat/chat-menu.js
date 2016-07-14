@@ -7,7 +7,7 @@ Template.chat_menu.onRendered(function(){
 Template.chat_menu.events({
     "click #chat-list-close-button": function(){
         $("#chat-list-container").removeClass("fadeInUp").addClass("fadeOutDown");
-        Session.set("ChatRoom.id", null);
+        /*Session.set("ChatRoom.id", null);*/
     }
 });
 
