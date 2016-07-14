@@ -14,5 +14,10 @@ Template.following.events({
         var username = $(this).attr("username");
         Meteor.call("unfollow", username);
         location.reload();
+    },
+    'click .button-profile': function (event) {
+        event.preventDefault();
+        var username = $(this).attr("username");
+        Router.go('profile',{username: username});
     }
 });
