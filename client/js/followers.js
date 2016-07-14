@@ -9,6 +9,16 @@ Template.followers.helpers({
     }
 });
 
+Template.followers.events({
+    'click .button-profile': function (event) {
+        event.preventDefault();
+        var username = $(this).attr("username");
+        Router.go('profile',{username: username});
+    }
+});
+
+//// FollowersUser (usado para los perfiles de los usarios) /////
+
 Template.followersUser.helpers({
     searchFollowersUser: function(){
         var userProfile = true;
@@ -19,5 +29,13 @@ Template.followersUser.helpers({
         });
         var users = Session.get("resultSearchFollowersUser");
         return users;
+    }
+});
+
+Template.followersUser.events({
+    'click .button-profile': function (event) {
+        event.preventDefault();
+        var username = $(this).attr("username");
+        Router.go('profile',{username: username});
     }
 });

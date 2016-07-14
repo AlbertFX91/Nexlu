@@ -9,6 +9,22 @@ Template.following.helpers({
     }
 });
 
+Template.following.events({
+    'click .button-unfollow': function (event) {
+        event.preventDefault();
+        var username = $(this).attr("username");
+        Meteor.call("unfollow", username);
+        location.reload();
+    },
+    'click .button-profile': function (event) {
+        event.preventDefault();
+        var username = $(this).attr("username");
+        Router.go('profile',{username: username});
+    }
+});
+
+//// FollowingUser (usado para los perfiles de los usarios) /////
+
 Template.followingUser.helpers({
     searchFollowingUser: function(){
         var userProfile = true;
@@ -22,13 +38,7 @@ Template.followingUser.helpers({
     }
 });
 
-Template.following.events({
-    'click .button-unfollow': function (event) {
-        event.preventDefault();
-        var username = $(this).attr("username");
-        Meteor.call("unfollow", username);
-        location.reload();
-    },
+Template.followingUser.events({
     'click .button-profile': function (event) {
         event.preventDefault();
         var username = $(this).attr("username");

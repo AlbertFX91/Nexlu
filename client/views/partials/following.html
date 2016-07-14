@@ -39,11 +39,16 @@
                             <img src="../example.png" class="circle" height="auto" width="60%" style="margin-right: auto;margin-left: auto;max-width: 110px;max-height: 110px; display: block">
                         </a>
                     </div>
-                    <div class="col s4 m4" style="margin-top: 40px; text-align:center">
+                    <div class="col s2 m2" style="margin-top: 40px; text-align:center">
                         <span  data-username="{{username}}">{{username}}</span>
                     </div>
-                    <div class="col s42 m4" style="margin-top: 40px; text-align:left">
+                    <div class="col s4 m3" style="margin-top: 40px; text-align:left">
                         {{bio}}
+                    </div>
+                    <div class="col s2 m2" style="margin-top: 20px;">
+                        <div class="row">
+                            <button class="col s6 m12 btn btn-success button-profile"><i class="material-icons left">person_pin</i><span>{{_ "tag.profile"}}</span></button>
+                        </div>
                     </div>
                 </div>
             {{/each}}
