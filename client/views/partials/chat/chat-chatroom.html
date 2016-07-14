@@ -1,0 +1,40 @@
+<template name="chat_chatroom">
+    <div id="chatroom-container" class="animated fadeInUp white">
+        <div id="chatroom-header" class="web-color-2">
+            <div class="chatroom-header-user-status">
+                <i class="fa fa-circle {{userStatus}}" aria-hidden="true"></i>
+            </div>
+            <div class="chatroom-header-username truncate">
+                {{username}}
+            </div>
+            <i id="chat-chatroom-close-button" class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div id="chatroom-body">
+            <ul id="chat-ul" class="chat">
+                {{#each messages}}
+                    {{>chat_chatroom_message}}
+                {{/each}}
+            </ul>
+        </div>
+
+        <div id="chatroom-emoji-picker" class="animated fadeInUp">
+            {{#each emojis}}
+                <span data-id="{{_id}}" class="emoji-picker">{{{toHTML}}}</span>
+            {{/each}}
+        </div>
+        <div id="chatroom-footer">
+            <div id="chatroom-input-options" class="web-color-1">
+                <span id="emoji-select-button"> {{> emoji ':smile:'}} </span>
+            </div>
+            <div id="chatroom-input-container">
+                <form id="message-input-form">
+                    <input type="text" id="message-input"/>
+                </form>
+                <!--<textarea id="message-input" style="resize: none;"></textarea>-->
+            </div>
+            <div id="chatroom-input-save" class="blue">
+                <i class="fa fa-paper-plane" aria-hidden="true" style="margin-top: auto;margin-bottom: auto;"></i>
+            </div>
+        </div>
+    </div>
+</template>
