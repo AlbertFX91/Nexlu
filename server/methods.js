@@ -79,6 +79,54 @@ Meteor.methods({
             text: info[1] + "\n\n" + info[2]
         });
     },
+
+    'chatroom.exists': function(follower_id, my_id){
+        var res = ChatRooms.findOne(
+            {$and:
+                [
+                    {"players.id": follower_id},
+                    {"players.id": my_id}
+                ]
+            }
+        );
+        if (res == undefined){
+            return undefined;
+        }else{
+            return res._id;
+        }
+    },
+    'chatroom.new': function(follower_id, my_id){
+        var follower_username = Meteor.users.findOne(follower_id).username;
+        var my_username = Meteor.users.findOne(my_id).username;
+        return ChatRooms.insert({
+            players: [
+                {
+                    id: follower_id,
+                    username: follower_username
+                },
+                {
+                    id: my_id,
+                    username: my_username
+                }
+            ],
+            messages: []
+        });
+    },
+    'chatroom.send': function(chatroom_id, messageToSend) {
+        if (messageToSend.length == 0) return false;
+        var userId = Meteor.userId();
+        var createdAt = new Date();
+        ChatRooms.update(chatroom_id, {
+            $push: {
+                messages: {
+                    createdAt: createdAt,
+                    message: messageToSend,
+                    player: userId
+                }
+            }
+        });
+        return true;
+    },
     'findUsers': function(){
         var user = Meteor.user();
         var result = [];

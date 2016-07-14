@@ -44,3 +44,7 @@ copleykj:livestamp      # Usado para que se muestre de forma automática el text
 simple:reactive-method  # Usado para devolver el valor resultante de una llamada a un método de servidor
 themeteorchef:jquery-validation #Usado para la validacion de formularios con validación jQuery
 
+jackyqiu:meteor-jquery-nicescroll
+webtempest:animate
+mizzao:user-status      # Usado para comprobar que usuarios estan actualmente logueados en el sistema
+lookback:emoji
