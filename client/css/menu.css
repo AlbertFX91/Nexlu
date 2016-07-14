@@ -5,3 +5,14 @@
 .navbar-fixed nav {
     min-width: 300px;
 }
+
+.-autocomplete-container{
+    top:55px !important;
+}
+
+.-autocomplete-item.selected{
+    background-color: #2bbbad;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
