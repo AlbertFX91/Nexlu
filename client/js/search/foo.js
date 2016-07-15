@@ -1,3 +1,7 @@
+Template.foo.onRendered(function(){
+    Meteor.subscribe("search.users");
+});
+
 Template.foo.helpers({
     settings: function() {
         console.log(Meteor.users);

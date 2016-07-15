@@ -18,6 +18,13 @@ Meteor.publish('user.me', function () {
     });
 });
 
+Meteor.publish('search.users', function () {
+    return Meteor.users.find({}, {
+        fields: {
+            username: 1
+        }
+    });
+});
 /**
  * Devuelve los usuarios que siguen al usuario logueado, y que el usuario logueado tambien sigue. Es una relación reciproca.
  * Se usa para devolver los usuarios con los que podemos chatear
