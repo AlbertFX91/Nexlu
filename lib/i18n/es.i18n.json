@@ -28,7 +28,8 @@
   "close": "Cerrar",
 
   "bio":{
-    "modify_bio": "Modificar biografía"
+    "modify_bio": "Modificar biografía",
+    "add_bio": "Puedes añadir una breve biografía"
   },
 
   "toast": {
@@ -37,7 +38,8 @@
     "undo": "Deshacer",
     "login_success": "Estás dentro!",
     "logout_success": "Nos vemos!",
-    "verify_thanks" : "¡Gracias por validar tu correo!"
+    "verify_thanks" : "¡Gracias por validar tu correo!",
+    "description_added": "Descripción añadida"
 
   },
 
@@ -59,11 +61,16 @@
     "password_error_maxlength": "20 caracteres como máximo",
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
+    "occurred": "Ups, un error ha ocurrido",
+    "description_empty": "Añade una descripción",
+    "post-notBlank": "La publicación no debe estar vacía",
     "email_error_patron": "El correo debe ser del tipo ejemplo@ejemplo.com",
-    "password_error_patron": "La contraseña debe tener minúsculas, mayúsculas y números",
+    "password_error_pattern": "Formato inválido",
+    "password_error_patron": "La contraseña debe tener minúsculas, dos mayúsculas y números",
     "message_error_empty": "El mensaje no puede estar vacio",
     "message_error_minlength": "El mensaje debe tener más de 20 caracteres",
-    "message_error_maxlength": "El mensaje no puede superar los 300 caracteres"
+    "message_error_maxlength": "El mensaje no puede superar los 300 caracteres",
+    "post-maxlength": "La publicación no puede superar los 5000 caracteres"
   },
 
   "tag": {
@@ -83,7 +90,11 @@
     "browser": "Buscador",
     "timeline": "Muro",
     "contactUs": "Contacto",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "unfollow": "Dejar de seguir",
+    "following": "Siguiendo",
+    "post": "Enviar",
+    "remove": "Borrar"
 
   },
 
@@ -97,18 +108,18 @@
 
   "home": {
 
-    "intro": "Juega y disfruta con nosotros!"
+    "intro": "¡Juega y disfruta con nosotros!"
 
   },
 
   "email": {
     "email": "Correo electrónico",
-    "verification-email_subject": "[NEXLU] El último paso!",
-    "verification-email_title": "Este es el último paso, %s!",
-    "verification-email_message1": "Muchas gracias por unirte a nosotros! Estamos encantados de tu llegada!",
+    "verification-email_subject": "[NEXLU] El último paso.",
+    "verification-email_title": "¡Este es el último paso, %s!",
+    "verification-email_message1": "Muchas gracias por unirte a nosotros. Estamos encantados de tu llegada!",
     "verification-email_message2": "Lo ultimo a realizar para usar nuestra app es simplemente clicar <a href='%s'>aquí</a> y te redigiremos a <strong>Nexlu</strong>",
-    "verification-email_message3": "Esperemos que disfrutes y si te gusta nuestra app, díselo a tus colegas gamers!",
-    "verification-email_message4": "Nos vemos pronto!",
+    "verification-email_message3": "Esperemos que disfrutes y si te gusta nuestra app, ¡díselo a tus colegas gamers!",
+    "verification-email_message4": "¡Nos vemos pronto!",
 
     "test_message": "Mensaje de prueba",
     "test_message1": "Mensaje numero 1",
@@ -123,6 +134,15 @@
     "text-register": "Te hemos enviado un mensaje a tu correo para activar tu cuenta. ¡Nos vemos pronto!"
   },
 
+  "images": {
+    "upload-photos": "Subida de fotos",
+    "filters": "filtros",
+    "description": "Descripción",
+    "uploaded": "Imágenes guardadas",
+    "uploading_progress": "Subiendo imagen <strong>%s</strong> de <strong>%s</strong>",
+    "uploaded_finished": "Subida finalizada"
+  },
+
   "contactUs": {
     "header": "¡Póngase en contacto con nosotros!",
     "name": "Nombre",
@@ -132,12 +152,24 @@
   },
 
   "profile": {
-    "friends": "amigos",
-    "publications": "publicaciones",
-    "photos": "fotos",
+    "friends": "Amigos",
+    "publications": "Publicaciones",
+    "photos": "Fotos",
     "info": "Información",
-    "followed": "siguiendo",
-    "followers": "seguidores"
+    "images": "imágenes",
+    "Images": "Imágenes",
+    "followed": "Siguiendo",
+    "followers": "Seguidores"
+  },
+
+  "timeline": {
+    "more-tags": "y otros jugadores",
+    "with": "Con",
+    "no-tags": "Sin etiquetas",
+    "whatsup": "¿Qué pasa?",
+    "edit-post": "Editar publicación",
+    "remove-post": "¿Está seguro de eliminar esta publicación?",
+    "new-post": "Nueva publicación"
   },
 
   "faq": {
@@ -147,7 +179,7 @@
     "question_two": "¿Qué puedo realizar?",
     "answer_two": "El comportamiento es similar al de otras redes sociales, por lo que todo lo que puedes hacer en las demas puedes hacerlas aqui! La ventaja es que todo lo que encontrarás aqui estará relacionado con los videojuegos!",
     "question_three": "¿Puedo formar parte del equipo?",
-    "answer_three": "Claro que si! Tenemos las puertas abiertas! No tienes mas que mandarnos un correo!"
+    "answer_three": "¡Claro que si! Tenemos las puertas abiertas. No tienes mas que mandarnos un correo."
   },
 
   "terms": {

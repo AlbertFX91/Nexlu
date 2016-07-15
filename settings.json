@@ -20,5 +20,12 @@
     "name": "twitter",
     "consumerKey": "WHvxoAhHb7bKczbqwvOv3xBf8",
     "secret": "bgEQGKpaDg3RsBqvkoZhtSQ70lk0PyJjWVpdyv5kkD8R566YZ6"
+  },
+
+  "amazon":{
+    "key": "AKIAJTMDL7K5PFQFVU5A",
+    "secret": "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",
+    "bucket": "nexlu",
+    "region": "us-west-2"
   }
 }
