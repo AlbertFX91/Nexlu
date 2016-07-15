@@ -102,8 +102,8 @@ function createUsers(){
     Meteor.users.update(id_user1, {
         $set: {
             bio: "Biography 1",
-            followers: [id_user2],
-            followed: [id_user2],
+            followers: [id_user2, id_user3],
+            followed: [id_user2, id_user3],
             "emails.0.verified": true
         }
     });
@@ -111,16 +111,16 @@ function createUsers(){
     Meteor.users.update(id_user2, {
         $set: {
             bio: "Biography 2",
-            followers: [id_user1, id_user3, id_user4, id_user5],
-            followed: [id_user1, id_user3, id_user4, id_user5],
+            followers: [id_user1, id_user3],
+            followed: [id_user1, id_user3, id_user4],
             "emails.0.verified": true
         }
     });
 
     Meteor.users.update(id_user3, {
         $set: {
-            followers: [id_user2],
-            followed: [id_user2],
+            followers: [id_user1, id_user2, id_user4],
+            followed: [id_user1, id_user2],
             "emails.0.verified": true
         }
     });
@@ -129,7 +129,7 @@ function createUsers(){
         $set: {
             bio: "Biography 4",
             followers: [id_user2, id_user5],
-            followed: [id_user2, id_user5],
+            followed: [id_user3, id_user5],
             "emails.0.verified": true
         }
     });
@@ -137,8 +137,8 @@ function createUsers(){
     Meteor.users.update(id_user5, {
         $set: {
             bio: "Biography 5",
-            followers: [id_user2, id_user4],
-            followed: [id_user2, id_user4],
+            followers: [id_user4],
+            followed: [id_user4],
             "emails.0.verified": true
         }
     });
@@ -153,40 +153,43 @@ function createChatRooms(){
     var user5 = Meteor.users.findOne({username: 'user5'});
 
     ChatRooms.insert({
-        players: [user1._id, user2._id],
+        players: [
+            {
+                id: user1._id,
+                username: user1.username
+            },
+            {
+                id: user2._id,
+                username: user2.username
+            }
+        ],
         messages: [
             {
-                order: 1,
                 createdAt: new Date('2016-06-03T12:00:00'),
                 message: "Hola!",
                 player: user1._id
             },
             {
-                order: 2,
                 createdAt: new Date('2016-06-03T12:05:00'),
                 message: "Hola user1! Me alegro de verte!",
                 player: user2._id
             },
             {
-                order: 3,
                 createdAt: new Date('2016-06-03T12:07:00'),
                 message: "Igualmente! Que tal te va todo?",
                 player: user1._id
             },
             {
-                order: 4,
                 createdAt: new Date('2016-06-03T12:08:00'),
                 message: "No puedo quejarme la verdad!!",
                 player: user2._id
             },
             {
-                order: 5,
                 createdAt: new Date('2016-06-03T12:08:00'),
                 message: "Trabajando mucho, pero ya llega el verano!",
                 player: user2._id
             },
             {
-                order: 6,
                 createdAt: new Date('2016-06-03T12:10:00'),
                 message: "Jaja espero verte este verano!",
                 player: user1._id
@@ -195,22 +198,28 @@ function createChatRooms(){
     });
 
     ChatRooms.insert({
-        players: [user2._id, user3._id],
+        players: [
+            {
+                id: user2._id,
+                username: user2.username
+            },
+            {
+                id: user3._id,
+                username: user3.username
+            }
+        ],
         messages: [
             {
-                order: 1,
                 createdAt: new Date('2016-06-03T12:00:00'),
                 message: "Hola user2!",
                 player: user2._id
             },
             {
-                order: 2,
                 createdAt: new Date('2016-06-03T12:05:00'),
                 message: "Hola user1! que tal?! :)",
                 player: user3._id
             },
             {
-                order: 3,
                 createdAt: new Date('2016-06-03T12:07:00'),
                 message: "Muy bien! No sabia que tu usases esta aplicación!",
                 player: user2._id

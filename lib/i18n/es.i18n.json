@@ -91,6 +91,8 @@
     "timeline": "Muro",
     "contactUs": "Contacto",
     "faq": "FAQ",
+    "unfollow": "Dejar de seguir",
+    "following": "Siguiendo",
     "post": "Enviar",
     "remove": "Borrar"
 
@@ -150,14 +152,14 @@
   },
 
   "profile": {
-    "friends": "amigos",
-    "publications": "publicaciones",
-    "photos": "fotos",
+    "friends": "Amigos",
+    "publications": "Publicaciones",
+    "photos": "Fotos",
     "info": "Información",
-    "followed": "siguiendo",
-    "followers": "seguidores",
     "images": "imágenes",
-    "Images": "Imágenes"
+    "Images": "Imágenes",
+    "followed": "Siguiendo",
+    "followers": "Seguidores"
   },
 
   "timeline": {

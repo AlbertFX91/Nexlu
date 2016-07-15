@@ -8,10 +8,12 @@ Template.profileHeader.helpers({
     publications_pretty: function(){
         return Prettify.compactInteger(this.numPublication);
     },
-    bio: function(){
-        Session.set("firt_bio", false);
-        var bio = Meteor.user().bio;
-        if(Session.get("firt_bio") == false) {
+    'bio': function(){
+        Session.set("first_bio", false);
+        var user_id = Meteor.userId();
+        var user = Meteor.users.findOne(user_id);
+        var bio = user.bio;
+        if(Session.get("first_bio") == false) {
             document.getElementById('textarea1').value = bio;
         }
         return bio;
@@ -19,7 +21,7 @@ Template.profileHeader.helpers({
 });
 
 Template.profileHeader.onRendered(function(){
-    Session.set("firt_bio", true);
+    Session.set("first_bio", true);
 });
 
 Template.profileHeader.events({
@@ -37,5 +39,16 @@ Template.profileHeader.events({
         event.preventDefault();
         var bio = document.getElementById('textarea1').value;
         Meteor.call("modify_bio", bio);
+    }
+});
+
+Template.profileHeaderUser.helpers({
+    publications_pretty_user: function(){
+        var usernameProfile = this.username;
+        Meteor.call("findNumPublications", usernameProfile, function(e,r){
+            Session.set("findNumPublications",r);
+        });
+        var numPublications = Session.get("findNumPublications");
+        return numPublications;
     }
 });

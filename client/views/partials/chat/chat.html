@@ -1,6 +1,7 @@
 <template name="chat">
     {{> chat_buble}}
-    <div class="chat-list-container">
-        Hello!
-    </div>
+    {{> chat_menu }}
+    {{#if currentChatRoom}}
+        {{> chat_chatroom}}
+    {{/if}}
 </template>

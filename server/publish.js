@@ -18,6 +18,38 @@ Meteor.publish('user.me', function () {
     });
 });
 
+/**
+ * Devuelve los usuarios que siguen al usuario logueado, y que el usuario logueado tambien sigue. Es una relación reciproca.
+ * Se usa para devolver los usuarios con los que podemos chatear
+ */
+Meteor.publish('user.each.online', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    var user = Meteor.users.findOne(user_id);
+    return Meteor.users.find(
+        {
+            _id: { $in: user.followers },
+            followers: user_id,
+            "status.online": true
+        },
+        {
+            fields: Fields.user.all
+        }
+    );
+});
+
+Meteor.publish('image.me.miniature', function(){
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+});
+
 Meteor.publish('publication.me.none', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -25,6 +57,16 @@ Meteor.publish('publication.me.none', function () {
         return;
     }
     return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.none});
+});
+
+Meteor.publish('publication.user.none', function (usernameUser) {
+    var user = Meteor.users.find({'username':usernameUser});
+    var user_id = user._id;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Publications.find({owner: user_id}, {fields: Fields.publication.none});
 });
 
 Meteor.publish("findBio", function () {
@@ -56,6 +98,37 @@ Meteor.publish("findUser", function(username) {
     return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
 });
 
+Meteor.publish("userProfile",function(username){
+    var user=Meteor.users.findOne({"username":username});
+    if(!user){
+        this.ready();
+        return;
+    }
+    if(this.userId==user._id){
+        return Meteor.users.find(this.userId);
+    }
+    else{
+        return Meteor.users.find(user._id,{
+            fields:{
+                "profile":0
+            }
+        });
+    }
+});
+
+Meteor.publish("chatroom.mine", function(id){
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return ChatRooms.find({"players.id": user_id});
+});
+
+Meteor.publish("emojis", function(){
+    return Emojis.find();
+});
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
@@ -70,6 +143,7 @@ Fields = {
             bio: 1,
             followed: 1,
             followers: 1,
+            status: 1
         },
         followed: {
             followed: 1
