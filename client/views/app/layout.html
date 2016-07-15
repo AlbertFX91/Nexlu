@@ -14,6 +14,10 @@
         </main>
 
         {{#if currentUser}}
+            {{> chat}}
+        {{/if}}
+
+        {{#if currentUser}}
             {{> pageFooterLogged}}
         {{else}}
             {{> pageFooter}}

@@ -1,0 +1,40 @@
+<template name="img_filter">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <input type="file" accept=".jpg,.jpeg,.png" class="file_bag">
+                <!--<button class="upload">Upload</button>-->
+            </div>
+        </div>
+        <div class="row center-align">
+
+            {{#each images}}
+               <!-- <img id="FF{{_id}}" class="img-prev {{#if uploaded}}img-uploaded{{else}}img-ready{{/if}}" src="{{result}}" data-id="{{_id}}" /> -->
+                <img id="FF{{_id}}" class="img-prev " src="{{result}}" data-id="{{_id}}" />
+            {{/each}}
+        </div>
+        <div id="filterContainer">
+            <ul id="filters">
+                <li> <a href="#" id="normal" class="">Normal</a> </li>
+                <li> <a href="#" id="vintage" class="">Vintage</a> </li>
+                <li> <a href="#" id="lomo" class="">Lomo</a> </li>
+                <li> <a href="#" id="clarity" class="">Clarity</a> </li>
+                <li> <a href="#" id="sinCity" class="">Sin City</a> </li>
+                <li> <a href="#" id="sunrise" class="">Sunrise</a> </li>
+                <li> <a href="#" id="crossProcess" class="">Cross Process</a> </li>
+                <li> <a href="#" id="orangePeel" class="">Orange Peel</a> </li>
+                <li> <a href="#" id="love" class="">Love</a> </li>
+                <li> <a href="#" id="grungy" class="">Grungy</a> </li>
+                <li> <a href="#" id="jarques" class="">Jarques</a> </li>
+                <li> <a href="#" id="pinhole" class="">Pinhole</a> </li>
+                <li> <a href="#" id="oldBoot" class="">Old Boot</a> </li>
+                <li> <a href="#" id="glowingSun" class="">Glowing Sun</a> </li>
+                <li> <a href="#" id="hazyDays" class="">Hazy Days</a> </li>
+                <li> <a href="#" id="herMajesty" class="">Her Majesty</a> </li>
+                <li> <a href="#" id="nostalgia" class="">Nostalgia</a> </li>
+                <li> <a href="#" id="hemingway" class="active">Hemingway</a> </li>
+                <li> <a href="#" id="concentrate">Concentrate</a> </li>
+            </ul>
+        </div>
+    </div>
+</template>

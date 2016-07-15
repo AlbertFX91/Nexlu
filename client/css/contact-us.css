@@ -20,7 +20,7 @@
     border: none !important;
     margin-bottom: 5px;
     position: absolute;
-    margin-left: 30%;
+    margin-left: 27%;
 }
 
 #user-error, #email-error, #message-error{
@@ -30,13 +30,19 @@
 
 @media(max-width: 800px){
 
-    .header-contact-us{
+    div .header-contact-us{
         font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 35px;
         line-height: 4.44444rem;
         text-align: center;
+    }
+    div #contact_us_button{
+        margin-left: 15%;
+    }
+    div #message-label{
+        text-align: left;
     }
 }
 

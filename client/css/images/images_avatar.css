@@ -1,0 +1,13 @@
+.img-avatar{
+    /*margin-right: auto;
+    margin-left: auto;
+    max-width: 150px;
+    max-height: 150px;
+    display: block;*/
+    height: 150px;
+    width: 150px;
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    background-size: cover;
+    background-position:center;
+}

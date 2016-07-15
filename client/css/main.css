@@ -2,6 +2,24 @@
     background-color: #263238;
 }
 
+.web-color-2 {
+    background-color: #9e9e9e;
+}
+
+.text-color-1 {
+    color: #9e9e9e;
+}
+
+/* Color para enlaces */
+.text-color-2 {
+    color: #7db3ce;
+}
+
+/* Color para texto de publicaciones */
+.text-color-3 {
+    color: #e1e1e1;
+}
+
 .table td {
     text-align: center;
 }
