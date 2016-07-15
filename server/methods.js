@@ -50,6 +50,81 @@ Meteor.methods({
         var decodedString = Base64.decode(codificado);
         return decodedString;
     },
+    "image.new": function(data) {
+        var user = Meteor.user();
+        if (user != undefined) {
+            var image = {
+                owner: [
+                    {
+                        id: user._id,
+                        username: user.username
+                    }
+                ],
+                createdAt: new Date(),
+                playersTagged: [], //TODO: Añadir etiquetas
+                description: data.description,
+                playersLike: [],
+                playersDislike: [],
+                comments: [],
+                url: data.url
+            };
+            return Images.insert(image);
+        } else {
+            throw Meteor.Error("User not logued");
+        }
+    },
+    'image.edit': function(imgId, description){
+        Images.update(imgId, {
+            $set: {
+                description: description
+            }
+        })
+    },
+    'image.remove': function(publicationId) {
+        Images.remove(publicationId);
+    },
+    'image.like': function(publicationId) {
+        var userId = Meteor.userId();
+        Images.update(publicationId, {
+            $push: {
+                playersLike: userId
+            }
+        });
+        Images.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
+    },
+    'image.dislike': function(publicationId) {
+        var userId = Meteor.userId();
+        Images.update(publicationId, {
+            $push: {
+                playersDislike: userId
+            }
+        });
+        Images.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'image.remove.like': function(publicationId) {
+        var userId = Meteor.userId();
+        Images.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'image.remove.dislike': function(publicationId) {
+        var userId = Meteor.userId();
+        Images.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
+    },
     'getUsernameById': function(id){
         var user = Meteor.users.findOne(id, {fields:{username:1}});
         return user.username;
@@ -78,6 +153,48 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'likePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $push: {
+                playersLike: userId
+            }
+        });
+        Publications.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
+    },
+    'dislikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $push: {
+                playersDislike: userId
+            }
+        });
+        Publications.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'removeLikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $pull: {
+                playersLike: userId
+            }
+        })
+    },
+    'removeDislikePublication': function(publicationId) {
+        var userId = Meteor.userId();
+        Publications.update(publicationId, {
+            $pull: {
+                playersDislike: userId
+            }
+        })
     },
     'chatroom.exists': function(follower_id, my_id){
         var res = ChatRooms.findOne(

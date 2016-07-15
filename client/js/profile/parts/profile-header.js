@@ -44,9 +44,7 @@ Template.profileHeader.events({
 
 Template.profileHeaderUser.helpers({
     publications_pretty_user: function(){
-        //return Prettify.compactInteger(this.numPublication); //TODO: Coger el nº de publicaciones del user en cuestion
-        var url = document.location.href.split("/");
-        var usernameProfile = url[4];
+        var usernameProfile = this.username;
         Meteor.call("findNumPublications", usernameProfile, function(e,r){
             Session.set("findNumPublications",r);
         });

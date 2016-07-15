@@ -16,6 +16,11 @@ Template.timeline.events({
             document.getElementById('post-error').innerHTML = texto;
             $("#post-label").removeClass("active");
             valido = false;
+        } else if (description.length > 5000) {
+            var texto = TAPi18n.__("error.post-maxlength");
+            document.getElementById('post-error').innerHTML = texto;
+            $("#post-label").hide();
+            valido = false;
         }
         var publication = {
             owner: [
@@ -36,6 +41,7 @@ Template.timeline.events({
                 if (!err){
                     var textarea = document.getElementById('newPublication');
                     textarea.value = "";
+                    $("#newPublication").trigger('autoresize');
                     $("#post-label").removeClass("active");
                 }
             });
@@ -43,6 +49,11 @@ Template.timeline.events({
     },
     'click #newPublication': function(e) {
         e.preventDefault();
+        $("#post-label").show();
         document.getElementById('post-error').innerHTML = "";
     }
+});
+
+Template.timeline.onRendered(function(){
+    $('#newPublication').characterCounter();
 })

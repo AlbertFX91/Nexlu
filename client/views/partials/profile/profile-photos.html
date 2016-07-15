@@ -3,6 +3,9 @@
         {{> profileHeader}}
         <div class="row profile-content">
             <h1>Photos</h1>
+            {{#with images}}
+                {{> images_miniatures_container}}
+            {{/with}}
         </div>
     </div>
 </template>
@@ -12,6 +15,9 @@
         {{> profileHeaderUser}}
         <div class="row profile-content">
             <h1>Photos</h1>
+            {{#with images}}
+                {{> images_miniatures_container}}
+            {{/with}}
         </div>
     </div>
 </template>
