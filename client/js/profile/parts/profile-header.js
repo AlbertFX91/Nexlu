@@ -14,7 +14,7 @@ Template.profileHeader.helpers({
         var user = Meteor.users.findOne(user_id);
         var bio = user.bio;
         if(Session.get("first_bio") == false) {
-            document.getElementById('textarea1').value = bio;
+            $("#textarea1").val(bio);
         }
         return bio;
     }
