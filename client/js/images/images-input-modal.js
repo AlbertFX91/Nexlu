@@ -94,9 +94,11 @@ Template.images_input_modal.events({
         Tracker.autorun(function(){
             var numImagesUploaded = Session.get("numImagesUploaded");
             var numImagesToUpload = Session.get("numImagesToUpload");
-            if(numImagesToUpload === numImagesUploaded){
+            var imagesFinished = Session.get("images.finished");
+            if(!imagesFinished && numImagesToUpload === numImagesUploaded){
                 Toasts.throwTrans("images.uploaded_finished");
                 setTimeout(closeMainModal, 1000);
+                setTimeout(function(){Session.set("images.finished", true)},1000)
                 
             }
         })
@@ -140,6 +142,7 @@ Template.images_input_modal.onRendered(function(){
     Session.set("uploadingImages", false);
     Session.set("numImagesUploaded", false);
     Session.set("numImagesToUpload", false);
+    Session.set("images.finished", false);
 });
 
 function saveImgInBrowserByFile(file){
