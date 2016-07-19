@@ -10,6 +10,7 @@ Template.chat_menu_user_entry.events({
             }else{
                 Session.set("ChatRoom.id", id);
             }
+            $("#chat-menu-user-"+follower_id).children(".new-message-container").removeClass("new");
         })
     }
 });
