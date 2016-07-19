@@ -1,7 +1,7 @@
 Template.chat_menu.onRendered(function(){
     Session.set("ChatRoom.id", null);
     $("#chat-list-body").niceScroll();
-    Meteor.subscribe("user.each.online");
+    Meteor.subscribe("user.each.chat");
 });
 
 Template.chat_menu.events({

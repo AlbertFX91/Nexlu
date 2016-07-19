@@ -12,3 +12,10 @@
 .chat-menu-user-entry:hover{
     background-color: lightgrey;
 }
+
+i.online{
+    color: lightgreen;
+}
+i.offline{
+    color: grey;
+}
