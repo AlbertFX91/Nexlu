@@ -2,6 +2,11 @@ Template.chat_menu.onRendered(function(){
     Session.set("ChatRoom.id", null);
     $("#chat-list-body").niceScroll();
     Meteor.subscribe("user.each.chat");
+    var handle = Meteor.users.find({_id: {$ne: Meteor.userId()}}).observeChanges({
+        changed: function(id, fields){
+            console.log("CHANGED ["+id+"]: "+fields);
+        }
+    })
 });
 
 Template.chat_menu.events({
