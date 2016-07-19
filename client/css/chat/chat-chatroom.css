@@ -104,3 +104,11 @@ i.offline{
     font-size: 0.9em !important;
     font-family: "Roboto", sans-serif !important;
 }
+
+
+i.online{
+    color: lightgreen;
+}
+i.offline{
+    color: grey;
+}
