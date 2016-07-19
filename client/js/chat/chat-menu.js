@@ -3,7 +3,7 @@ Template.chat_menu.onRendered(function(){
     $("#chat-list-body").niceScroll();
     Meteor.subscribe("user.each.chat");
 
-    Meteor.subscribe("chatroom.mine");
+    /*Meteor.subscribe("chatroom.mine");
     var handle = ChatRooms.find({"players.id": Meteor.userId()}).observeChanges({
         changed: function(id, fields){
             //Recupero todos los mensajes del chatroom modificado
@@ -13,17 +13,15 @@ Template.chat_menu.onRendered(function(){
             if(lastMessage.player != Meteor.userId()){
                 var chatroom_id = Session.get("ChatRoom.id");
                 var chatOpen = chatroom_id !=undefined && chatroom_id == id;
-                
+
                 if(!chatOpen){
                     var player_id = lastMessage.player;
                     $("#chat-menu-user-"+player_id).children(".new-message-container").addClass("new");
                 }
             }
-            /*console.log("CHANGED ["+id+"]");
-            console.log(fields);
-            console.log("Last message: "+messages[messages.length-1].message);*/
         }
     })
+    */
 });
 
 Template.chat_menu.events({
