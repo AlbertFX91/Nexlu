@@ -106,10 +106,10 @@
 }
 
 #login-input-fields{
-    background: #ffffff; /* Old browsers */
-    background: -moz-linear-gradient(top, #ffffff 0%, #f9f9f9 57%, #ede8e8 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #ffffff 0%,#f9f9f9 57%,#ede8e8 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #ffffff 0%,#f9f9f9 57%,#ede8e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: #263238; /* Old browsers */
+    background: -moz-linear-gradient(top, #263238 0%, #212d38 57%, #142638 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #263238 0%, #212d38 57%, #142638 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #263238 0%, #212d38 57%, #142638 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ede8e8',GradientType=0 ); /* IE6-9 */
     margin-top: 0 !important;
     -webkit-border-bottom-right-radius: 3px;
@@ -234,10 +234,10 @@
 }
 
 #col-buttom{
-    height: 175px;
+    height: 200px;
     margin-right: -110px;
     width: 150px;
-    margin-left: -140px;
+    margin-left: -100px;
     z-index: 10;
 }
 #div-buttom{
@@ -302,4 +302,8 @@
 #username-row, #password-row{
     margin-left:20px;
     z-index: 2 !important;
+}
+
+#username-row>input:-webkit-autofill, #password-row>input:-webkit-autofill{
+    background-color:#263238 !important;
 }
