@@ -1,27 +1,31 @@
 Template.login.events({
-    'submit #login-form': function(event){
+    'submit form': function(event){
         event.preventDefault();
-        var usernameval = $("#username").val();
-        var passwordval = $("#password").val();
-        if(usernameval!="" && passwordval!=""){
+        var usernameval = event.target.username.value;
+        var passwordval = event.target.password.value;
+        if(usernameval!="" && passwordval){
             Meteor.loginWithPassword(usernameval, passwordval, function(err){
                 if(err){
                     Errors.throwErrorTranslated("error.login_credentials_wrong");
                 }else{
                     Toasts.throwTrans("toast.login_success");
-                    Router.go('home');
+                    $('#login-access').removeClass('login-open').addClass('login-close');
+                    setTimeout(function(){ Session.set('showLoginModal', false); }, 300);
                 }
             });
         }else{
             Errors.throwErrorTranslated("error.login_credentials_wrong");
         }
     },
-    'click #close-error': function(event){
-        $error_container = $("#error-container");
-        if($error_container.css("display") == "inline"){
-            $error_container.css("display", "none");
+    'click #login-overlay': function(event){
+        Session.set('showLoginModal', false);
+        Session.set('alert', null);
+    },
+    'click #login-main': function(event){
+        if(event.target.id==="login-main"){
+            Session.set('showLoginModal', false);
+            Session.set('alert', null);
         }
-
     },
     'click #facebook-login': function(event) {
         Meteor.loginWithFacebook({}, function(err){
@@ -37,16 +41,6 @@ Template.login.events({
         Meteor.loginWithGoogle ({}, function(err){
             if(err){
                 Errors.throwErrorTranslated("error.login_credentials-google_wrong");
-            }else{
-                Toasts.throwTrans("toast.login_success");
-                Router.go('home');
-            }
-        });
-    },
-    'click #twitter-login': function(event) {
-        Meteor.loginWithTwitter ({}, function(err){
-            if(err){
-                Errors.throwErrorTranslated("error.login_credentials-twitter_wrong");
             }else{
                 Toasts.throwTrans("toast.login_success");
                 Router.go('home');
@@ -69,4 +63,14 @@ Template.login.helpers({
     'alert': function(){
         return Session.get("alert");
     }
+});
+
+
+Template.login.onRendered(function(){
+    $('#login-access').addClass('login-open');
+    $('#login-overlay').css('display', 'block');
+    $('#login-main').css('display', 'block');
+    $('#login-access').css('display', 'block');
+
+    $('#login-content').delay(150).slideDown("slow");
 });
