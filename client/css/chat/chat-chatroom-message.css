@@ -22,6 +22,15 @@ ul.chat li .message {
     background: white;
     border-radius: 5px;
     max-width: 80%;
+
+    white-space: -moz-pre-wrap;
+    white-space: -hp-pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word;
+    -moz-binding: url("xbl.xml#wordwrap");
 }
 ul.chat li .message::after {
     content: '';
