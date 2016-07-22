@@ -28,17 +28,7 @@ Template.chat.onRendered(function(){
                     }
 
                 }
-
-
-
             }
-
-
-            
-            
-            /*console.log("CHANGED ["+id+"]");
-             console.log(fields);
-             console.log("Last message: "+messages[messages.length-1].message);*/
         }
     });
 });
