@@ -21,6 +21,7 @@ ul.chat li .message {
     position: relative;
     background: white;
     border-radius: 5px;
+    max-width: 80%;
 }
 ul.chat li .message::after {
     content: '';
