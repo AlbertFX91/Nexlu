@@ -49,23 +49,38 @@ Meteor.startup(function () {
         secret: Meteor.settings.twitter.secret
     });
 
-
     // Inicialización de datos
-    if (Meteor.users.find().count() === 0) {
+    var entorno = Meteor.settings.entorno;
+    if(entorno == "desarrollo"){
+        if (Meteor.users.find().count() === 0) {
+            createUsers();
+        }
+
+        if (ChatRooms.find().count() === 0){
+            createChatRooms();
+        }
+
+        if (Publications.find().count() === 0){
+            createPublications();
+        }
+
+        if (Images.find().count() === 0){
+            createImages();
+        }
+    }else if (entorno == "preproduccion"){
+        Meteor.users.remove({});
+        ChatRooms.remove({});
+        Images.remove({});
+        Publications.remove({});
+        
         createUsers();
-    }
-
-    if (ChatRooms.find().count() === 0){
         createChatRooms();
-    }
-
-    if (Publications.find().count() === 0){
         createPublications();
-    }
-
-    if (Images.find().count() === 0){
         createImages();
     }
+
+
+
 });
 
 
