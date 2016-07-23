@@ -1,0 +1,31 @@
+.new-comment-header {
+    padding: 10px 30px 10px 30px;
+    display:flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.new-comment-content{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+}
+
+.new-comment-action {
+    padding: 10px 30px 0px 30px;
+    display:flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.new-comment {
+    border: none !important;
+    padding-top: 10px !important;
+}
+
+#commentError {
+    color: #b1070c;
+}
