@@ -12,6 +12,24 @@
                         {{_ "login"}}
                     </a>
 				{{/if}}
+                <div class="row username_facebook_google">
+                    <div class="col s12 m12">
+                        <div id="modal_username" class="modal">
+                            <div class="modal-content">
+                                <h4 style="color:black">{{_ "send_username"}}</h4>
+                                <div class="input-field m10 col s12">
+                                    <i class="material-icons prefix blue-text">account_circle</i>
+                                    <input id="username" type="text" class="form-control" autocomplete="off">
+                                    <label for="username">{{_ "username"}}</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" id="send_username" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
+                                <a href="{{pathFor 'home'}}" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

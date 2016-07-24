@@ -44,7 +44,7 @@
                                     {{#if currentUser}}
                                         <button id="logout">{{_ "logout"}}</button>
                                     {{else}}
-                                        <a class="btn btn-block btn-social btn-facebook">
+                                        <a id="facebook-login" class="btn btn-block btn-social btn-facebook">
                                             <span class="fa fa-facebook"></span>
                                             {{_ "login-facebook"}}
                                         </a>
@@ -54,9 +54,9 @@
                                     {{#if currentUser}}
                                         <button id="logout">{{_ "logout"}}</button>
                                     {{else}}
-                                        <a class="btn btn-block btn-social btn-google">
+                                        <a id="google-login" class="btn btn-block btn-social btn-google">
                                             <span class="fa fa-google"></span>
-                                            {{_ "login-gmail"}}
+                                            {{_ "login-google"}}
                                         </a>
                                     {{/if}}
                                 </div>

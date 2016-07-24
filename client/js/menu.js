@@ -1,6 +1,5 @@
 Template.menu.events({
 	'click #showLoginModal': function(){
-        console.log("showloginmodal");
         Session.set('showLoginModal', true);
     },
     'click #logout': function(event){

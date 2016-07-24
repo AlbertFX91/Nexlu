@@ -46,6 +46,7 @@ Meteor.methods({
     'checkUniqueEmail': function(emailRegister){
         return Meteor.users.find({'emails.0.address': emailRegister}).fetch().length==0
     },
+
     'deCodificaString': function (codificado) {
         var decodedString = Base64.decode(codificado);
         return decodedString;
@@ -313,5 +314,73 @@ Meteor.methods({
             }
 
         });
-    }
+    },
+    'login.facebook': function(){
+        var user = Meteor.user();
+        options = {
+            username : user.profile.name.replace(" ",""),
+            email: user.services.facebook.email
+        };
+        Meteor.users.update(user._id, {
+            $set: {
+                username: options.username.toLowerCase(),
+                "emails.0.address": options.email,
+                bio: TAPi18n.__("bio.add_bio"),
+                followers: [],
+                followed: [],
+                "emails.0.verified": true
+            }
+        });
+    },
+    'login.google': function(){
+        var user = Meteor.user();
+        options = {
+            username : user.profile.name.replace(" ",""),
+            email: user.services.google.email
+        };
+        Meteor.users.update(user._id, {
+            $set: {
+                username: options.username.toLowerCase(),
+                "emails.0.address": options.email,
+                bio: TAPi18n.__("bio.add_bio"),
+                followers: [],
+                followed: [],
+                "emails.0.verified": true
+            }
+        });
+    },
+    'login.facebook.newUsername': function(username){
+        var user = Meteor.user();
+        options = {
+            username : username.replace(" ",""),
+            email: user.services.facebook.email
+        };
+        Meteor.users.update(user._id, {
+            $set: {
+                username: options.username.toLowerCase(),
+                "emails.0.address": options.email,
+                bio: TAPi18n.__("bio.add_bio"),
+                followers: [],
+                followed: [],
+                "emails.0.verified": true
+            }
+        });
+    },
+    'login.google.newUsername': function(){
+        var user = Meteor.user();
+        options = {
+            username : user.profile.name.replace(" ",""),
+            email: user.services.facebook.email
+        };
+        Meteor.users.update(user._id, {
+            $set: {
+                username: options.username.toLowerCase(),
+                "emails.0.address": options.email,
+                bio: TAPi18n.__("bio.add_bio"),
+                followers: [],
+                followed: [],
+                "emails.0.verified": true
+            }
+        });
+    },
 });

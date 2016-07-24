@@ -5,7 +5,7 @@
   "login": "Login",
   "login_error_credentials_wrong": "username and/or password wrong",
   "login-facebook": "Facebook",
-  "login-gmail": "Gmail",
+  "login-google": "Google",
   "login-twitter": "Login with Twitter",
   "password": "Password",
   "confirm_password": "Confirm password",

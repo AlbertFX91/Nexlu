@@ -6,7 +6,7 @@
   "login": "Entrar",
   "login_error_credentials_wrong": "usuario y/o contraseña erronea",
   "login-facebook": "Facebook",
-  "login-gmail": "Gmail",
+  "login-google": "Google",
   "login-twitter": "Iniciar con Twitter",
   "password": "Contraseña",
   "confirm_password": "Confirmar contraseña",

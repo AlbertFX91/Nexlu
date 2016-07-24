@@ -1,0 +1,40 @@
+<template name="new_username">
+    <div id="login-main" style="display: block" class="container">
+        <div id="login-access" style="display: block">
+            <div class="row">
+                <form class="col s12" id="login-form-newUsername">
+                    <div class="row z-depth-3" id="login-title">
+                        <div class="col s12 blue darken-3 white-text center-align" id="login-title-header">
+                            <h4>{{_ "login"}}</h4>
+                        </div>
+                    </div>
+                    <div class="row" id="login-content">
+                        <div class="row input-field col m12 s12 z-depth-3" id="login-input-fields">
+                            <div class="col s11">
+                                <div class="row" id="username-row">
+                                    <div class="input-field m10 col s12">
+                                        <i class="material-icons prefix blue-text">account_circle</i>
+                                        <input id="newUsername" type="text" class="form-control" autocomplete="off">
+                                        <label for="newUsername">{{_ "username"}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s1 valign-wrapper hide-on-small-only" id="col-buttom">
+                                <div id="div-buttom">
+                                    <button type="submit" id="login-buttom">
+                                        <i class="material-icons" id="login-icon">videogame_asset</i>
+                                    </button>
+                                </div>
+                                <div id="mask"></div>
+                            </div>
+                            <div id="login-buttom-hidden" class="input-field col s12 center-align">
+                                <button name="submit" type="submit" class="waves-effect waves-light btn blue darken-3 z-depth-1 caret bold">{{_ "login"}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
