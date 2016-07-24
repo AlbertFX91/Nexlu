@@ -12,7 +12,8 @@ Template.foo.helpers({
                 {
                     collection: Meteor.users,
                     field: "username",
-                    template: Template.userPill
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
                 }
             ]
         };
