@@ -66,13 +66,61 @@
 #edit-pub-modal {
     width: 40%;
     background-color: transparent !important;
+    max-height: none !important;
+}
+
+@media screen and (max-width: 1024px){
+    #edit-pub-modal {
+        width: 65% !important;
+    }
+}
+
+@media screen and (max-width: 425px){
+    #edit-pub-modal {
+        width: 80% !important;
+    }
 }
 
 #remove-pub-modal {
-    width: 30%;
+    width: 40%;
     background-color: transparent !important;
+    text-align: justify;
+}
+
+@media screen and (max-width: 1024px){
+    #remove-pub-modal {
+        width: 65% !important;
+    }
+}
+
+@media screen and (max-width: 425px){
+    #remove-pub-modal {
+        width: 80% !important;
+    }
 }
 
 #edit-post-error {
     color: #b1070c;
+}
+
+#confirm-remove-pub {
+    margin-left: 20px;
+}
+
+#like, #dislike {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+#i-like, #i-dislike {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+#like:hover, #i-like {
+    color: #00a2d3 !important;
+}
+
+#dislike:hover, #i-dislike {
+    color: #b1070c !important;
 }

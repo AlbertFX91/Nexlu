@@ -7,7 +7,12 @@ Template.publication.helpers({
             return true;
         return false;
     },
-
+    iLike: function() {
+        return _.contains(this.playersLike, Meteor.userId().trim());
+    },
+    iDislike: function() {
+        return _.contains(this.playersDislike, Meteor.userId().trim());
+    },
 
 
 
@@ -35,6 +40,7 @@ Template.publication.events({
         }})
         var textarea = document.getElementById('editPublication');
         textarea.value = this.description;
+        $("#editPublication").trigger('autoresize');
         $("#edit-post-label").addClass("active");
     },
     'click #remove-pub': function () {
@@ -52,6 +58,11 @@ Template.publication.events({
             document.getElementById('edit-post-error').innerHTML = texto;
             $("#edit-post-label").removeClass("active");
             valido = false;
+        } else if (description.length > 5000) {
+            var texto = TAPi18n.__("error.post-maxlength");
+            document.getElementById('edit-post-error').innerHTML = texto;
+            $("#edit-post-label").hide();
+            valido = false;
         }
         if (valido) {
            Meteor.call('editPublication', publicationId, description, function(err, response){
@@ -64,6 +75,7 @@ Template.publication.events({
     'click #editPublication': function(e) {
         e.preventDefault();
         document.getElementById('edit-post-error').innerHTML = "";
+        $("#edit-post-label").show();
     },
     'submit .remove-post': function(e) {
         e.preventDefault();
@@ -74,6 +86,49 @@ Template.publication.events({
                 $('.lean-overlay').remove();
             }
         });
+    },
+    'click #like': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (!_.contains(this.playersLike, Meteor.userId())){
+            Meteor.call('likePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #dislike': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (!_.contains(this.playersDislike, Meteor.userId())){
+            Meteor.call('dislikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #i-like': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (_.contains(this.playersLike, Meteor.userId())){
+            Meteor.call('removeLikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #i-dislike': function (e) {
+        e.preventDefault();
+        var publicationId = this._id;
+        if (_.contains(this.playersDislike, Meteor.userId())){
+            Meteor.call('removeDislikePublication', publicationId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
     }
-
 });

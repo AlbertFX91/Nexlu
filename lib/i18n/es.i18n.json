@@ -38,7 +38,8 @@
     "undo": "Deshacer",
     "login_success": "Estás dentro!",
     "logout_success": "Nos vemos!",
-    "verify_thanks" : "¡Gracias por validar tu correo!"
+    "verify_thanks" : "¡Gracias por validar tu correo!",
+    "description_added": "Descripción añadida"
 
   },
 
@@ -60,13 +61,16 @@
     "password_error_maxlength": "20 caracteres como máximo",
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
+    "occurred": "Ups, un error ha ocurrido",
+    "description_empty": "Añade una descripción",
     "post-notBlank": "La publicación no debe estar vacía",
     "email_error_patron": "El correo debe ser del tipo ejemplo@ejemplo.com",
     "password_error_pattern": "Formato inválido",
     "password_error_patron": "La contraseña debe tener minúsculas, dos mayúsculas y números",
     "message_error_empty": "El mensaje no puede estar vacio",
     "message_error_minlength": "El mensaje debe tener más de 20 caracteres",
-    "message_error_maxlength": "El mensaje no puede superar los 300 caracteres"
+    "message_error_maxlength": "El mensaje no puede superar los 300 caracteres",
+    "post-maxlength": "La publicación no puede superar los 5000 caracteres"
   },
 
   "tag": {
@@ -130,6 +134,15 @@
     "text-register": "Te hemos enviado un mensaje a tu correo para activar tu cuenta. ¡Nos vemos pronto!"
   },
 
+  "images": {
+    "upload-photos": "Subida de fotos",
+    "filters": "filtros",
+    "description": "Descripción",
+    "uploaded": "Imágenes guardadas",
+    "uploading_progress": "Subiendo imagen <strong>%s</strong> de <strong>%s</strong>",
+    "uploaded_finished": "Subida finalizada"
+  },
+
   "contactUs": {
     "header": "¡Póngase en contacto con nosotros!",
     "name": "Nombre",
@@ -143,6 +156,8 @@
     "publications": "Publicaciones",
     "photos": "Fotos",
     "info": "Información",
+    "images": "imágenes",
+    "Images": "Imágenes",
     "followed": "Siguiendo",
     "followers": "Seguidores"
   },

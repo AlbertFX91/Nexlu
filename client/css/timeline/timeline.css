@@ -17,7 +17,7 @@
 }
 
 .post-action {
-    padding: 10px 30px 20px 30px;
+    padding: 20px 30px 20px 30px;
     display:flex;
     flex-wrap:nowrap;
     align-items: center;
@@ -44,4 +44,8 @@
 
 #post-error {
     color: #b1070c;
+}
+
+#newPublication {
+    margin-bottom: 0px;
 }

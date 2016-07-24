@@ -1,0 +1,11 @@
+<template name="profileImages">
+    <div class="container div-profile">
+        {{> profileHeader}}
+        <div class="row profile-content">
+            <h1>{{_ "profile.Images"}}</h1>
+            {{#with images}}
+                {{> images_miniatures_container}}
+            {{/with}}
+        </div>
+    </div>
+</template>

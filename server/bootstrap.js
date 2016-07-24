@@ -1,5 +1,15 @@
 Meteor.startup(function () {
     // code to run on server at startup
+
+    // Inicialización de servicios amazon S3
+    S3.config = {
+        "key": Meteor.settings.amazon.key,
+        "secret": Meteor.settings.amazon.secret,
+        "bucket": Meteor.settings.amazon.bucket,
+        "region": Meteor.settings.amazon.region
+    };
+
+    // Inicialización de servicio de mensajería
     var smtp = {
         username: Meteor.settings.mail.user,
         password: Meteor.settings.mail.password,
@@ -9,10 +19,8 @@ Meteor.startup(function () {
     //Configuración de variable de entorno para servidor de correo electrónico
     process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 
-    if (Meteor.users.find().count() === 0) {
-        createUsers();
-    }
 
+    // Inicialización de servicios de redes sociales
     Accounts.loginServiceConfiguration.remove({
         service: Meteor.settings.facebook.name
     });
@@ -41,12 +49,22 @@ Meteor.startup(function () {
         secret: Meteor.settings.twitter.secret
     });
 
+
+    // Inicialización de datos
+    if (Meteor.users.find().count() === 0) {
+        createUsers();
+    }
+
     if (ChatRooms.find().count() === 0){
         createChatRooms();
     }
 
     if (Publications.find().count() === 0){
         createPublications();
+    }
+
+    if (Images.find().count() === 0){
+        createImages();
     }
 });
 
@@ -363,5 +381,91 @@ function createPublications(){
         ]
     });
 
+
+}
+
+
+function createImages(){
+    var user1 = Meteor.users.findOne({username: 'user1'});
+    var user2 = Meteor.users.findOne({username: 'user2'});
+    var user3 = Meteor.users.findOne({username: 'user3'});
+    var user4 = Meteor.users.findOne({username: 'user4'});
+
+    //User 1
+    var img1_id = Images.insert({
+        owner: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
+        createdAt: new Date('2016-06-03T12:00:00'),
+        playersTagged: [
+            {
+                id: user2._id,
+                username: user2.username
+            },
+            {
+                id: user3._id,
+                username: user3.username
+            }
+        ],
+        description: "My first image!!!",
+        playersLike: [user1._id, user2._id, user3._id],
+        playersDislike: [user4._id],
+        comments: [
+            {
+                createdAt: new Date('2016-06-03T12:05:00'),
+                description: "Nice publication!",
+                player: user2._id,
+                playersLike: [user1._id],
+                playersDislike: [],
+                sons: []
+            },
+            {
+                createdAt: new Date('2016-06-03T12:08:00'),
+                description: "Nice one dude!",
+                player: user3._id,
+                playersLike: [user1._id],
+                playersDislike: [user2._id],
+                sons: [
+                    {
+                        createdAt: new Date('2016-06-03T13:00:00'),
+                        description: "Thanks men!",
+                        player: user1._id,
+                        playersLike: [user3._id],
+                        playersDislike: [],
+                        sons: []
+                    }
+                ]
+            }
+        ],
+        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
+    });
+    Images.insert({
+        owner: [
+            {
+                id: user1._id,
+                username: user1.username
+            }
+        ],
+        createdAt: new Date('2016-06-08T12:00:00'),
+        playersTagged: [],
+        description: "My second publication!!!",
+        playersLike: [],
+        playersDislike: [],
+        comments: [],
+        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/nexlu-filter.png"
+    });
+
+    //Avatar User1
+    Meteor.users.update(user1, {
+        $set: {
+            avatar:{
+                id: img1_id,
+                url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
+            }
+        }
+    });
 
 }
