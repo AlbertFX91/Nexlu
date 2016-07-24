@@ -6,14 +6,18 @@
     min-width: 300px;
 }
 
-.-autocomplete-container{
-    background-color: black;
-    top:55px !important;
+.-autocomplete-container {
+    position: absolute;
+    background: #384951 !important;
+    border: 1px solid #5b757d !important;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 1000;
 }
 
-.-autocomplete-item.selected{
-    background-color: #2bbbad;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
+.-autocomplete-item {
+    display: block;
+    padding: 5px 10px;
+    border-bottom: 1px solid #5b757d !important;
 }

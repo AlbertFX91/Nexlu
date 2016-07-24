@@ -10,7 +10,7 @@ Template.foo.helpers({
             limit: 5,
             rules: [
                 {
-                    collection: Meteor.users, //TODO Mostrar todos los usuarios.
+                    collection: Meteor.users,
                     field: "username",
                     template: Template.userPill
                 }
