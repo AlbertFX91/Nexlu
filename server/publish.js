@@ -19,7 +19,14 @@ Meteor.publish('user.me', function () {
 });
 
 Meteor.publish('search.users', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    console.log(user_id);
     return Meteor.users.find({}, {
+        //TODO: _id: {$ne: user_id},
         fields: {
             username: 1
         }
