@@ -73,14 +73,7 @@ Meteor.publish("findBio", function () {
     return Meteor.users.find(this.userId);
 });
 
-Meteor.publish('image.me.miniature', function(){
-    var user_id = this.userId;
-    if (!user_id) {
-        this.ready();
-        return;
-    }
-    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
-});
+
 Meteor.publish('publication.followed.all', function () {
     var user_id = this.userId;
     if (!user_id) {
