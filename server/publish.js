@@ -22,7 +22,7 @@ Meteor.publish('user.me', function () {
  * Devuelve los usuarios que siguen al usuario logueado, y que el usuario logueado tambien sigue. Es una relación reciproca.
  * Se usa para devolver los usuarios con los que podemos chatear
  */
-Meteor.publish('user.each.online', function () {
+Meteor.publish('user.each.chat', function () {
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
@@ -33,7 +33,6 @@ Meteor.publish('user.each.online', function () {
         {
             _id: { $in: user.followers },
             followers: user_id,
-            "status.online": true
         },
         {
             fields: Fields.user.all
