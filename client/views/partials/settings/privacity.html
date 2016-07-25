@@ -12,8 +12,27 @@
                 </div>
             </div>
             <div class="col s8 m8">
-                <div class="content-privacity">
-                    Quieres privacidad?
+                <div class="content-privacity" style="padding: 10px">
+                    <h5>Configuración y herramienta de privacidad</h5>
+                    <p>En esta configuración te damos la opción a cambiar la privacidad de tu perfil en Nexlu.</p>
+                    <p>Si eliges la opción de tener una cuenta privada los demás usuarios no podrán:</p>
+                    <ul>
+                        <li>- Seguirte: Hasta que no aceptes la solicitud del usuario que quiere seguirte, este
+                            no podrán ver tus fotos y publicaciones</li>
+                        <li>- No aparecerás en las búsquedas</li>
+                    </ul>
+                    <div class="switch">
+                        <label>
+                            Público
+                            {{#if private}}
+                                <input type="checkbox" checked>
+                            {{else}}
+                                <input type="checkbox">
+                            {{/if}}
+                            <span class="lever"></span>
+                            Privado
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
