@@ -12,3 +12,8 @@ Template.home.events({
             });
 		}
 });
+
+Template.home.onRendered(function(){
+    Session.set("googleUsernameUnique", false);
+    Session.set("googleEmailUnique", false);
+});

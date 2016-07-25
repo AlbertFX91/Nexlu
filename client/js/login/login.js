@@ -67,16 +67,17 @@ Template.login.events({
     },
     'click #google-login': function(event) {
         Meteor.loginWithGoogle ({}, function(err){
-            sessionStorage.setItem("login-google", true);
-            sessionStorage.setItem("login-facebook", false);
             if(err){
                 Errors.throwErrorTranslated("error.login_credentials-google_wrong");
             }else{
-                //true: La contraseña/username no está registrada/o
+                //true: El email/username no está registrado
                 Meteor.call("checkUniqueUser", Meteor.user().profile.name.replace(" ","").toLowerCase(), function(e,r){
                     Session.set("googleUsernameUnique",r);
                 });
+                console.log(Session.get("googleUsernameUnique"));
+                Meteor.setTimeout(3000);
                 if(Session.get("googleUsernameUnique")==false){
+                    console.log("entro");
                     Meteor.call("checkUniqueEmail", Meteor.user().emails[0].address, function(e,r){
                         Session.set("googleEmailUnique", r);
                     });
