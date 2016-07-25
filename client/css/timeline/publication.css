@@ -130,3 +130,8 @@
     text-align: center;
     padding: 10px 0px 10px 0px;
 }
+
+#editPublication {
+    max-height: 400px !important;
+    overflow-y: auto !important;
+}
