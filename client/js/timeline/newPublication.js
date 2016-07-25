@@ -40,12 +40,10 @@ Template.newPublication.events({
         var usernamesTagged = Util.validateTag(description);
 
         var publication = {
-            owner: [
-                {
+            owner:{
                     id: userId,
                     username: username
-                }
-            ],
+                },
             createdAt: new Date(),
             playersTagged: [], //Se inicializa vacio y en servidor se modifica
             description: description,

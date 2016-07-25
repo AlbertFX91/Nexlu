@@ -4,7 +4,7 @@ Meteor.publish('publication.me.all', function () {
         this.ready();
         return;
     }
-    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.all});
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.all});
 });
 
 Meteor.publish('user.me', function () {
@@ -24,7 +24,7 @@ Meteor.publish('publication.me.none', function () {
         this.ready();
         return;
     }
-    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.none});
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
 });
 
 Meteor.publish("findBio", function () {
@@ -37,8 +37,9 @@ Meteor.publish('publication.followed.all', function () {
         this.ready();
         return;
     }
-    var followed_id = Meteor.users.find(user_id, {fields: Fields.user.followed}).fetch();
-    return Publications.find({"owner.0.id": {"$in": [followed_id.followed]}}, {fields: Fields.publication.all});
+    var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
+    var followed_id = followed.followed;
+    return Publications.find({"owner.id": {"$in": followed_id}}, {fields: Fields.publication.all});
 });
 
 Meteor.publish("findUser", function(username) {
