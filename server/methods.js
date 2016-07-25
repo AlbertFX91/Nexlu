@@ -314,5 +314,17 @@ Meteor.methods({
             }
 
         });
+    },
+    'find.privacity': function(){
+        var user = Meteor.user();
+        return user.private_profile;
+    },
+    'changePrivacity': function (accepted) {
+        var userId = Meteor.userId();
+        Meteor.users.update(userId, {
+            $set: {
+                private_profile: accepted
+            }
+        });
     }
 });
