@@ -75,9 +75,8 @@
                 {{/if}}
             </div>
         </div>
-
-        <div class="card-action publication-comments">
-            {{#if hasComments}}
+        {{#if hasComments}}
+            <div class="card-action publication-comments">
                 <div class="truncate-comments">
                     <a id="view-comments">{{_ "timeline.view-comments"}}</a>
                     <a id="hide-comments" class="hide">{{_ "timeline.hide-comments"}}</a>
@@ -87,8 +86,8 @@
                         {{> comment}}
                     {{/each}}
                 </div>
-            {{/if}}
-        </div>
+            </div>
+        {{/if}}
         <div class="card-action new-comment">
             {{#with this}}
                 {{> newComment}}
