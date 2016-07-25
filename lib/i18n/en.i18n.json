@@ -132,6 +132,7 @@
     "sendMessage": "Send message"
   },
   "profile": {
+    "my_profile": "My profile",
     "friends": "Friends",
     "publications": "Publications",
     "photos": "Photos",
@@ -192,6 +193,23 @@
   "security":{
     "register": "A private profile can't be see by other user",
     "privacity": "Privacity"
+  },
+
+  "settings": {
+    "settings": "Settings",
+    "general": "General",
+    "privacity": "Privacity",
+    "password": "Change password"
+  },
+
+  "privacity":{
+    "title": "Configuration and tool of privacity",
+    "p1": "In this configuration we give you the option to change the privacy of your profile Nexlu.",
+    "p2": "If you choose the option of having a private account other users may not:",
+    "p3": "Follow : Until you accept the request of the user who wants to follow this they can not see your photos and publications.",
+    "p4": "You will not appear in searches.",
+    "public": "Public",
+    "private": "Private"
   }
 
 }

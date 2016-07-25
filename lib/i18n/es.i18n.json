@@ -152,6 +152,7 @@
   },
 
   "profile": {
+    "my_profile": "Mi perfil",
     "friends": "Amigos",
     "publications": "Publicaciones",
     "photos": "Fotos",
@@ -213,5 +214,22 @@
   "security":{
     "register": "Un perfil privado no puede ser visto por otros usuarios",
     "privacity": "Privacidad"
+  },
+
+  "settings": {
+    "settings": "Configuración",
+    "general": "General",
+    "privacity": "Privacidad",
+    "password": "Cambiar contraseña"
+  },
+
+  "privacity":{
+    "title": "Configuración y herramienta de privacidad",
+    "p1": "En esta configuración te damos la opción a cambiar la privacidad de tu perfil en Nexlu.",
+    "p2": "Si eliges la opción de tener una cuenta privada los demás usuarios no podrán:",
+    "p3": "Seguirte: Hasta que no aceptes la solicitud del usuario que quiere seguirte, este no podrán ver tus fotos y publicaciones.",
+    "p4": "No aparecerás en las búsquedas.",
+    "public": "Público",
+    "private": "Privado"
   }
 }
