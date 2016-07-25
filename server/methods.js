@@ -364,7 +364,8 @@ Meteor.methods({
                 bio: TAPi18n.__("bio.add_bio"),
                 followers: [],
                 followed: [],
-                "emails.0.verified": true
+                "emails.0.verified": true,
+                private_profile: false
             }
         });
     },
@@ -381,7 +382,8 @@ Meteor.methods({
                 bio: TAPi18n.__("bio.add_bio"),
                 followers: [],
                 followed: [],
-                "emails.0.verified": true
+                "emails.0.verified": true,
+                private_profile: false
             }
         });
     },
