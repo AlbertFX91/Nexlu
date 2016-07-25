@@ -14,7 +14,8 @@ Meteor.methods({
                     $set: {
                         bio: TAPi18n.__("bio.add_bio"),
                         followers: [],
-                        followed: []
+                        followed: [],
+                        private_profile: user[4]
                     }
                 });
             } catch (error) {
