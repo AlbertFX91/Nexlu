@@ -29,3 +29,7 @@
 #commentError {
     color: #b1070c;
 }
+
+.new-label-transform label.active  {
+    display: none !important;
+}
