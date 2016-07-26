@@ -37,43 +37,94 @@
 
 <template name="profileViewsUser">
     <div class="profile-views">
-        <div class="row">
-            <div class="col s4 profile-view-col">
-                <a href="{{pathFor 'profilePhotos'}}" style='text-decoration:none;color:#90a4ae;'>
-                    <div class="profile-view-container {{#if isActiveRoute 'profilePhotos'}}view-selected{{/if}}"  data-view="profilePhotos">
-                        <div class="row profile-view-icon">
-                            <i class="fa fa-camera" aria-hidden="true"></i>
+        {{#if isPrivateButFollower}}
+            <div class="row">
+                <div class="col s4 profile-view-col">
+                    <a href="{{pathFor 'profilePhotos'}}" style='text-decoration:none;color:#90a4ae;'>
+                        <div class="profile-view-container {{#if isActiveRoute 'profilePhotos'}}view-selected{{/if}}"  data-view="profilePhotos">
+                            <div class="row profile-view-icon">
+                                <i class="fa fa-camera" aria-hidden="true"></i>
+                            </div>
+                            <div class="row profile-view-text hide-on-small-only">
+                                {{_ "profile.photos" }}
+                            </div>
                         </div>
-                        <div class="row profile-view-text hide-on-small-only">
-                            {{_ "profile.photos" }}
+                    </a>
+                </div>
+                <div class="col s4 profile-view-col">
+                    <a href="{{pathFor 'profile'}}" style='text-decoration:none;color:#90a4ae;'>
+                        <div class="profile-view-container {{#if isActiveRoute 'profile'}}view-selected{{/if}}" data-view="profile">
+                            <div class="row profile-view-icon">
+                                <i class="fa fa-align-left" aria-hidden="true"></i>
+                            </div>
+                            <div class="row profile-view-text hide-on-small-only">
+                                {{_ "profile.publications" }}
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                <div class="col s4 profile-view-col">
+                    <a href="{{pathFor 'profileInfo'}}" style='text-decoration:none;color:#90a4ae;'>
+                        <div class="profile-view-container {{#if isActiveRoute 'profileInfo'}}view-selected{{/if}}" data-view="profileInfo">
+                            <div class="row profile-view-icon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                            <div class="row profile-view-text hide-on-small-only">
+                                {{_ "profile.info" }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="col s4 profile-view-col">
-                <a href="{{pathFor 'profile'}}" style='text-decoration:none;color:#90a4ae;'>
-                    <div class="profile-view-container {{#if isActiveRoute 'profile'}}view-selected{{/if}}" data-view="profile">
-                        <div class="row profile-view-icon">
-                            <i class="fa fa-align-left" aria-hidden="true"></i>
-                        </div>
-                        <div class="row profile-view-text hide-on-small-only">
-                            {{_ "profile.publications" }}
-                        </div>
+        {{else}}
+            {{#if isPrivate}}
+                <div class="row">
+                    <div class="col s12 profile-view-col">
+                        <p>
+                            <i class="small material-icons">lock_outline</i>Es un perfil privado.
+                        </p>
                     </div>
-                </a>
-            </div>
-            <div class="col s4 profile-view-col">
-                <a href="{{pathFor 'profileInfo'}}" style='text-decoration:none;color:#90a4ae;'>
-                    <div class="profile-view-container {{#if isActiveRoute 'profileInfo'}}view-selected{{/if}}" data-view="profileInfo">
-                        <div class="row profile-view-icon">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                        </div>
-                        <div class="row profile-view-text hide-on-small-only">
-                            {{_ "profile.info" }}
-                        </div>
+                </div>
+            {{else}}
+                <div class="row">
+                    <div class="col s4 profile-view-col">
+                        <a href="{{pathFor 'profilePhotos'}}" style='text-decoration:none;color:#90a4ae;'>
+                            <div class="profile-view-container {{#if isActiveRoute 'profilePhotos'}}view-selected{{/if}}"  data-view="profilePhotos">
+                                <div class="row profile-view-icon">
+                                    <i class="fa fa-camera" aria-hidden="true"></i>
+                                </div>
+                                <div class="row profile-view-text hide-on-small-only">
+                                    {{_ "profile.photos" }}
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-        </div>
+                    <div class="col s4 profile-view-col">
+                        <a href="{{pathFor 'profile'}}" style='text-decoration:none;color:#90a4ae;'>
+                            <div class="profile-view-container {{#if isActiveRoute 'profile'}}view-selected{{/if}}" data-view="profile">
+                                <div class="row profile-view-icon">
+                                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                                </div>
+                                <div class="row profile-view-text hide-on-small-only">
+                                    {{_ "profile.publications" }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col s4 profile-view-col">
+                        <a href="{{pathFor 'profileInfo'}}" style='text-decoration:none;color:#90a4ae;'>
+                            <div class="profile-view-container {{#if isActiveRoute 'profileInfo'}}view-selected{{/if}}" data-view="profileInfo">
+                                <div class="row profile-view-icon">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </div>
+                                <div class="row profile-view-text hide-on-small-only">
+                                    {{_ "profile.info" }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {{/if}}
+        {{/if}}
     </div>
 </template>

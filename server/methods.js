@@ -326,5 +326,22 @@ Meteor.methods({
                 private_profile: accepted
             }
         });
+    },
+    'find.privacity.byUser': function (username) {
+        var user = Meteor.users.findOne({"username": username});
+        return user.private_profile;
+    },
+    'find.is.followed': function (username) {
+        var userDB = Meteor.users.findOne({"username": username});
+        var user = Meteor.user();
+        var result = false;
+        console.log(Meteor.users.find({"userDB.followers": "TFHG"}));
+        console.log(userDB.followers[user._id]);
+        console.log(userDB.followers);
+        if(Meteor.users.find({"userDB.followers": user._id})!=null){
+            result = true;
+        }
+        console.log(result);
+        return result;
     }
 });
