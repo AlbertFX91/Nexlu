@@ -140,7 +140,8 @@
     "images": "images",
     "Images": "Images",
     "followed": "Followed",
-    "followers": "Followers"
+    "followers": "Followers",
+    "follow": "Follow"
   },
 
   "timeline": {
