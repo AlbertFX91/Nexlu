@@ -53,5 +53,9 @@ Template.newComment.events({
     'click #newComment': function(e) {
         e.preventDefault();
         $(e.target).parent().parent().next().children('#commentError').text("");
+    },
+    'click #new-comment-label': function(e) {
+        e.preventDefault();
+        $(e.target).prev().focus();
     }
 });

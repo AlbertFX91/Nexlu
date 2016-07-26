@@ -36,57 +36,66 @@ Template.comment.helpers({
 });
 
 Template.comment.events({
-    'click #edit-comment': function () {
-        $('#edit-comment-modal').openModal({complete:function(){
+    'click #edit-comment': function (e) {
+        e.preventDefault();
+        $(e.target).parent().parent().next().openModal({complete:function(){
             document.getElementById('edit-comment-error').innerHTML = "";
-        }})
-        var textarea = document.getElementById('editComment');
-        textarea.value = this.description;
-        $("#editComment").trigger('autoresize');
-        $("#edit-comment-label").addClass("active");
+        }});
+        var textarea = $(e.target).parent().parent().next().find('#editComment');
+        var label = $(e.target).parent().parent().next().find('#edit-comment-label');
+        textarea.text(this.description);
+        textarea.trigger('autoresize');
+        label.addClass("active");
     },
-    'click #remove-comment': function () {
-        $('#remove-comment-modal').openModal();
+    'click #remove-comment': function (e) {
+        $(e.target).parent().parent().nextAll("#remove-comment-modal").openModal();
     }
     ,
     'submit .edit-comment': function(e) {
         e.preventDefault();
-        var description = document.getElementById('editComment').value;
+        var description = e.target.editComment.value;
         var commentId = this.id;
         var valido = true;
+        var error = $(e.target).find("#edit-comment-error");
+        var label = $(e.target).find('#edit-comment-label');
         if (description.trim() == ""){
             var texto = TAPi18n.__("error.comment-notBlank");
-            document.getElementById('edit-comment-error').innerHTML = texto;
-            $("#edit-comment-label").removeClass("active");
+            error.text(texto);
+            label.removeClass('active');
             valido = false;
         } else if (description.length > 2000) {
             var texto = TAPi18n.__("error.comment-maxlength");
-            document.getElementById('edit-comment-error').innerHTML = texto;
-            $("#edit-comment-label").hide();
+            error.text(texto);
+            label.hide();
             valido = false;
         }
-        /**if (valido) {
+        if (valido) {
             Meteor.call('editComment', commentId, description, function(err, response){
                 if (!err){
-                    $('#edit-comment-modal').closeModal();
+                    $(e.target).parents('#edit-comment-modal').closeModal();
                 }
             });
-        }**/
+        }
     },
     'click #editComment': function(e) {
         e.preventDefault();
-        document.getElementById('edit-comment-error').innerHTML = "";
-        $("#edit-comment-label").show();
+        $(e.target).parents('.edit-comment').find('#edit-comment-error').text("");
+        $("#editComment").focus();
+        $(e.target).next().show();
+    },
+    'click #edit-comment-label': function(e) {
+        e.preventDefault();
+        $(e.target).prev().focus();
     },
     'submit .remove-comment': function(e) {
         e.preventDefault();
         var commentId = this.id;
-        /**Meteor.call('removeComment', commentId, function(err, response){
+        Meteor.call('removeComment', commentId, function(err, response){
             if (!err){
-                $('#remove-comment-modal').closeModal();
+                $(e.target).parents('#remove-comment-modal').closeModal();
                 $('.lean-overlay').remove();
             }
-        });**/
+        });
     },
     'click #like': function (e) {
         e.preventDefault();

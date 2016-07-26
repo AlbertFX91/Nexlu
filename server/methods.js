@@ -189,5 +189,21 @@ Meteor.methods({
                 "comments.$.playersDislike": userId
             }
         })
+    },
+    'editComment': function(commentId, description){
+        Publications.update({"comments.id": commentId}, {
+            $set: {
+                "comments.$.description": description
+            }
+        })
+    },
+    'removeComment': function(commentId) {
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                comments: {
+                    id:commentId
+                }
+            }
+        });
     }
 });
