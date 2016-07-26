@@ -15,6 +15,7 @@ Template.newComment.events({
             valido = false;
         }
         var comment = {
+            id: new Mongo.ObjectID()._str,
             createdAt: new Date(),
             description: description,
             player: userId,
