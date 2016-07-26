@@ -147,5 +147,18 @@ Meteor.methods({
                 comments: comment
             }
         });
+    },
+    'likeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersLike": userId
+            }
+        });
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
     }
 });

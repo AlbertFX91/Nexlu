@@ -15,10 +15,10 @@ Template.comment.helpers({
 });
 
 Template.comment.events({
-    /**'click #like': function (e) {
+    'click #like': function (e) {
         e.preventDefault();
-        var publicationId = this._id;
-        Meteor.call('likeComment', publicationId, function(err, response){
+        var commentId = this.id;
+        Meteor.call('likeComment', commentId, function(err, response){
             if(err){
                 console.log(err);
             }
@@ -26,11 +26,11 @@ Template.comment.events({
     },
     'click #dislike': function (e) {
         e.preventDefault();
-        var publicationId = this._id;
-        Meteor.call('dislikeComment', publicationId, function(err, response){
+        var commentId = this.id;
+        Meteor.call('dislikeComment', commentId, function(err, response){
             if(err){
                 console.log(err);
             }
         });
-    }**/
+    }
 });
