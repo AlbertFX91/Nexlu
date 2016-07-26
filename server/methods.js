@@ -173,5 +173,21 @@ Meteor.methods({
                 "comments.$.playersLike": userId
             }
         })
+    },
+    'removeLikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'removeDislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
     }
 });

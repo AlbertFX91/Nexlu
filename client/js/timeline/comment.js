@@ -32,5 +32,27 @@ Template.comment.events({
                 console.log(err);
             }
         });
+    },
+    'click #i-like': function (e) {
+        e.preventDefault();
+        var commentId = this.id;
+        if (_.contains(this.playersLike, Meteor.userId())){
+            Meteor.call('removeLikeComment', commentId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
+    },
+    'click #i-dislike': function (e) {
+        e.preventDefault();
+        var commentId = this.id;
+        if (_.contains(this.playersDislike, Meteor.userId())){
+            Meteor.call('removeDislikeComment', commentId, function(err, response){
+                if(err){
+                    console.log(err);
+                }
+            });
+        }
     }
 });
