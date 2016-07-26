@@ -159,7 +159,7 @@ function createUsers(){
             followers: [id_user4],
             followed: [id_user4],
             "emails.0.verified": true,
-            private_profile: false
+            private_profile: true
         }
     });
 

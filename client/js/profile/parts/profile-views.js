@@ -34,7 +34,6 @@ Template.profileViewsUser.helpers({
         if(isPrivate == true && isFollowed == true){
             result = true;
         }
-        console.log(result);
         return result;
     }
 });

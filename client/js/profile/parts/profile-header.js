@@ -52,3 +52,14 @@ Template.profileHeaderUser.helpers({
         return numPublications;
     }
 });
+
+Template.profileUser.helpers({
+    isPrivate: function(){
+        var username = $(this).attr("username");
+        Meteor.call("find.privacity.byUser", username, function(e,r){
+            Session.set("isPrivate",r);
+        });
+        var isPrivate = Session.get("isPrivate");
+        return isPrivate;
+    }
+});
