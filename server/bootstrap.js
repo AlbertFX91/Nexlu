@@ -119,7 +119,8 @@ function createUsers(){
             bio: "Biography 1",
             followers: [id_user2, id_user3],
             followed: [id_user2, id_user3],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: false
         }
     });
 
@@ -128,7 +129,8 @@ function createUsers(){
             bio: "Biography 2",
             followers: [id_user1, id_user3],
             followed: [id_user1, id_user3, id_user4],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: true
         }
     });
 
@@ -136,7 +138,8 @@ function createUsers(){
         $set: {
             followers: [id_user1, id_user2, id_user4],
             followed: [id_user1, id_user2],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: true
         }
     });
 
@@ -145,7 +148,8 @@ function createUsers(){
             bio: "Biography 4",
             followers: [id_user2, id_user5],
             followed: [id_user3, id_user5],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: false
         }
     });
 
@@ -154,7 +158,8 @@ function createUsers(){
             bio: "Biography 5",
             followers: [id_user4],
             followed: [id_user4],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: false
         }
     });
 

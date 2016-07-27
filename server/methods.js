@@ -14,7 +14,8 @@ Meteor.methods({
                     $set: {
                         bio: TAPi18n.__("bio.add_bio"),
                         followers: [],
-                        followed: []
+                        followed: [],
+                        private_profile: user[4]
                     }
                 });
             } catch (error) {
@@ -312,6 +313,18 @@ Meteor.methods({
                 followers: userId
             }
 
+        });
+    },
+    'find.privacity': function(){
+        var user = Meteor.user();
+        return user.private_profile;
+    },
+    'changePrivacity': function (accepted) {
+        var userId = Meteor.userId();
+        Meteor.users.update(userId, {
+            $set: {
+                private_profile: accepted
+            }
         });
     }
 });
