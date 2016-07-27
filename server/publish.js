@@ -24,7 +24,6 @@ Meteor.publish('search.users', function () {
         this.ready();
         return;
     }
-    console.log(user_id);
     return Meteor.users.find({}, {
         //TODO: _id: {$ne: user_id},
         fields: {
@@ -46,7 +45,7 @@ Meteor.publish('user.each.chat', function () {
     return Meteor.users.find(
         {
             _id: { $in: user.followers },
-            followers: user_id,
+            followers: user_id
         },
         {
             fields: Fields.user.all

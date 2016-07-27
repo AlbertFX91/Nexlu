@@ -326,5 +326,19 @@ Meteor.methods({
                 private_profile: accepted
             }
         });
+    },
+
+    'findAvatarByUser': function(user_id){
+        var user = Meteor.users.findOne(user_id);
+        if(user){
+            if(user.avatar == undefined){
+                return "https://s3-us-west-2.amazonaws.com/nexlu/logo-justified.png";
+            }else{
+                return user.avatar.url;
+            }
+        }else{
+            throw new Meteor.Error( 500, 'User does not exist with id: '+user_id );
+        }
+
     }
 });
