@@ -7,7 +7,7 @@
                         <img src="/example.png" class="circle" height="auto" width="100%" style="max-width: 50px;max-height: 50px; vertical-align: middle;margin-right: 10px">
                     </a>
                     <div class="publication-header-center">
-                        <a>{{owner.[0].username}}</a>
+                        <a>{{owner.username}}</a>
                         {{#if isMine}}
                             <div class="edit-publication">
                                 <a id="edit-pub" href="#"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a>
@@ -57,6 +57,14 @@
 
                     <div id="publication-image-modal" class="modal" style="background-color: black; height: 100%; overflow-y: hidden;">
                         <img class="responsive-img" src="{{url}}" style="height:100%;" />
+                        {{#if isMine}}
+                            <a class='dropdown-button btn grey' id="button-open-options" href='#' data-activates='dropdown1'><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li id="set-avatar-button"><a href="#!">{{_ "images.setavatar"}}</a></li>
+                            </ul>
+                        {{/if}}
                     </div>
 
                 </div>

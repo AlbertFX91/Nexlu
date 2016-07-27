@@ -3,7 +3,7 @@ Template.images_show.helpers({
         return Prettify.compactTags(this.playersTagged);
     },
     isMine: function() {
-        if (this.owner[0].id.trim() === Meteor.userId().trim())
+        if (this.owner.id.trim() === Meteor.userId().trim())
             return true;
         return false;
     },
@@ -135,6 +135,20 @@ Template.images_show.events({
 
     'click .publication-image-img': function(e){
         $('#publication-image-modal').openModal();
+    },
+
+    'click #set-avatar-button': function(e) {
+        e.preventDefault();
+        Meteor.call("setAvatar", this._id, function(e,r){
+            if(e){
+                console.log(e);
+                Errors.throwErrorTranslated("error.occurred");
+            }else{
+                if(r){
+                    Toasts.throwTrans("images.setavatar_finished");
+                }
+            }
+        })
     }
 
 });
@@ -143,4 +157,14 @@ Template.images_show.onRendered(function (){
     if(this.data == null){
         Router.go('home');
     }
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'right' // Displays dropdown with edge aligned to the left of button
+        }
+    );
 });

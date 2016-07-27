@@ -124,7 +124,9 @@
     "uploaded": "Images uploaded",
     "uploading_progress": "Uploading image <strong>%s</strong> of <strong>%s</strong>",
     "uploaded_finished": "Uploaded finished",
-    "uploading": "We're uploading your images"
+    "uploading": "We're uploading your images",
+    "setavatar": "Set as avatar",
+    "setavatar_finished": "Avatar changed successfully"
   },
   "contactUs":{
     "header": "Get in touch with us!",

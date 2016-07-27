@@ -55,12 +55,11 @@ Meteor.methods({
         var user = Meteor.user();
         if (user != undefined) {
             var image = {
-                owner: [
+                owner:
                     {
                         id: user._id,
                         username: user.username
-                    }
-                ],
+                    },
                 createdAt: new Date(),
                 playersTagged: [], //TODO: Añadir etiquetas
                 description: data.description,
@@ -339,6 +338,31 @@ Meteor.methods({
         }else{
             throw new Meteor.Error( 500, 'User does not exist with id: '+user_id );
         }
+    },
 
+    'setAvatar': function(publication_id){
+        var user = Meteor.user();
+        if(!user){
+            throw new Meteor.Error( 500, 'We cannot recover the user logged');
+            return false;
+        }
+        var image = Images.findOne(publication_id);
+        if(!image){
+            throw new Meteor.Error( 500, 'We cannot recover the publication with id '+publication_id);
+            return false;
+        }
+        if(image.owner.id!=user._id){
+            throw new Meteor.Error( 500, 'The owner of the publication is not the current user');
+            return false;
+        }
+        Meteor.users.update(user._id, {
+            $set: {
+                avatar:{
+                    id: image._id,
+                    url: image.url
+                }
+            }
+        });
+        return true;
     }
 });
