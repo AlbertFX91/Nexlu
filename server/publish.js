@@ -18,11 +18,25 @@ Meteor.publish('user.me', function () {
     });
 });
 
+Meteor.publish('search.users', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    console.log(user_id);
+    return Meteor.users.find({}, {
+        //TODO: _id: {$ne: user_id},
+        fields: {
+            username: 1
+        }
+    });
+});
 /**
  * Devuelve los usuarios que siguen al usuario logueado, y que el usuario logueado tambien sigue. Es una relación reciproca.
  * Se usa para devolver los usuarios con los que podemos chatear
  */
-Meteor.publish('user.each.online', function () {
+Meteor.publish('user.each.chat', function () {
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
@@ -33,7 +47,6 @@ Meteor.publish('user.each.online', function () {
         {
             _id: { $in: user.followers },
             followers: user_id,
-            "status.online": true
         },
         {
             fields: Fields.user.all
@@ -73,14 +86,7 @@ Meteor.publish("findBio", function () {
     return Meteor.users.find(this.userId);
 });
 
-Meteor.publish('image.me.miniature', function(){
-    var user_id = this.userId;
-    if (!user_id) {
-        this.ready();
-        return;
-    }
-    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
-});
+
 Meteor.publish('publication.followed.all', function () {
     var user_id = this.userId;
     if (!user_id) {
