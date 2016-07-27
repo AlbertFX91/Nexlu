@@ -45,8 +45,7 @@ Template.images_show.events({
     },
     'click #remove-pub': function () {
         $('#remove-pub-modal').openModal();
-    }
-    ,
+    },
     'submit .edit-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('editPublication').value;
@@ -131,7 +130,13 @@ Template.images_show.events({
                 }
             });
         }
+    },
+
+
+    'click .publication-image-img': function(e){
+        $('#publication-image-modal').openModal();
     }
+
 });
 
 Template.images_show.onRendered(function (){

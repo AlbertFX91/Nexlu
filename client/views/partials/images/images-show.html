@@ -53,7 +53,12 @@
 
 
                 <div class="publication-image-container center-align">
-                    <img id="img-{{_id}}" src="{{url}}" data-id="{{_id}}" />
+                    <img class="publication-image-img" id="img-{{_id}}" src="{{url}}" data-id="{{_id}}" />
+
+                    <div id="publication-image-modal" class="modal" style="background-color: black; height: 100%; overflow-y: hidden;">
+                        <img class="responsive-img" src="{{url}}" style="height:100%;" />
+                    </div>
+
                 </div>
 
             </div>
