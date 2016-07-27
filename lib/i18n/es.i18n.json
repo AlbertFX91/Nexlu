@@ -26,6 +26,7 @@
   "toastMail": "¡El correo se ha enviado!",
   "send": "Enviar",
   "close": "Cerrar",
+  "search_user": "Buscar usuario...",
 
   "bio":{
     "modify_bio": "Modificar biografía",

@@ -5,3 +5,21 @@
 .navbar-fixed nav {
     min-width: 300px;
 }
+
+.-autocomplete-container {
+    position: absolute;
+    background: #384951 !important;
+    border: 1px solid #5b757d !important;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 1000;
+}
+
+.-autocomplete-item {
+    display: block;
+    padding: 5px 10px;
+    width: 100%;
+    border-bottom: 1px solid #5b757d !important;
+    cursor:pointer;
+}

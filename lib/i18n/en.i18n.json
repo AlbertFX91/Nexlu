@@ -24,6 +24,7 @@
   "toastMail": "Email has been sent!",
   "send": "Send",
   "close": "Close",
+  "search_user": "Search user...",
 
   "bio":{
     "modify_bio": "Modify biography",
