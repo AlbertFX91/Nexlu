@@ -90,7 +90,7 @@ Template.chat_chatroom.helpers({
         var userID = _.find(chatRoom.players, function(player){return player.id!=myId}).id
         var user = Meteor.users.findOne(userID);
         if (user == undefined) {return "offline"}
-        if(user.status.online){
+        if(user.status && user.status.online){
             return "online";
         }else{
             return "offline";
