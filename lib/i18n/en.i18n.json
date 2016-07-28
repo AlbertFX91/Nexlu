@@ -24,6 +24,7 @@
   "toastMail": "Email has been sent!",
   "send": "Send",
   "close": "Close",
+  "search_user": "Search user...",
 
   "bio":{
     "modify_bio": "Modify biography",
@@ -35,7 +36,8 @@
     "undo": "Undo",
     "login_success": "You're logged!",
     "logout_success": "See you soon!",
-    "verify_thanks": "Thanks for verify your email!"
+    "verify_thanks": "Thanks for verify your email!",
+    "description_added": "Description added"
   },
   "error": {
     "not_found": "404. Oops, the route could not be found.",
@@ -54,6 +56,8 @@
     "password_error_maxlength": "Maximun 20 characters",
     "email_error_empty": "Email empty",
     "email_error_duplicated": "Email used",
+    "occurred": "Oops, an error has occurred",
+    "description_empty": "Add a description",
     "post-notBlank": "The publication cannot be blank",
     "email_error_patron": "The email must be like example@example.com",
     "password_error_pattern": "Invalid format",
@@ -82,6 +86,8 @@
     "timeline": "Timeline",
     "contactUs": "Contact Us",
     "faq": "FAQ",
+    "unfollow": "Unfollow",
+    "following": "Following",
     "post": "Post",
     "remove": "Delete",
     "comment": "Comment"
@@ -113,6 +119,18 @@
     "register": "Thanks you!",
     "text-register": "We've sent a message to your email to activate your account . See you soon!"
   },
+
+  "images": {
+    "upload-photos": "Upload photos",
+    "filters": "filters",
+    "description": "Description",
+    "uploaded": "Images uploaded",
+    "uploading_progress": "Uploading image <strong>%s</strong> of <strong>%s</strong>",
+    "uploaded_finished": "Uploaded finished",
+    "uploading": "We're uploading your images",
+    "setavatar": "Set as avatar",
+    "setavatar_finished": "Avatar changed successfully"
+  },
   "contactUs":{
     "header": "Get in touch with us!",
     "name": "Name",
@@ -121,12 +139,15 @@
     "sendMessage": "Send message"
   },
   "profile": {
-    "friends": "friends",
-    "publications": "publications",
-    "photos": "photos",
+    "my_profile": "My profile",
+    "friends": "Friends",
+    "publications": "Publications",
+    "photos": "Photos",
     "info": "Info",
-    "followed": "followed",
-    "followers": "followers"
+    "images": "images",
+    "Images": "Images",
+    "followed": "Followed",
+    "followers": "Followers"
   },
 
   "timeline": {
@@ -155,7 +176,6 @@
     "question_three": "Can I join the team?",
     "answer_three": "    Of course! We open doors! Simply send us an email!"
   },
-
   "terms": {
     "terms_header": "TERMS OF SERVICE",
     "terms1": "1. CONTRACTUAL RELATIONSHIP",
@@ -182,6 +202,28 @@
     "terms37": "USER PROVIDED CONTENT",
     "terms38": "Nexlu may, in Nexlu’s sole discretion, permit you from time to time to submit, upload, publish or otherwise make available to Nexlu through the Services, or otherwise, textual, audio and/or visual content and information, including commentary and feedback related to the Services, initiation of support requests and submissions of entries for competitions and promotions (“User Content”). Any User Content provided by you remains your property. However, by providing User Content to Nexlu, you grant Nexlu a worldwide, perpetual, irrevocable, transferable, royalty-free license, with the right to sublicense, to use, copy, modify, create derivative works of, distribute, publicly display, publicly perform, and otherwise exploit in any manner such User Content in all formats and distribution channels now known or hereafter devised (including in connection with the Services and Nexlu’s business and on third- party sites and services), without further notice to or consent from you, and without the requirement of payment to you or any other person or entity.",
     "termsFinal": "Thank you for visiting the Website."
+  },
+
+  "security":{
+    "register": "A private profile can't be see by other user",
+    "privacity": "Privacity"
+  },
+
+  "settings": {
+    "settings": "Settings",
+    "general": "General",
+    "privacity": "Privacity",
+    "password": "Change password"
+  },
+
+  "privacity":{
+    "title": "Configuration and tool of privacity",
+    "p1": "In this configuration we give you the option to change the privacy of your profile Nexlu.",
+    "p2": "If you choose the option of having a private account other users may not:",
+    "p3": "Follow : Until you accept the request of the user who wants to follow this they can not see your photos and publications.",
+    "p4": "You will not appear in searches.",
+    "public": "Public",
+    "private": "Private"
   }
 
 }

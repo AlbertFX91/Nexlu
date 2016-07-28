@@ -26,6 +26,7 @@
   "toastMail": "¡El correo se ha enviado!",
   "send": "Enviar",
   "close": "Cerrar",
+  "search_user": "Buscar usuario...",
 
   "bio":{
     "modify_bio": "Modificar biografía",
@@ -38,7 +39,8 @@
     "undo": "Deshacer",
     "login_success": "Estás dentro!",
     "logout_success": "Nos vemos!",
-    "verify_thanks" : "¡Gracias por validar tu correo!"
+    "verify_thanks" : "¡Gracias por validar tu correo!",
+    "description_added": "Descripción añadida"
 
   },
 
@@ -60,6 +62,8 @@
     "password_error_maxlength": "20 caracteres como máximo",
     "email_error_empty": "Correo vacio",
     "email_error_duplicated": "Correo ya utilizado",
+    "occurred": "Ups, un error ha ocurrido",
+    "description_empty": "Añade una descripción",
     "post-notBlank": "La publicación no debe estar vacía",
     "email_error_patron": "El correo debe ser del tipo ejemplo@ejemplo.com",
     "password_error_pattern": "Formato inválido",
@@ -90,6 +94,8 @@
     "timeline": "Muro",
     "contactUs": "Contacto",
     "faq": "FAQ",
+    "unfollow": "Dejar de seguir",
+    "following": "Siguiendo",
     "post": "Enviar",
     "remove": "Borrar",
     "comment": "Commentar"
@@ -132,6 +138,19 @@
     "text-register": "Te hemos enviado un mensaje a tu correo para activar tu cuenta. ¡Nos vemos pronto!"
   },
 
+  "images": {
+    "upload-photos": "Subida de fotos",
+    "filters": "filtros",
+    "description": "Descripción",
+    "uploaded": "Imágenes guardadas",
+    "uploading_progress": "Subiendo imagen <strong>%s</strong> de <strong>%s</strong>",
+    "uploaded_finished": "Subida finalizada",
+    "uploading": "Estamos subiendo tus imágenes",
+    "setavatar": "Seleccionar como avatar",
+    "setavatar_finished": "Cambiado avatar correctamente"
+
+  },
+
   "contactUs": {
     "header": "¡Póngase en contacto con nosotros!",
     "name": "Nombre",
@@ -141,12 +160,15 @@
   },
 
   "profile": {
-    "friends": "amigos",
-    "publications": "publicaciones",
-    "photos": "fotos",
+    "my_profile": "Mi perfil",
+    "friends": "Amigos",
+    "publications": "Publicaciones",
+    "photos": "Fotos",
     "info": "Información",
-    "followed": "siguiendo",
-    "followers": "seguidores"
+    "images": "imágenes",
+    "Images": "Imágenes",
+    "followed": "Siguiendo",
+    "followers": "Seguidores"
   },
 
   "timeline": {
@@ -202,5 +224,27 @@
     "terms37": "CONTENIDO PARA EL USUARIO",
     "terms38": "Nexlu puede, a la sola discreción de Nexlu, que permitir de vez en cuando a presentar, subir, publicar o poner a disposición de Nexlu través de los Servicio, o de otra manera, textual, de audio y/o contenido visual e información, incluyendo comentarios y retroalimentación relacionada con los servicios, la iniciación de solicitudes de apoyo y presentaciones de entradas para los concursos y promociones (\"contenido de usuario\"). Cualquier contenido de usuario proporcionada por usted mantiene su propiedad. Sin embargo, al proporcionar contenido de usuario a Nexlu, usted concede Nexlu una licencia mundial, perpetua, irrevocable, transferible libre de regalías, con el derecho a sublicenciar, para utilizar, copiar, modificar, crear trabajos derivados, distribuir, mostrar públicamente, públicamente realizar y explotar en cualquier forma tal contenido de usuario en todos los formatos y canales de distribución conocidos actualmente o desarrollados en un futuro (incluso en relación con los servicios y negocios de Nexlu y de terceros sitios y servicios de terceros), sin previo aviso o consentimiento de usted y sin el requerimiento de pago a usted o cualquier otra persona o entidad.",
     "termsFinal": "Gracias por visitar nuestro sitio web."
+  },
+
+  "security":{
+    "register": "Un perfil privado no puede ser visto por otros usuarios",
+    "privacity": "Privacidad"
+  },
+
+  "settings": {
+    "settings": "Configuración",
+    "general": "General",
+    "privacity": "Privacidad",
+    "password": "Cambiar contraseña"
+  },
+
+  "privacity":{
+    "title": "Configuración y herramienta de privacidad",
+    "p1": "En esta configuración te damos la opción a cambiar la privacidad de tu perfil en Nexlu.",
+    "p2": "Si eliges la opción de tener una cuenta privada los demás usuarios no podrán:",
+    "p3": "Seguirte: Hasta que no aceptes la solicitud del usuario que quiere seguirte, este no podrán ver tus fotos y publicaciones.",
+    "p4": "No aparecerás en las búsquedas.",
+    "public": "Público",
+    "private": "Privado"
   }
 }

@@ -1,0 +1,114 @@
+#chatroom-container{
+    position: fixed;
+    z-index: 1000;
+    bottom: 0px;
+    right: 305px;
+    width: 400px;
+    /*height: 300px;
+    margin-bottom: 46px;*/
+}
+@media (max-width: 700px){
+    #chatroom-container{
+        right: 0px;
+        width: 300px;
+        bottom: 0px;
+    }
+}
+
+#chatroom-header{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+}
+.chatroom-header-username{
+    flex: 5;
+    margin-left: 5px;
+    font-weight: 600;
+}
+#chatroom-body{
+    overflow-y: scroll;
+    max-height: 300px;
+    height: 100%;
+    background-color: white;
+}
+#chat-chatroom-close-button{
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+ul.chat{
+    width: 100%;
+}
+
+i.online{
+    color: green;
+}
+i.offline{
+    color: grey;
+}
+#chatroom-footer{
+    border-top: solid lightgrey 2px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+}
+#chatroom-input-options{
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    cursor: pointer;
+}
+#emoji-select-button{
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+#chatroom-input-container{
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 2;
+}
+
+#chatroom-emoji-picker{
+    width: 100%;
+    height: 140px;
+    position: absolute;
+    bottom: 77px;
+    z-index: 2;
+    background-color: #263238;
+    display: none;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.emoji-picker{
+    cursor: pointer;
+}
+
+#chatroom-input-save{
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    cursor: pointer;
+    color: white;
+}
+#message-input{
+    width: 290px;
+    color: black !important;
+    text-shadow: 0px 0px 0px black !important;
+    font-size: 0.9em !important;
+    font-family: "Roboto", sans-serif !important;
+}
+
+
+i.online{
+    color: lightgreen;
+}
+i.offline{
+    color: grey;
+}

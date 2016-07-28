@@ -1,0 +1,18 @@
+<template name="chat_menu_user_entry">
+    <div class="chat-menu-user-entry" id="chat-menu-user-{{_id}}">
+        {{>images_avatar class="chat-menu-user-entry-img" user_id=_id max_size="35px" css="width: 100%; border: 2px solid black; vertical-align: middle;margin-right: 10px"}}
+        <!--<div class="chat-menu-user-entry-img">
+
+          <img src="/example.png" class="circle" height="auto" width="100%" style="border: 2px solid black; max-width: 35px;max-height: 35px; vertical-align: middle;margin-right: 10px">
+        </div>-->
+        <div class="new-message-container blue">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+        <div class="chat-menu-user-entry-username truncate">
+            {{username}}
+        </div>
+        <div class="chat-menu-user-entry-status">
+            <i class="fa fa-circle {{user_status}}" aria-hidden="true"></i>
+        </div>
+    </div>
+</template>

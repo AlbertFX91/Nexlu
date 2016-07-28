@@ -1,0 +1,15 @@
+<template name="chat_chatroom_message">
+    <li class="{{from}}">
+
+        <!--ul.chat li img {
+        height: 42px;
+        width: 42px;
+        border-radius: 100%;
+        }-->
+
+        {{>images_avatar user_id=player max_size="42px" css="height: 42px; width: 42px;"}}
+
+        <!--<img src="http://s8.postimg.org/76bg2es2t/index.png">-->
+        <div class="message">{{#emoji}}{{message}}{{/emoji}}</div>
+    </li>
+</template>
