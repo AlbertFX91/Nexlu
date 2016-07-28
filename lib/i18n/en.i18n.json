@@ -62,10 +62,12 @@
     "email_error_patron": "The email must be like example@example.com",
     "password_error_pattern": "Invalid format",
     "password_error_patron": "The password must have lowercase, two uppercase and numbers",
-    "message_error_empty": "Message can not be empty",
-    "message_error_minlength": "Message must be 20 characters minimum",
-    "message_error_maxlength": "Message must be 300 characters maximum",
-    "post-maxlength": "Publication must be 5000 characters maximum"
+    "message_error_empty": "The message can not be empty",
+    "message_error_minlength": "The message must be 20 characters minimum",
+    "message_error_maxlength": "The message must be 300 characters maximum",
+    "post-maxlength": "The publication must be 5000 characters maximum",
+    "comment-maxlength": "The comment must be 2000 characters maximum",
+    "comment-notBlank": "The comment cannot be blank"
   },
   "tag": {
     "company": "COMPANY",
@@ -87,7 +89,8 @@
     "unfollow": "Unfollow",
     "following": "Following",
     "post": "Post",
-    "remove": "Delete"
+    "remove": "Delete",
+    "comment": "Comment"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -148,13 +151,20 @@
   },
 
   "timeline": {
-    "more-tags": "and other gamers",
+    "more-tags": " and other gamers",
     "with": "With",
     "no-tags": "No tags",
     "whatsup": "What's up?",
     "new-post": "New post",
     "edit-post": "Edit publication",
-    "remove-post": "Are you sure to delete this publication?"
+    "remove-post": "Are you sure to delete this publication?",
+    "read-more": "Read more!",
+    "read-less": "View less!",
+    "view-comments": "Show comments",
+    "hide-comments": "Hide comments",
+    "edit-comment": "Edit comment",
+    "remove-comment": "Are you sure to delete this comment?",
+    "comment": "Comment on the publication..."
   },
 
   "faq": {

@@ -76,10 +76,12 @@ Meteor.methods({
             throw Meteor.Error("User not logued");
         }
     },
-    'image.edit': function(imgId, description){
-        Images.update(imgId, {
+    'image.edit': function(publicationId, description, usernamesTagged){
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
+        Images.update(publicationId, {
             $set: {
-                description: description
+                description: description,
+                playersTagged: playersTagged
             }
         })
     },
@@ -132,20 +134,28 @@ Meteor.methods({
         var user = Meteor.users.findOne(id, {fields:{username:1}});
         return user.username;
     },
-    'editPublication': function(publicationId, description){
+    'editPublication': function(publicationId, description, usernamesTagged){
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Publications.update(publicationId, {
             $set: {
-                description: description
+                description: description,
+                playersTagged: playersTagged
             }
         })
     },
     'removePublication': function(publicationId) {
         Publications.remove(publicationId);
     },
-    'postPublication': function (publication) {
-        Publications.insert(publication, function (err, response) {
+    'postPublication': function (publication, usernamesTagged) {
+        var publicationId = Publications.insert(publication, function (err, response) {
             if (err) {
                 console.log(err);
+            }
+        })
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
+        Publications.update(publicationId, {
+            $set: {
+                playersTagged: playersTagged
             }
         })
     },
@@ -156,6 +166,18 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'constructPlayersTagged': function(usernamesTagged) {
+        var usernameLength = usernamesTagged.length;
+        var playersTagged = [];
+        for (var i = 0; i < usernameLength; i++){
+            var id = Meteor.users.findOne({"username": usernamesTagged[i]}, {fields:{_id:1}});
+            playersTagged.push({
+                _id: id,
+                username: usernamesTagged[i]
+            })
+        }
+        return playersTagged;
     },
     'likePublication': function(publicationId) {
         var userId = Meteor.userId();
@@ -198,6 +220,71 @@ Meteor.methods({
                 playersDislike: userId
             }
         })
+    },
+    'postComment': function (publicationId, comment) {
+        Publications.update(publicationId, {
+            $push: {
+                comments: comment
+            }
+        });
+    },
+    'likeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersLike": userId
+            }
+        });
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'dislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersDislike": userId
+            }
+        });
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'removeLikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'removeDislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'editComment': function(commentId, description){
+        Publications.update({"comments.id": commentId}, {
+            $set: {
+                "comments.$.description": description
+            }
+        })
+    },
+    'removeComment': function(commentId) {
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                comments: {
+                    id: commentId
+                }
+            }
+        });
     },
     'chatroom.exists': function(follower_id, my_id){
         var res = ChatRooms.findOne(

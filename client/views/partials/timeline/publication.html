@@ -4,10 +4,11 @@
         <div class="card-content text-color-3 publication-content">
             <div class="text-color-1 publication-header">
                 <a>
-                    <img src="example.png" class="circle" height="auto" width="100%" style="max-width: 50px;max-height: 50px; vertical-align: middle;margin-right: 10px">
+                    <!--<img src="/example.png" class="circle" height="auto" width="100%" style="max-width: 50px;max-height: 50px; vertical-align: middle;margin-right: 10px">-->
+                    {{> images_avatar user_id=owner.id max_size="50px" css="vertical-align: middle; margin-right:10px;"}}
                 </a>
                 <div class="publication-header-center">
-                    <a>{{owner.[0].username}}</a>
+                    <a>{{owner.username}}</a>
                     {{#if isMine}}
                         <div class="edit-publication">
                             <a id="edit-pub" href="#"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a>
@@ -22,7 +23,8 @@
                                     </div>
                                     <div class="white-text post-content">
                                         <div class="input-field col s12 post-input">
-                                            <textarea id="editPublication" class="materialize-textarea" length="5000"></textarea>
+                                            <!--<textarea id="editPublication" class="materialize-textarea" length="5000"></textarea>-->
+                                            {{#textareaAutocomplete settings=settingsTextareaEdit id="editPublication" class="materialize-textarea" autofocus="autofocus" length="5000"}}{{/textareaAutocomplete}}
                                             <label id="edit-post-label" for="editPublication" style="text-align: left !important;">{{_ "timeline.whatsup"}}</label>
                                         </div>
                                     </div>
@@ -47,9 +49,7 @@
                 </div>
                 <span data-livestamp="{{createdAt}}"></span>
             </div>
-            <div class="publication-description">
-                <pre>{{description}}</pre>
-            </div>
+            <div class="publication-description">{{#if descriptionTruncate}}{{descriptionTruncated}} <a id="read-more"> {{_ "timeline.read-more"}}</a>{{else}}{{description}}{{/if}}</div>
         </div>
         <div class="card-action text-color-1 publication-details">
             <div class="text-color-1">
@@ -62,25 +62,42 @@
                 {{/if}}
             </div>
             <div class="text-color-1">
-                {{#if iLike}}
-                    <a id="i-like" href="#"><i class="fa fa-thumbs-up fa-1" aria-hidden="true"></i></a> {{playersLike.length}}
-                    <a id="dislike" href="#"><i class="fa fa-thumbs-o-down fa-1" aria-hidden="true"></i></a> {{playersDislike.length}}
-                {{else}}
-                    {{#if iDislike}}
-                        <a id="like" href="#"><i class="fa fa-thumbs-o-up fa-1" aria-hidden="true"></i></a> {{playersLike.length}}
-                        <a id="i-dislike" href="#"><i class="fa fa-thumbs-down fa-1" aria-hidden="true"></i></a> {{playersDislike.length}}
-                    {{else}}
-                        <a id="like" href="#"><i class="fa fa-thumbs-o-up fa-1" aria-hidden="true"></i></a> {{playersLike.length}}
+                {{#if currentUser}}
+                    {{#if iLike}}
+                        <a id="i-like" href="#"><i class="fa fa-thumbs-up fa-1" aria-hidden="true"></i></a> {{playersLike.length}}
                         <a id="dislike" href="#"><i class="fa fa-thumbs-o-down fa-1" aria-hidden="true"></i></a> {{playersDislike.length}}
+                    {{else}}
+                        {{#if iDislike}}
+                            <a id="like" href="#"><i class="fa fa-thumbs-o-up fa-1" aria-hidden="true"></i></a> {{playersLike.length}}
+                            <a id="i-dislike" href="#"><i class="fa fa-thumbs-down fa-1" aria-hidden="true"></i></a> {{playersDislike.length}}
+                        {{else}}
+                            <a id="like" href="#"><i class="fa fa-thumbs-o-up fa-1" aria-hidden="true"></i></a> {{playersLike.length}}
+                            <a id="dislike" href="#"><i class="fa fa-thumbs-o-down fa-1" aria-hidden="true"></i></a> {{playersDislike.length}}
+                        {{/if}}
                     {{/if}}
                 {{/if}}
             </div>
         </div>
-        <div class="card-action publication-comments">
-            {{#each comments}}
-                {{> comment}}
-            {{/each}}
-        </div>
+        {{#if hasComments}}
+            <div class="card-action publication-comments">
+                <div class="truncate-comments">
+                    <a id="view-comments">{{_ "timeline.view-comments"}}</a>
+                    <a id="hide-comments" class="hide">{{_ "timeline.hide-comments"}}</a>
+                </div>
+                <div class="hide">
+                    {{#each comments}}
+                        {{> comment}}
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+        {{#if currentUser}}
+            <div class="card-action new-comment">
+                {{#with this}}
+                    {{> newComment}}
+                {{/with}}
+            </div>
+        {{/if}}
     </div>
 
 </template>

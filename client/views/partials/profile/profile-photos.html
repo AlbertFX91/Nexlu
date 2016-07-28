@@ -2,7 +2,7 @@
     <div class="container div-profile">
         {{> profileHeader}}
         <div class="row profile-content">
-            <h1>Photos</h1>
+            <h1>Photos</h1>{{> images_input_button}}
             {{#with images}}
                 {{> images_miniatures_container}}
             {{/with}}

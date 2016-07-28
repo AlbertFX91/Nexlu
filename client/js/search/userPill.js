@@ -1,4 +1,4 @@
-Template.userPill.events({
+Template.userPillSearch.events({
     'labelClass': function () {
         if(this._id === Meteor.userId()) {
             return "label-warning";
@@ -10,7 +10,7 @@ Template.userPill.events({
     }
 });
 
-Template.userPill.events({
+Template.userPillSearch.events({
     'click .click-profile': function (event) {
         console.log("entro en click profile");
         event.preventDefault();

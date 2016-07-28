@@ -16,6 +16,7 @@
 
 .publication-description {
     margin-top: 10px !important;
+    white-space: pre-wrap;
 }
 
 .publication-details{
@@ -26,8 +27,8 @@
 }
 
 .publication-comments{
-    border-top: 1px dashed rgba(160, 160, 160, 0.2) !important;
     padding: 0px !important;
+    border-top: 1px dashed rgba(160, 160, 160, 0.2) !important;
 }
 
 .card a{
@@ -123,4 +124,14 @@
 
 #dislike:hover, #i-dislike {
     color: #b1070c !important;
+}
+
+.truncate-comments {
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+}
+
+#editPublication {
+    max-height: 400px !important;
+    overflow-y: auto !important;
 }

@@ -117,9 +117,7 @@ Template.images_input_modal.events({
                     Toasts.throwTrans("images.uploaded_finished");
                     $("#input-images-modal").css("cursor","auto");
                     setTimeout(closeMainModal, 1000);
-                    setTimeout(function () {
-                        Session.set("images.finished", true)
-                    }, 1000)
+                    Session.set("images.finished", true);
 
                 }
             })
