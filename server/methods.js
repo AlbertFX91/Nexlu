@@ -147,5 +147,63 @@ Meteor.methods({
                 comments: comment
             }
         });
+    },
+    'likeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersLike": userId
+            }
+        });
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'dislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersDislike": userId
+            }
+        });
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'removeLikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'removeDislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'editComment': function(commentId, description){
+        Publications.update({"comments.id": commentId}, {
+            $set: {
+                "comments.$.description": description
+            }
+        })
+    },
+    'removeComment': function(commentId) {
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                comments: {
+                    id:commentId
+                }
+            }
+        });
     }
 });
