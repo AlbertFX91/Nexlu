@@ -41,12 +41,10 @@ Meteor.methods({
     },
 
     'checkUniqueUser': function(usernameRegister){
-        console.log(Meteor.users.find({'username': usernameRegister}).fetch().length==0);
         return Meteor.users.find({'username': usernameRegister}).fetch().length==0
     },
 
     'checkUniqueEmail': function(emailRegister){
-        console.log(Meteor.users.find({'emails.0.address': emailRegister}).fetch().length==0);
         return Meteor.users.find({'emails.0.address': emailRegister}).fetch().length==0
     },
 
