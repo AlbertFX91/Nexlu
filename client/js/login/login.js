@@ -120,6 +120,11 @@ Template.login.events({
                 throw new Meteor.Error("Logout failed");
             }
         })
+    },
+    
+    'click #close-modal-button': function(event){
+        $('#login-access').removeClass('login-open').addClass('login-close');
+        setTimeout(function(){ Session.set('showLoginModal', false); }, 300);
     }
 });
 
