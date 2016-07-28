@@ -152,6 +152,10 @@ Meteor.publish("emojis", function(){
     return Emojis.find();
 });
 
+Meteor.publish(null, function() {
+    return Meteor.users.find({_id: this.userId}, {fields: Fields.user.all});
+});
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
@@ -166,7 +170,9 @@ Fields = {
             bio: 1,
             followed: 1,
             followers: 1,
-            status: 1
+            status: 1,
+            avatar: 1,
+            private_profile: 1
         },
         followed: {
             followed: 1
