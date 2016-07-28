@@ -413,12 +413,12 @@ function createImages(){
 
     //User 1
     var img1_id = Images.insert({
-        owner: [
+        owner: 
             {
                 id: user1._id,
                 username: user1.username
-            }
-        ],
+            },
+        
         createdAt: new Date('2016-06-03T12:00:00'),
         playersTagged: [
             {
@@ -463,12 +463,12 @@ function createImages(){
         url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
     });
     Images.insert({
-        owner: [
+        owner: 
             {
                 id: user1._id,
                 username: user1.username
             }
-        ],
+        ,
         createdAt: new Date('2016-06-08T12:00:00'),
         playersTagged: [],
         description: "My second publication!!!",

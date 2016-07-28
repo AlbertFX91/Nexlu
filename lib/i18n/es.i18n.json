@@ -141,7 +141,11 @@
     "description": "Descripción",
     "uploaded": "Imágenes guardadas",
     "uploading_progress": "Subiendo imagen <strong>%s</strong> de <strong>%s</strong>",
-    "uploaded_finished": "Subida finalizada"
+    "uploaded_finished": "Subida finalizada",
+    "uploading": "Estamos subiendo tus imágenes",
+    "setavatar": "Seleccionar como avatar",
+    "setavatar_finished": "Cambiado avatar correctamente"
+
   },
 
   "contactUs": {

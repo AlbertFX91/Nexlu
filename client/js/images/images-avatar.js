@@ -1,11 +1,6 @@
 Template.images_avatar.helpers({
     avatarURL: function(){
-        var user = Meteor.user();
-        if(user.avatar == undefined){
-            return "https://s3-us-west-2.amazonaws.com/nexlu/logo-justified.png";
-        }else{
-            return user.avatar.url;
-        }
+        return Session.get(this.user_id+".avatar");
     },
     size: function(){
         var size = this.max_size;
@@ -15,4 +10,15 @@ Template.images_avatar.helpers({
             return size;
         }
     }
-})
+});
+
+Template.images_avatar.onRendered(function(e){
+    var user_id = this.data.user_id;
+    Meteor.call("findAvatarByUser", user_id, function(e,r){
+        if(e){
+            console.log(e);
+        }else{
+            Session.set(user_id+".avatar", r);
+        }
+    });
+});
