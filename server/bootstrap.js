@@ -409,25 +409,14 @@ function createImages(){
                 description: "Nice publication!",
                 player: user2._id,
                 playersLike: [user1._id],
-                playersDislike: [],
-                sons: []
+                playersDislike: []
             },
             {
                 createdAt: new Date('2016-06-03T12:08:00'),
                 description: "Nice one dude!",
                 player: user3._id,
                 playersLike: [user1._id],
-                playersDislike: [user2._id],
-                sons: [
-                    {
-                        createdAt: new Date('2016-06-03T13:00:00'),
-                        description: "Thanks men!",
-                        player: user1._id,
-                        playersLike: [user3._id],
-                        playersDislike: [],
-                        sons: []
-                    }
-                ]
+                playersDislike: [user2._id]
             }
         ],
         url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
