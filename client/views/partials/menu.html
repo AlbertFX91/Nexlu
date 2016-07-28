@@ -21,7 +21,25 @@
                 </ul>
 
                 <ul id="nav-mobile" class="right">
-                    <li><a href="/login">{{_ "login"}}</a></li>
+                    <li>
+                        <ul id="usermenu-link" class="right" style="margin-right: 5%; cursor: pointer;">
+                            <li>
+                                <ul id="showLoginModal">
+                                    <div class="hide-on-med-and-down">
+                                        <a class="bold caret text-shadow smaller-font"
+                                           style="display: inline;padding: 6px 10px 6px 10px; border: 1px solid white; border-radius: 4px;">
+                                            {{_ "login"}}
+                                        </a>
+                                    </div>
+                                    <div class="hide-on-large-only">
+                                        <a>
+                                            <i class="small material-icons">games</i>
+                                        </a>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="/register">{{_ "register"}}</a></li>
                     <li>{{> langSelector}}</li>
                 </ul>
