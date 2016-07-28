@@ -54,6 +54,15 @@ Meteor.publish('publication.someone.all', function (publicationId) {
     return Publications.find(publicationId, {fields: Fields.publication.all});
 });
 
+Meteor.publish('publication.tagged.all', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
+});
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
