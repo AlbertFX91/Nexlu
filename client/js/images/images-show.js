@@ -3,7 +3,7 @@ Template.images_show.helpers({
         return Prettify.compactTags(this.playersTagged);
     },
     isMine: function() {
-        if (this.owner[0].id.trim() === Meteor.userId().trim())
+        if (this.owner.id.trim() === Meteor.userId().trim())
             return true;
         return false;
     },
@@ -45,8 +45,7 @@ Template.images_show.events({
     },
     'click #remove-pub': function () {
         $('#remove-pub-modal').openModal();
-    }
-    ,
+    },
     'submit .edit-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('editPublication').value;
@@ -131,68 +130,41 @@ Template.images_show.events({
                 }
             });
         }
+    },
+
+
+    'click .publication-image-img': function(e){
+        $('#publication-image-modal').openModal();
+    },
+
+    'click #set-avatar-button': function(e) {
+        e.preventDefault();
+        Meteor.call("setAvatar", this._id, function(e,r){
+            if(e){
+                console.log(e);
+                Errors.throwErrorTranslated("error.occurred");
+            }else{
+                if(r){
+                    Toasts.throwTrans("images.setavatar_finished");
+                }
+            }
+        })
     }
+
 });
 
 Template.images_show.onRendered(function (){
     if(this.data == null){
         Router.go('home');
     }
-
-    //En esta parte vamos a mostrar la imagen para que no se deforme y se ajuste en función del dispositivo
-
-    //Obtenemos los valores de la pantalla
-    var availHeight = window.screen.availHeight;
-    var availWidth = window.screen.availWidth;
-
-    //Ajustamos el tamaño máximo que tendra la imagen
-    var maxWidth = availWidth - 0.5*availWidth;
-    var maxHeight = availHeight - 0.5*availHeight;
-
-    var _URL = window.URL || window.webkitURL;
-    var img_id = this.data._id;
-    //Creamos un objeto de tipo Image para poder obtener el width y el height de la imagen
-    var img = new Image();
-    img.onload = function() {
-        imgWidth  = this.width;
-        imgHeight = this.height;
-        // Calculate the new image dimensions, so they fit
-        // inside the maxWidth x maxHeight bounding box
-
-        if (imgWidth >= maxWidth || imgHeight >= maxHeight) {
-
-            // The image is too large,
-            // resize it to fit a 500x500 square!
-
-            if (imgWidth > imgHeight) {
-
-                // Wide
-                ratio = imgWidth / maxWidth;
-                newWidth = maxWidth;
-                newHeight = imgHeight / ratio;
-
-            } else {
-
-                // Tall or square
-                ratio = imgHeight / maxHeight;
-                newHeight = maxHeight;
-                newWidth = imgWidth / ratio;
-
-            }
-
-        } else {
-            newHeight = imgHeight;
-            newWidth = imgWidth;
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'right' // Displays dropdown with edge aligned to the left of button
         }
-        $("#img-"+img_id).css({
-            width: newWidth,
-            height: newHeight
-        });
-
-    };
-
-    //Este metodo luego invocará el metodo definido anteriormente onload
-    img.src = this.data.url;
-
-
+    );
 });

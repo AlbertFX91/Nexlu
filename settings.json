@@ -27,5 +27,7 @@
     "secret": "wC3nKIzOsILBvAV0NFFSWYZY9Sp+SmO9W8xk2z+k",
     "bucket": "nexlu",
     "region": "us-west-2"
-  }
+  },
+
+  "entorno": "desarrollo"
 }

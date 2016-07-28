@@ -49,23 +49,38 @@ Meteor.startup(function () {
         secret: Meteor.settings.twitter.secret
     });
 
-
     // Inicialización de datos
-    if (Meteor.users.find().count() === 0) {
+    var entorno = Meteor.settings.entorno;
+    if(entorno == "desarrollo"){
+        if (Meteor.users.find().count() === 0) {
+            createUsers();
+        }
+
+        if (ChatRooms.find().count() === 0){
+            createChatRooms();
+        }
+
+        if (Publications.find().count() === 0){
+            createPublications();
+        }
+
+        if (Images.find().count() === 0){
+            createImages();
+        }
+    }else if (entorno == "preproduccion"){
+        Meteor.users.remove({});
+        ChatRooms.remove({});
+        Images.remove({});
+        Publications.remove({});
+        
         createUsers();
-    }
-
-    if (ChatRooms.find().count() === 0){
         createChatRooms();
-    }
-
-    if (Publications.find().count() === 0){
         createPublications();
-    }
-
-    if (Images.find().count() === 0){
         createImages();
     }
+
+
+
 });
 
 
@@ -104,7 +119,8 @@ function createUsers(){
             bio: "Biography 1",
             followers: [id_user2, id_user3],
             followed: [id_user2, id_user3],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: false
         }
     });
 
@@ -113,7 +129,8 @@ function createUsers(){
             bio: "Biography 2",
             followers: [id_user1, id_user3],
             followed: [id_user1, id_user3, id_user4],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: true
         }
     });
 
@@ -121,7 +138,8 @@ function createUsers(){
         $set: {
             followers: [id_user1, id_user2, id_user4],
             followed: [id_user1, id_user2],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: true
         }
     });
 
@@ -130,7 +148,8 @@ function createUsers(){
             bio: "Biography 4",
             followers: [id_user2, id_user5],
             followed: [id_user3, id_user5],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: false
         }
     });
 
@@ -139,7 +158,8 @@ function createUsers(){
             bio: "Biography 5",
             followers: [id_user4],
             followed: [id_user4],
-            "emails.0.verified": true
+            "emails.0.verified": true,
+            private_profile: false
         }
     });
 
@@ -393,12 +413,12 @@ function createImages(){
 
     //User 1
     var img1_id = Images.insert({
-        owner: [
+        owner: 
             {
                 id: user1._id,
                 username: user1.username
-            }
-        ],
+            },
+        
         createdAt: new Date('2016-06-03T12:00:00'),
         playersTagged: [
             {
@@ -443,12 +463,12 @@ function createImages(){
         url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
     });
     Images.insert({
-        owner: [
+        owner: 
             {
                 id: user1._id,
                 username: user1.username
             }
-        ],
+        ,
         createdAt: new Date('2016-06-08T12:00:00'),
         playersTagged: [],
         description: "My second publication!!!",

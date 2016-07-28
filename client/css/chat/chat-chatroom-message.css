@@ -8,11 +8,15 @@ ul.chat li {
     transition: all 0.18s ease-in;
     position: relative;
 }
+
+/*
 ul.chat li img {
     height: 42px;
     width: 42px;
     border-radius: 100%;
 }
+*/
+
 ul.chat li .message {
     padding: 10px 10px 10px 20px;
     font-size: 0.9em;
@@ -21,6 +25,16 @@ ul.chat li .message {
     position: relative;
     background: white;
     border-radius: 5px;
+    max-width: 80%;
+
+    white-space: -moz-pre-wrap;
+    white-space: -hp-pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word;
+    -moz-binding: url("xbl.xml#wordwrap");
 }
 ul.chat li .message::after {
     content: '';

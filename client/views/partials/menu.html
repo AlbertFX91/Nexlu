@@ -66,8 +66,8 @@
                 <!-- TODO: Implementar buscador en diseño normal y responsive-->
 
                 <ul>
-                    <div class="browser-center hide-on-small-and-down">
-                        BUSCADOR
+                    <div class="browser-center">
+                        {{> foo class="materialize-textarea" autofocus="autofocus" length="5000" }}
                     </div>
                 </ul>
 
@@ -79,15 +79,14 @@
                 <ul id="nav-mobile" class="right">
                     <li style="height: 64px;"><a href="#" class="dropdown-button" data-activates="dropdown-profile" style="height: 100%">
                         <!-- <img src="/fjv.png" class="circle" height="auto" width="100%" style=";max-width: 50px;max-height: 50px; vertical-align: middle">-->
-                        {{> images_avatar max_size="50px"}}
+                        {{> images_avatar user_id=currentUser._id max_size="50px" css="margin-top:6px;"}}
                     </a></li>
 
                     <ul id='dropdown-profile' class='dropdown-content web-color-1'>
-                        <li><a href="#!">one</a></li>
+                        <li><a href="\me">{{_ "profile.my_profile"}}</a></li>
                         <li class="divider"></li>
-                        <li><a href="#!">two</a></li>
+                        <li><a href="{{ pathFor 'settings' }}">{{_ "settings.settings"}}</a></li>
                         <li class="divider"></li>
-                        <li><a href="#!">three</a></li>
                     </ul>
 
                     <li class="hide-on-med-and-down"><a class="logout" href="/logout">{{_ "logout"}}</a></li>
@@ -98,6 +97,4 @@
             </div>
         </nav>
     </div>
-
 </template>
-

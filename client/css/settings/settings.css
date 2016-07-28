@@ -1,0 +1,27 @@
+.list_settings, .content-privacity, .content-change-pass, .content-settings{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    border-radius:5px;
+}
+
+.list_settings li a{
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.list_settings li a.active{
+    background-color: #26a69a !important;
+    color: white;
+}
+
+.list_settings li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
