@@ -112,14 +112,12 @@ Template.images_input_modal.events({
             Tracker.autorun(function () {
                 var numImagesUploaded = Session.get("numImagesUploaded");
                 var numImagesToUpload = Session.get("numImagesToUpload");
-                var imagesFinished = Session.get("images.finished");
+                var imagesFinished = Sessiona.get("images.finished");
                 if (!imagesFinished && numImagesToUpload === numImagesUploaded) {
                     Toasts.throwTrans("images.uploaded_finished");
                     $("#input-images-modal").css("cursor","auto");
                     setTimeout(closeMainModal, 1000);
-                    setTimeout(function () {
-                        Session.set("images.finished", true)
-                    }, 1000)
+                    Session.set("images.finished", true);
 
                 }
             })
