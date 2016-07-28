@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: nowrap;
     padding: 10px 20px 10px 20px;
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
 }
 
 .comment-body:nth-child(odd){
@@ -24,4 +25,79 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 5px;
+}
+
+.edit-comment {
+    margin-left: 5px;
+}
+
+.edit-comment a {
+    margin-right: 5px;
+}
+
+#edit-comment:hover {
+    color: #76ce88 !important;
+    cursor: pointer !important;
+}
+
+#remove-comment:hover {
+    color: #b1070c !important;
+    cursor: pointer !important;
+}
+
+.edit-comment-modal {
+    margin: 0px;
+}
+
+#edit-comment-modal {
+    width: 40%;
+    background-color: transparent !important;
+    max-height: none !important;
+}
+
+@media screen and (max-width: 1024px){
+    #edit-comment-modal {
+        width: 65% !important;
+    }
+}
+
+@media screen and (max-width: 425px){
+    #edit-comment-modal {
+        width: 80% !important;
+    }
+}
+
+#remove-comment-modal {
+    width: 40%;
+    background-color: transparent !important;
+    text-align: justify;
+}
+
+@media screen and (max-width: 1024px){
+    #remove-comment-modal {
+        width: 65% !important;
+    }
+}
+
+@media screen and (max-width: 425px){
+    #remove-comment-modal {
+        width: 80% !important;
+    }
+}
+
+#edit-comment-error {
+    color: #b1070c;
+}
+
+#confirm-remove-comment {
+    margin-left: 20px;
+}
+
+#editComment {
+    max-height: 400px !important;
+    overflow-y: auto !important;
+}
+
+.comment-description {
+    display: flex;
 }

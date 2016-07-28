@@ -86,3 +86,15 @@ footer p {
     background-position: -96px -96px !important;
 }
 
+.Site {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important; /* 1 */
+}
+header,
+.customizedFooter {
+    flex-shrink: 0 !important; /* 2 */
+}
+.Site-content {
+    flex: 1 0 auto !important; /* 2 */
+}

@@ -4,7 +4,7 @@ Meteor.publish('publication.me.all', function () {
         this.ready();
         return;
     }
-    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.all});
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.all});
 });
 
 Meteor.publish('user.me', function () {
@@ -18,11 +18,24 @@ Meteor.publish('user.me', function () {
     });
 });
 
+Meteor.publish('search.users', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Meteor.users.find({}, {
+        //TODO: _id: {$ne: user_id},
+        fields: {
+            username: 1
+        }
+    });
+});
 /**
  * Devuelve los usuarios que siguen al usuario logueado, y que el usuario logueado tambien sigue. Es una relación reciproca.
  * Se usa para devolver los usuarios con los que podemos chatear
  */
-Meteor.publish('user.each.online', function () {
+Meteor.publish('user.each.chat', function () {
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
@@ -32,8 +45,7 @@ Meteor.publish('user.each.online', function () {
     return Meteor.users.find(
         {
             _id: { $in: user.followers },
-            followers: user_id,
-            "status.online": true
+            followers: user_id
         },
         {
             fields: Fields.user.all
@@ -56,7 +68,7 @@ Meteor.publish('publication.me.none', function () {
         this.ready();
         return;
     }
-    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.none});
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
 });
 
 Meteor.publish('publication.user.none', function (usernameUser) {
@@ -73,22 +85,16 @@ Meteor.publish("findBio", function () {
     return Meteor.users.find(this.userId);
 });
 
-Meteor.publish('image.me.miniature', function(){
-    var user_id = this.userId;
-    if (!user_id) {
-        this.ready();
-        return;
-    }
-    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
-});
+
 Meteor.publish('publication.followed.all', function () {
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
         return;
     }
-    var followed_id = Meteor.users.find(user_id, {fields: Fields.user.followed}).fetch();
-    return Publications.find({"owner.0.id": {"$in": [followed_id.followed]}}, {fields: Fields.publication.all});
+    var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
+    var followed_id = followed.followed;
+    return Publications.find({"owner.id": {"$in": followed_id}}, {fields: Fields.publication.all});
 });
 Meteor.publish('image.one', function(img_id){
     return Images.find(img_id, {fields: Fields.image.all});
@@ -96,6 +102,23 @@ Meteor.publish('image.one', function(img_id){
 
 Meteor.publish("findUser", function(username) {
     return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
+});
+
+Meteor.publish('user.all.username', function () {
+    return Meteor.users.find({}, {fields: Fields.user.username});
+});
+
+Meteor.publish('publication.someone.all', function (publicationId) {
+    return Publications.find(publicationId, {fields: Fields.publication.all});
+});
+
+Meteor.publish('publication.tagged.all', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
 });
 
 Meteor.publish("userProfile",function(username){
@@ -147,6 +170,9 @@ Fields = {
         },
         followed: {
             followed: 1
+        },
+        username: {
+            username: 1
         }
     },
     publication: {
