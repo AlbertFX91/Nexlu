@@ -73,10 +73,12 @@ Meteor.methods({
             throw Meteor.Error("User not logued");
         }
     },
-    'image.edit': function(imgId, description){
-        Images.update(imgId, {
+    'image.edit': function(publicationId, description, usernamesTagged){
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
+        Images.update(publicationId, {
             $set: {
-                description: description
+                description: description,
+                playersTagged: playersTagged
             }
         })
     },
