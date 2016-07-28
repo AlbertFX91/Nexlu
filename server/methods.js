@@ -320,7 +320,7 @@ Meteor.methods({
     'login.facebook': function(){
         var user = Meteor.user();
         options = {
-            username : user.profile.name.replace(" ",""),
+            username : user.profile.name.replace(/ /g,''),
             email: user.services.facebook.email
         };
         Meteor.users.update(user._id, {
@@ -337,7 +337,7 @@ Meteor.methods({
     'login.google': function(){
         var user = Meteor.user();
         options = {
-            username : user.profile.name.replace(" ",""),
+            username : user.profile.name.replace(/ /g,''),
             email: user.services.google.email
         };
         Meteor.users.update(user._id, {
@@ -354,7 +354,7 @@ Meteor.methods({
     'login.facebook.newUsername': function(username){
         var user = Meteor.user();
         options = {
-            username : username.replace(" ",""),
+            username : username.replace(/ /g,''),
             email: user.services.facebook.email
         };
         Meteor.users.update(user._id, {
@@ -372,7 +372,7 @@ Meteor.methods({
     'login.google.newUsername': function(){
         var user = Meteor.user();
         options = {
-            username : user.profile.name.replace(" ",""),
+            username : user.profile.name.replace(/ /g,''),
             email: user.services.facebook.email
         };
         Meteor.users.update(user._id, {

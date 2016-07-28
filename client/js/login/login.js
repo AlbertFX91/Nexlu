@@ -34,8 +34,9 @@ Template.login.events({
             if(err){
                 Errors.throwErrorTranslated("error.login_credentials-facebook_wrong");
             }else{
+                //Codigo comentado para tener solo la unificacion de login
                 //true: La contraseña/username no está registrada/o
-                Meteor.call("checkUniqueUser", Meteor.user().profile.name.replace(" ","").toLowerCase(), function(e,r){
+                /*Meteor.call("checkUniqueUser", Meteor.user().profile.name.replace(" ","").toLowerCase(), function(e,r){
                     Session.set("facebookUsernameUnique",r);
                 });
                 if(Session.get("facebookUsernameUnique")==false){
@@ -60,8 +61,12 @@ Template.login.events({
                     setTimeout(function(){ Session.set('showLoginModal', false); }, 300);
                     Meteor.call("login.facebook");
                     Router.go('home');
-                }
-
+                }*/
+                Meteor.call("login.facebook");
+                $('#login-access').removeClass('login-open').addClass('login-close');
+                setTimeout(function(){ Session.set('showLoginModal', false); }, 300);
+                Toasts.throwTrans("toast.login_success");
+                Router.go('home');
             }
         });
     },
@@ -70,6 +75,7 @@ Template.login.events({
             if(err){
                 Errors.throwErrorTranslated("error.login_credentials-google_wrong");
             }else{
+                /*
                 //true: El email/username no está registrado
                 Meteor.call("checkUniqueUser", Meteor.user().profile.name.replace(" ","").toLowerCase(), function(e,r){
                     Session.set("googleUsernameUnique",r);
@@ -99,8 +105,12 @@ Template.login.events({
                     setTimeout(function(){ Session.set('showLoginModal', false); }, 300);
                     Meteor.call("login.google");
                     Router.go('home');
-                }
-
+                }*/
+                Meteor.call("login.google");
+                Toasts.throwTrans("toast.login_success");
+                $('#login-access').removeClass('login-open').addClass('login-close');
+                setTimeout(function(){ Session.set('showLoginModal', false); }, 300);
+                Router.go('home');
             }
         });
     },
