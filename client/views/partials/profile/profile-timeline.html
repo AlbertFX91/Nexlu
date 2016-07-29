@@ -12,20 +12,13 @@
     </div>
 </template>
 
-<template name="profileUser">
+<template name="profileTimelineUser">
     <div class="container div-profile">
         {{> profileHeaderUser}}
-        {{#if isPrivateButFollower}}
+        {{#if canSee}}
             <div class="row profile-content">
                 <h1>Timeline</h1>
             </div>
-        {{else}}
-            {{#if isPrivate}}
-            {{else}}
-                <div class="row profile-content">
-                    <h1>Timeline</h1>
-                </div>
-            {{/if}}
         {{/if}}
     </div>
 </template>

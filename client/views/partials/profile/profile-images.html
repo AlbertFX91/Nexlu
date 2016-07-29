@@ -2,10 +2,25 @@
     <div class="container div-profile">
         {{> profileHeader}}
         <div class="row profile-content">
-            <h1>{{_ "profile.Images"}}</h1>
+            <h1>{{_ "profile.Images"}}</h1>{{> images_input_button}}
             {{#with images}}
                 {{> images_miniatures_container}}
             {{/with}}
         </div>
+    </div>
+</template>
+
+<template name="profileImagesUser">
+    <div class="container div-profile">
+        {{> profileHeaderUser}}
+        {{#if canSee}}
+            <div class="row profile-content">
+                <h1>{{_ "profile.Images"}}</h1>
+                {{#with images}}
+                    {{> images_miniatures_container}}
+                {{/with}}
+            </div>
+        {{/if}}
+
     </div>
 </template>

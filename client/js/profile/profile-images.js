@@ -1,11 +1,4 @@
-Template.profileTimeline.helpers({
-    publications: function () {
-        var user_id = Meteor.userId();
-        return Publications.find({},{sort: {createdAt: -1}});
-    }
-});
-
-Template.profileTimelineUser.helpers({
+Template.profileImagesUser.helpers({
     canSee: function(){
         var isPrivate = this.private_profile;
         if(!isPrivate){
