@@ -7,6 +7,11 @@ Meteor.publish('publication.me.all', function () {
     return Publications.find({"owner.id": user_id}, {fields: Fields.publication.all});
 });
 
+Meteor.publish('publication.one.all', function (username) {
+    var user = Meteor.users.findOne({username: username});
+    return Publications.find({"owner.id": user._id}, {fields: Fields.publication.all});
+});
+
 Meteor.publish('user.me', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -14,6 +19,12 @@ Meteor.publish('user.me', function () {
         return;
     }
     return Meteor.users.find(user_id, {
+        fields: Fields.user.all
+    });
+});
+
+Meteor.publish('user.one', function (username) {
+    return Meteor.users.find({username: username}, {
         fields: Fields.user.all
     });
 });
@@ -62,6 +73,11 @@ Meteor.publish('image.me.miniature', function(){
     return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
 });
 
+Meteor.publish('image.one.miniature', function(username){
+    var user_id = Meteor.users.findOne({username: username})._id;
+    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+});
+
 Meteor.publish('publication.me.none', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -70,6 +86,12 @@ Meteor.publish('publication.me.none', function () {
     }
     return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
 });
+
+Meteor.publish('publication.one.none', function (username) {
+    var user_id = Meteor.users.findOne({username: username})._id;
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
+});
+
 
 Meteor.publish('publication.user.none', function (usernameUser) {
     var user = Meteor.users.find({'username':usernameUser});
@@ -120,6 +142,13 @@ Meteor.publish('publication.tagged.all', function () {
     }
     return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
 });
+
+Meteor.publish('publication.tagged.one.all', function (username) {
+    var user_id =  Meteor.users.findOne({username: username})._id;
+    return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
+});
+
+
 
 Meteor.publish("userProfile",function(username){
     var user=Meteor.users.findOne({"username":username});
@@ -193,7 +222,8 @@ Fields = {
             comments: 1
         },
         none: {
-            _id: 1
+            _id: 1,
+            owner: 1
         }
     },
     image: {

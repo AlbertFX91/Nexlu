@@ -5,7 +5,7 @@
             <div class="col s12 m4" style="">
                 <div class="card web-color-1">
                     <div class="card-content white-text">
-                        <a href="/me">
+                        <a href="{{ pathFor 'profile' username=currentUser.username }}">
                             {{>images_avatar user_id=currentUser._id max_size="150px" css="margin-left:auto;margin-right:auto;"}}
                         </a>
                         <div class="center-align" style="padding-top:15px">{{currentUser.username}}</div>

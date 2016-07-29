@@ -484,6 +484,21 @@ Meteor.methods({
             }
         });
     },
+    'find.privacity.byUser': function (username) {
+        var user = Meteor.users.findOne({"username": username});
+        return user.private_profile;
+    },
+    'find.is.followed': function (username) {
+        var userProfile = Meteor.users.findOne({"username": username});
+        var user = Meteor.user();
+        var result = false;
+        userProfile.followers.forEach(function (item) {
+            if (item == user._id) {
+                result = true;
+            }
+        });
+        return result;
+},
 
     'findAvatarByUser': function(user_id){
         var user = Meteor.users.findOne(user_id);

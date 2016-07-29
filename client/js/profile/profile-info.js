@@ -1,4 +1,4 @@
-Template.profileTimelineUser.helpers({
+Template.profileInfoUser.helpers({
     canSee: function(){
         var isPrivate = this.private_profile;
         if(!isPrivate){
@@ -10,8 +10,5 @@ Template.profileTimelineUser.helpers({
             isFollowed = _.contains(user.followed, this._id);
         }
         return isPrivate && isFollowed;
-    },
-    itsMe: function(){
-        return Meteor.user() && Meteor.user()._id == this.user._id;
     }
 });

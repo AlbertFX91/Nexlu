@@ -218,6 +218,7 @@
 
   "privacity":{
     "title": "Configuration and tool of privacity",
+    "account": "This account is private.",
     "p1": "In this configuration we give you the option to change the privacy of your profile Nexlu.",
     "p2": "If you choose the option of having a private account other users may not:",
     "p3": "Follow : Until you accept the request of the user who wants to follow this they can not see your photos and publications.",

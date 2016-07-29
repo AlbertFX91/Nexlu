@@ -240,6 +240,7 @@
 
   "privacity":{
     "title": "Configuración y herramienta de privacidad",
+    "account": "Esta cuenta es privada.",
     "p1": "En esta configuración te damos la opción a cambiar la privacidad de tu perfil en Nexlu.",
     "p2": "Si eliges la opción de tener una cuenta privada los demás usuarios no podrán:",
     "p3": "Seguirte: Hasta que no aceptes la solicitud del usuario que quiere seguirte, este no podrán ver tus fotos y publicaciones.",
