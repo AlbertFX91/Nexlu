@@ -40,6 +40,7 @@
 
 .post-input{
     margin-top: 0px !important;
+    flex:1;
 }
 
 #post-error {

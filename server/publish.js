@@ -4,7 +4,12 @@ Meteor.publish('publication.me.all', function () {
         this.ready();
         return;
     }
-    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.all});
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.all});
+});
+
+Meteor.publish('publication.one.all', function (username) {
+    var user = Meteor.users.findOne({username: username});
+    return Publications.find({"owner.id": user._id}, {fields: Fields.publication.all});
 });
 
 Meteor.publish('user.me', function () {
@@ -18,11 +23,30 @@ Meteor.publish('user.me', function () {
     });
 });
 
+Meteor.publish('user.one', function (username) {
+    return Meteor.users.find({username: username}, {
+        fields: Fields.user.all
+    });
+});
+
+Meteor.publish('search.users', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Meteor.users.find({}, {
+        //TODO: _id: {$ne: user_id},
+        fields: {
+            username: 1
+        }
+    });
+});
 /**
  * Devuelve los usuarios que siguen al usuario logueado, y que el usuario logueado tambien sigue. Es una relación reciproca.
  * Se usa para devolver los usuarios con los que podemos chatear
  */
-Meteor.publish('user.each.online', function () {
+Meteor.publish('user.each.chat', function () {
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
@@ -32,8 +56,7 @@ Meteor.publish('user.each.online', function () {
     return Meteor.users.find(
         {
             _id: { $in: user.followers },
-            followers: user_id,
-            "status.online": true
+            followers: user_id
         },
         {
             fields: Fields.user.all
@@ -50,14 +73,25 @@ Meteor.publish('image.me.miniature', function(){
     return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
 });
 
+Meteor.publish('image.one.miniature', function(username){
+    var user_id = Meteor.users.findOne({username: username})._id;
+    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+});
+
 Meteor.publish('publication.me.none', function () {
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
         return;
     }
-    return Publications.find({"owner.0.id": user_id}, {fields: Fields.publication.none});
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
 });
+
+Meteor.publish('publication.one.none', function (username) {
+    var user_id = Meteor.users.findOne({username: username})._id;
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
+});
+
 
 Meteor.publish('publication.user.none', function (usernameUser) {
     var user = Meteor.users.find({'username':usernameUser});
@@ -73,22 +107,16 @@ Meteor.publish("findBio", function () {
     return Meteor.users.find(this.userId);
 });
 
-Meteor.publish('image.me.miniature', function(){
-    var user_id = this.userId;
-    if (!user_id) {
-        this.ready();
-        return;
-    }
-    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
-});
+
 Meteor.publish('publication.followed.all', function () {
     var user_id = this.userId;
     if (!user_id) {
         this.ready();
         return;
     }
-    var followed_id = Meteor.users.find(user_id, {fields: Fields.user.followed}).fetch();
-    return Publications.find({"owner.0.id": {"$in": [followed_id.followed]}}, {fields: Fields.publication.all});
+    var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
+    var followed_id = followed.followed;
+    return Publications.find({"owner.id": {"$in": followed_id}}, {fields: Fields.publication.all});
 });
 Meteor.publish('image.one', function(img_id){
     return Images.find(img_id, {fields: Fields.image.all});
@@ -97,6 +125,30 @@ Meteor.publish('image.one', function(img_id){
 Meteor.publish("findUser", function(username) {
     return Meteor.users.findOne({"username": username}, { fields: { "username": 1 } } );
 });
+
+Meteor.publish('user.all.username', function () {
+    return Meteor.users.find({}, {fields: Fields.user.username});
+});
+
+Meteor.publish('publication.someone.all', function (publicationId) {
+    return Publications.find(publicationId, {fields: Fields.publication.all});
+});
+
+Meteor.publish('publication.tagged.all', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
+});
+
+Meteor.publish('publication.tagged.one.all', function (username) {
+    var user_id =  Meteor.users.findOne({username: username})._id;
+    return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
+});
+
+
 
 Meteor.publish("userProfile",function(username){
     var user=Meteor.users.findOne({"username":username});
@@ -129,6 +181,10 @@ Meteor.publish("emojis", function(){
     return Emojis.find();
 });
 
+Meteor.publish(null, function() {
+    return Meteor.users.find({_id: this.userId}, {fields: Fields.user.all});
+});
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
@@ -143,10 +199,15 @@ Fields = {
             bio: 1,
             followed: 1,
             followers: 1,
-            status: 1
+            status: 1,
+            avatar: 1,
+            private_profile: 1
         },
         followed: {
             followed: 1
+        },
+        username: {
+            username: 1
         }
     },
     publication: {
@@ -161,7 +222,8 @@ Fields = {
             comments: 1
         },
         none: {
-            _id: 1
+            _id: 1,
+            owner: 1
         }
     },
     image: {

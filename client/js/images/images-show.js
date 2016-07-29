@@ -3,9 +3,16 @@ Template.images_show.helpers({
         return Prettify.compactTags(this.playersTagged);
     },
     isMine: function() {
-        if (this.owner[0].id.trim() === Meteor.userId().trim())
+        if (this.owner.id.trim() === Meteor.userId().trim())
             return true;
         return false;
+    },
+    descriptionTruncated: function() {
+        var description = this.description;
+        return Humanize.truncate(description, 200);
+    },
+    descriptionTruncate: function() {
+        return this.description.length >= 200;
     },
     iLike: function() {
         return _.contains(this.playersLike, Meteor.userId().trim());
@@ -13,8 +20,25 @@ Template.images_show.helpers({
     iDislike: function() {
         return _.contains(this.playersDislike, Meteor.userId().trim());
     },
-
-
+    settingsTextareaEdit: function () {
+        return {
+            position: top,
+            limit: 5,
+            rules: [
+                {
+                    token: '@',
+                    collection: Meteor.users,
+                    field: 'username',
+                    options: '',
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
+                }
+            ]
+        }
+    },
+    hasComments: function() {
+        return this.comments.length > 0;
+    },
 
     // TODO: Esto hay que hacerlo en el lado del server (methods):
     listLikes: function(likes){
@@ -52,7 +76,6 @@ Template.images_show.events({
         var description = document.getElementById('editPublication').value;
         var publicationId = this._id;
         var valido = true;
-        //var playersTagged: [], //TODO: Añadir etiquetas
         if (description.trim() == ""){
             var texto = TAPi18n.__("error.post-notBlank");
             document.getElementById('edit-post-error').innerHTML = texto;
@@ -64,8 +87,10 @@ Template.images_show.events({
             $("#edit-post-label").hide();
             valido = false;
         }
+        //Comprobación del etiquetado con '@'
+        var usernamesTagged = Util.validateTag(description);
         if (valido) {
-            Meteor.call('image.edit', publicationId, description, function(err, response){
+            Meteor.call('image.edit', publicationId, description, usernamesTagged, function(err, response){
                 if (!err){
                     $('#edit-pub-modal').closeModal();
                 }
@@ -84,9 +109,21 @@ Template.images_show.events({
             if (!err){
                 $('#remove-pub-modal').closeModal();
                 $('.lean-overlay').remove();
-                Router.go("home");
+                Router.go('home');
             }
         });
+    },
+    'click #read-more': function(e) {
+        e.preventDefault();
+        var readLess = "<a id='read-less'> " + TAPi18n.__("timeline.read-less") + "</a>";
+        $(e.target).parent().empty().append(this.description, readLess);
+    },
+    'click #read-less': function(e) {
+        e.preventDefault();
+        var description = this.description;
+        var descriptionTruncated = Humanize.truncate(description, 200);
+        var readMore = "<a id='read-more'> " + TAPi18n.__("timeline.read-more") + "</a>";
+        $(e.target).parent().empty().append(descriptionTruncated, readMore);
     },
     'click #like': function (e) {
         e.preventDefault();
@@ -131,68 +168,53 @@ Template.images_show.events({
                 }
             });
         }
+    },
+    'click #view-comments': function (e) {
+        e.preventDefault();
+        $(e.target).next().removeClass('hide');
+        $(e.target).parent().next().removeClass('hide');
+        $(e.target).addClass('hide');
+    },
+    'click #hide-comments': function (e) {
+        e.preventDefault();
+        $(e.target).prev().removeClass('hide');
+        $(e.target).parent().next().addClass('hide');
+        $(e.target).addClass('hide');
+    },
+
+
+    'click .publication-image-img': function(e){
+        $('#publication-image-modal').openModal();
+    },
+
+    'click #set-avatar-button': function(e) {
+        e.preventDefault();
+        Meteor.call("setAvatar", this._id, function(e,r){
+            if(e){
+                console.log(e);
+                Errors.throwErrorTranslated("error.occurred");
+            }else{
+                if(r){
+                    Toasts.throwTrans("images.setavatar_finished");
+                }
+            }
+        })
     }
+
 });
 
 Template.images_show.onRendered(function (){
     if(this.data == null){
         Router.go('home');
     }
-
-    //En esta parte vamos a mostrar la imagen para que no se deforme y se ajuste en función del dispositivo
-
-    //Obtenemos los valores de la pantalla
-    var availHeight = window.screen.availHeight;
-    var availWidth = window.screen.availWidth;
-
-    //Ajustamos el tamaño máximo que tendra la imagen
-    var maxWidth = availWidth - 0.5*availWidth;
-    var maxHeight = availHeight - 0.5*availHeight;
-
-    var _URL = window.URL || window.webkitURL;
-    var img_id = this.data._id;
-    //Creamos un objeto de tipo Image para poder obtener el width y el height de la imagen
-    var img = new Image();
-    img.onload = function() {
-        imgWidth  = this.width;
-        imgHeight = this.height;
-        // Calculate the new image dimensions, so they fit
-        // inside the maxWidth x maxHeight bounding box
-
-        if (imgWidth >= maxWidth || imgHeight >= maxHeight) {
-
-            // The image is too large,
-            // resize it to fit a 500x500 square!
-
-            if (imgWidth > imgHeight) {
-
-                // Wide
-                ratio = imgWidth / maxWidth;
-                newWidth = maxWidth;
-                newHeight = imgHeight / ratio;
-
-            } else {
-
-                // Tall or square
-                ratio = imgHeight / maxHeight;
-                newHeight = maxHeight;
-                newWidth = imgWidth / ratio;
-
-            }
-
-        } else {
-            newHeight = imgHeight;
-            newWidth = imgWidth;
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'right' // Displays dropdown with edge aligned to the left of button
         }
-        $("#img-"+img_id).css({
-            width: newWidth,
-            height: newHeight
-        });
-
-    };
-
-    //Este metodo luego invocará el metodo definido anteriormente onload
-    img.src = this.data.url;
-
-
+    );
 });

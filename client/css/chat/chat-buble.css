@@ -1,0 +1,16 @@
+#chat-buble-notification{
+    background-color: #fa3e3e;
+    border-radius: 2px;
+    color: white;
+
+    padding: 1px 3px;
+    font-size: 10px;
+
+    position: absolute;
+    right: 0;
+    top: 15px;
+    z-index: 1;
+    width: 15px;
+    text-align: center;
+    display: none;
+}

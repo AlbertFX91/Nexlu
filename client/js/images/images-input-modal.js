@@ -1,105 +1,127 @@
 Template.images_input_modal.events({
     "click .close-modal-button": function(e){
         e.preventDefault();
-        closeMainModal();
+        if(!uploadingImages()) {closeMainModal()};
 
     },
-    "change #image-upload": function(e){
+    "change #image-upload": function(e) {
         //Obtenemos los ficheros seleccionados
-        var files = $(e.target)[0].files;
-        //Para cada fichero, almacenamos el fichero en el navegador
-        _.each(files, saveImgInBrowserByFile);
+        if (!uploadingImages()) {
+            var files = $(e.target)[0].files;
+            //Para cada fichero, almacenamos el fichero en el navegador
+            _.each(files, saveImgInBrowserByFile);
+        }
     },
     "mouseenter .img-preview-element": function(e) {
-        var img = $(e.target)
-        if (img.hasClass("animated")) {
-            img.removeClass("animated");
-            img.removeClass("bounceIn");
+        if(!uploadingImages()){
+            var img = $(e.target);
+            if (img.hasClass("animated")) {
+                img.removeClass("animated");
+                img.removeClass("bounceIn");
+            }
+            $(e.target).children(".img-preview-options").addClass("img-preview-options-show");
         }
-        $(e.target).children(".img-preview-options").addClass("img-preview-options-show");
     },
     "mouseleave .img-preview-options": function(e){
-        $(e.target).removeClass("img-preview-options-show");
+        if(!uploadingImages()) {
+            $(e.target).removeClass("img-preview-options-show");
+        }
     },
 
     "click .img-preview-remove": function(e){
-        var x = $(e.target)
-        //Recuperamos el id del div donde se está llamando al evento
-        var img_div = x.parent().parent().next();
-        //El id es img-preview-IdDeLaImagen. Por lo que recuperamos el IdDeLaImagen
-        var img_id = img_div[0].id.split("-")[2];
-        //Eliminamos la imagen de la collection local
-        ImagesLocals.remove(img_id);
+        if(!uploadingImages()) {
+            var x = $(e.target)
+            //Recuperamos el id del div donde se está llamando al evento
+            var img_div = x.parent().parent().next();
+            //El id es img-preview-IdDeLaImagen. Por lo que recuperamos el IdDeLaImagen
+            var img_id = img_div[0].id.split("-")[2];
+            //Eliminamos la imagen de la collection local
+            ImagesLocals.remove(img_id);
+        }
     },
 
     "click .img-preview-edit": function(e){
-        var x = $(e.target);
-        //Recuperamos el id del div donde se está llamando al evento
-        var img_div = x.parent().parent().next();
-        //El id es img-preview-IdDeLaImagen. Por lo que recuperamos el IdDeLaImagen
-        var img_id = img_div[0].id.split("-")[2];
+        if(!uploadingImages()) {
+            var x = $(e.target);
+            //Recuperamos el id del div donde se está llamando al evento
+            var img_div = x.parent().parent().next();
+            //El id es img-preview-IdDeLaImagen. Por lo que recuperamos el IdDeLaImagen
+            var img_id = img_div[0].id.split("-")[2];
 
-        Session.set("img-prev-edit-id", img_id);
-        Session.set("filter-apply", false);
+            Session.set("img-prev-edit-id", img_id);
+            Session.set("filter-apply", false);
+        }
     },
 
     "click #button-exit-edit": function(){
-        Session.set("img-prev-edit-id", false);
+        if(!uploadingImages()) {
+            Session.set("img-prev-edit-id", false);
+        }
     },
 
     //Source: http://stackoverflow.com/questions/15654031/saving-images-after-altering-them-by-camanjs-plugin
     //Lo que pretendemos es comprobar que se ha editado la imagen, y de ser así, vamos a guardar la imagen resultante en un atributo nuevo en la imagen.
     "click #button-save-img-edit": function(){
-        var img_id = Session.get("img-prev-edit-id");
-        //Se guarda en el template images_input_edit
-        var filter = Session.get("filter-apply");
-        if(filter!=""){
-            var canvas = document.getElementById("img-edit-"+img_id);
-            var data = canvas.toDataURL();;
-            if(data==""){
-                Errors.throwErrorTranslated("error.occurred")
-            }else{
-                ImagesLocals.update(img_id, {
-                    $set: {
-                        resultEdited: data
-                    }
-                });
+        if(!uploadingImages()) {
+            var img_id = Session.get("img-prev-edit-id");
+            //Se guarda en el template images_input_edit
+            var filter = Session.get("filter-apply");
+            if (filter != "") {
+                var canvas = document.getElementById("img-edit-" + img_id);
+                var data = canvas.toDataURL();
+                ;
+                if (data == "") {
+                    Errors.throwErrorTranslated("error.occurred")
+                } else {
+                    ImagesLocals.update(img_id, {
+                        $set: {
+                            resultEdited: data
+                        }
+                    });
+                }
+                Session.set("img-prev-edit-id", false);
             }
-            Session.set("img-prev-edit-id", false);
         }
     },
 
     "click #button-save-images": function(){
-        Session.set("uploadingImages", true);
-        var images = ImagesLocals.find({}).fetch();
-        Session.set("numImagesToUpload", images.length);
-        Session.set("numImagesUploaded", 0);
-        _.each(images, function(img){
-            console.log("Guardando imagen!");
-            var img_file = Util.dataURItoFile(img);
-            S3.upload({
-                file:img_file,
-                path:"users"
-            },function(e,r){
-                var numImagesUploaded =  Session.get("numImagesUploaded");
-                Session.set("numImagesUploaded", numImagesUploaded+1);
-                var data = {
-                    url: r.url,
-                    description: img.description
-                };
-                Meteor.call("image.new", data, function(e,r){
+        if(!uploadingImages()) {
+            $("#input-images-modal").css("cursor","wait")
+            msg = TAPi18n.__('images.uploading')+'&nbsp;&nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i>';
+            Toasts.throw(msg);
+            Session.set("uploadingImages", true);
+            var images = ImagesLocals.find({}).fetch();
+            Session.set("numImagesToUpload", images.length);
+            Session.set("numImagesUploaded", 0);
+            _.each(images, function (img) {
+                var img_file = Util.dataURItoFile(img);
+                S3.upload({
+                    file: img_file,
+                    path: "users"
+                }, function (e, r) {
+                    var numImagesUploaded = Session.get("numImagesUploaded");
+                    Session.set("numImagesUploaded", numImagesUploaded + 1);
+                    var data = {
+                        url: r.url,
+                        description: img.description
+                    };
+                    Meteor.call("image.new", data, function (e, r) {
+                    });
                 });
             });
-        });
-        Tracker.autorun(function(){
-            var numImagesUploaded = Session.get("numImagesUploaded");
-            var numImagesToUpload = Session.get("numImagesToUpload");
-            if(numImagesToUpload === numImagesUploaded){
-                Toasts.throwTrans("images.uploaded_finished");
-                setTimeout(closeMainModal, 1000);
-                
-            }
-        })
+            Tracker.autorun(function () {
+                var numImagesUploaded = Session.get("numImagesUploaded");
+                var numImagesToUpload = Session.get("numImagesToUpload");
+                var imagesFinished = Session.get("images.finished");
+                if (!imagesFinished && numImagesToUpload === numImagesUploaded) {
+                    Toasts.throwTrans("images.uploaded_finished");
+                    $("#input-images-modal").css("cursor","auto");
+                    setTimeout(closeMainModal, 1000);
+                    Session.set("images.finished", true);
+
+                }
+            })
+        }
     }
 });
 
@@ -140,6 +162,7 @@ Template.images_input_modal.onRendered(function(){
     Session.set("uploadingImages", false);
     Session.set("numImagesUploaded", false);
     Session.set("numImagesToUpload", false);
+    Session.set("images.finished", false);
 });
 
 function saveImgInBrowserByFile(file){
@@ -174,4 +197,8 @@ function closeMainModal(){
             Session.set("img-prev-edit-id",false);
         }
     });
+}
+
+function uploadingImages(){
+    return Session.get("uploadingImages");
 }
