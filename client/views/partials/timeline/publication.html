@@ -3,12 +3,11 @@
     <div class="card web-color-1">
         <div class="card-content text-color-3 publication-content">
             <div class="text-color-1 publication-header">
-                <a>
-                    <!--<img src="/example.png" class="circle" height="auto" width="100%" style="max-width: 50px;max-height: 50px; vertical-align: middle;margin-right: 10px">-->
+                <a href="{{ pathFor 'profile' username=owner.username }}">
                     {{> images_avatar user_id=owner.id max_size="50px" css="vertical-align: middle; margin-right:10px;"}}
                 </a>
                 <div class="publication-header-center">
-                    <a>{{owner.username}}</a>
+                    <a href="{{ pathFor 'profile' username=owner.username }}">{{owner.username}}</a>
                     {{#if isMine}}
                         <div class="edit-publication">
                             <a id="edit-pub" href="#"><i class="fa fa-pencil-square fa-2" aria-hidden="true"></i></a>

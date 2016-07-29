@@ -1,10 +1,3 @@
-Template.profileTimeline.helpers({
-    publications: function () {
-        var user_id = Meteor.userId();
-        return Publications.find({},{sort: {createdAt: -1}});
-    }
-});
-
 Template.profileTimelineUser.helpers({
     canSee: function(){
         var isPrivate = this.private_profile;
@@ -17,5 +10,8 @@ Template.profileTimelineUser.helpers({
             isFollowed = _.contains(user.followed, this._id);
         }
         return isPrivate && isFollowed;
+    },
+    itsMe: function(e){
+        return Meteor.user() && Meteor.user()._id == this.user._id;
     }
 });

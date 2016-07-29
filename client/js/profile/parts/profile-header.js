@@ -43,12 +43,13 @@ Template.profileHeader.events({
 });
 
 Template.profileHeaderUser.helpers({
-    publications_pretty_user: function(){
-        var usernameProfile = this.username;
-        Meteor.call("findNumPublications", usernameProfile, function(e,r){
-            Session.set("findNumPublications",r);
-        });
-        var numPublications = Session.get("findNumPublications");
-        return numPublications;
+    followed_pretty: function(){
+        return Prettify.compactInteger(this.user.followed.length);
+    },
+    followers_pretty: function(){
+        return Prettify.compactInteger(this.user.followers.length);
+    },
+    publications_pretty: function(){
+        return Prettify.compactInteger(this.numPublication);
     }
 });
