@@ -11,7 +11,7 @@ Template.profileTimelineUser.helpers({
         }
         return isPrivate && isFollowed;
     },
-    itsMe: function(e){
+    itsMe: function(){
         return Meteor.user() && Meteor.user()._id == this.user._id;
     }
 });

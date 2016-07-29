@@ -17,7 +17,7 @@
 }
 
 .profile-view-container.view-selected{
-    margin-bottom: -2px !important;
+    margin-bottom: -3px !important;
     border-bottom: 3px solid #00e5ff;
     color: #00e5ff;
 }
