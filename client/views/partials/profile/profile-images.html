@@ -2,6 +2,9 @@
     <div class="container div-profile">
         {{> profileHeaderUser}}
         {{#if canSee}}
+            {{#if itsMe}}
+                {{> images_input_button}}
+            {{/if}}
             <div class="row profile-content">
                 {{#with images}}
                     {{> images_miniatures_container}}
