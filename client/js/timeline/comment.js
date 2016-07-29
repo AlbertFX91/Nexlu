@@ -54,23 +54,24 @@ Template.comment.events({
     'submit .edit-comment': function(e) {
         e.preventDefault();
         var description = e.target.editComment.value;
+        var descriptionTrim = description.trim();
         var commentId = this.id;
         var valido = true;
         var error = $(e.target).find("#edit-comment-error");
         var label = $(e.target).find('#edit-comment-label');
-        if (description.trim() == ""){
+        if (descriptionTrim == ""){
             var texto = TAPi18n.__("error.comment-notBlank");
             error.text(texto);
             label.removeClass('active');
             valido = false;
-        } else if (description.length > 2000) {
+        } else if (descriptionTrim.length > 2000) {
             var texto = TAPi18n.__("error.comment-maxlength");
             error.text(texto);
             label.hide();
             valido = false;
         }
         if (valido) {
-            Meteor.call('editComment', commentId, description, function(err, response){
+            Meteor.call('editComment', commentId, descriptionTrim, function(err, response){
                 if (!err){
                     $(e.target).parents('#edit-comment-modal').closeModal();
                 }

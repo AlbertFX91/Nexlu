@@ -21,14 +21,15 @@ Template.newComment.events({
     'submit form': function(e) {
         e.preventDefault();
         var description = e.target.newComment.value;
+        var descriptionTrim = description.trim();
         var userId = Meteor.userId();
         var publicationId = this._id;
         var valido = true;
-        if (description.trim() == ""){
+        if (descriptionTrim == ""){
             var texto = TAPi18n.__("error.comment-notBlank");
             $(e.target).children('.new-comment-action').children('#commentError').text(texto);
             valido = false;
-        } else if (description.length > 2000) {
+        } else if (descriptionTrim.length > 2000) {
             var texto = TAPi18n.__("error.comment-maxlength");
             $(e.target).children('.new-comment-action').children('#commentError').text(texto);
             valido = false;
@@ -36,7 +37,7 @@ Template.newComment.events({
         var comment = {
             id: new Mongo.ObjectID()._str,
             createdAt: new Date(),
-            description: description,
+            description: descriptionTrim,
             player: userId,
             playersLike: [],
             playersDislike: []
