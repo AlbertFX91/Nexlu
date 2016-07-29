@@ -50,6 +50,17 @@
                             <button class="col s6 m12 btn btn-success button-profile"><i class="material-icons left">person_pin</i><span>{{_ "tag.profile"}}</span></button>
                         </div>
                     </div>
+                    {{#if currentUser}}
+                        {{#if isFollowed}}
+                            <a id="unfollowUser" class="bold caret text-shadow smaller-font">
+                                {{_ "profile.followed"}}
+                            </a>
+                        {{else}}
+                            <a id="followUser" class="bold caret text-shadow smaller-font">
+                                {{_ "profile.follow"}}
+                            </a>
+                        {{/if}}
+                    {{/if}}
                 </div>
             {{/each}}
         </div>

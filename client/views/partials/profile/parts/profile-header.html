@@ -68,14 +68,16 @@
                 </div>
                 <div class="row profile-username" style="margin-top: 5px">
                     <span id="usernameUserProfile">{{username}}</span>
-                    {{#if isFollowed}}
-                        <a id="unfollowUser" class="bold caret text-shadow smaller-font">
-                            {{_ "profile.followed"}}
-                        </a>
-                    {{else}}
-                        <a id="followUser" class="bold caret text-shadow smaller-font">
-                            {{_ "profile.follow"}}
-                        </a>
+                    {{#if currentUser}}
+                        {{#if isFollowed}}
+                            <a id="unfollowUser" class="bold caret text-shadow smaller-font">
+                                {{_ "profile.followed"}}
+                            </a>
+                        {{else}}
+                            <a id="followUser" class="bold caret text-shadow smaller-font">
+                                {{_ "profile.follow"}}
+                            </a>
+                        {{/if}}
                     {{/if}}
                 </div>
                 <div class="row profile-numfriends">
