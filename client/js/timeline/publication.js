@@ -74,23 +74,24 @@ Template.publication.events({
     'submit .edit-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('editPublication').value;
+        var descriptionTrim = description.trim();
         var publicationId = this._id;
         var valido = true;
-        if (description.trim() == ""){
+        if (descriptionTrim == ""){
             var texto = TAPi18n.__("error.post-notBlank");
             document.getElementById('edit-post-error').innerHTML = texto;
             $("#edit-post-label").removeClass("active");
             valido = false;
-        } else if (description.length > 5000) {
+        } else if (descriptionTrim.length > 5000) {
             var texto = TAPi18n.__("error.post-maxlength");
             document.getElementById('edit-post-error').innerHTML = texto;
             $("#edit-post-label").hide();
             valido = false;
         }
         //Comprobación del etiquetado con '@'
-        var usernamesTagged = Util.validateTag(description);
+        var usernamesTagged = Util.validateTag(descriptionTrim);
         if (valido) {
-           Meteor.call('editPublication', publicationId, description, usernamesTagged, function(err, response){
+           Meteor.call('editPublication', publicationId, descriptionTrim, usernamesTagged, function(err, response){
                if (!err){
                    $('#edit-pub-modal').closeModal();
                }

@@ -21,15 +21,16 @@ Template.newPublication.events({
     'submit .confirm-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('newPublication').value;
+        var descriptionTrim = description.trim();
         var userId = Meteor.userId();
         var username = Meteor.user().username;
         var valido = true;
-        if (description.trim() == ""){
+        if (descriptionTrim == ""){
             var texto = TAPi18n.__("error.post-notBlank");
             document.getElementById('post-error').innerHTML = texto;
             $("#post-label").removeClass("active");
             valido = false;
-        } else if (description.length > 5000) {
+        } else if (descriptionTrim.length > 5000) {
             var texto = TAPi18n.__("error.post-maxlength");
             document.getElementById('post-error').innerHTML = texto;
             $("#post-label").hide();
@@ -37,7 +38,7 @@ Template.newPublication.events({
         }
 
         //Comprobación del etiquetado con '@'
-        var usernamesTagged = Util.validateTag(description);
+        var usernamesTagged = Util.validateTag(descriptionTrim);
 
         var publication = {
             owner:{
@@ -46,7 +47,7 @@ Template.newPublication.events({
                 },
             createdAt: new Date(),
             playersTagged: [], //Se inicializa vacio y en servidor se modifica
-            description: description,
+            description: descriptionTrim,
             playersLike: [],
             playersDislike: [],
             comments: []
