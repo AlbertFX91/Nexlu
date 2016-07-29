@@ -1,0 +1,10 @@
+
+.single-publication {
+    width: 50% !important;
+    margin: 0 auto !important;
+    margin-top: 30px !important;
+}
+
+.single-publication .new-comment-content {
+    padding: 0 30px 0 20px !important;
+}

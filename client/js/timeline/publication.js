@@ -3,9 +3,16 @@ Template.publication.helpers({
         return Prettify.compactTags(this.playersTagged);
     },
     isMine: function() {
-        if (this.owner[0].id.trim() === Meteor.userId().trim())
+        if (this.owner.id.trim() === Meteor.userId().trim())
             return true;
         return false;
+    },
+    descriptionTruncated: function() {
+        var description = this.description;
+        return Humanize.truncate(description, 200);
+    },
+    descriptionTruncate: function() {
+      return this.description.length >= 200;
     },
     iLike: function() {
         return _.contains(this.playersLike, Meteor.userId().trim());
@@ -13,9 +20,26 @@ Template.publication.helpers({
     iDislike: function() {
         return _.contains(this.playersDislike, Meteor.userId().trim());
     },
-
-
-
+    settingsTextareaEdit: function () {
+        return {
+            position: top,
+            limit: 5,
+            rules: [
+                {
+                    token: '@',
+                    collection: Meteor.users,
+                    field: 'username',
+                    options: '',
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
+                }
+            ]
+        }
+    },
+    hasComments: function() {
+      return this.comments.length > 0;
+    },
+    
     // TODO: Esto hay que hacerlo en el lado del server (methods):
     listLikes: function(likes){
         var likes_username = _.map(likes, function(id){
@@ -52,7 +76,6 @@ Template.publication.events({
         var description = document.getElementById('editPublication').value;
         var publicationId = this._id;
         var valido = true;
-        //var playersTagged: [], //TODO: Añadir etiquetas
         if (description.trim() == ""){
             var texto = TAPi18n.__("error.post-notBlank");
             document.getElementById('edit-post-error').innerHTML = texto;
@@ -64,8 +87,10 @@ Template.publication.events({
             $("#edit-post-label").hide();
             valido = false;
         }
+        //Comprobación del etiquetado con '@'
+        var usernamesTagged = Util.validateTag(description);
         if (valido) {
-           Meteor.call('editPublication', publicationId, description, function(err, response){
+           Meteor.call('editPublication', publicationId, description, usernamesTagged, function(err, response){
                if (!err){
                    $('#edit-pub-modal').closeModal();
                }
@@ -86,6 +111,18 @@ Template.publication.events({
                 $('.lean-overlay').remove();
             }
         });
+    },
+    'click #read-more': function(e) {
+        e.preventDefault();
+        var readLess = "<a id='read-less'> " + TAPi18n.__("timeline.read-less") + "</a>";
+        $(e.target).parent().empty().append(this.description, readLess);
+    },
+    'click #read-less': function(e) {
+        e.preventDefault();
+        var description = this.description;
+        var descriptionTruncated = Humanize.truncate(description, 200);
+        var readMore = "<a id='read-more'> " + TAPi18n.__("timeline.read-more") + "</a>";
+        $(e.target).parent().empty().append(descriptionTruncated, readMore);
     },
     'click #like': function (e) {
         e.preventDefault();
@@ -130,5 +167,17 @@ Template.publication.events({
                 }
             });
         }
+    },
+    'click #view-comments': function (e) {
+        e.preventDefault();
+        $(e.target).next().removeClass('hide');
+        $(e.target).parent().next().removeClass('hide');
+        $(e.target).addClass('hide');
+    },
+    'click #hide-comments': function (e) {
+        e.preventDefault();
+        $(e.target).prev().removeClass('hide');
+        $(e.target).parent().next().addClass('hide');
+        $(e.target).addClass('hide');
     }
 });

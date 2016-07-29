@@ -5,8 +5,8 @@
   "logout": "Salir",
   "login": "Entrar",
   "login_error_credentials_wrong": "usuario y/o contraseña erronea",
-  "login-facebook": "Iniciar con Facebook",
-  "login-gmail": "Iniciar con Gmail",
+  "login-facebook": "Facebook",
+  "login-google": "Google",
   "login-twitter": "Iniciar con Twitter",
   "password": "Contraseña",
   "confirm_password": "Confirmar contraseña",
@@ -26,6 +26,7 @@
   "toastMail": "¡El correo se ha enviado!",
   "send": "Enviar",
   "close": "Cerrar",
+  "search_user": "Buscar usuario...",
 
   "bio":{
     "modify_bio": "Modificar biografía",
@@ -70,7 +71,9 @@
     "message_error_empty": "El mensaje no puede estar vacio",
     "message_error_minlength": "El mensaje debe tener más de 20 caracteres",
     "message_error_maxlength": "El mensaje no puede superar los 300 caracteres",
-    "post-maxlength": "La publicación no puede superar los 5000 caracteres"
+    "post-maxlength": "La publicación no puede superar los 5000 caracteres",
+    "comment-maxlength": "El comentario no puede superar los 2000 caracteres",
+    "comment-notBlank": "El comentario no debe estar vacío"
   },
 
   "tag": {
@@ -94,7 +97,8 @@
     "unfollow": "Dejar de seguir",
     "following": "Siguiendo",
     "post": "Enviar",
-    "remove": "Borrar"
+    "remove": "Borrar",
+    "comment": "Commentar"
 
   },
 
@@ -140,7 +144,11 @@
     "description": "Descripción",
     "uploaded": "Imágenes guardadas",
     "uploading_progress": "Subiendo imagen <strong>%s</strong> de <strong>%s</strong>",
-    "uploaded_finished": "Subida finalizada"
+    "uploaded_finished": "Subida finalizada",
+    "uploading": "Estamos subiendo tus imágenes",
+    "setavatar": "Seleccionar como avatar",
+    "setavatar_finished": "Cambiado avatar correctamente"
+
   },
 
   "contactUs": {
@@ -164,13 +172,20 @@
   },
 
   "timeline": {
-    "more-tags": "y otros jugadores",
+    "more-tags": " y otros jugadores",
     "with": "Con",
     "no-tags": "Sin etiquetas",
     "whatsup": "¿Qué pasa?",
     "edit-post": "Editar publicación",
     "remove-post": "¿Está seguro de eliminar esta publicación?",
-    "new-post": "Nueva publicación"
+    "new-post": "Nueva publicación",
+    "read-more": "Seguir leyendo!",
+    "read-less": "Mostrar menos!",
+    "view-comments": "Mostrar comentarios",
+    "hide-comments": "Ocultar comentarios",
+    "edit-comment": "Editar comentario",
+    "remove-comment": "¿Está seguro de eliminar este comentario?",
+    "comment": "Comentar la publicación..."
   },
 
   "faq": {

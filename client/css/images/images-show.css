@@ -1,3 +1,14 @@
 .publication-image-container {
     margin-top: 10px !important;
 }
+
+.publication-image-img{
+    cursor: pointer;
+}
+
+#button-open-options{
+    position:absolute;
+    top:0;
+    right:0;
+    color: black !important;
+}
