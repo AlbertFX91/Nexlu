@@ -40,7 +40,7 @@
         {{#if canSee}}
                 <div class="row">
                     <div class="col s4 profile-view-col">
-                        <a href="{{pathFor 'profilePhotos'}}" style='text-decoration:none;color:#90a4ae;'>
+                        <a href="{{pathFor 'profilePhotos' username=user.username}}" style='text-decoration:none;color:#90a4ae;'>
                             <div class="profile-view-container {{#if isActiveRoute 'profilePhotos'}}view-selected{{/if}}"  data-view="profilePhotos">
                                 <div class="row profile-view-icon">
                                     <i class="fa fa-camera" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
                         </a>
                     </div>
                     <div class="col s4 profile-view-col">
-                        <a href="{{pathFor 'profile'}}" style='text-decoration:none;color:#90a4ae;'>
+                        <a href="{{pathFor 'profile' username=user.username}}" style='text-decoration:none;color:#90a4ae;'>
                             <div class="profile-view-container {{#if isActiveRoute 'profile'}}view-selected{{/if}}" data-view="profile">
                                 <div class="row profile-view-icon">
                                     <i class="fa fa-align-left" aria-hidden="true"></i>
@@ -64,7 +64,7 @@
                         </a>
                     </div>
                     <div class="col s4 profile-view-col">
-                        <a href="{{pathFor 'profileInfo'}}" style='text-decoration:none;color:#90a4ae;'>
+                        <a href="{{pathFor 'profileInfo' username=user.username}}" style='text-decoration:none;color:#90a4ae;'>
                             <div class="profile-view-container {{#if isActiveRoute 'profileInfo'}}view-selected{{/if}}" data-view="profileInfo">
                                 <div class="row profile-view-icon">
                                     <i class="fa fa-user" aria-hidden="true"></i>

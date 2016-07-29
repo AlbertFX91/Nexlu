@@ -25,8 +25,3 @@ Template.profileViewsUser.helpers({
         return isPrivate && isFollowed;
     }
 });
-
-Template.profileViewsUser.onRendered(function(e){
-    console.log(this);
-    console.log(this.data);
-})

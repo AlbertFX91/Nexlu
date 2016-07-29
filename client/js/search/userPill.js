@@ -12,7 +12,6 @@ Template.userPillSearch.events({
 
 Template.userPillSearch.events({
     'click .click-profile': function (event) {
-        console.log("entro en click profile");
         event.preventDefault();
         var username = $(this).attr("username");
         Router.go('profile',{username: username});
