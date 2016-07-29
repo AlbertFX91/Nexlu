@@ -12,28 +12,21 @@ Template.profileViews.events({
 });
 
 Template.profileViewsUser.helpers({
-    isPrivate: function(){
-        var username = $(this).attr("username");
-        Meteor.call("find.privacity.byUser", username, function(e,r){
-            Session.set("isPrivate",r);
-        });
-        var isPrivate = Session.get("isPrivate");
-        return isPrivate;
-    },
-    isPrivateButFollower: function(){
-        var username = $(this).attr("username");
-        Meteor.call("find.privacity.byUser", username, function(e,r){
-            Session.set("isPrivate",r);
-        });
-        var isPrivate = Session.get("isPrivate");
-        Meteor.call("find.is.followed", username, function(e,r){
-            Session.set("isFollowed", r);
-        });
-        var isFollowed = Session.get("isFollowed");
-        var result = false;
-        if(isPrivate == true && isFollowed == true){
-            result = true;
+    canSee: function(){
+        var isPrivate = this.private_profile;
+        if(!isPrivate){
+            return true;
         }
-        return result;
+        var isFollowed = false;
+        var user = Meteor.user();
+        if(user){
+            isFollowed = _.contains(user.followed, this._id);
+        }
+        return isPrivate && isFollowed;
     }
 });
+
+Template.profileViewsUser.onRendered(function(e){
+    console.log(this);
+    console.log(this.data);
+})
