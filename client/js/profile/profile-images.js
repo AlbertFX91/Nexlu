@@ -10,5 +10,8 @@ Template.profileImagesUser.helpers({
             isFollowed = _.contains(user.followed, this._id);
         }
         return isPrivate && isFollowed;
+    },
+    itsMe: function(){
+        return Meteor.user() && Meteor.user()._id == this.user._id;
     }
 });
