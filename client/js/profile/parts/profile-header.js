@@ -1,3 +1,4 @@
+
 Template.profileHeader.helpers({
     followed_pretty: function(){
         return Prettify.compactInteger(this.me.followed.length);

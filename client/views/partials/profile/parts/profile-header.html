@@ -73,9 +73,9 @@
                     <span id="usernameUserProfile">{{user.username}}</span>
                 </div>
                 <div class="row profile-numfriends">
-                    <div class="col s4 profile-col-border"></div>
-                    {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'followingUser'}}">{{followed_pretty}}</a></span>
-
+                    <div class="col s4 profile-col-border">
+                        {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'followingUser'}}">{{followed_pretty}}</a></span>
+                    </div>
                     <div class="col s4 profile-col-border">
                         {{_ "profile.followers" }} <span class="profile-num"><a href="{{pathFor 'followersUser'}}">{{followers_pretty}}</a></span>
                     </div>
