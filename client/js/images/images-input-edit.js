@@ -6,6 +6,22 @@ Template.images_preview_edit.helpers({
     },
     editing_description: function(){
         return Session.get("img-prev-edit-description");
+    },
+    settingsTextarea: function () {
+        return {
+            position: top,
+            limit: 5,
+            rules: [
+                {
+                    token: '@',
+                    collection: Meteor.users,
+                    field: 'username',
+                    options: '',
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
+                }
+            ]
+        }
     }
 });
 
@@ -107,6 +123,12 @@ Template.images_preview_edit.events({
     },
     "click #edit-img-description-icon": function () {
         Session.set("img-prev-edit-description", true);
+        setTimeout(function(){
+            var textarea = document.getElementById('img-edit-description-input');
+            var id = Session.get("img-prev-edit-id");
+            var img = ImagesLocals.findOne(id);
+            textarea.value = img.description;
+        },100);
     },
     "click #img-edit-description-cancel": function() {
         Session.set("img-prev-edit-description", false);
