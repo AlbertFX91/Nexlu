@@ -218,6 +218,13 @@ Meteor.methods({
                 playersDislike: userId
             }
         })
+    }, 
+    'image.postComment': function (publicationId, comment) {
+        Images.update(publicationId, {
+            $push: {
+                comments: comment
+            }
+        });
     },
     'postComment': function (publicationId, comment) {
         Publications.update(publicationId, {
@@ -225,6 +232,19 @@ Meteor.methods({
                 comments: comment
             }
         });
+    },
+    'image.likeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Images.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersLike": userId
+            }
+        });
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
     },
     'likeComment': function(commentId) {
         var userId = Meteor.userId();
@@ -236,6 +256,19 @@ Meteor.methods({
         Publications.update({"comments.id": commentId}, {
             $pull: {
                 "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'image.dislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Images.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersDislike": userId
+            }
+        });
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
             }
         })
     },
@@ -252,11 +285,27 @@ Meteor.methods({
             }
         })
     },
+    'image.removeLikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
     'removeLikeComment': function(commentId) {
         var userId = Meteor.userId();
         Publications.update({"comments.id": commentId}, {
             $pull: {
                 "comments.$.playersLike": userId
+            }
+        })
+    },
+    'image.removeDislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
             }
         })
     },
@@ -268,12 +317,28 @@ Meteor.methods({
             }
         })
     },
+    'image.editComment': function(commentId, description){
+        Images.update({"comments.id": commentId}, {
+            $set: {
+                "comments.$.description": description
+            }
+        })
+    },
     'editComment': function(commentId, description){
         Publications.update({"comments.id": commentId}, {
             $set: {
                 "comments.$.description": description
             }
         })
+    },
+    'image.removeComment': function(commentId) {
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                comments: {
+                    id: commentId
+                }
+            }
+        });
     },
     'removeComment': function(commentId) {
         Publications.update({"comments.id": commentId}, {

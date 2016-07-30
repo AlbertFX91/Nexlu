@@ -103,7 +103,7 @@
                 </div>
                 <div class="hide">
                     {{#each comments}}
-                        {{> comment}}
+                        {{> images_comment}}
                     {{/each}}
                 </div>
             </div>
@@ -111,7 +111,7 @@
         {{#if currentUser}}
             <div class="card-action new-comment">
                 {{#with this}}
-                    {{> newComment}}
+                    {{> images_newComment}}
                 {{/with}}
             </div>
         {{/if}}

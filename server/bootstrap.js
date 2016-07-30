@@ -405,6 +405,7 @@ function createImages(){
         playersDislike: [user4._id],
         comments: [
             {
+                id: new Mongo.ObjectID()._str,
                 createdAt: new Date('2016-06-03T12:05:00'),
                 description: "Nice publication!",
                 player: user2._id,
@@ -412,6 +413,7 @@ function createImages(){
                 playersDislike: []
             },
             {
+                id: new Mongo.ObjectID()._str,
                 createdAt: new Date('2016-06-03T12:08:00'),
                 description: "Nice one dude!",
                 player: user3._id,
