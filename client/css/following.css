@@ -23,3 +23,11 @@
     background-color: #688826;
     white-space: normal !important;
 }
+
+.following-row{
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    margin: 3px 0 3px 0;
+}

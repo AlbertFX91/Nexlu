@@ -1,47 +1,27 @@
-Template.following.helpers({
-    searchFollowing: function(){
-        var userProfile = false;
-        Meteor.call("findFollowing", null, userProfile, function(e,r){
-            Session.set("resultSearchFollowing",r);
-        });
-        var users = Session.get("resultSearchFollowing");
-        return users;
-    }
-});
-
-Template.following.events({
-    'click .button-unfollow': function (event) {
-        event.preventDefault();
-        var username = $(this).attr("username");
-        Meteor.call("unfollow", username);
-        location.reload();
+Template.follow_users_list.helpers({
+    isFollowed: function(){
+        return _.contains(Meteor.user().followed,this._id);
     },
-    'click .button-profile': function (event) {
-        event.preventDefault();
-        var username = $(this).attr("username");
-        Router.go('profile',{username: username});
+    canFollowUnfollow: function(){
+        //Comprobamos que estamos consultando mi lista de usuarios a los que estoy siguiendo. De ser asi puedo seguir o dejar de seguir.
+        return Meteor.user() && Template.parentData().parent._id == Meteor.user()._id;
     }
 });
 
-//// FollowingUser (usado para los perfiles de los usarios) /////
-
-Template.followingUser.helpers({
-    searchFollowingUser: function(){
-        var userProfile = true;
-        var url = document.location.href.split("/");
-        var usernameProfile = url[4];
-        Meteor.call("findFollowing", usernameProfile, userProfile, function(e,r){
-            Session.set("resultSearchFollowingUser",r);
-        });
-        var users = Session.get("resultSearchFollowingUser");
-        return users;
-    }
-});
-
-Template.followingUser.events({
+Template.follow_users_list.events({
     'click .button-profile': function (event) {
         event.preventDefault();
-        var username = $(this).attr("username");
+        var username = this.username;
         Router.go('profile',{username: username});
+    },
+    'click #followUser': function(event){
+        event.preventDefault();
+        var username = this.username;
+        Meteor.call("followUser", username);
+    },
+    'click #unfollowUser': function(event){
+        event.preventDefault();
+        var username = this.username;
+        Meteor.call("unfollow", username);
     }
 });

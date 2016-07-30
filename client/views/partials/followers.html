@@ -9,7 +9,7 @@
                             <img src="/example.png" class="circle" height="auto" width="60%" style="margin-right: auto;margin-left: auto;max-width: 110px;max-height: 110px; display: block">
                         </a>
                     </div>
-                    <div class="col s2 m2" style="margin-top: 40px; text-align:center">
+                    <div id="usernameFollowersMe" class="col s2 m2" style="margin-top: 40px; text-align:center">
                         {{username}}
                     </div>
                     <div class="col s4 m3" style="margin-top: 40px; text-align:left">
@@ -20,6 +20,17 @@
                             <button class="col s6 m12 btn btn-success button-profile"><i class="material-icons left">person_pin</i><span>{{_ "tag.profile"}}</span></button>
                         </div>
                     </div>
+                    {{#if currentUser}}
+                        {{#if isFollowed}}
+                            <a id="unfollowUser" class="bold caret text-shadow smaller-font">
+                                {{_ "profile.followed"}}
+                            </a>
+                        {{else}}
+                            <a id="followUser" class="bold caret text-shadow smaller-font">
+                                {{_ "profile.follow"}}
+                            </a>
+                        {{/if}}
+                    {{/if}}
                 </div>
             {{/each}}
         </div>
@@ -48,6 +59,17 @@
                             <button class="col s6 m12 btn btn-success button-profile"><i class="material-icons left">person_pin</i><span>{{_ "tag.profile"}}</span></button>
                         </div>
                     </div>
+                    {{#if currentUser}}
+                        {{#if isFollowed}}
+                            <a id="unfollowUser" class="bold caret text-shadow smaller-font">
+                                {{_ "profile.followed"}}
+                            </a>
+                        {{else}}
+                            <a id="followUser" class="bold caret text-shadow smaller-font">
+                                {{_ "profile.follow"}}
+                            </a>
+                        {{/if}}
+                    {{/if}}
                 </div>
             {{/each}}
         </div>

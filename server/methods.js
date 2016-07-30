@@ -475,6 +475,20 @@ Meteor.methods({
 
         });
     },
+    'followUser': function(username){
+        var userId = Meteor.userId();
+        var userfollow = Meteor.users.findOne({"username":username});
+        Meteor.users.update({_id: userId}, {
+            "$push": {
+                followed: userfollow._id
+            }
+        });
+        Meteor.users.update({_id: userfollow._id}, {
+            "$push": {
+                followers: userId
+            }
+        });
+    },
     'login.facebook': function(){
         var user = Meteor.user();
         options = {

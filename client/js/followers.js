@@ -6,6 +6,14 @@ Template.followers.helpers({
         });
         var users = Session.get("resultSearchFollowers");
         return users;
+    },
+    isFollowed: function(){
+        var username = $(this).attr("username");
+        Meteor.call("find.is.followed", username, function(e,r){
+            Session.set("isFollowed",r);
+        });
+        var isFollowed = Session.get("isFollowed");
+        return isFollowed;
     }
 });
 
@@ -14,6 +22,12 @@ Template.followers.events({
         event.preventDefault();
         var username = $(this).attr("username");
         Router.go('profile',{username: username});
+    },
+    'click #followUser': function(event){
+        //TODO
+    },
+    'click #unfollowUser': function(event){
+        //TODO
     }
 });
 
@@ -29,6 +43,14 @@ Template.followersUser.helpers({
         });
         var users = Session.get("resultSearchFollowersUser");
         return users;
+    },
+    isFollowed: function(){
+        var username = $(this).attr("username");
+        Meteor.call("find.is.followed", username, function(e,r){
+            Session.set("isFollowed",r);
+        });
+        var isFollowed = Session.get("isFollowed");
+        return isFollowed;
     }
 });
 
@@ -37,5 +59,17 @@ Template.followersUser.events({
         event.preventDefault();
         var username = $(this).attr("username");
         Router.go('profile',{username: username});
+    },
+    'click #followUser': function(event){
+        event.preventDefault();
+        var username = $(this).attr("username");
+        Meteor.call("followUser", username);
+        location.reload();
+    },
+    'click #unfollowUser': function(event){
+        event.preventDefault();
+        var username = $(this).attr("username");
+        Meteor.call("unfollow", username);
+        location.reload();
     }
 });

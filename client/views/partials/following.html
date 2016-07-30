@@ -1,55 +1,38 @@
-<template name="following">
+<template name="follow_users_list">
     <div class="container">
         <h1 id="title-following">{{_ "tag.following"}}</h1>
         <div id="followings">
-            {{#each searchFollowing}}
-                <div id="following" class="row s12 m12">
-                    <div class="col s4 m4">
+            {{#each users}}
+                <div id="following" class="following-row">
+                    <div style="flex: 1;">
                         <a>
-                            <img src="/example.png" class="circle" height="auto" width="60%" style="margin-right: auto; margin-top: 5px;margin-left: auto;max-width: 110px;max-height: 110px; display: block">
+                            {{> images_avatar user_id=_id max_size="110px" css="margin-left: auto; margin-right: auto;"}}
                         </a>
                     </div>
-                    <div class="col s2 m2" style="margin-top: 40px; text-align:center">
+                    <div style="flex: 1;">
                         <span  data-username="{{username}}">{{username}}</span>
                     </div>
-                    <div class="col s4 m3" style="margin-top: 40px; text-align:left">
+                    <div style="flex: 2;">
                         {{bio}}
                     </div>
-                    <div class="col s2 m2" style="margin-top: 20px;">
-                        <div class="row">
-                            <button class="col s6 m12 btn btn-success button-unfollow"><i class="material-icons left">delete</i><span>{{_ "tag.unfollow"}}</span></button>                        </div>
-                        <div class="row">
+                    <div style="flex: 1;">
+                        <div>
                             <button class="col s6 m12 btn btn-success button-profile"><i class="material-icons left">person_pin</i><span>{{_ "tag.profile"}}</span></button>
                         </div>
                     </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</template>
-
-<template name="followingUser">
-    <div class="container">
-        <h1 id="title-following">{{_ "tag.following"}}</h1>
-        <div id="followings">
-            {{#each searchFollowingUser}}
-                <div id="following" class="row s12 m12">
-                    <div class="col s4 m4">
-                        <a>
-                            <img src="/example.png" class="circle" height="auto" width="60%" style="margin-right: auto;margin-left: auto;max-width: 110px;max-height: 110px; display: block">
-                        </a>
-                    </div>
-                    <div class="col s2 m2" style="margin-top: 40px; text-align:center">
-                        <span  data-username="{{username}}">{{username}}</span>
-                    </div>
-                    <div class="col s4 m3" style="margin-top: 40px; text-align:left">
-                        {{bio}}
-                    </div>
-                    <div class="col s2 m2" style="margin-top: 20px;">
-                        <div class="row">
-                            <button class="col s6 m12 btn btn-success button-profile"><i class="material-icons left">person_pin</i><span>{{_ "tag.profile"}}</span></button>
+                    {{#if canFollowUnfollow}}
+                        <div style="flex: 1;">
+                            {{#if isFollowed}}
+                                <a id="unfollowUser" class="bold caret text-shadow smaller-font" >
+                                    {{_ "profile.followed"}}
+                                </a>
+                            {{else}}
+                                <a id="followUser" class="bold caret text-shadow smaller-font" >
+                                    {{_ "profile.follow"}}
+                                </a>
+                            {{/if}}
                         </div>
-                    </div>
+                    {{/if}}
                 </div>
             {{/each}}
         </div>
