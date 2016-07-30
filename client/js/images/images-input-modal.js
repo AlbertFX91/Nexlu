@@ -113,7 +113,7 @@ Template.images_input_modal.events({
                 var numImagesUploaded = Session.get("numImagesUploaded");
                 var numImagesToUpload = Session.get("numImagesToUpload");
                 var imagesFinished = Session.get("images.finished");
-                if (!imagesFinished && numImagesToUpload === numImagesUploaded) {
+                if (!imagesFinished && numImagesUploaded!=false && numImagesToUpload!=false && numImagesToUpload === numImagesUploaded) {
                     Toasts.throwTrans("images.uploaded_finished");
                     $("#input-images-modal").css("cursor","auto");
                     setTimeout(closeMainModal, 1000);

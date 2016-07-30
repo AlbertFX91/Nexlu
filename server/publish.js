@@ -230,7 +230,8 @@ Fields = {
         miniature: {
             _id: 1,
             owner: 1,
-            url: 1
+            url: 1,
+            createdAt: 1,
         },
         all: {
             _id: 1,
