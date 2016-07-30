@@ -134,13 +134,22 @@ Template.images_preview_edit.events({
         Session.set("img-prev-edit-description", false);
     },
     "click #img-edit-description-save": function() {
+        var id = Session.get("img-prev-edit-id")
         var description = document.getElementById("img-edit-description-input").value;
-        var id = Session.get("img-prev-edit-id");
-        if(description.length==0){
+        var description = description.trim();
+        var valido = true;
+        if (description == ""){
             Errors.throwErrorTranslated("error.description_empty");
-        }else{
+            valido = false;
+        } else if (description.length > 5000) {
+            Errors.throwErrorTranslated("error.post-maxlength");
+            valido = false;
+        }
+        //Comprobación del etiquetado con '@'
+        var usernamesTagged = Util.validateTag(description);
+        if(valido){
             ImagesLocals.update(id, {
-                $set: { description: description }
+                $set: { description: description, usernameTagged: usernamesTagged }
             });
             Session.set("img-prev-edit-description", false);
             Toasts.throwTrans("toast.description_added");

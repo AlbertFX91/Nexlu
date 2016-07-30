@@ -103,7 +103,8 @@ Template.images_input_modal.events({
                     Session.set("numImagesUploaded", numImagesUploaded + 1);
                     var data = {
                         url: r.url,
-                        description: img.description
+                        description: img.description,
+                        usernameTagged: img.usernameTagged
                     };
                     Meteor.call("image.new", data, function (e, r) {
                     });
@@ -171,7 +172,7 @@ function saveImgInBrowserByFile(file){
     reader.onload = function (e){
         //Declaramos que una vez cargado un fichero, insertaremos en la collection local ImagesLocales los datos del fichero,
         //así como los datos del fichero en una url, y un atributo auxiliar que nos indicará si se ha subido o no
-        var id = ImagesLocals.insert(_.extend({result: e.target.result, uploaded: false, description: file.name},file));
+        var id = ImagesLocals.insert(_.extend({result: e.target.result, uploaded: false, description: file.name, usernameTagged: []},file));
 
     };
     //Aquí leemos el fichero y se ejecutará la función onload una vez cargado

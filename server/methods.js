@@ -69,7 +69,15 @@ Meteor.methods({
                 comments: [],
                 url: data.url
             };
-            return Images.insert(image);
+            var id = Images.insert(image);
+
+            var playersTagged = Meteor.call('constructPlayersTagged', data.usernameTagged);
+            Images.update(id, {
+                $set: {
+                    playersTagged: playersTagged
+                }
+            })
+
         } else {
             throw Meteor.Error("User not logued");
         }
