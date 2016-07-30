@@ -1,4 +1,4 @@
-<template name="following">
+<!--<template name="following">
     <div class="container">
         <h1 id="title-following">{{_ "tag.following"}}</h1>
         <div id="followings">
@@ -26,13 +26,13 @@
             {{/each}}
         </div>
     </div>
-</template>
+</template>-->
 
 <template name="followingUser">
     <div class="container">
         <h1 id="title-following">{{_ "tag.following"}}</h1>
         <div id="followings">
-            {{#each searchFollowingUser}}
+            {{#each users}}
                 <div id="following" class="row s12 m12">
                     <div class="col s4 m4">
                         <a>
@@ -50,7 +50,7 @@
                             <button class="col s6 m12 btn btn-success button-profile"><i class="material-icons left">person_pin</i><span>{{_ "tag.profile"}}</span></button>
                         </div>
                     </div>
-                    {{#if currentUser}}
+                    {{#if canFollowUnfollow}}
                         {{#if isFollowed}}
                             <a id="unfollowUser" class="bold caret text-shadow smaller-font">
                                 {{_ "profile.followed"}}

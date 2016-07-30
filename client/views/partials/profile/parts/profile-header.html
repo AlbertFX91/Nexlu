@@ -1,74 +1,38 @@
-<template name="profileHeader">
-    <div class="row">
-        <div class="col s12 center-align">
-            <div class="profile-resume">
-                <div class="row">
-                    {{> images_avatar size="125px" css="margin-left: auto;margin-right: auto;border: 5px solid rgba( 103, 193, 245, 0.2 )"}}
-                    <!-- <img src="/example.png" class="circle responsive-img img-profile"> -->
-                </div>
-                <div class="row bio">
-                    <div class="col s12 m12">
-                        <img src="/comillas_inicio.png" height="22" width="22"/>
-                        {{_ bio}}
-                        <img src="/comillas_fin.png" height="22" width="22"/>
-                        <a href="#" id="a_bio"><i style="visibility: hidden" id="bio" class="small material-icons">mode_edit</i></a>
-                        <div id="modal1" class="modal">
-                            <div class="modal-content">
-                                <h4 style="color:black">{{_ "bio.modify_bio"}}</h4>
-                                <div class="col m12 s12 input-field">
-                                    <textarea id="textarea1" class="materialize-textarea" maxlength="150"></textarea>
-                                    <label for="textarea1"></label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" id="edit_bio" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
-                                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row profile-username truncate">
-                    {{username}}
-                </div>
-                <div class="row profile-numfriends">
-                    <div class="col s4 profile-col-border">
-                        {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'following'}}">{{followed_pretty}}</a></span>
-                    </div>
-                    <div class="col s4 profile-col-border">
-                        {{_ "profile.followers" }} <span class="profile-num"><a href="{{pathFor 'followers'}}">{{followers_pretty}}</a></span>
-                    </div>
-                    <div class="col s4">
-                        {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12 center-align">
-            {{> profileViews }}
-        </div>
-    </div>
-</template>
-
 <template name="profileHeaderUser">
     <div class="row">
         <div class="col s12 center-align">
             <div class="profile-resume">
                 <div class="row">
-                    <img src="/example.png" class="circle responsive-img img-profile">
+                    {{>images_avatar user_id=user._id max_size="125px" css="margin-left: auto;margin-right: auto;border: 5px solid rgba( 103, 193, 245, 0.2 )"}}
                 </div>
                 <div class="row bio">
                     <div class="col s12 m12">
-                        <img src="/comillas_inicio.png" height="22" width="22"/>
-                        {{_ bio}}
-                        <img src="/comillas_fin.png" height="22" width="22"/>
-                        <a href="#" id="a_bio"><i style="visibility: hidden" id="bio" class="small material-icons">mode_edit</i></a>
+                        <span id="bio-container">
+                            <img src="/comillas_inicio.png" height="22" width="22"/>
+                            {{_ user.bio}}
+                            <img src="/comillas_fin.png" height="22" width="22"/>
+                        </span>
+                        {{#if itsMe}}
+                            <a href="#" id="a_bio"><i style="visibility: hidden" id="bio" class="small material-icons">mode_edit</i></a>
+                            <div id="modal1" class="modal">
+                                <div class="modal-content">
+                                    <h4 style="color:black">{{_ "bio.modify_bio"}}</h4>
+                                    <div class="col m12 s12 input-field">
+                                        <textarea id="textarea1" class="materialize-textarea" maxlength="150"></textarea>
+                                        <label for="textarea1"></label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" id="edit_bio" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
+                                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                                </div>
+                            </div>
+                        {{/if}}
                     </div>
                 </div>
-                <div class="row profile-username" style="margin-top: 5px">
-                    <span id="usernameUserProfile">{{username}}</span>
-                    {{#if currentUser}}
+                <div class="row profile-username truncate" style="margin-top: 5px; padding-top: 5px;padding-bottom: 5px;">
+                    <span id="usernameUserProfile">{{user.username}}</span>
+                    {{#if canFollowUnfollow}}
                         {{#if isFollowed}}
                             <a id="unfollowUser" class="bold caret text-shadow smaller-font">
                                 {{_ "profile.followed"}}
@@ -82,13 +46,13 @@
                 </div>
                 <div class="row profile-numfriends">
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'followingUser'}}">{{followed.length}}</a></span>
+                        {{_ "profile.followed" }} <span class="profile-num"><a href="{{pathFor 'followingUser' username=user.username}}">{{followed_pretty}}</a></span>
                     </div>
                     <div class="col s4 profile-col-border">
-                        {{_ "profile.followers" }} <span class="profile-num"><a href="{{pathFor 'followersUser'}}">{{followers.length}}</a></span>
+                        {{_ "profile.followers" }} <span class="profile-num"><a href="{{pathFor 'followersUser' username=user.username}}">{{followers_pretty}}</a></span>
                     </div>
                     <div class="col s4">
-                        {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty_user}}</span>
+                        {{_ "profile.publications" }} <span class="profile-num">{{publications_pretty}}</span>
                     </div>
                 </div>
             </div>

@@ -135,7 +135,7 @@
     -webkit-justify-content: flex-end;
 }
 #img-edit-description-input{
-    color: black;
+    color: black !important;
 }
 
 #img-edit-description-save, #img-edit-description-cancel{

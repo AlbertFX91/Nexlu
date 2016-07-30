@@ -47,6 +47,7 @@ Meteor.methods({
     'checkUniqueEmail': function(emailRegister){
         return Meteor.users.find({'emails.0.address': emailRegister}).fetch().length==0
     },
+
     'deCodificaString': function (codificado) {
         var decodedString = Base64.decode(codificado);
         return decodedString;
@@ -55,12 +56,11 @@ Meteor.methods({
         var user = Meteor.user();
         if (user != undefined) {
             var image = {
-                owner: [
+                owner:
                     {
                         id: user._id,
                         username: user.username
-                    }
-                ],
+                    },
                 createdAt: new Date(),
                 playersTagged: [], //TODO: Añadir etiquetas
                 description: data.description,
@@ -69,15 +69,25 @@ Meteor.methods({
                 comments: [],
                 url: data.url
             };
-            return Images.insert(image);
+            var id = Images.insert(image);
+
+            var playersTagged = Meteor.call('constructPlayersTagged', data.usernameTagged);
+            Images.update(id, {
+                $set: {
+                    playersTagged: playersTagged
+                }
+            })
+
         } else {
             throw Meteor.Error("User not logued");
         }
     },
-    'image.edit': function(imgId, description){
-        Images.update(imgId, {
+    'image.edit': function(publicationId, description, usernamesTagged){
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
+        Images.update(publicationId, {
             $set: {
-                description: description
+                description: description,
+                playersTagged: playersTagged
             }
         })
     },
@@ -130,20 +140,28 @@ Meteor.methods({
         var user = Meteor.users.findOne(id, {fields:{username:1}});
         return user.username;
     },
-    'editPublication': function(publicationId, description){
+    'editPublication': function(publicationId, description, usernamesTagged){
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Publications.update(publicationId, {
             $set: {
-                description: description
+                description: description,
+                playersTagged: playersTagged
             }
         })
     },
     'removePublication': function(publicationId) {
         Publications.remove(publicationId);
     },
-    'postPublication': function (publication) {
-        Publications.insert(publication, function (err, response) {
+    'postPublication': function (publication, usernamesTagged) {
+        var publicationId = Publications.insert(publication, function (err, response) {
             if (err) {
                 console.log(err);
+            }
+        })
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
+        Publications.update(publicationId, {
+            $set: {
+                playersTagged: playersTagged
             }
         })
     },
@@ -154,6 +172,18 @@ Meteor.methods({
             subject: info[0],
             text: info[1] + "\n\n" + info[2]
         });
+    },
+    'constructPlayersTagged': function(usernamesTagged) {
+        var usernameLength = usernamesTagged.length;
+        var playersTagged = [];
+        for (var i = 0; i < usernameLength; i++){
+            var id = Meteor.users.findOne({"username": usernamesTagged[i]}, {fields:{_id:1}});
+            playersTagged.push({
+                _id: id,
+                username: usernamesTagged[i]
+            })
+        }
+        return playersTagged;
     },
     'likePublication': function(publicationId) {
         var userId = Meteor.userId();
@@ -196,6 +226,136 @@ Meteor.methods({
                 playersDislike: userId
             }
         })
+    }, 
+    'image.postComment': function (publicationId, comment) {
+        Images.update(publicationId, {
+            $push: {
+                comments: comment
+            }
+        });
+    },
+    'postComment': function (publicationId, comment) {
+        Publications.update(publicationId, {
+            $push: {
+                comments: comment
+            }
+        });
+    },
+    'image.likeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Images.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersLike": userId
+            }
+        });
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'likeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersLike": userId
+            }
+        });
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'image.dislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Images.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersDislike": userId
+            }
+        });
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'dislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $push: {
+                "comments.$.playersDislike": userId
+            }
+        });
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'image.removeLikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'removeLikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersLike": userId
+            }
+        })
+    },
+    'image.removeDislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'removeDislikeComment': function(commentId) {
+        var userId = Meteor.userId();
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                "comments.$.playersDislike": userId
+            }
+        })
+    },
+    'image.editComment': function(commentId, description){
+        Images.update({"comments.id": commentId}, {
+            $set: {
+                "comments.$.description": description
+            }
+        })
+    },
+    'editComment': function(commentId, description){
+        Publications.update({"comments.id": commentId}, {
+            $set: {
+                "comments.$.description": description
+            }
+        })
+    },
+    'image.removeComment': function(commentId) {
+        Images.update({"comments.id": commentId}, {
+            $pull: {
+                comments: {
+                    id: commentId
+                }
+            }
+        });
+    },
+    'removeComment': function(commentId) {
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                comments: {
+                    id: commentId
+                }
+            }
+        });
     },
     'chatroom.exists': function(follower_id, my_id){
         var res = ChatRooms.findOne(
@@ -327,7 +487,76 @@ Meteor.methods({
             "$push": {
                 followers: userId
             }
-
+        });
+    },
+    'login.facebook': function(){
+        var user = Meteor.user();
+        options = {
+            username : user.profile.name.replace(/ /g,''),
+            email: user.services.facebook.email
+        };
+        Meteor.users.update(user._id, {
+            $set: {
+                username: options.username.toLowerCase(),
+                "emails.0.address": options.email,
+                bio: TAPi18n.__("bio.add_bio"),
+                followers: [],
+                followed: [],
+                "emails.0.verified": true
+            }
+        });
+    },
+    'login.google': function(){
+        var user = Meteor.user();
+        options = {
+            username : user.profile.name.replace(/ /g,''),
+            email: user.services.google.email
+        };
+        Meteor.users.update(user._id, {
+            $set: {
+                username: options.username.toLowerCase(),
+                "emails.0.address": options.email,
+                bio: TAPi18n.__("bio.add_bio"),
+                followers: [],
+                followed: [],
+                "emails.0.verified": true
+            }
+        });
+    },
+    'login.facebook.newUsername': function(username){
+        var user = Meteor.user();
+        options = {
+            username : username.replace(/ /g,''),
+            email: user.services.facebook.email
+        };
+        Meteor.users.update(user._id, {
+            $set: {
+                username: options.username.toLowerCase(),
+                "emails.0.address": options.email,
+                bio: TAPi18n.__("bio.add_bio"),
+                followers: [],
+                followed: [],
+                "emails.0.verified": true,
+                private_profile: false
+            }
+        });
+    },
+    'login.google.newUsername': function(){
+        var user = Meteor.user();
+        options = {
+            username : user.profile.name.replace(/ /g,''),
+            email: user.services.facebook.email
+        };
+        Meteor.users.update(user._id, {
+            $set: {
+                username: options.username.toLowerCase(),
+                "emails.0.address": options.email,
+                bio: TAPi18n.__("bio.add_bio"),
+                followers: [],
+                followed: [],
+                "emails.0.verified": true,
+                private_profile: false
+            }
         });
     },
     'find.privacity': function(){
@@ -350,11 +579,50 @@ Meteor.methods({
         var userProfile = Meteor.users.findOne({"username": username});
         var user = Meteor.user();
         var result = false;
-        userProfile.followers.forEach(function(item){
-            if(item==user._id){
+        userProfile.followers.forEach(function (item) {
+            if (item == user._id) {
                 result = true;
             }
         });
         return result;
+},
+
+    'findAvatarByUser': function(user_id){
+        var user = Meteor.users.findOne(user_id);
+        if(user){
+            if(user.avatar == undefined){
+                return "https://s3-us-west-2.amazonaws.com/nexlu/logo-justified.png";
+            }else{
+                return user.avatar.url;
+            }
+        }else{
+            throw new Meteor.Error( 500, 'User does not exist with id: '+user_id );
+        }
+    },
+
+    'setAvatar': function(publication_id){
+        var user = Meteor.user();
+        if(!user){
+            throw new Meteor.Error( 500, 'We cannot recover the user logged');
+            return false;
+        }
+        var image = Images.findOne(publication_id);
+        if(!image){
+            throw new Meteor.Error( 500, 'We cannot recover the publication with id '+publication_id);
+            return false;
+        }
+        if(image.owner.id!=user._id){
+            throw new Meteor.Error( 500, 'The owner of the publication is not the current user');
+            return false;
+        }
+        Meteor.users.update(user._id, {
+            $set: {
+                avatar:{
+                    id: image._id,
+                    url: image.url
+                }
+            }
+        });
+        return true;
     }
 });

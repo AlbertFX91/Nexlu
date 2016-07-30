@@ -17,7 +17,7 @@ Template.chat_menu_user_entry.events({
 
 Template.chat_menu_user_entry.helpers({
     user_status: function(){
-        var online = this.status.online;
-        return online? "online": "offline";
+        var status = this.status;
+        return status && status.online? "online": "offline";
     }
 });
