@@ -196,6 +196,19 @@ Meteor.publish("user.following", function(username){
     }
 });
 
+Meteor.publish("user.followers", function(username){
+    var user = Meteor.users.findOne({username: username});
+    if(user){
+        return Meteor.users.find({
+            _id: {$in: user.followers}
+        }, Fields.user.followingList);
+    }else{
+        throw new Meteor.Error( 500, 'User does not exist with username: '+username );
+    }
+});
+
+
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,

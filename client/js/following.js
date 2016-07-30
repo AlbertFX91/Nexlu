@@ -1,4 +1,4 @@
-Template.followingUser.helpers({
+Template.follow_users_list.helpers({
     isFollowed: function(){
         return _.contains(Meteor.user().followed,this._id);
     },
@@ -8,7 +8,7 @@ Template.followingUser.helpers({
     }
 });
 
-Template.followingUser.events({
+Template.follow_users_list.events({
     'click .button-profile': function (event) {
         event.preventDefault();
         var username = this.username;
