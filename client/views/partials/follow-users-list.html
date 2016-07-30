@@ -5,7 +5,7 @@
             {{#each users}}
                 <div id="following" class="following-row">
                     <div style="flex: 1;">
-                        <a>
+                        <a href="{{ pathFor 'profile' username=username }}">
                             {{> images_avatar user_id=_id max_size="110px" css="margin-left: auto; margin-right: auto;"}}
                         </a>
                     </div>

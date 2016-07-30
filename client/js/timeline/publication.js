@@ -3,7 +3,7 @@ Template.publication.helpers({
         return Prettify.compactTags(this.playersTagged);
     },
     isMine: function() {
-        if (this.owner.id.trim() === Meteor.userId().trim())
+        if (Meteor.user() && this.owner.id.trim() === Meteor.userId().trim())
             return true;
         return false;
     },

@@ -13,7 +13,7 @@ Template.comment.helpers({
         return _.contains(this.playersDislike, Meteor.userId().trim());
     },
     isMine: function() {
-        if (this.player.trim() === Meteor.userId().trim())
+        if (Meteor.user() && this.player.trim() === Meteor.userId().trim())
             return true;
         return false;
     },
