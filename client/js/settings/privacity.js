@@ -15,5 +15,12 @@ Template.privacity.helpers({
         });
         var private_profile = Session.get("private_profile");
         return private_profile;
+    },
+    hasRequests: function(){
+        console.log(Meteor.user().requestsFollow.length > 0);
+        return Meteor.user().requestsFollow.length > 0;
+    },
+    numRequests: function(){
+        return Meteor.user().requestsFollow.length;
     }
 });

@@ -1,6 +1,13 @@
 Template.requests_follow.helpers({
     userFrom: function(){
         return ReactiveMethod.call("userRequestFrom", this.from);
+    },
+    hasRequests: function(){
+        console.log(Meteor.user().requestsFollow.length > 0);
+        return Meteor.user().requestsFollow.length > 0;
+    },
+    numRequests: function(){
+        return Meteor.user().requestsFollow.length;
     }
 });
 
