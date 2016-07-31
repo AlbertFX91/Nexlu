@@ -29,6 +29,14 @@ Meteor.publish('user.one', function (username) {
     });
 });
 
+Meteor.publish('user.profile.one', function (username) {
+    return Meteor.users.find({username: username}, {
+        fields: Fields.user.profile
+    });
+});
+
+
+
 Meteor.publish('search.users', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -225,7 +233,17 @@ Fields = {
             followers: 1,
             status: 1,
             avatar: 1,
-            private_profile: 1
+            private_profile: 1,
+            requestsFollow: 1
+        },
+        profile: {
+            _id: 1,
+            username: 1,
+            bio: 1,
+            followed: 1,
+            followers: 1,
+            avatar: 1,
+            private_profile: 1,
         },
         followed: {
             followed: 1
@@ -239,7 +257,6 @@ Fields = {
             followers: 1,
             avatar: 1,
             private_profile: 1
-
         }
     },
     publication: {
