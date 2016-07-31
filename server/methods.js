@@ -15,7 +15,8 @@ Meteor.methods({
                         bio: TAPi18n.__("bio.add_bio"),
                         followers: [],
                         followed: [],
-                        private_profile: user[4]
+                        private_profile: user[4],
+                        requestsFollow: []
                     }
                 });
             } catch (error) {
@@ -157,7 +158,7 @@ Meteor.methods({
             if (err) {
                 console.log(err);
             }
-        })
+        });
         var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Publications.update(publicationId, {
             $set: {
@@ -502,7 +503,8 @@ Meteor.methods({
                 bio: TAPi18n.__("bio.add_bio"),
                 followers: [],
                 followed: [],
-                "emails.0.verified": true
+                "emails.0.verified": true,
+                requestsFollow: []
             }
         });
     },
@@ -519,7 +521,8 @@ Meteor.methods({
                 bio: TAPi18n.__("bio.add_bio"),
                 followers: [],
                 followed: [],
-                "emails.0.verified": true
+                "emails.0.verified": true,
+                requestsFollow: []
             }
         });
     },
