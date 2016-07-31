@@ -244,6 +244,7 @@ Fields = {
             followers: 1,
             avatar: 1,
             private_profile: 1,
+            requestsFollow: 1
         },
         followed: {
             followed: 1
@@ -256,7 +257,8 @@ Fields = {
             username: 1,
             followers: 1,
             avatar: 1,
-            private_profile: 1
+            private_profile: 1,
+            requestsFollow: 1
         }
     },
     publication: {

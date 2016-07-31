@@ -25,6 +25,9 @@ Template.profileHeaderUser.helpers({
     },
     canFollowUnfollow: function(){
         return Meteor.user() && this.user._id != Meteor.user()._id;
+    },
+    hasRequestCreated: function(){
+        return _.find(this.user.requestsFollow, function(r){return r.from == Meteor.user()._id});
     }
 });
 
@@ -44,18 +47,6 @@ Template.profileHeaderUser.events({
         var bio = document.getElementById('textarea1').value;
         Meteor.call("modify_bio", bio);
     },
-    /*'click #followUser': function(event){
-        event.preventDefault();
-        var username = $(this).attr("username");
-        Meteor.call("followUser", username);
-        location.reload();
-    },
-    'click #unfollowUser': function(event){
-        event.preventDefault();
-        var username = $(this).attr("username");
-        Meteor.call("unfollow", username);
-        location.reload();
-    },*/
     'click #followUser': function(event){
         event.preventDefault();
         var username = this.user.username;
