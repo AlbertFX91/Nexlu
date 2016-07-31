@@ -5,9 +5,10 @@
             <div class="col s4 m4">
                 <div>
                     <ul class="list_settings">
-                        <li><a id="general" href="/settings">{{_ "settings.general"}}</a></li>
-                        <li><a id="privacity" href="/settings/privacity">{{_ "settings.privacity"}}</a></li>
-                        <li><a id="change_password" href="/settings/change-password">{{_ "settings.password"}}</a></li>
+                        <li><a id="general" href="{{ pathFor 'settings' }}">{{_ "settings.general"}}</a></li>
+                        <li><a id="privacity" href="{{ pathFor "privacity" }}">{{_ "settings.privacity"}}</a></li>
+                        <li><a id="change_password" href="{{ pathFor "change-password" }}">{{_ "settings.password"}}</a></li>
+                        <li><a id="requests_follow" href="{{ pathFor "requests-follow" }}">{{_ "settings.requests-follow"}}</a></li>
                     </ul>
                 </div>
             </div>

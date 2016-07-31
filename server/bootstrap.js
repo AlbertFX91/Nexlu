@@ -136,11 +136,11 @@ function createUsers(){
             requestsFollow: [
                 {
                     createdAt: new Date('2016-07-20T12:00:00'),
-                    from: id_user4._id
+                    from: id_user4
                 },
                 {
                     createdAt: new Date('2016-07-22T12:00:00'),
-                    from: id_user5._id
+                    from: id_user5
                 }
             ]
         }
@@ -177,11 +177,11 @@ function createUsers(){
             requestsFollow: [
                 {
                     createdAt: new Date('2016-07-20T12:00:00'),
-                    from: id_user1._id
+                    from: id_user1
                 },
                 {
                     createdAt: new Date('2016-07-22T12:00:00'),
-                    from: id_user2._id
+                    from: id_user2
                 }
             ]
         }

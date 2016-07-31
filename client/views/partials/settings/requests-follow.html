@@ -1,0 +1,44 @@
+<template name="requests_follow">
+    <div class="container settings-container">
+        <div class="row" style="border-radius: 5px; background-color:rgba( 0, 0, 0, 0.2 );
+        padding: 10px 3px 10px 3px;">
+            <div class="col s4 m4">
+                <div>
+                    <ul class="list_settings">
+                        <li><a id="general" href="{{ pathFor 'settings' }}">{{_ "settings.general"}}</a></li>
+                        <li><a id="privacity" href="{{ pathFor "privacity" }}">{{_ "settings.privacity"}}</a></li>
+                        <li><a id="change_password" href="{{ pathFor "change-password" }}">{{_ "settings.password"}}</a></li>
+                        <li><a id="requests_follow" href="{{ pathFor "requests-follow" }}">{{_ "settings.requests-follow"}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col s8 m8">
+                <div class="content-requests-follow" style="padding: 10px">
+                    <h5>{{_ "requests-follow.title"}}</h5>
+                    {{#each requestsFollow}}
+                        <div class="request-row" >
+                            <div style="flex: 1">
+                                {{> images_avatar user_id=userFrom._id max_size="50px" css="margin-left: auto; margin-right: auto;"}}
+                            </div>
+                            <div style="flex: 2">
+                                {{userFrom.username}}
+                            </div>
+                            <div class="hide-on-large-only" style="flex: 1">
+                                <a class="waves-effect waves-light btn green accept-request" style="padding: 0 10px;"><i class="material-icons left" style="margin: 0;">check_circle</i></a>
+                            </div>
+                            <div class="hide-on-large-only" style="flex: 1">
+                                <a class="waves-effect waves-light btn red reject-request" style="padding: 0 10px;"><i class="material-icons left" style="margin: 0;">delete</i></a>
+                            </div>
+                            <div class="hide-on-med-and-down" style="flex: 2">
+                                <a class="waves-effect waves-light btn green accept-request"><i class="material-icons left">check_circle</i>{{_ "tag.accept"}}</a>
+                            </div>
+                            <div class="hide-on-med-and-down" style="flex: 2">
+                                <a class="waves-effect waves-light btn red reject-request"><i class="material-icons left">delete</i>{{_ "tag.reject"}}</a>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

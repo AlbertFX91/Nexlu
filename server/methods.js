@@ -627,5 +627,20 @@ Meteor.methods({
             }
         });
         return true;
+    },
+
+    'userRequestFrom': function(user_id){
+        var user = Meteor.users.findOne(user_id, {
+            fields: {
+                _id: 1,
+                username: 1,
+            }
+        });
+        if(user){
+            return user;
+        }else{
+            throw new Meteor.Error( 500, 'We cannot recover the user with id '+user_id);
+            return false;
+        }
     }
 });
