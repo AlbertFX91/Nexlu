@@ -642,5 +642,46 @@ Meteor.methods({
             throw new Meteor.Error( 500, 'We cannot recover the user with id '+user_id);
             return false;
         }
+    },
+
+    'accept-request': function(user_id){
+        var me = Meteor.userId();
+        var userFollow = Meteor.users.findOne(user_id);
+        if(!userFollow){
+            throw new Meteor.Error( 500, 'We cannot recover the user with id '+user_id);
+            return false;
+        }
+        Meteor.users.update({_id: userFollow._id}, {
+            "$push": {
+                followed: me
+            }
+        });
+        Meteor.users.update({_id: me}, {
+            "$push": {
+                followers: userFollow._id
+            }
+        });
+        Meteor.users.update({_id: me}, {
+            "$pull": {
+                requestsFollow: {
+                    from: userFollow._id
+                }
+            }
+        });
+    },
+    'reject-request': function(user_id){
+        var me = Meteor.userId();
+        var userFollow = Meteor.users.findOne(user_id);
+        if(!userFollow){
+            throw new Meteor.Error( 500, 'We cannot recover the user with id '+user_id);
+            return false;
+        }
+        Meteor.users.update({_id: me}, {
+            "$pull": {
+                requestsFollow: {
+                    from: userFollow._id
+                }
+            }
+        });
     }
 });
