@@ -24,6 +24,21 @@ Meteor.methods({
             Accounts.sendVerificationEmail(userId);
         }
     },
+    'update.email.user':function (email) {
+    var email_no_errors = Util.validate_email(email);
+    if(email_no_errors == true){
+        try {
+            userId = Meteor.userId();
+            Meteor.users.update(userId, {
+                $set: {
+                    "emails.0.address": email
+                }
+            });
+        } catch (error) {
+            throw new Meteor.Error("Server error", error);
+        }
+    }
+},
     'modify_bio': function(bio){
         if(bio == ""){
             bio = TAPi18n.__(" ");

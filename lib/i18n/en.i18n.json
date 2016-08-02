@@ -217,7 +217,8 @@
     "settings": "Settings",
     "general": "General",
     "privacity": "Privacity",
-    "password": "Change password"
+    "password": "Change password",
+    "save_changes": "Save changes"
   },
 
   "privacity":{
@@ -229,6 +230,14 @@
     "p4": "You will not appear in searches.",
     "public": "Public",
     "private": "Private"
-  }
+  },
 
+  "general":{
+    "title": "General configurations",
+    "p1":"With this configuration you can change your email.",
+    "p2":"You must know that you can't change it by a email used.",
+    "p3":"Email current",
+    "p4":"New email",
+    "email_change_success":"Email changed successfully"
+  }
 }

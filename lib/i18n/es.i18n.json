@@ -237,7 +237,8 @@
     "settings": "Configuración",
     "general": "General",
     "privacity": "Privacidad",
-    "password": "Cambiar contraseña"
+    "password": "Cambiar contraseña",
+    "save_changes": "Guardar cambios"
   },
 
   "privacity":{
@@ -249,5 +250,14 @@
     "p4": "No aparecerás en las búsquedas.",
     "public": "Público",
     "private": "Privado"
+  },
+
+  "general":{
+    "title": "Configuraciones generales",
+    "p1":"En esta configuración puedes cambiar el correo electrónico.",
+    "p2":"Ten en cuenta que no puedes cambiarlo por un correo ya existente.",
+    "p3":"Correo actual",
+    "p4":"Nuevo correo",
+    "email_change_success":"Correo cambiado satisfactoriamente"
   }
 }
