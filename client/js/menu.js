@@ -19,5 +19,13 @@ Template.menuLogged.helpers({
     },
     numRequests: function(){
         return Meteor.user().requestsFollow.length;
+    },
+    hasNotifications: function(){
+        var length = _.filter(Meteor.user().notifications, function(n){return !n.watched}).length;
+        return length > 0;
+    },
+    numNotifications: function(){
+        var length = _.filter(Meteor.user().notifications, function(n){return !n.watched}).length;
+        return length > 50? "+50":length
     }
 });
