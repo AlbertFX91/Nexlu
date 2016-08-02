@@ -10,8 +10,7 @@
                         class="mdi-navigation-menu white-text" style="font-size:2.2em;"></i></a>
 
                 <ul class="left hide-on-med-and-down">
-                    <li><a href="{{ pathFor 'AboutUs' }}">{{_ "tag.about_us"}}</a></li>
-                    <li><a href="#">{{_ "tag.browser"}}</a></li>
+
                 </ul>
 
                 <!-- Panel de navegación lateral desplegado en dispositivos móviles -->
@@ -89,7 +88,11 @@
                         <li class="divider"></li>
                     </ul>
 
-                    <li class="hide-on-med-and-down"><a class="logout" href="/logout">{{_ "logout"}}</a></li>
+                    <li class="hide-on-med-and-down"><a class="bold caret text-shadow smaller-font" href="/logout"
+                                                        style="display: inline;padding: 6px 10px 6px 10px; border: 1px solid white;
+                                                        border-radius: 4px;">
+                        {{_ "logout"}}
+                    </a></li>
                     <li class="hide-on-large-only"><a href="/logout"><i class="fa fa-user-times fa-2x" aria-hidden="true"></i></a></li>
                     <li>{{> langSelector}}</li>
                 </ul>

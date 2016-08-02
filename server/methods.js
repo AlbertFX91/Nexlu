@@ -502,7 +502,8 @@ Meteor.methods({
                 bio: TAPi18n.__("bio.add_bio"),
                 followers: [],
                 followed: [],
-                "emails.0.verified": true
+                "emails.0.verified": true,
+                private_profile: false
             }
         });
     },
@@ -519,7 +520,8 @@ Meteor.methods({
                 bio: TAPi18n.__("bio.add_bio"),
                 followers: [],
                 followed: [],
-                "emails.0.verified": true
+                "emails.0.verified": true,
+                private_profile: false
             }
         });
     },
@@ -527,24 +529,6 @@ Meteor.methods({
         var user = Meteor.user();
         options = {
             username : username.replace(/ /g,''),
-            email: user.services.facebook.email
-        };
-        Meteor.users.update(user._id, {
-            $set: {
-                username: options.username.toLowerCase(),
-                "emails.0.address": options.email,
-                bio: TAPi18n.__("bio.add_bio"),
-                followers: [],
-                followed: [],
-                "emails.0.verified": true,
-                private_profile: false
-            }
-        });
-    },
-    'login.google.newUsername': function(){
-        var user = Meteor.user();
-        options = {
-            username : user.profile.name.replace(/ /g,''),
             email: user.services.facebook.email
         };
         Meteor.users.update(user._id, {
