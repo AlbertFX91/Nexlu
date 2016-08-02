@@ -4,13 +4,3 @@ Template.Settings.onRendered(function(){
     });
     $('#general').addClass("active");
 });
-
-
-Template.Settings.helpers({
-    hasRequests: function(){
-        return Meteor.user().requestsFollow.length > 0;
-    },
-    numRequests: function(){
-        return Meteor.user().requestsFollow.length;
-    }
-});

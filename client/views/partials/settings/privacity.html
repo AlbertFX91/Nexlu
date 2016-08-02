@@ -8,10 +8,6 @@
                         <li><a id="general" href="{{ pathFor 'settings' }}">{{_ "settings.general"}}</a></li>
                         <li><a id="privacity" href="{{ pathFor "privacity" }}">{{_ "settings.privacity"}}</a></li>
                         <li><a id="change_password" href="{{ pathFor "change-password" }}">{{_ "settings.password"}}</a></li>
-                        <li><a id="requests_follow" href="{{ pathFor "requests-follow" }}">{{_ "settings.requests-follow"}}&nbsp;
-                            {{#if hasRequests}}
-                                <span class="red white-text" style="padding: 3px; border-radius: 2px;">{{numRequests}}</span>
-                            {{/if}}</a></li>
                     </ul>
                 </div>
             </div>
