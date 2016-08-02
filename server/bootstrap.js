@@ -54,7 +54,6 @@ Meteor.startup(function () {
     if(entorno == "desarrollo"){
         if (Meteor.users.find().count() === 0) {
             createUsers();
-            createRequestsFollow();
         }
 
         if (ChatRooms.find().count() === 0){
@@ -68,6 +67,9 @@ Meteor.startup(function () {
         if (Images.find().count() === 0){
             createImages();
         }
+
+        createNotificacions();
+
     }else if (entorno == "preproduccion"){
         Meteor.users.remove({});
         ChatRooms.remove({});
@@ -78,6 +80,7 @@ Meteor.startup(function () {
         createChatRooms();
         createPublications();
         createImages();
+        createNotificacions();
     }
 
 
@@ -122,7 +125,8 @@ function createUsers(){
             followed: [id_user2, id_user3],
             "emails.0.verified": true,
             private_profile: false,
-            requestsFollow: []
+            requestsFollow: [],
+            notifications: []
         }
     });
 
@@ -142,7 +146,8 @@ function createUsers(){
                     createdAt: new Date('2016-07-22T12:00:00'),
                     from: id_user5
                 }
-            ]
+            ],
+            notifications: []
         }
     });
 
@@ -152,7 +157,8 @@ function createUsers(){
             followed: [id_user1, id_user2],
             "emails.0.verified": true,
             private_profile: true,
-            requestsFollow: []
+            requestsFollow: [],
+            notifications: []
         }
     });
 
@@ -163,7 +169,8 @@ function createUsers(){
             followed: [id_user3, id_user5],
             "emails.0.verified": true,
             private_profile: false,
-            requestsFollow: []
+            requestsFollow: [],
+            notifications: []
         }
     });
 
@@ -183,20 +190,10 @@ function createUsers(){
                     createdAt: new Date('2016-07-22T12:00:00'),
                     from: id_user2
                 }
-            ]
+            ],
+            notifications: []
         }
     });
-
-}
-
-function createRequestsFollow(){
-    var user1 = Meteor.users.findOne({username: 'user1'});
-    var user2 = Meteor.users.findOne({username: 'user2'});
-    var user3 = Meteor.users.findOne({username: 'user3'});
-    var user4 = Meteor.users.findOne({username: 'user4'});
-    var user5 = Meteor.users.findOne({username: 'user5'});
-
-
 
 }
 
@@ -325,7 +322,7 @@ function createPublications(){
                 description: "Nice one dude!",
                 player: user3._id,
                 playersLike: [user1._id],
-                playersDislike: [user2._id],
+                playersDislike: [user2._id]
             }
         ]
     });
@@ -484,4 +481,80 @@ function createImages(){
         }
     });
 
+}
+
+
+function createNotificacions() {
+    var user1 = Meteor.users.findOne({username: 'user1'});
+    var user2 = Meteor.users.findOne({username: 'user2'});
+    var user3 = Meteor.users.findOne({username: 'user3'});
+    var user4 = Meteor.users.findOne({username: 'user4'});
+    var user5 = Meteor.users.findOne({username: 'user5'});
+
+    var pub1 = Publications.find({"owner.id": user1._id}).fetch()[0];
+
+
+    var img1 = Images.find({"owner.id": user1._id}).fetch()[0];
+
+    var notifLikePub = {
+        createdAt: new Date('2016-06-08T12:00:00'),
+        description: "A user2 le ha gustado tu publicacion",
+        url: "/publication/"+pub1._id,
+        watched: false
+    };
+
+    var notifLikeImg = {
+        createdAt: new Date('2016-06-08T12:00:00'),
+        description: "A user3 le ha gustado tu publicacion",
+        url: "/img/"+img1._id,
+        watched: false
+    };
+
+    var notifLikeComment = {
+        createdAt: new Date('2016-06-07T12:00:00'),
+        description: "A user3 le ha gustado tu comentario",
+        url: "/publication/"+pub1._id,
+        watched: false
+    };
+
+    var notifTagPub = {
+        createdAt: new Date('2016-06-06T12:00:00'),
+        description: "Te han etiquetado en una publicacion",
+        url: "/publication/"+pub1._id,
+        watched: true
+    };
+
+    var notifTagImg = {
+        createdAt: new Date('2016-06-06T12:00:00'),
+        description: "Te han etiquetado en una imagen",
+        url: "/img/"+img1._id,
+        watched: false
+    };
+
+    var notifFollow = {
+        createdAt: new Date('2016-06-09T12:00:00'),
+        description: "user2 ha comenzado a seguirte",
+        url: "/profile/"+user2.username,
+        watched: false
+    };
+
+    var notifWantsFollow = {
+        createdAt: new Date('2016-06-09T12:00:00'),
+        description: "user3 quiere seguirte",
+        url: "/requests",
+        watched: true
+    };
+
+    var notifMsgChat = {
+        createdAt: new Date('2016-06-09T12:00:00'),
+        description: "user3 te ha hablado mientras no estabas",
+        watched: true
+    };
+
+    Meteor.users.update(user1._id, {
+        "$set":{
+            notifications: [notifLikePub, notifLikeImg, notifLikeComment, notifTagPub, notifTagImg, notifFollow, notifWantsFollow, notifMsgChat]
+        }
+    });
+    
 }
