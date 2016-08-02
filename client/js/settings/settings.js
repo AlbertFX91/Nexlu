@@ -8,7 +8,6 @@ Template.Settings.onRendered(function(){
 
 Template.Settings.helpers({
     hasRequests: function(){
-        console.log(Meteor.user().requestsFollow.length > 0);
         return Meteor.user().requestsFollow.length > 0;
     },
     numRequests: function(){

@@ -8,7 +8,6 @@ Template.change_password.onRendered(function(){
 
 Template.change_password.helpers({
     hasRequests: function(){
-        console.log(Meteor.user().requestsFollow.length > 0);
         return Meteor.user().requestsFollow.length > 0;
     },
     numRequests: function(){

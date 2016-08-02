@@ -17,7 +17,6 @@ Template.privacity.helpers({
         return private_profile;
     },
     hasRequests: function(){
-        console.log(Meteor.user().requestsFollow.length > 0);
         return Meteor.user().requestsFollow.length > 0;
     },
     numRequests: function(){
