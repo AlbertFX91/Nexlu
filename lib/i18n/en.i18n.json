@@ -150,7 +150,8 @@
     "Images": "Images",
     "followed": "Followed",
     "followers": "Followers",
-    "follow": "Follow"
+    "follow": "Follow",
+    "inprocess": "In process"
   },
 
   "timeline": {
