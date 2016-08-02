@@ -1,0 +1,39 @@
+<template name="privacity">
+    <div class="container settings-container">
+        <div class="row" style="border-radius: 5px; background-color:rgba( 0, 0, 0, 0.2 );
+        padding: 10px 3px 10px 3px;">
+            <div class="col s4 m4">
+                <div>
+                    <ul class="list_settings">
+                        <li><a id="general" href="{{ pathFor 'settings' }}">{{_ "settings.general"}}</a></li>
+                        <li><a id="privacity" href="{{ pathFor "privacity" }}">{{_ "settings.privacity"}}</a></li>
+                        <li><a id="change_password" href="{{ pathFor "change-password" }}">{{_ "settings.password"}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col s8 m8">
+                <div class="content-privacity" style="padding: 10px">
+                    <h5>{{_ "privacity.title"}}</h5>
+                    <p>{{_ "privacity.p1"}}</p>
+                    <p>{{_ "privacity.p2"}}</p>
+                    <ul>
+                        <li>- {{_ "privacity.p3"}}</li>
+                        <li>- {{_ "privacity.p4"}}</li>
+                    </ul>
+                    <div class="switch">
+                        <label>
+                            {{_ "privacity.public"}}
+                            {{#if privacity_profile}}
+                                <input type="checkbox" checked>
+                            {{else}}
+                                <input type="checkbox">
+                            {{/if}}
+                            <span class="lever"></span>
+                            {{_ "privacity.private"}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

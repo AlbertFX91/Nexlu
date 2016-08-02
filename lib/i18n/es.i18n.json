@@ -5,8 +5,8 @@
   "logout": "Salir",
   "login": "Entrar",
   "login_error_credentials_wrong": "usuario y/o contraseña erronea",
-  "login-facebook": "Iniciar con Facebook",
-  "login-gmail": "Iniciar con Gmail",
+  "login-facebook": "Facebook",
+  "login-google": "Google",
   "login-twitter": "Iniciar con Twitter",
   "password": "Contraseña",
   "confirm_password": "Confirmar contraseña",
@@ -26,6 +26,7 @@
   "toastMail": "¡El correo se ha enviado!",
   "send": "Enviar",
   "close": "Cerrar",
+  "search_user": "Buscar usuario...",
 
   "bio":{
     "modify_bio": "Modificar biografía",
@@ -70,7 +71,9 @@
     "message_error_empty": "El mensaje no puede estar vacio",
     "message_error_minlength": "El mensaje debe tener más de 20 caracteres",
     "message_error_maxlength": "El mensaje no puede superar los 300 caracteres",
-    "post-maxlength": "La publicación no puede superar los 5000 caracteres"
+    "post-maxlength": "La publicación no puede superar los 5000 caracteres",
+    "comment-maxlength": "El comentario no puede superar los 2000 caracteres",
+    "comment-notBlank": "El comentario no debe estar vacío"
   },
 
   "tag": {
@@ -94,7 +97,10 @@
     "unfollow": "Dejar de seguir",
     "following": "Siguiendo",
     "post": "Enviar",
-    "remove": "Borrar"
+    "remove": "Borrar",
+    "comment": "Commentar",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
 
   },
 
@@ -140,7 +146,11 @@
     "description": "Descripción",
     "uploaded": "Imágenes guardadas",
     "uploading_progress": "Subiendo imagen <strong>%s</strong> de <strong>%s</strong>",
-    "uploaded_finished": "Subida finalizada"
+    "uploaded_finished": "Subida finalizada",
+    "uploading": "Estamos subiendo tus imágenes",
+    "setavatar": "Seleccionar como avatar",
+    "setavatar_finished": "Cambiado avatar correctamente"
+
   },
 
   "contactUs": {
@@ -152,6 +162,7 @@
   },
 
   "profile": {
+    "my_profile": "Mi perfil",
     "friends": "Amigos",
     "publications": "Publicaciones",
     "photos": "Fotos",
@@ -159,17 +170,26 @@
     "images": "imágenes",
     "Images": "Imágenes",
     "followed": "Siguiendo",
-    "followers": "Seguidores"
+    "followers": "Seguidores",
+    "follow": "Seguir",
+    "inprocess": "En proceso"
   },
 
   "timeline": {
-    "more-tags": "y otros jugadores",
+    "more-tags": " y otros jugadores",
     "with": "Con",
     "no-tags": "Sin etiquetas",
     "whatsup": "¿Qué pasa?",
     "edit-post": "Editar publicación",
     "remove-post": "¿Está seguro de eliminar esta publicación?",
-    "new-post": "Nueva publicación"
+    "new-post": "Nueva publicación",
+    "read-more": "Seguir leyendo!",
+    "read-less": "Mostrar menos!",
+    "view-comments": "Mostrar comentarios",
+    "hide-comments": "Ocultar comentarios",
+    "edit-comment": "Editar comentario",
+    "remove-comment": "¿Está seguro de eliminar este comentario?",
+    "comment": "Comentar la publicación..."
   },
 
   "faq": {
@@ -208,5 +228,34 @@
     "terms37": "CONTENIDO PARA EL USUARIO",
     "terms38": "Nexlu puede, a la sola discreción de Nexlu, que permitir de vez en cuando a presentar, subir, publicar o poner a disposición de Nexlu través de los Servicio, o de otra manera, textual, de audio y/o contenido visual e información, incluyendo comentarios y retroalimentación relacionada con los servicios, la iniciación de solicitudes de apoyo y presentaciones de entradas para los concursos y promociones (\"contenido de usuario\"). Cualquier contenido de usuario proporcionada por usted mantiene su propiedad. Sin embargo, al proporcionar contenido de usuario a Nexlu, usted concede Nexlu una licencia mundial, perpetua, irrevocable, transferible libre de regalías, con el derecho a sublicenciar, para utilizar, copiar, modificar, crear trabajos derivados, distribuir, mostrar públicamente, públicamente realizar y explotar en cualquier forma tal contenido de usuario en todos los formatos y canales de distribución conocidos actualmente o desarrollados en un futuro (incluso en relación con los servicios y negocios de Nexlu y de terceros sitios y servicios de terceros), sin previo aviso o consentimiento de usted y sin el requerimiento de pago a usted o cualquier otra persona o entidad.",
     "termsFinal": "Gracias por visitar nuestro sitio web."
+  },
+
+  "security":{
+    "register": "Un perfil privado no puede ser visto por otros usuarios",
+    "privacity": "Privacidad"
+  },
+
+  "settings": {
+    "settings": "Configuración",
+    "general": "General",
+    "privacity": "Privacidad",
+    "password": "Cambiar contraseña",
+    "requests-follow": "Solicitudes para seguirte"
+  },
+
+  "privacity":{
+    "title": "Configuración y herramienta de privacidad",
+    "account": "Esta cuenta es privada.",
+    "p1": "En esta configuración te damos la opción a cambiar la privacidad de tu perfil en Nexlu.",
+    "p2": "Si eliges la opción de tener una cuenta privada los demás usuarios no podrán:",
+    "p3": "Seguirte: Hasta que no aceptes la solicitud del usuario que quiere seguirte, este no podrán ver tus fotos y publicaciones.",
+    "p4": "No aparecerás en las búsquedas.",
+    "public": "Público",
+    "private": "Privado"
+  },
+
+  "requests-follow":{
+    "title": "Solicitudes para seguirte",
+    "norequests": "No tiene solicitudes pendientes"
   }
 }

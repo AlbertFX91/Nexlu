@@ -60,7 +60,8 @@
                     {{#if editing_description}}
                         <form id="img-edit-description-form" class="img-edit-description-form">
                             <div class="img-edit-input-col">
-                                <textarea id="img-edit-description-input" class="materialize-textarea">{{img.description}}</textarea>
+                                <!--<textarea id="img-edit-description-input" class="materialize-textarea">{{img.description}}</textarea>-->
+                                {{#textareaAutocomplete settings=settingsTextarea id="img-edit-description-input" class="materialize-textarea" autofocus="autofocus" length="5000"}}{{/textareaAutocomplete}}
                             </div>
                         </form>
                     {{else}}

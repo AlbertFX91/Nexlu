@@ -13,6 +13,10 @@
             {{> yield}}
         </main>
 
+        {{#if showLoginModal}}
+            {{> login}}
+        {{/if}}
+
         {{#if currentUser}}
             {{> chat}}
         {{/if}}

@@ -7,7 +7,7 @@
                     <h1 id="intro_register" class="s12">"{{_ "register_header"}}"</h1>
                     <h5 id="intro_register2">{{_ "register_header2"}}</h5>
                     <div class="col s12">
-                        <div class="row usre">
+                        <div class="row user">
                             <div class="col m4 s12" >
                                 <label id="username-label" for="username">{{_ "username"}}:</label>
                             </div>
@@ -47,7 +47,27 @@
                             </div>
                         </div>
                         <div class="row">
-                            <hr class="col m12 s12">
+                            <div class="col m4 s5" >
+                                <span class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{_ "security.register"}}">
+                                    <label id="private" for="private">
+                                        <i class="material-icons">https</i>
+                                        {{_ "security.privacity"}}:
+                                    </label>
+                                </span>
+                            </div>
+                            <div class="col m4 s6">
+                            <div class="switch">
+                                    <label>
+                                        Public
+                                        <input id="private_checkbox" name="private_checkbox" type="checkbox">
+                                        <span class="lever"></span>
+                                        Private
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr class="col m12 s12">
+                            </div>
                         </div>
                     </div>
                     <div class="row continue">

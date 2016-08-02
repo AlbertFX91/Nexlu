@@ -1,0 +1,46 @@
+<template name="follow_users_list">
+    <div class="container">
+        <h1 id="title-following">{{_ "tag.following"}}</h1>
+        <div id="followings">
+            {{#each users}}
+                <div id="following" class="following-row">
+                    <div style="flex: 1;">
+                        <a href="{{ pathFor 'profile' username=username }}">
+                            {{> images_avatar user_id=_id max_size="110px" css="margin-left: auto; margin-right: auto;"}}
+                        </a>
+                    </div>
+                    <div style="flex: 1;">
+                        <span  data-username="{{username}}">{{username}}</span>
+                    </div>
+                    <div style="flex: 2;">
+                        {{bio}}
+                    </div>
+                    <div style="flex: 1;">
+                        <div>
+                            <button class="col s6 m12 btn btn-success button-profile"><i class="material-icons left">person_pin</i><span>{{_ "tag.profile"}}</span></button>
+                        </div>
+                    </div>
+                    {{#if canFollowUnfollow}}
+                        <div style="flex: 1;">
+                            {{#if isFollowed}}
+                                <a id="unfollowUser" class="bold caret text-shadow smaller-font" >
+                                    {{_ "profile.followed"}}
+                                </a>
+                            {{else}}
+                                {{#if hasRequestCreated}}
+                                    <span class="bold caret text-shadow smaller-font grey darken-3 white-text" style="padding: 5px 4px;border-radius: 3px;">
+                                    <i class="material-icons">schedule</i><span>{{_ "profile.inprocess" }}</span>
+                                    </span>
+                                {{else}}
+                                    <a id="followUser" class="bold caret text-shadow smaller-font" >
+                                        {{_ "profile.follow"}}
+                                    </a>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>
