@@ -87,6 +87,11 @@
                         <li class="divider"></li>
                         <li><a href="{{ pathFor 'settings' }}">{{_ "settings.settings"}}</a></li>
                         <li class="divider"></li>
+                        <li><a id="requests_follow" href="{{ pathFor "requests-follow" }}">{{_ "settings.requests-follow"}}&nbsp;
+                            {{#if hasRequests}}
+                                <span class="red white-text" style="padding: 3px; border-radius: 2px;">{{numRequests}}</span>
+                            {{/if}}</a></li>
+                        <li class="divider"></li>
                     </ul>
 
                     <li class="hide-on-med-and-down"><a class="logout" href="/logout">{{_ "logout"}}</a></li>

@@ -54,6 +54,7 @@ Meteor.startup(function () {
     if(entorno == "desarrollo"){
         if (Meteor.users.find().count() === 0) {
             createUsers();
+            createRequestsFollow();
         }
 
         if (ChatRooms.find().count() === 0){
@@ -120,7 +121,8 @@ function createUsers(){
             followers: [id_user2, id_user3],
             followed: [id_user2, id_user3],
             "emails.0.verified": true,
-            private_profile: false
+            private_profile: false,
+            requestsFollow: []
         }
     });
 
@@ -130,7 +132,17 @@ function createUsers(){
             followers: [id_user1, id_user3],
             followed: [id_user1, id_user3, id_user4],
             "emails.0.verified": true,
-            private_profile: true
+            private_profile: true,
+            requestsFollow: [
+                {
+                    createdAt: new Date('2016-07-20T12:00:00'),
+                    from: id_user4
+                },
+                {
+                    createdAt: new Date('2016-07-22T12:00:00'),
+                    from: id_user5
+                }
+            ]
         }
     });
 
@@ -139,7 +151,8 @@ function createUsers(){
             followers: [id_user1, id_user2, id_user4],
             followed: [id_user1, id_user2],
             "emails.0.verified": true,
-            private_profile: true
+            private_profile: true,
+            requestsFollow: []
         }
     });
 
@@ -149,7 +162,8 @@ function createUsers(){
             followers: [id_user2, id_user5],
             followed: [id_user3, id_user5],
             "emails.0.verified": true,
-            private_profile: false
+            private_profile: false,
+            requestsFollow: []
         }
     });
 
@@ -159,9 +173,30 @@ function createUsers(){
             followers: [id_user4],
             followed: [id_user4],
             "emails.0.verified": true,
-            private_profile: true
+            private_profile: true,
+            requestsFollow: [
+                {
+                    createdAt: new Date('2016-07-20T12:00:00'),
+                    from: id_user1
+                },
+                {
+                    createdAt: new Date('2016-07-22T12:00:00'),
+                    from: id_user2
+                }
+            ]
         }
     });
+
+}
+
+function createRequestsFollow(){
+    var user1 = Meteor.users.findOne({username: 'user1'});
+    var user2 = Meteor.users.findOne({username: 'user2'});
+    var user3 = Meteor.users.findOne({username: 'user3'});
+    var user4 = Meteor.users.findOne({username: 'user4'});
+    var user5 = Meteor.users.findOne({username: 'user5'});
+
+
 
 }
 

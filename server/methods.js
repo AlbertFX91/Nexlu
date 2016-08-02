@@ -15,7 +15,8 @@ Meteor.methods({
                         bio: TAPi18n.__("bio.add_bio"),
                         followers: [],
                         followed: [],
-                        private_profile: user[4]
+                        private_profile: user[4],
+                        requestsFollow: []
                     }
                 });
             } catch (error) {
@@ -157,7 +158,7 @@ Meteor.methods({
             if (err) {
                 console.log(err);
             }
-        })
+        });
         var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Publications.update(publicationId, {
             $set: {
@@ -478,16 +479,27 @@ Meteor.methods({
     'followUser': function(username){
         var userId = Meteor.userId();
         var userfollow = Meteor.users.findOne({"username":username});
-        Meteor.users.update({_id: userId}, {
-            "$push": {
-                followed: userfollow._id
-            }
-        });
-        Meteor.users.update({_id: userfollow._id}, {
-            "$push": {
-                followers: userId
-            }
-        });
+        if(userfollow.private_profile){
+            Meteor.users.update({_id: userfollow._id}, {
+                "$push": {
+                    requestsFollow: {
+                        createdAt: new Date(),
+                        from: userId
+                    }
+                }
+            });
+        }else{
+            Meteor.users.update({_id: userId}, {
+                "$push": {
+                    followed: userfollow._id
+                }
+            });
+            Meteor.users.update({_id: userfollow._id}, {
+                "$push": {
+                    followers: userId
+                }
+            });
+        }
     },
     'login.facebook': function(){
         var user = Meteor.user();
@@ -502,7 +514,8 @@ Meteor.methods({
                 bio: TAPi18n.__("bio.add_bio"),
                 followers: [],
                 followed: [],
-                "emails.0.verified": true
+                "emails.0.verified": true,
+                requestsFollow: []
             }
         });
     },
@@ -519,7 +532,8 @@ Meteor.methods({
                 bio: TAPi18n.__("bio.add_bio"),
                 followers: [],
                 followed: [],
-                "emails.0.verified": true
+                "emails.0.verified": true,
+                requestsFollow: []
             }
         });
     },
@@ -624,5 +638,61 @@ Meteor.methods({
             }
         });
         return true;
+    },
+
+    'userRequestFrom': function(user_id){
+        var user = Meteor.users.findOne(user_id, {
+            fields: {
+                _id: 1,
+                username: 1,
+            }
+        });
+        if(user){
+            return user;
+        }else{
+            throw new Meteor.Error( 500, 'We cannot recover the user with id '+user_id);
+            return false;
+        }
+    },
+
+    'accept-request': function(user_id){
+        var me = Meteor.userId();
+        var userFollow = Meteor.users.findOne(user_id);
+        if(!userFollow){
+            throw new Meteor.Error( 500, 'We cannot recover the user with id '+user_id);
+            return false;
+        }
+        Meteor.users.update({_id: userFollow._id}, {
+            "$push": {
+                followed: me
+            }
+        });
+        Meteor.users.update({_id: me}, {
+            "$push": {
+                followers: userFollow._id
+            }
+        });
+        Meteor.users.update({_id: me}, {
+            "$pull": {
+                requestsFollow: {
+                    from: userFollow._id
+                }
+            }
+        });
+    },
+    'reject-request': function(user_id){
+        var me = Meteor.userId();
+        var userFollow = Meteor.users.findOne(user_id);
+        if(!userFollow){
+            throw new Meteor.Error( 500, 'We cannot recover the user with id '+user_id);
+            return false;
+        }
+        Meteor.users.update({_id: me}, {
+            "$pull": {
+                requestsFollow: {
+                    from: userFollow._id
+                }
+            }
+        });
     }
 });

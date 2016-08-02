@@ -98,7 +98,9 @@
     "following": "Siguiendo",
     "post": "Enviar",
     "remove": "Borrar",
-    "comment": "Commentar"
+    "comment": "Commentar",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
 
   },
 
@@ -169,7 +171,8 @@
     "Images": "Imágenes",
     "followed": "Siguiendo",
     "followers": "Seguidores",
-    "follow": "Seguir"
+    "follow": "Seguir",
+    "inprocess": "En proceso"
   },
 
   "timeline": {
@@ -236,7 +239,8 @@
     "settings": "Configuración",
     "general": "General",
     "privacity": "Privacidad",
-    "password": "Cambiar contraseña"
+    "password": "Cambiar contraseña",
+    "requests-follow": "Solicitudes para seguirte"
   },
 
   "privacity":{
@@ -248,5 +252,10 @@
     "p4": "No aparecerás en las búsquedas.",
     "public": "Público",
     "private": "Privado"
+  },
+
+  "requests-follow":{
+    "title": "Solicitudes para seguirte",
+    "norequests": "No tiene solicitudes pendientes"
   }
 }

@@ -3,8 +3,10 @@ Template.follow_users_list.helpers({
         return _.contains(Meteor.user().followed,this._id);
     },
     canFollowUnfollow: function(){
-        //Comprobamos que estamos consultando mi lista de usuarios a los que estoy siguiendo. De ser asi puedo seguir o dejar de seguir.
-        return Meteor.user() && Template.parentData().parent._id == Meteor.user()._id;
+        return Meteor.user();
+    },
+    hasRequestCreated: function(){
+        return _.find(this.requestsFollow, function(r){return r.from == Meteor.user()._id});
     }
 });
 

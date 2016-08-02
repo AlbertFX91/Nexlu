@@ -27,9 +27,15 @@
                                     {{_ "profile.followed"}}
                                 </a>
                             {{else}}
-                                <a id="followUser" class="bold caret text-shadow smaller-font" >
-                                    {{_ "profile.follow"}}
-                                </a>
+                                {{#if hasRequestCreated}}
+                                    <span class="bold caret text-shadow smaller-font grey darken-3 white-text" style="padding: 5px 4px;border-radius: 3px;">
+                                    <i class="material-icons">schedule</i><span>{{_ "profile.inprocess" }}</span>
+                                    </span>
+                                {{else}}
+                                    <a id="followUser" class="bold caret text-shadow smaller-font" >
+                                        {{_ "profile.follow"}}
+                                    </a>
+                                {{/if}}
                             {{/if}}
                         </div>
                     {{/if}}

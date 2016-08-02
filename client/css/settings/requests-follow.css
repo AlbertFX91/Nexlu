@@ -1,0 +1,12 @@
+.request-row{
+    display: flex;
+    color: white;
+    background-color: #263238;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+    padding: 5px 0 5px 0;
+    margin-top: 5px;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}

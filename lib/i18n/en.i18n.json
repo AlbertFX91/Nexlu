@@ -90,7 +90,9 @@
     "following": "Following",
     "post": "Post",
     "remove": "Delete",
-    "comment": "Comment"
+    "comment": "Comment",
+    "accept": "Accept",
+    "reject": "Reject"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -148,7 +150,8 @@
     "Images": "Images",
     "followed": "Followed",
     "followers": "Followers",
-    "follow": "Follow"
+    "follow": "Follow",
+    "inprocess": "In process"
   },
 
   "timeline": {
@@ -214,7 +217,8 @@
     "settings": "Settings",
     "general": "General",
     "privacity": "Privacity",
-    "password": "Change password"
+    "password": "Change password",
+    "requests-follow": "Requests for follow"
   },
 
   "privacity":{
@@ -226,6 +230,11 @@
     "p4": "You will not appear in searches.",
     "public": "Public",
     "private": "Private"
+  },
+
+  "requests-follow":{
+    "title": "Requests for follow",
+    "norequests": "No pending requests"
   }
 
 }
