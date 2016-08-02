@@ -233,7 +233,8 @@
   },
 
   "requests-follow":{
-    "title": "Requests for follow"
+    "title": "Requests for follow",
+    "norequests": "No pending requests"
   }
 
 }
