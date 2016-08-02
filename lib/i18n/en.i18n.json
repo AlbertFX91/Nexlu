@@ -40,7 +40,10 @@
     "description_added": "Description added"
   },
   "error": {
-    "not_found": "404. Oops, the route could not be found.",
+
+    "not_found-logo": "Click the logo below to try returning to Nexlu",
+    "not_found-title": "I AM ERROR",
+    "not_found": "We can't find this page",
     "login_credentials_wrong": "username and/or password wrong",
     "login_credentials-facebook_wrong": "Login with Facebook canceled",
     "login_credentials-google_wrong": "Login with Google canceled",
