@@ -30,12 +30,14 @@
 }
 
 #n-c-header-title{
-    flex: 2;
+    flex: 6;
     font-size: 15px;
     font-weight: bold;
 }
 #n-c-header-options{
     flex: 1;
+    display: flex;
+    flex-direction: row;
 }
 .n-r-b{
     flex: 3;
@@ -55,6 +57,12 @@
 .notification-watched-btn:hover{
     color: #00C1C9;
 }
-.notification-trash-btn:hover{
+.notification-trash-btn:hover {
+    color: red;
+}
+.notification-all-watched-btn:hover{
+    color: #00C1C9;
+}
+.notification-all-trash-btn:hover{
     color: red;
 }

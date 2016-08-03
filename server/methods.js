@@ -714,5 +714,22 @@ Meteor.methods({
                 }
             }
         })
+    },
+
+    'notification.watched.all': function(){
+        var me = Meteor.user();
+        var notifications = me.notifications;
+        _.each(notifications,function(n){
+            Meteor.call("notification.watched", n.id);
+        });
+    },
+
+
+    'notification.remove.all': function(){
+        var me = Meteor.user();
+        var notifications = me.notifications;
+        _.each(notifications,function(n){
+            Meteor.call("notification.remove", n.id);
+        });
     }
 });
