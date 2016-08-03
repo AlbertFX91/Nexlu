@@ -53,8 +53,24 @@
         <div class="card-action text-color-1 publication-details">
             <div class="text-color-1">
                 {{#if tagged_pretty}}
-                    <i class="fa fa-tags fa-1" aria-hidden="true"></i>
-                    {{_ "timeline.with"}} {{tagged_pretty}}
+                    <div class="tags_modal" style="cursor: pointer">
+                        <i class="fa fa-tags fa-1" aria-hidden="true"></i>
+                        {{_ "timeline.with"}} {{tagged_pretty}}
+                    </div>
+                    <div id="modal-tag" class="modal bottom-sheet">
+                        <div class="modal-content">
+                            <h4>{{_ "timeline.users-tag"}}</h4>
+                            {{#each tags}}
+                                <li>
+                                    {{username}}
+                                </li>
+                            {{/each}}
+
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                        </div>
+                    </div>
                 {{else}}
                     <i class="fa fa-tags fa-1" aria-hidden="true"></i>
                     {{_ "timeline.no-tags"}}

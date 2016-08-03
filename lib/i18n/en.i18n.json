@@ -169,7 +169,8 @@
     "hide-comments": "Hide comments",
     "edit-comment": "Edit comment",
     "remove-comment": "Are you sure to delete this comment?",
-    "comment": "Comment on the publication..."
+    "comment": "Comment on the publication...",
+    "users-tag": "Users tagged"
   },
 
   "faq": {

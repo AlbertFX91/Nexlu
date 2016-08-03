@@ -45,15 +45,20 @@ Template.publication.helpers({
         var likes_username = _.map(likes, function(id){
             var user = Meteor.users.findOne(id, {fields:{username:1}});
             return user.username;
-        } )
+        });
         return likes_username; // lista con los usernames de los usuarios que le dieron like.
     },
     listDislikes: function(dislikes){
         var dislikes_username = _.map(dislikes, function(id){
             var user = Meteor.users.findOne(id, {fields:{username:1}});
             return user.username;
-        } )
+        });
         return dislikes_username; // lista con los usernames de los usuarios que le dieron dislikes.
+    },
+
+    tags: function(){
+        console.log(this.playersTagged);
+        return this.playersTagged;
     }
 });
 
@@ -61,7 +66,7 @@ Template.publication.events({
     'click #edit-pub': function () {
         $('#edit-pub-modal').openModal({complete:function(){
             document.getElementById('edit-post-error').innerHTML = "";
-        }})
+        }});
         var textarea = document.getElementById('editPublication');
         textarea.value = this.description;
         $("#editPublication").trigger('autoresize');
@@ -180,5 +185,9 @@ Template.publication.events({
         $(e.target).prev().removeClass('hide');
         $(e.target).parent().next().addClass('hide');
         $(e.target).addClass('hide');
+    },
+    'click .tags_modal': function(e){
+        e.preventDefault();
+        $('#modal-tag').openModal();
     }
 });
