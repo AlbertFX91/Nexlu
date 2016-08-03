@@ -694,5 +694,25 @@ Meteor.methods({
                 }
             }
         });
+    },
+
+    'notification.watched': function(notification_id){
+        var me = Meteor.userId();
+        Meteor.users.update({_id: me, "notifications.id": notification_id}, {
+            $set: {
+                "notifications.$.watched": true
+            }
+        });
+    },
+
+    'notification.remove': function(notification_id){
+        var userId = Meteor.userId();
+        Meteor.users.update({_id: userId, "notifications.id": notification_id}, {
+            $pull: {
+                notifications: {
+                    id: notification_id
+                }
+            }
+        })
     }
 });

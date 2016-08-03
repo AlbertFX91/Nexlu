@@ -9,17 +9,24 @@
     </div>
     <div id="notification-c-body">
         {{#each currentUser.notifications}}
-            <div class="grey notification-row" style="margin: 0 0 5px 0">
-                <div>
-                    {{createdAt}}
+            <a class="notification-row {{isNew}}" href="{{url}}">
+                <div class="n-r-b" style="display: flex; flex-direction: row">
+                    <div style="flex: 10;">
+                        {{description}}
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column">
+                        <div style="flex: 1;">
+                            <i class="fa fa-eye notification-watched-btn" aria-hidden="true" style="line-height: 12px !important;"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <i class="fa fa-trash-o notification-trash-btn" aria-hidden="true" style="line-height: 12px !important;"></i>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    {{description}}
+                <div class="n-r-f">
+                    <span class="livestamp" data-livestamp="{{createdAt}}"></span>
                 </div>
-                <div>
-                    {{watched}}
-                </div>
-            </div>
+            </a>
         {{/each}}
     </div>
 </Template>

@@ -1,9 +1,8 @@
 #notification-c-header{
-    height: 50px;
+    height: 35px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: -20px;
     border-bottom: 1px solid #ccc;
     border-color: rgba(0,0,0,.2);
     padding: 5px 5px 0 5px
@@ -12,11 +11,22 @@
 #notification-c-body{
     height: 300px;
     min-height: 300px;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .notification-row{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc !important;
+    border-color: rgba(0,0,0,.2) !important;
+    height: 80px;
+    padding: 9px;
+    cursor: pointer;
+    color: black !important;
+}
 
+.notification-row:hover{
+    background-color: #dddddd;
 }
 
 #n-c-header-title{
@@ -26,4 +36,25 @@
 }
 #n-c-header-options{
     flex: 1;
+}
+.n-r-b{
+    flex: 3;
+}
+.n-r-f{
+    flex: 1;
+}
+.livestamp{
+    color: grey !important;
+    font-size: 13px;
+}
+
+.new-notification{
+    background-color: #AAAAAA;
+}
+
+.notification-watched-btn:hover{
+    color: #00C1C9;
+}
+.notification-trash-btn:hover{
+    color: red;
 }

@@ -65,17 +65,14 @@
     display: none;
     outline: none;
     overflow: hidden;
-    position: absolute;
-    right: 50px;
+    position: fixed;
+    right: 19%;
     top: 70px;
     -moz-animation: gb__a .2s;
     animation: gb__a .2s;
     -moz-border-radius: 2px;
     border-radius: 2px;
     -moz-user-select: text;
-    max-height: 300px;
-    /*height: 300px;
-    min-height: 300px;*/
-    /*overflow-y: auto;*/
     width: 320px;
+    z-index: -1;
 }
