@@ -16,4 +16,9 @@ Template.home.events({
 Template.home.onRendered(function(){
     Session.set("googleUsernameUnique", false);
     Session.set("googleEmailUnique", false);
+    $(document).ready(function(){
+        $('.slider').slider({full_width: true});
+        $('.slider').attr('style','');
+        $('.slides').attr('style','');
+    });
 });
