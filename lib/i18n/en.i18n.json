@@ -235,6 +235,21 @@
   "requests-follow":{
     "title": "Requests for follow",
     "norequests": "No pending requests"
+  },
+
+  "notification":{
+    "header": "Notifications",
+    "no-notifications": "You don't have any notification",
+    "remove-all-notifications": "Remove all your notifications?",
+    "notif-like-pub": "<b>%s</b> likes your publication",
+    "notif-like-img": "<b>%s</b> likes your image",
+    "notif-like-comment": "<b>%s</b> likes your comment",
+    "notif-tag-pub": "<b>%s</b> has tagged you in a publication",
+    "notif-tag-img": "<b>%s</b> has tagged you in a image",
+    "notif-follow": "<b>%s</b> has started following you",
+    "notif-wants-follow": "<b>%s</b> wants to follow you",
+    "notif-msg-chat": "<b>%s</b> has send you a message while you wasn't here",
+    "notif-comment": "<b>%s</b> has commented in your publication"
   }
 
 }

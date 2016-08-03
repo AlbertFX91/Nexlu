@@ -234,7 +234,8 @@ Fields = {
             status: 1,
             avatar: 1,
             private_profile: 1,
-            requestsFollow: 1
+            requestsFollow: 1,
+            notifications: 1
         },
         profile: {
             _id: 1,
