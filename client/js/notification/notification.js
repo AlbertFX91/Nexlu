@@ -30,5 +30,8 @@ Template.notification.helpers({
     },
     notificationsSorted: function(){
         return _.sortBy(Meteor.user().notifications, function(n){return n.createdAt}).reverse();
+    },
+    hasNotifications: function(){
+        return Meteor.user().notifications.length > 0;
     }
 });

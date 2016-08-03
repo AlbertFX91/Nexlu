@@ -239,6 +239,7 @@
 
   "notification":{
     "header": "Notifications",
+    "no-notifications": "You don't have any notification",
     "notif-like-pub": "<b>%s</b> likes your publication",
     "notif-like-img": "<b>%s</b> likes your image",
     "notif-like-comment": "<b>%s</b> likes your comment",

@@ -19,25 +19,34 @@
         </div>
     </div>
     <div id="notification-c-body">
-        {{#each notificationsSorted}}
-            <a class="notification-row {{isNew}}" href="{{url}}">
-                <div class="n-r-b" style="display: flex; flex-direction: row">
-                    <div style="flex: 10;">
-                        {{{_ descriptionKey username}}}
-                    </div>
-                    <div style="flex: 1; display: flex; flex-direction: column">
-                        <div style="flex: 1;">
-                            <i class="fa fa-eye notification-watched-btn" aria-hidden="true" style="line-height: 12px !important;"></i>
+
+        {{#if hasNotifications}}
+            {{#each notificationsSorted}}
+                <a class="notification-row {{isNew}}" href="{{url}}">
+                    <div class="n-r-b" style="display: flex; flex-direction: row">
+                        <div style="flex: 10;">
+                            {{{_ descriptionKey username}}}
                         </div>
-                        <div style="flex: 1;">
-                            <i class="fa fa-trash-o notification-trash-btn" aria-hidden="true" style="line-height: 12px !important;"></i>
+                        <div style="flex: 1; display: flex; flex-direction: column">
+                            <div style="flex: 1;">
+                                <i class="fa fa-eye notification-watched-btn" aria-hidden="true" style="line-height: 12px !important;"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <i class="fa fa-trash-o notification-trash-btn" aria-hidden="true" style="line-height: 12px !important;"></i>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="n-r-f">
-                    <span class="livestamp" data-livestamp="{{createdAt}}"></span>
-                </div>
-            </a>
-        {{/each}}
+                    <div class="n-r-f">
+                        <span class="livestamp" data-livestamp="{{createdAt}}"></span>
+                    </div>
+                </a>
+            {{/each}}
+        {{/if}}
+        {{#unless hasNotifications}}
+            <div style="text-align: center; color: lightgrey">
+                <h4>{{_ "notification.no-notifications"}}</h4>
+                <i class="material-icons" style="font-size: 80px;">add_alert</i>
+            </div>
+        {{/unless}}
     </div>
 </Template>

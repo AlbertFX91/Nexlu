@@ -261,6 +261,7 @@
 
   "notification":{
     "header": "Notificaciones",
+    "no-notifications": "No tienes notificaciones",
     "notif-like-pub": "A <b>%s</b> le ha gustado tu publicación",
     "notif-like-img": "A <b>%s</b> le ha gustado tu imagen",
     "notif-like-comment": "A <b>%s</b> le ha gustado tu comentario",
