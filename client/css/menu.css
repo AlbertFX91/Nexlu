@@ -52,7 +52,7 @@
     z-index: 1;
     height: 0;
     width: 0;
-    top: 63px;
+    top: 64px;
 }
 
 #notif-container{
@@ -74,8 +74,8 @@
     border-radius: 2px;
     -moz-user-select: text;
     max-height: 300px;
-    height: 300px;
-    min-height: 300px;
-    overflow-y: auto;
+    /*height: 300px;
+    min-height: 300px;*/
+    /*overflow-y: auto;*/
     width: 320px;
 }

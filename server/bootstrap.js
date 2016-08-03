@@ -497,6 +497,7 @@ function createNotificacions() {
     var img1 = Images.find({"owner.id": user1._id}).fetch()[0];
 
     var notifLikePub = {
+        id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-08T12:00:00'),
         description: "A user2 le ha gustado tu publicacion",
         url: "/publication/"+pub1._id,
@@ -504,6 +505,7 @@ function createNotificacions() {
     };
 
     var notifLikeImg = {
+        id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-08T12:00:00'),
         description: "A user3 le ha gustado tu publicacion",
         url: "/img/"+img1._id,
@@ -511,6 +513,7 @@ function createNotificacions() {
     };
 
     var notifLikeComment = {
+        id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-07T12:00:00'),
         description: "A user3 le ha gustado tu comentario",
         url: "/publication/"+pub1._id,
@@ -518,6 +521,7 @@ function createNotificacions() {
     };
 
     var notifTagPub = {
+        id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-06T12:00:00'),
         description: "Te han etiquetado en una publicacion",
         url: "/publication/"+pub1._id,
@@ -525,6 +529,7 @@ function createNotificacions() {
     };
 
     var notifTagImg = {
+        id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-06T12:00:00'),
         description: "Te han etiquetado en una imagen",
         url: "/img/"+img1._id,
@@ -532,6 +537,7 @@ function createNotificacions() {
     };
 
     var notifFollow = {
+        id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
         description: "user2 ha comenzado a seguirte",
         url: "/profile/"+user2.username,
@@ -539,6 +545,7 @@ function createNotificacions() {
     };
 
     var notifWantsFollow = {
+        id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
         description: "user3 quiere seguirte",
         url: "/requests",
@@ -546,6 +553,7 @@ function createNotificacions() {
     };
 
     var notifMsgChat = {
+        id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
         description: "user3 te ha hablado mientras no estabas",
         watched: true

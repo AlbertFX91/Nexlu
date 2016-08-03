@@ -83,30 +83,20 @@
                                 <a href="" class="badge1" data-badge="{{numNotifications}}">
                                     <i class="small material-icons">add_alert</i>
                                 </a>
-                                <div id="div1">
+                                <div id="div1" style="right: {{heightcss}}">
 
                                 </div>
                             {{else}}
                                 <a href="" class="badge1">
                                     <i class="small material-icons">add_alert</i>
                                 </a>
+                                <div id="div1" style="right: {{heightcss}}">
+
+                                </div>
                             {{/if}}
                         </div>
                         <div id="notif-container">
-                            {{#each currentUser.notifications}}
-                                <div class="grey black-text" style="margin: 5px 2px 5px 2px">
-                                    <div>
-                                        {{createdAt}}
-                                    </div>
-                                    <div>
-                                        {{description}}
-                                    </div>
-                                    <div>
-                                        {{watched}}
-                                    </div>
-                                </div>
-                            {{/each}}
-
+                            {{> notification}}
                         </div>
                     </li>
                     <li style="height: 64px;"><a href="#" class="dropdown-button" data-activates="dropdown-profile" style="height: 100%">

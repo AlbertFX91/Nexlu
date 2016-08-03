@@ -235,6 +235,10 @@
   "requests-follow":{
     "title": "Requests for follow",
     "norequests": "No pending requests"
+  },
+
+  "notification":{
+    "header": "Notifications"
   }
 
 }

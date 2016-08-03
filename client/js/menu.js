@@ -12,11 +12,6 @@ Template.menu.events({
         });
     }
 });
-
-Template.menuLogged.onRendered(function(e) {
-    $("#notif-container").niceScroll();
-});
-
 Template.menuLogged.helpers({
     hasRequests: function(){
         return Meteor.user().requestsFollow.length > 0;
@@ -31,6 +26,14 @@ Template.menuLogged.helpers({
     numNotifications: function(){
         var length = _.filter(Meteor.user().notifications, function(n){return !n.watched}).length;
         return length > 50? "+50":length
+    },
+    heightcss: function(){
+        var currentLocale = TAPi18n.getLanguage();
+        if(currentLocale == "en"){
+            return "218px";
+        }else{
+            return "200px";
+        }
     }
 });
 

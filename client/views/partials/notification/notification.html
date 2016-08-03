@@ -1,0 +1,25 @@
+<Template name="notification">
+    <div id="notification-c-header">
+        <div id="n-c-header-title">
+            {{_ "notification.header" }}
+        </div>
+        <div id="n-c-header-options">
+            div B
+        </div>
+    </div>
+    <div id="notification-c-body">
+        {{#each currentUser.notifications}}
+            <div class="grey notification-row" style="margin: 0 0 5px 0">
+                <div>
+                    {{createdAt}}
+                </div>
+                <div>
+                    {{description}}
+                </div>
+                <div>
+                    {{watched}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</Template>

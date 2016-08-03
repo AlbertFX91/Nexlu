@@ -257,5 +257,9 @@
   "requests-follow":{
     "title": "Solicitudes para seguirte",
     "norequests": "No tiene solicitudes pendientes"
+  },
+
+  "notification":{
+    "header": "Notificaciones"
   }
 }
