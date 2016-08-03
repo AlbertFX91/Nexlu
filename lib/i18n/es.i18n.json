@@ -268,7 +268,9 @@
     "p2":"La contraseña debe tener minúsculas, dos mayúsculas y números.",
     "p3":"Nueva contraseña",
     "p4":"Confirmar contraseña",
-    "password_change_success":"Contraseña cambiada satisfactoriamente"
+    "p5":"Contraseña actual",
+    "password_change_success":"Contraseña cambiada satisfactoriamente",
+    "error_password_change_success":"Contraseña actual incorrecta"
   },
 
   "forgot":{

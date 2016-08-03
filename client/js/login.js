@@ -78,6 +78,12 @@ Template.login.helpers({
 
 
 Template.login.onRendered(function(){
+    $('#show').mousedown(function(){
+        $('#password').removeAttr('type');
+    });
+    $('#show').mouseup(function(){
+        $('#password').attr('type', 'password');
+    });
     $('#login-access').addClass('login-open');
     $('#login-overlay').css('display', 'block');
     $('#login-main').css('display', 'block');

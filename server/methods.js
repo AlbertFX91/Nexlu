@@ -39,25 +39,6 @@ Meteor.methods({
             }
         }
     },
-    'update.password.user':function (new_password, confirm_new_password) {
-        var password_no_errors = Util.validate_password(new_password, confirm_new_password);
-        if(password_no_errors == true){
-            try {
-                var currentToken = Accounts._getLoginToken(this.connection.id);
-                Meteor.users.update({ _id: this.userId },
-                    {
-                        $set: { 'services.password.bcrypt': hashPassword(password_no_errors) },
-                        $pull: {
-                            'services.resume.loginTokens': { hashedToken: { $ne: currentToken } }
-                        },
-                        $unset: { 'services.password.reset': 1 }
-                    }
-                );
-            } catch (error) {
-                throw new Meteor.Error("Server error", error);
-            }
-        }
-    },
     'modify_bio': function(bio){
         if(bio == ""){
             bio = TAPi18n.__(" ");

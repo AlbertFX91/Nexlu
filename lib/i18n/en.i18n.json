@@ -248,7 +248,9 @@
     "p2":"The password must have lowercase, two uppercase and numbers.",
     "p3":"New password",
     "p4":"Confirm password",
-    "password_change_success":"Password changed successfully"
+    "p5":"Current password",
+    "password_change_success":"Password changed successfully",
+    "error_password_change_success":"Current password incorrect"
   },
 
   "forgot":{
