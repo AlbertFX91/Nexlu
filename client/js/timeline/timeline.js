@@ -3,3 +3,9 @@ Template.timeline.helpers({
         return Publications.find({},{sort: {createdAt: -1}});
     }
 });
+
+Template.timeline.onCreated(function(){
+
+
+
+});
