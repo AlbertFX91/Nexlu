@@ -40,3 +40,42 @@
     border-bottom: 1px solid #5b757d !important;
     cursor:pointer;
 }
+
+#div1{
+    border-color: transparent;
+    border-bottom-color: #fff;
+    border-style: dashed dashed solid;
+    border-width: 0 8.5px 8.5px;
+    display: none;
+    position: absolute;
+    right: 200px;
+    z-index: 1;
+    height: 0;
+    width: 0;
+    top: 63px;
+}
+
+#notif-container{
+    background: #fff;
+    border: 1px solid #ccc;
+    border-color: rgba(0,0,0,.2);
+    color: #000;
+    -moz-box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    display: none;
+    outline: none;
+    overflow: hidden;
+    position: absolute;
+    right: 50px;
+    top: 70px;
+    -moz-animation: gb__a .2s;
+    animation: gb__a .2s;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -moz-user-select: text;
+    max-height: 300px;
+    height: 300px;
+    min-height: 300px;
+    overflow-y: auto;
+    width: 320px;
+}

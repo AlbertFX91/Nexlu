@@ -78,15 +78,36 @@
 
                 <ul id="nav-mobile" class="right">
                     <li>
-                        {{#if hasNotifications}}
-                            <a href="" class="badge1" data-badge="{{numNotifications}}">
-                                <i class="small material-icons">add_alert</i>
-                            </a>
-                        {{else}}
-                            <a href="" class="badge1">
-                                <i class="small material-icons">add_alert</i>
-                            </a>
-                        {{/if}}
+                        <div id="badge-button">
+                            {{#if hasNotifications}}
+                                <a href="" class="badge1" data-badge="{{numNotifications}}">
+                                    <i class="small material-icons">add_alert</i>
+                                </a>
+                                <div id="div1">
+
+                                </div>
+                            {{else}}
+                                <a href="" class="badge1">
+                                    <i class="small material-icons">add_alert</i>
+                                </a>
+                            {{/if}}
+                        </div>
+                        <div id="notif-container">
+                            {{#each currentUser.notifications}}
+                                <div class="grey black-text" style="margin: 5px 2px 5px 2px">
+                                    <div>
+                                        {{createdAt}}
+                                    </div>
+                                    <div>
+                                        {{description}}
+                                    </div>
+                                    <div>
+                                        {{watched}}
+                                    </div>
+                                </div>
+                            {{/each}}
+
+                        </div>
                     </li>
                     <li style="height: 64px;"><a href="#" class="dropdown-button" data-activates="dropdown-profile" style="height: 100%">
                         <!-- <img src="/fjv.png" class="circle" height="auto" width="100%" style=";max-width: 50px;max-height: 50px; vertical-align: middle">-->
