@@ -77,20 +77,31 @@ Meteor.methods({
                 $set: {
                     playersTagged: playersTagged
                 }
-            })
+            });
+            _.each(playersTagged, function(p){
+                if(p._id._id != user._id){
+                    NotificationService.createTagImg(p._id, id);
+                }
+            });
 
         } else {
             throw Meteor.Error("User not logued");
         }
     },
     'image.edit': function(publicationId, description, usernamesTagged){
+        var user = Meteor.user();
         var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Images.update(publicationId, {
             $set: {
                 description: description,
                 playersTagged: playersTagged
             }
-        })
+        });
+        _.each(playersTagged, function(p){
+            if(p._id._id != user._id){
+                NotificationService.createTagImg(p._id, publicationId);
+            }
+        });
     },
     'image.remove': function(publicationId) {
         Images.remove(publicationId);
@@ -106,7 +117,9 @@ Meteor.methods({
             $pull: {
                 playersDislike: userId
             }
-        })
+        });
+        var ownerId = Images.findOne(publicationId).owner.id;
+        NotificationService.createLikeImg(ownerId, publicationId)
     },
     'image.dislike': function(publicationId) {
         var userId = Meteor.userId();
@@ -148,7 +161,13 @@ Meteor.methods({
                 description: description,
                 playersTagged: playersTagged
             }
-        })
+        });
+        var user = Meteor.user();
+        _.each(playersTagged, function(p){
+            if(p._id._id != user._id){
+                NotificationService.createTagPub(p._id, publicationId);
+            }
+        });
     },
     'removePublication': function(publicationId) {
         Publications.remove(publicationId);
@@ -165,6 +184,12 @@ Meteor.methods({
                 playersTagged: playersTagged
             }
         })
+        var user = Meteor.user();
+        _.each(playersTagged, function(p){
+            if(p._id._id != user._id){
+                NotificationService.createTagPub(p._id, publicationId);
+            }
+        });
     },
     'send_message_about': function(info) {
         Email.send({
@@ -197,7 +222,9 @@ Meteor.methods({
             $pull: {
                 playersDislike: userId
             }
-        })
+        });
+        var ownerId = Publications.findOne(publicationId).owner.id;
+        NotificationService.createLikePub(ownerId, publicationId)
     },
     'dislikePublication': function(publicationId) {
         var userId = Meteor.userId();
@@ -234,6 +261,8 @@ Meteor.methods({
                 comments: comment
             }
         });
+        var owner = Images.findOne(publicationId).owner.id;
+        NotificationService.createComment(owner, publicationId, "img");
     },
     'postComment': function (publicationId, comment) {
         Publications.update(publicationId, {
@@ -241,6 +270,8 @@ Meteor.methods({
                 comments: comment
             }
         });
+        var owner = Publications.findOne(publicationId).owner.id;
+        NotificationService.createComment(owner, publicationId, "publication");
     },
     'image.likeComment': function(commentId) {
         var userId = Meteor.userId();
@@ -253,7 +284,12 @@ Meteor.methods({
             $pull: {
                 "comments.$.playersDislike": userId
             }
-        })
+        });
+        var img = Images.findOne({"comments.id": commentId});
+        var comment = _.find(img.comments, function(c){
+            return c.id = commentId;
+        });
+        NotificationService.createLikeComment(comment.player, img._id, "img");
     },
     'likeComment': function(commentId) {
         var userId = Meteor.userId();
@@ -266,7 +302,12 @@ Meteor.methods({
             $pull: {
                 "comments.$.playersDislike": userId
             }
-        })
+        });
+        var pub = Publications.findOne({"comments.id": commentId});
+        var comment = _.find(pub.comments, function(p){
+            return p.id = commentId;
+        });
+        NotificationService.createLikeComment(comment.player, pub._id, "publication");
     },
     'image.dislikeComment': function(commentId) {
         var userId = Meteor.userId();
@@ -488,6 +529,7 @@ Meteor.methods({
                     }
                 }
             });
+            NotificationService.createWantsFollow(userfollow._id);
         }else{
             Meteor.users.update({_id: userId}, {
                 "$push": {
@@ -499,6 +541,7 @@ Meteor.methods({
                     followers: userId
                 }
             });
+            NotificationService.createFollow(userfollow._id);
         }
     },
     'login.facebook': function(){

@@ -246,7 +246,8 @@
     "notif-tag-img": "<b>%s</b> has tagged you in a image",
     "notif-follow": "<b>%s</b> has started following you",
     "notif-wants-follow": "<b>%s</b> wants to follow you",
-    "notif-msg-chat": "<b>%s</b> has send you a message while you wasn't here"
+    "notif-msg-chat": "<b>%s</b> has send you a message while you wasn't here",
+    "notif-comment": "<b>%s</b> has commented in your publication"
   }
 
 }

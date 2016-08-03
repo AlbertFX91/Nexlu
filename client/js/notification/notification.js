@@ -27,5 +27,8 @@ Template.notification.events({
 Template.notification.helpers({
     isNew: function(){
        return this.watched? "": "new-notification";
-   }
+    },
+    notificationsSorted: function(){
+        return _.sortBy(Meteor.user().notifications, function(n){return n.createdAt}).reverse();
+    }
 });
