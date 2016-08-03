@@ -1,6 +1,6 @@
 Meteor.startup(function () {
     // code to run on server at startup
-
+    console.log("AVISO: Warning de S3 undefined no es un error.");
     // Inicialización de servicios amazon S3
     S3.config = {
         "key": Meteor.settings.amazon.key,
@@ -500,7 +500,7 @@ function createNotificacions() {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-08T12:00:00'),
         //description: "A user2 le ha gustado tu publicacion",
-        descriptionkey: "notification.notif-like-pub",
+        descriptionKey: "notification.notif-like-pub",
         username: user2.username,
         url: "/publication/"+pub1._id,
         watched: false
@@ -510,7 +510,7 @@ function createNotificacions() {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-08T12:00:00'),
         //description: "A user3 le ha gustado tu imagen",
-        descriptionkey: "notification.notif-like-img",
+        descriptionKey: "notification.notif-like-img",
         username: user3.username,
         url: "/img/"+img1._id,
         watched: false
@@ -520,7 +520,7 @@ function createNotificacions() {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-07T12:00:00'),
         //description: "A user3 le ha gustado tu comentario",
-        descriptionkey: "notification.notif-like-comment",
+        descriptionKey: "notification.notif-like-comment",
         username: user3.username,
         url: "/publication/"+pub1._id,
         watched: false
@@ -530,7 +530,7 @@ function createNotificacions() {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-06T12:00:00'),
         //description: "user3 te ha etiquetado en una publicacion",
-        descriptionkey: "notification.notif-tag-pub",
+        descriptionKey: "notification.notif-tag-pub",
         username: user3.username,
         url: "/publication/"+pub1._id,
         watched: true
@@ -540,7 +540,7 @@ function createNotificacions() {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-06T12:00:00'),
         //description: "user3 te ha etiquetado en una imagen",
-        descriptionkey: "notification.notif-tag-img",
+        descriptionKey: "notification.notif-tag-img",
         username: user3.username,
         url: "/img/"+img1._id,
         watched: false
@@ -550,7 +550,7 @@ function createNotificacions() {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
         //description: "user2 ha comenzado a seguirte",
-        descriptionkey: "notification.notif-follow",
+        descriptionKey: "notification.notif-follow",
         username: user3.username,
         url: "/profile/"+user2.username,
         watched: false
@@ -560,7 +560,7 @@ function createNotificacions() {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
         //description: "user3 quiere seguirte",
-        descriptionkey: "notification.notif-wants-follow",
+        descriptionKey: "notification.notif-wants-follow",
         username: user3.username,
         url: "/requests",
         watched: true
@@ -570,7 +570,7 @@ function createNotificacions() {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
         //description: "user3 te ha hablado mientras no estabas",
-        descriptionkey: "notification.notif-msg-chat",
+        descriptionKey: "notification.notif-msg-chat",
         username: user3.username,
         watched: true
     };
