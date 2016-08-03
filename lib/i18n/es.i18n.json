@@ -260,6 +260,14 @@
   },
 
   "notification":{
-    "header": "Notificaciones"
+    "header": "Notificaciones",
+    "notif-like-pub": "A <b>%s</b> le ha gustado tu publicacion",
+    "notif-like-img": "A <b>%s</b> le ha gustado tu imagen",
+    "notif-like-comment": "A <b>%s</b> le ha gustado tu comentario",
+    "notif-tag-pub": "<b>%s</b> te ha etiquetado en una publicacion",
+    "notif-tag-img": "<b>%s</b> te ha etiquetado en una imagen",
+    "notif-follow": "<b>%s</b> ha comenzado a seguirte",
+    "notif-wants-follow": "<b>%s</b> quiere seguirte",
+    "notif-msg-chat": "<b>%s</b> te ha hablado mientras no estabas"
   }
 }

@@ -238,7 +238,15 @@
   },
 
   "notification":{
-    "header": "Notifications"
+    "header": "Notifications",
+    "notif-like-pub": "<b>%s</b> likes your publication",
+    "notif-like-img": "<b>%s</b> likes your image",
+    "notif-like-comment": "<b>%s</b> likes your comment",
+    "notif-tag-pub": "<b>%s</b> has tagged you in a publication",
+    "notif-tag-img": "<b>%s</b> has tagged you in a image",
+    "notif-follow": "<b>%s</b> has started following you",
+    "notif-wants-follow": "<b>%s</b> wants to follow you",
+    "notif-msg-chat": "<b>%s</b> has send you a message while you wasn't here"
   }
 
 }

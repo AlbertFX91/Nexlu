@@ -499,7 +499,9 @@ function createNotificacions() {
     var notifLikePub = {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-08T12:00:00'),
-        description: "A user2 le ha gustado tu publicacion",
+        //description: "A user2 le ha gustado tu publicacion",
+        descriptionkey: "notification.notif-like-pub",
+        username: user2.username,
         url: "/publication/"+pub1._id,
         watched: false
     };
@@ -507,7 +509,9 @@ function createNotificacions() {
     var notifLikeImg = {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-08T12:00:00'),
-        description: "A user3 le ha gustado tu publicacion",
+        //description: "A user3 le ha gustado tu imagen",
+        descriptionkey: "notification.notif-like-img",
+        username: user3.username,
         url: "/img/"+img1._id,
         watched: false
     };
@@ -515,7 +519,9 @@ function createNotificacions() {
     var notifLikeComment = {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-07T12:00:00'),
-        description: "A user3 le ha gustado tu comentario",
+        //description: "A user3 le ha gustado tu comentario",
+        descriptionkey: "notification.notif-like-comment",
+        username: user3.username,
         url: "/publication/"+pub1._id,
         watched: false
     };
@@ -523,7 +529,9 @@ function createNotificacions() {
     var notifTagPub = {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-06T12:00:00'),
-        description: "Te han etiquetado en una publicacion",
+        //description: "user3 te ha etiquetado en una publicacion",
+        descriptionkey: "notification.notif-tag-pub",
+        username: user3.username,
         url: "/publication/"+pub1._id,
         watched: true
     };
@@ -531,7 +539,9 @@ function createNotificacions() {
     var notifTagImg = {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-06T12:00:00'),
-        description: "Te han etiquetado en una imagen",
+        //description: "user3 te ha etiquetado en una imagen",
+        descriptionkey: "notification.notif-tag-img",
+        username: user3.username,
         url: "/img/"+img1._id,
         watched: false
     };
@@ -539,7 +549,9 @@ function createNotificacions() {
     var notifFollow = {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
-        description: "user2 ha comenzado a seguirte",
+        //description: "user2 ha comenzado a seguirte",
+        descriptionkey: "notification.notif-follow",
+        username: user3.username,
         url: "/profile/"+user2.username,
         watched: false
     };
@@ -547,7 +559,9 @@ function createNotificacions() {
     var notifWantsFollow = {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
-        description: "user3 quiere seguirte",
+        //description: "user3 quiere seguirte",
+        descriptionkey: "notification.notif-wants-follow",
+        username: user3.username,
         url: "/requests",
         watched: true
     };
@@ -555,7 +569,9 @@ function createNotificacions() {
     var notifMsgChat = {
         id: new Mongo.ObjectID()._str,
         createdAt: new Date('2016-06-09T12:00:00'),
-        description: "user3 te ha hablado mientras no estabas",
+        //description: "user3 te ha hablado mientras no estabas",
+        descriptionkey: "notification.notif-msg-chat",
+        username: user3.username,
         watched: true
     };
 
