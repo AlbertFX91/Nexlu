@@ -444,6 +444,14 @@ Meteor.methods({
                 }
             }
         });
+        var chatroom = ChatRooms.findOne(chatroom_id);
+        var player = _.filter(chatroom.players, function(p){
+            return p.id != userId;
+        })[0];
+        var status = Meteor.users.findOne(player.id).status;
+        if(!status || !status.online){
+            NotificationService.createMsgChat(player.id);
+        }
         return true;
     },
     'findUsers': function(){
