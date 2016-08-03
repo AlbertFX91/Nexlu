@@ -4,8 +4,11 @@ Template.profileInfoUser.helpers({
         if(!isPrivate){
             return true;
         }
-        var isFollowed = false;
         var user = Meteor.user();
+        if(user && user._id == this.user._id){
+            return true;
+        }
+        var isFollowed = false;
         if(user){
             isFollowed = _.contains(user.followed, this.user._id);
         }
