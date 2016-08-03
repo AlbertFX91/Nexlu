@@ -254,6 +254,13 @@
   "forgot":{
     "title": "Reset my password",
     "text": "Enter your email and a reset password link will be sent to you",
-    "send-password": "Send password reset"
+    "send-password": "Send password reset",
+    "email_subject": "[NEXLU] Reset password",
+    "email_title": "Your new password, %s!",
+    "email_message1": "We are very sad because you forgot your password.",
+    "email_message2": "Here's your new password <strong>%s</strong>",
+    "email_message3": "We recommend that you change your password. To do this, go to 'change password' in your 'settings'.",
+    "email_message4": "See you soon!",
+    "email-sent": "Email has been sent!"
   }
 }

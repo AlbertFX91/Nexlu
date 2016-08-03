@@ -42,9 +42,6 @@
                                 <button name="submit" type="submit" class="waves-effect waves-light btn blue darken-3 z-depth-1 caret bold">{{_ "login"}}
                                 </button>
                             </div>
-                            <div>
-                                <a href="{{ pathFor 'forgot_password' }}">{{_ "tag.forgot_password"}}</a>
-                            </div>
                             <div class="row" id="row-facebook-gmail">
                                 <div class="col s10 m5" style="margin-bottom: 5px;">
                                     {{#if currentUser}}
@@ -66,6 +63,9 @@
                                         </a>
                                     {{/if}}
                                 </div>
+                            </div>
+                            <div>
+                                <a href="{{ pathFor 'forgot_password' }}" style="margin-left: 10%;">{{_ "tag.forgot_password"}}</a>
                             </div>
                         </div>
                     </div>

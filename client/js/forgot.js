@@ -1,7 +1,8 @@
 Template.forgot_password.events({
     'click #button-forgot': function(){
         var email = document.getElementById("email-reset").value;
-        Meteor.call("send_email_reset", email);
+        var currentLocale = TAPi18n.getLanguage();
+        Meteor.call("send_email_reset", email,currentLocale);
         Materialize.toast(TAPi18n.__("toastMail"), 3000);
         Router.go("home");
     }

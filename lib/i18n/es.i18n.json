@@ -274,6 +274,13 @@
   "forgot":{
     "title": "Reiniciar mi contraseña",
     "text": "Introduce tu correo eletrónico y te mandaremos un correo para cambiarla",
-    "send-password": "Enviar correo"
+    "send-password": "Enviar correo",
+    "email_subject": "[NEXLU] Resetear contraseña",
+    "email_title": "Tu nueva contraseña, %s!",
+    "email_message1": "Estamos muy triste porque has olvidado tu contraseña.",
+    "email_message2": "Aquí tienes tu nueva contraseña <strong>%s</strong>",
+    "email_message3": "Te recomendamos que cambies tu contraseña. Para esto, accede a 'cambiar contraseña' en tus 'configuraciones'.",
+    "email_message4": "¡Nos vemos pronto!",
+    "email-sent": "¡El email ha sido enviado!"
   }
 }

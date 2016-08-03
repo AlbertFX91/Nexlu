@@ -642,5 +642,19 @@ Meteor.methods({
             }
         });
         return true;
+    },
+
+    'send_email_reset': function(email, currentLocale){
+        var userDB = Meteor.users.findOne({'emails.0.address': email});
+        var newPassword = Math.random().toString(36).slice(-8);
+        Accounts.setPassword(userDB._id, newPassword);
+        var subject = "";
+        if(currentLocale=="es"){
+            subject = "[NEXLU] Resetear contraseña"
+        }else{
+            subject = "[NEXLU] Reset password"
+        }
+        MailService.send(subject, "reset-password", {newPassword: newPassword, username: userDB.username}, email);
+
     }
 });
