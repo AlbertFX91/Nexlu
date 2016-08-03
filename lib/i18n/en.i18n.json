@@ -44,7 +44,7 @@
     "not_found-logo": "Click the logo below to try returning to Nexlu",
     "not_found-title": "I AM ERROR",
     "not_found": "We can't find this page",
-    "login_credentials_wrong": "username and/or password wrong",
+    "login_credentials_wrong": "Username and/or password wrong",
     "login_credentials-facebook_wrong": "Login with Facebook canceled",
     "login_credentials-google_wrong": "Login with Google canceled",
     "login_credentials-twitter_wrong": "Login with Twitter canceled",
@@ -93,7 +93,8 @@
     "following": "Following",
     "post": "Post",
     "remove": "Delete",
-    "comment": "Comment"
+    "comment": "Comment",
+    "forgot_password": "Forgot Password"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -239,5 +240,20 @@
     "p3":"Email current",
     "p4":"New email",
     "email_change_success":"Email changed successfully"
+  },
+
+  "change_password":{
+    "title": "Change password",
+    "p1":"Change the password if you want it.",
+    "p2":"The password must have lowercase, two uppercase and numbers.",
+    "p3":"New password",
+    "p4":"Confirm password",
+    "password_change_success":"Password changed successfully"
+  },
+
+  "forgot":{
+    "title": "Reset my password",
+    "text": "Enter your email and a reset password link will be sent to you",
+    "send-password": "Send password reset"
   }
 }

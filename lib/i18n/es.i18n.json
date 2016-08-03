@@ -48,7 +48,7 @@
     "not_found-logo": "Clic en el logo para volver a Nexlu",
     "not_found-title": "SOY UN ERROR",
     "not_found": "No podemos encontrar la página",
-    "login_credentials_wrong": "usuario y/o contraseña erronea",
+    "login_credentials_wrong": "Usuario y/o contraseña erronea",
     "login_credentials-facebook_wrong": "Inicio de sesión con Facebook cancelada",
     "login_credentials-google_wrong": "Inicio de sesión con Google cancelada",
     "login_credentials-twitter_wrong": "Inicio de sesión con Twitter cancelada",
@@ -99,7 +99,8 @@
     "following": "Siguiendo",
     "post": "Enviar",
     "remove": "Borrar",
-    "comment": "Commentar"
+    "comment": "Commentar",
+    "forgot_password": "Olvidé la contraseña"
 
   },
 
@@ -259,5 +260,20 @@
     "p3":"Correo actual",
     "p4":"Nuevo correo",
     "email_change_success":"Correo cambiado satisfactoriamente"
+  },
+
+  "change_password":{
+    "title": "Cambiar contraseña",
+    "p1":"Cambia la contraseña por otra si lo deseas.",
+    "p2":"La contraseña debe tener minúsculas, dos mayúsculas y números.",
+    "p3":"Nueva contraseña",
+    "p4":"Confirmar contraseña",
+    "password_change_success":"Contraseña cambiada satisfactoriamente"
+  },
+
+  "forgot":{
+    "title": "Reiniciar mi contraseña",
+    "text": "Introduce tu correo eletrónico y te mandaremos un correo para cambiarla",
+    "send-password": "Enviar correo"
   }
 }

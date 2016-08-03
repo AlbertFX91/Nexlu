@@ -25,3 +25,13 @@
     position: fixed;
     z-index: -2;
 }
+
+/** Forgot password */
+
+.image-forgot-password{
+    object-fit: cover;
+    opacity: 0.2;
+    position: fixed;
+    z-index: -2;
+    box-shadow: 15px 15px 15px 20px black;
+}
