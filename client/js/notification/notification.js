@@ -20,7 +20,7 @@ Template.notification.events({
     },
     'click .notification-all-trash-btn': function(e){
         e.preventDefault();
-        Meteor.call("notification.remove.all");
+        $('#remove-all-notif-modal').openModal();
     }
 });
 

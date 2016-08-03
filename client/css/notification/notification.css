@@ -66,3 +66,26 @@
 .notification-all-trash-btn:hover{
     color: red;
 }
+
+
+#remove-all-notif-modal{
+    width: 40%;
+    background-color: transparent !important;
+    text-align: justify;
+}
+
+@media screen and (max-width: 1024px){
+    #remove-all-notif-modal {
+        width: 65% !important;
+    }
+}
+
+@media screen and (max-width: 425px){
+    #remove-all-notif-modal {
+        width: 80% !important;
+    }
+}
+
+#confirm-remove-all-notif {
+    margin-left: 20px;
+}

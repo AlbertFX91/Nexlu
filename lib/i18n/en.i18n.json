@@ -240,6 +240,7 @@
   "notification":{
     "header": "Notifications",
     "no-notifications": "You don't have any notification",
+    "remove-all-notifications": "Remove all your notifications?",
     "notif-like-pub": "<b>%s</b> likes your publication",
     "notif-like-img": "<b>%s</b> likes your image",
     "notif-like-comment": "<b>%s</b> likes your comment",

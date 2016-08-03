@@ -47,5 +47,10 @@ Template.menuLogged.events({
             $("#div1").css("display", "none");
             $("#notif-container").css("display", "none");
         }
-    }
+    },
+    'submit .remove-all-notif': function(e) {
+        e.preventDefault();
+        Meteor.call("notification.remove.all");
+        $('#remove-all-notif-modal').closeModal()
+    },
 });
