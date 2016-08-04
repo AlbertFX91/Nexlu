@@ -152,6 +152,26 @@ Meteor.publish("emojis", function(){
     return Emojis.find();
 });
 
+/**
+ * Publicación que conllevan las publicaciones propias y de los seguidores (para la
+ * implementación del scroll infinito).
+ */
+Meteor.publish('publication.me.followed.all', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+
+    Counts.publish(this, 'all-publications', Publications.find(), {
+        noReady: true
+    });
+
+    var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
+    var followed_id = followed.followed;
+    return Publications.find({$or: [{"owner.id": {"$in": followed_id}},{"owner.id": user_id}]}, {fields: Fields.publication.all});
+});
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
