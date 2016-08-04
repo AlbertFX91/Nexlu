@@ -1,6 +1,6 @@
 Meteor.startup(function () {
     // code to run on server at startup
-
+    console.log("AVISO: Warning de S3 undefined no es un error.");
     // Inicialización de servicios amazon S3
     S3.config = {
         "key": Meteor.settings.amazon.key,
@@ -67,6 +67,9 @@ Meteor.startup(function () {
         if (Images.find().count() === 0){
             createImages();
         }
+
+        createNotificacions();
+
     }else if (entorno == "preproduccion"){
         Meteor.users.remove({});
         ChatRooms.remove({});
@@ -77,6 +80,7 @@ Meteor.startup(function () {
         createChatRooms();
         createPublications();
         createImages();
+        createNotificacions();
     }
 
 
@@ -120,7 +124,9 @@ function createUsers(){
             followers: [id_user2, id_user3],
             followed: [id_user2, id_user3],
             "emails.0.verified": true,
-            private_profile: false
+            private_profile: false,
+            requestsFollow: [],
+            notifications: []
         }
     });
 
@@ -130,7 +136,18 @@ function createUsers(){
             followers: [id_user1, id_user3],
             followed: [id_user1, id_user3, id_user4],
             "emails.0.verified": true,
-            private_profile: true
+            private_profile: true,
+            requestsFollow: [
+                {
+                    createdAt: new Date('2016-07-20T12:00:00'),
+                    from: id_user4
+                },
+                {
+                    createdAt: new Date('2016-07-22T12:00:00'),
+                    from: id_user5
+                }
+            ],
+            notifications: []
         }
     });
 
@@ -139,7 +156,9 @@ function createUsers(){
             followers: [id_user1, id_user2, id_user4],
             followed: [id_user1, id_user2],
             "emails.0.verified": true,
-            private_profile: true
+            private_profile: true,
+            requestsFollow: [],
+            notifications: []
         }
     });
 
@@ -149,7 +168,9 @@ function createUsers(){
             followers: [id_user2, id_user5],
             followed: [id_user3, id_user5],
             "emails.0.verified": true,
-            private_profile: false
+            private_profile: false,
+            requestsFollow: [],
+            notifications: []
         }
     });
 
@@ -159,7 +180,18 @@ function createUsers(){
             followers: [id_user4],
             followed: [id_user4],
             "emails.0.verified": true,
-            private_profile: true
+            private_profile: true,
+            requestsFollow: [
+                {
+                    createdAt: new Date('2016-07-20T12:00:00'),
+                    from: id_user1
+                },
+                {
+                    createdAt: new Date('2016-07-22T12:00:00'),
+                    from: id_user2
+                }
+            ],
+            notifications: []
         }
     });
 
@@ -290,7 +322,7 @@ function createPublications(){
                 description: "Nice one dude!",
                 player: user3._id,
                 playersLike: [user1._id],
-                playersDislike: [user2._id],
+                playersDislike: [user2._id]
             }
         ]
     });
@@ -449,4 +481,104 @@ function createImages(){
         }
     });
 
+}
+
+
+function createNotificacions() {
+    var user1 = Meteor.users.findOne({username: 'user1'});
+    var user2 = Meteor.users.findOne({username: 'user2'});
+    var user3 = Meteor.users.findOne({username: 'user3'});
+    var user4 = Meteor.users.findOne({username: 'user4'});
+    var user5 = Meteor.users.findOne({username: 'user5'});
+
+    var pub1 = Publications.find({"owner.id": user1._id}).fetch()[0];
+
+
+    var img1 = Images.find({"owner.id": user1._id}).fetch()[0];
+
+    var notifLikePub = {
+        id: new Mongo.ObjectID()._str,
+        createdAt: new Date('2016-06-08T12:00:00'),
+        //description: "A user2 le ha gustado tu publicacion",
+        descriptionKey: "notification.notif-like-pub",
+        username: user2.username,
+        url: "/publication/"+pub1._id,
+        watched: false
+    };
+
+    var notifLikeImg = {
+        id: new Mongo.ObjectID()._str,
+        createdAt: new Date('2016-06-08T12:00:00'),
+        //description: "A user3 le ha gustado tu imagen",
+        descriptionKey: "notification.notif-like-img",
+        username: user3.username,
+        url: "/img/"+img1._id,
+        watched: false
+    };
+
+    var notifLikeComment = {
+        id: new Mongo.ObjectID()._str,
+        createdAt: new Date('2016-06-07T12:00:00'),
+        //description: "A user3 le ha gustado tu comentario",
+        descriptionKey: "notification.notif-like-comment",
+        username: user3.username,
+        url: "/publication/"+pub1._id,
+        watched: false
+    };
+
+    var notifTagPub = {
+        id: new Mongo.ObjectID()._str,
+        createdAt: new Date('2016-06-06T12:00:00'),
+        //description: "user3 te ha etiquetado en una publicacion",
+        descriptionKey: "notification.notif-tag-pub",
+        username: user3.username,
+        url: "/publication/"+pub1._id,
+        watched: true
+    };
+
+    var notifTagImg = {
+        id: new Mongo.ObjectID()._str,
+        createdAt: new Date('2016-06-06T12:00:00'),
+        //description: "user3 te ha etiquetado en una imagen",
+        descriptionKey: "notification.notif-tag-img",
+        username: user3.username,
+        url: "/img/"+img1._id,
+        watched: false
+    };
+
+    var notifFollow = {
+        id: new Mongo.ObjectID()._str,
+        createdAt: new Date('2016-06-09T12:00:00'),
+        //description: "user2 ha comenzado a seguirte",
+        descriptionKey: "notification.notif-follow",
+        username: user3.username,
+        url: "/profile/"+user2.username,
+        watched: false
+    };
+
+    var notifWantsFollow = {
+        id: new Mongo.ObjectID()._str,
+        createdAt: new Date('2016-06-09T12:00:00'),
+        //description: "user3 quiere seguirte",
+        descriptionKey: "notification.notif-wants-follow",
+        username: user3.username,
+        url: "/requests",
+        watched: true
+    };
+
+    var notifMsgChat = {
+        id: new Mongo.ObjectID()._str,
+        createdAt: new Date('2016-06-09T12:00:00'),
+        //description: "user3 te ha hablado mientras no estabas",
+        descriptionKey: "notification.notif-msg-chat",
+        username: user3.username,
+        watched: true
+    };
+
+    Meteor.users.update(user1._id, {
+        "$set":{
+            notifications: [notifLikePub, notifLikeImg, notifLikeComment, notifTagPub, notifTagImg, notifFollow, notifWantsFollow, notifMsgChat]
+        }
+    });
+    
 }

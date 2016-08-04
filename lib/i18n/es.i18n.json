@@ -100,7 +100,9 @@
     "post": "Enviar",
     "remove": "Borrar",
     "comment": "Commentar",
-    "forgot_password": "Olvidé la contraseña"
+    "forgot_password": "Olvidé la contraseña",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
 
   },
 
@@ -184,7 +186,8 @@
     "Images": "Imágenes",
     "followed": "Siguiendo",
     "followers": "Seguidores",
-    "follow": "Seguir"
+    "follow": "Seguir",
+    "inprocess": "En proceso"
   },
 
   "timeline": {
@@ -253,7 +256,8 @@
     "general": "General",
     "privacity": "Privacidad",
     "password": "Cambiar contraseña",
-    "save_changes": "Guardar cambios"
+    "save_changes": "Guardar cambios",
+    "requests-follow": "Solicitudes para seguirte"
   },
 
   "privacity":{
@@ -287,7 +291,7 @@
     "error_password_change_success":"Contraseña actual incorrecta"
   },
 
-  "forgot":{
+  "forgot": {
     "title": "Reiniciar mi contraseña",
     "text": "Introduce tu correo eletrónico y te mandaremos un correo para cambiarla",
     "send-password": "Enviar correo",
@@ -298,5 +302,25 @@
     "email_message3": "Te recomendamos que cambies tu contraseña. Para esto, accede a 'cambiar contraseña' en tus 'configuraciones'.",
     "email_message4": "¡Nos vemos pronto!",
     "email-sent": "¡El email ha sido enviado!"
+  },
+
+  "requests-follow":{
+    "title": "Solicitudes para seguirte",
+    "norequests": "No tiene solicitudes pendientes"
+  },
+
+  "notification":{
+    "header": "Notificaciones",
+    "no-notifications": "No tienes notificaciones",
+    "remove-all-notifications": "¿Quieres borrar todas las notificaciones?",
+    "notif-like-pub": "A <b>%s</b> le ha gustado tu publicación",
+    "notif-like-img": "A <b>%s</b> le ha gustado tu imagen",
+    "notif-like-comment": "A <b>%s</b> le ha gustado tu comentario",
+    "notif-tag-pub": "<b>%s</b> te ha etiquetado en una publicación",
+    "notif-tag-img": "<b>%s</b> te ha etiquetado en una imagen",
+    "notif-follow": "<b>%s</b> ha comenzado a seguirte",
+    "notif-wants-follow": "<b>%s</b> quiere seguirte",
+    "notif-msg-chat": "<b>%s</b> te ha hablado mientras no estabas",
+    "notif-comment": "<b>%s</b> ha comentado en tu publicación"
   }
 }

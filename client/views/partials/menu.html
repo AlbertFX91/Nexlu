@@ -86,6 +86,25 @@
                 </ul>
                 <!-- -->
                 <ul id="nav-mobile" class="right">
+                    <li>
+                        <div id="badge-button">
+                            {{#if hasNotifications}}
+                                <a href="" class="badge1" data-badge="{{numNotifications}}">
+                                    <i class="small material-icons">add_alert</i>
+                                </a>
+                                <div id="div1" style="right: {{heightcss}}">
+
+                                </div>
+                            {{else}}
+                                <a href="" class="badge1">
+                                    <i class="small material-icons">add_alert</i>
+                                </a>
+                                <div id="div1" style="right: {{heightcss}}">
+
+                                </div>
+                            {{/if}}
+                        </div>
+                    </li>
                     <li style="height: 64px;"><a href="#" class="dropdown-button" data-activates="dropdown-profile" style="height: 100%">
                         <!-- <img src="/fjv.png" class="circle" height="auto" width="100%" style=";max-width: 50px;max-height: 50px; vertical-align: middle">-->
                         {{> images_avatar user_id=currentUser._id max_size="50px" css="margin-top:6px;"}}
@@ -95,6 +114,11 @@
                         <li><a href="{{ pathFor 'profile' username=currentUser.username }}">{{_ "profile.my_profile"}}</a></li>
                         <li class="divider"></li>
                         <li><a href="{{ pathFor 'settings' }}">{{_ "settings.settings"}}</a></li>
+                        <li class="divider"></li>
+                        <li><a id="requests_follow" href="{{ pathFor "requests-follow" }}">{{_ "settings.requests-follow"}}&nbsp;
+                            {{#if hasRequests}}
+                                <span class="red white-text" style="padding: 3px; border-radius: 2px;">{{numRequests}}</span>
+                            {{/if}}</a></li>
                         <li class="divider"></li>
                     </ul>
 
@@ -109,5 +133,18 @@
 
             </div>
         </nav>
+        <div id="notif-container">
+            {{> notification}}
+        </div>
+    </div>
+    <div id="remove-all-notif-modal" class="modal">
+        <div class="card web-color-1 edit-pub-modal">
+            <form class="remove-all-notif">
+                <div class="post-header text-color-1">
+                    {{_ "notification.remove-all-notifications"}}
+                    <button id="confirm-remove-all-notif" type="submit" class="waves-effect waves-light btn post" >{{_ "tag.remove"}}<i class="material-icons right">mode_edit</i></button>
+                </div>
+            </form>
+        </div>
     </div>
 </template>

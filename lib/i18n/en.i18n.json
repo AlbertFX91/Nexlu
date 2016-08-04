@@ -94,7 +94,9 @@
     "post": "Post",
     "remove": "Delete",
     "comment": "Comment",
-    "forgot_password": "Forgot Password"
+    "forgot_password": "Forgot Password",
+    "accept": "Accept",
+    "reject": "Reject"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -166,7 +168,8 @@
     "Images": "Images",
     "followed": "Followed",
     "followers": "Followers",
-    "follow": "Follow"
+    "follow": "Follow",
+    "inprocess": "In process"
   },
 
   "timeline": {
@@ -234,7 +237,8 @@
     "general": "General",
     "privacity": "Privacity",
     "password": "Change password",
-    "save_changes": "Save changes"
+    "save_changes": "Save changes",
+    "requests-follow": "Requests for follow"
   },
 
   "privacity":{
@@ -255,6 +259,25 @@
     "p3":"Email current",
     "p4":"New email",
     "email_change_success":"Email changed successfully"
+  },
+  "requests-follow":{
+    "title": "Requests for follow",
+    "norequests": "No pending requests"
+  },
+
+  "notification":{
+    "header": "Notifications",
+    "no-notifications": "You don't have any notification",
+    "remove-all-notifications": "Remove all your notifications?",
+    "notif-like-pub": "<b>%s</b> likes your publication",
+    "notif-like-img": "<b>%s</b> likes your image",
+    "notif-like-comment": "<b>%s</b> likes your comment",
+    "notif-tag-pub": "<b>%s</b> has tagged you in a publication",
+    "notif-tag-img": "<b>%s</b> has tagged you in a image",
+    "notif-follow": "<b>%s</b> has started following you",
+    "notif-wants-follow": "<b>%s</b> wants to follow you",
+    "notif-msg-chat": "<b>%s</b> has send you a message while you wasn't here",
+    "notif-comment": "<b>%s</b> has commented in your publication"
   },
 
   "change_password":{

@@ -98,7 +98,7 @@ Template.comment.events({
             }
         });
     },
-    'click #like': function (e) {
+    'click #like-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
         Meteor.call('likeComment', commentId, function(err, response){
@@ -107,7 +107,7 @@ Template.comment.events({
             }
         });
     },
-    'click #dislike': function (e) {
+    'click #dislike-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
         Meteor.call('dislikeComment', commentId, function(err, response){
@@ -116,7 +116,7 @@ Template.comment.events({
             }
         });
     },
-    'click #i-like': function (e) {
+    'click #i-like-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
         if (_.contains(this.playersLike, Meteor.userId())){
@@ -127,7 +127,7 @@ Template.comment.events({
             });
         }
     },
-    'click #i-dislike': function (e) {
+    'click #i-dislike-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
         if (_.contains(this.playersDislike, Meteor.userId())){
