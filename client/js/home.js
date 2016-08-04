@@ -19,6 +19,7 @@ Template.home.events({
 });
 
 Template.home.onRendered(function(){
+    $('.carousel.carousel-slider').carousel({full_width: true});
     Session.set("googleUsernameUnique", false);
     Session.set("googleEmailUnique", false);
     $(document).ready(function(){
