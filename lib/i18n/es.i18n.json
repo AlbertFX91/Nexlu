@@ -113,7 +113,20 @@
   },
 
   "home": {
-
+    "title_features":"¡Estas son las principales funcionalidades que encontrarás en",
+    "features1":"Puedes seguir y ver toda la actividad de otros usuarios.",
+    "features2":"¡Hemos implementado un chat para poder hablar con tus amigos!",
+    "features3":"¡Publica lo que quieras y sube fotos para que muestres tus hazañas!",
+    "features4":"Busca a tus amigos y siguelos para ver sus publicaciones e imagenes.",
+    "title_mobile":"Todo adaptado a dispositivos móviles",
+    "mobile1":"Chatear con amigos",
+    "mobile2":"Publicar y comentar publicaciones",
+    "mobile3":"Subir fotos",
+    "title_newfeatures":"¡Pronto estarán las siguientes funcionalidades!",
+    "newfeatures1":"Conseguir trofeos dentro de la web.",
+    "newfeatures2":"Crear grupos con tus amigos.",
+    "newfeatures3":"Previsualización de videos en las publicaciones.",
+    "newfeatures4":"Juegos para que los usuarios puedan seguirlos y ver todas las novedades.",
     "intro": "¡Juega y disfruta con nosotros!"
 
   },

@@ -103,6 +103,20 @@
     "contact": "Mail contact"
   },
   "home": {
+    "title_features":"This are the main features that you will find in",
+    "features1":"You can follow and see all the activity of other users.",
+    "features2":"We have implemented a chat to talk with your friends!",
+    "features3":"Post what you want and upload photos to show your feat!",
+    "features4":"Find your friends and follow them to see their posts and images.",
+    "title_mobile":"All adapted to mobile devices",
+    "mobile1":"Chat with friends",
+    "mobile2":"Post and comment publications",
+    "mobile3":"Upload photos",
+    "title_newfeatures":"Soon will be the following features!",
+    "newfeatures1":"Getting trophies within the web.",
+    "newfeatures2":"Create groups with your friends.",
+    "newfeatures3":"Video preview in publications.",
+    "newfeatures4":"Games for users to follow and see all the news.",
     "intro": "Play and enjoy with us!"
   },
   "email": {

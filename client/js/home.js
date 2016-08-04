@@ -15,11 +15,15 @@ Template.home.events({
         var usernameHome = document.getElementById("usernameHome").value;
         sessionStorage.setItem("usernameHome", usernameHome);
         Router.go("/register");
+    },
+    'click .boton-two':function(event){
+        $('html,body').animate({
+            scrollTop: $(".section_two").offset().top
+        }, 2000);
     }
 });
 
 Template.home.onRendered(function(){
-    $('.carousel.carousel-slider').carousel({full_width: true});
     Session.set("googleUsernameUnique", false);
     Session.set("googleEmailUnique", false);
     $(document).ready(function(){
