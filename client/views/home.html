@@ -1,40 +1,46 @@
 <template name="home">
 
-    <div class="cardbg"></div>
-    <div class="container" style="margin-top: 10%">
-        <div class="row">
-            <div class="col s12 center-align">
-                <h3 class="white-text" style="text-shadow: 2px 2px 2px #000;">{{_ "home.intro"}}</h3>
-				{{#if currentUser }}
-					<a class="btn btn-large" href="{{pathFor 'logout'}}">{{_ "logout"}}</a>
-                {{else}}
-                    <a class="btn btn-large" id="showLoginModal">
-                        {{_ "login"}}
+        <div class="cardbg"></div>
+        <div class="container" style="margin-top: 10%">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h1 class="white-text" id="titleHome">{{_ "home.intro"}}</h1>
+                    <div id="inputRegisterHome" class="row">
+                        <div class="col s12 m8">
+                            <i style="color:white" class="medium material-icons col s4 m4">perm_identity</i>
+                            <input class="col s8 m8" type="text" id="usernameHome" name="usernameHome" placeholder="{{_ "username"}}">
+                        </div>
+                        <div class="col s12 m4">
+                            <a class="btn btn-large" id="registerHome">
+                                {{_ "register"}}
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#to-level-two" class="down-button">
+                        <i class="pi pi-home-down"></i>
                     </a>
-				{{/if}}
-                <div class="row username_facebook_google">
-                    <div class="col s12 m12">
-                        <div id="modal_username" class="modal">
-                            <div class="modal-content">
-                                <h4 style="color:black">{{_ "send_username"}}</h4>
-                                <div class="input-field m10 col s12">
-                                    <i class="material-icons prefix blue-text">account_circle</i>
-                                    <input id="username" type="text" class="form-control" autocomplete="off">
-                                    <label for="username">{{_ "username"}}</label>
+                    <div class="row username_facebook_google">
+                        <div class="col s12 m12">
+                            <div id="modal_username" class="modal">
+                                <div class="modal-content">
+                                    <h4 style="color:black">{{_ "send_username"}}</h4>
+                                    <div class="input-field m10 col s12">
+                                        <i class="material-icons prefix blue-text">account_circle</i>
+                                        <input id="username" type="text" class="form-control" autocomplete="off">
+                                        <label for="username">{{_ "username"}}</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" id="send_username" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
-                                <a href="{{pathFor 'home'}}" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                                <div class="modal-footer">
+                                    <a href="#!" id="send_username" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
+                                    <a href="{{pathFor 'home'}}" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        <!--
-        <div class="cardbg">
+    <div class="Site-content">
             <div class="slider" style="">
                 <ul class="slides" style="">
                     <li class="" style="opacity: 0; transform: translateX(0px) translateY(0px);">
@@ -66,6 +72,5 @@
                     </li>
                 </ul>
                 <ul class="indicators"><li class="indicator-item"></li><li class="indicator-item active"></li><li class="indicator-item"></li></ul></div>
-        </div>
--->
+    </div>
 </template>

@@ -10,7 +10,12 @@ Template.home.events({
                     Materialize.toast('<b>' + TAPi18n.__("logout_success") + '</b>', 2700);
                 }
             });
-		}
+		},
+    'click #registerHome': function(event){
+        var usernameHome = document.getElementById("usernameHome").value;
+        sessionStorage.setItem("usernameHome", usernameHome);
+        Router.go("/register");
+    }
 });
 
 Template.home.onRendered(function(){

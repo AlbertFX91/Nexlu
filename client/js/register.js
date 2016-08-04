@@ -40,6 +40,9 @@ $.validator.addMethod("coincidencePassword", function() {
 });
 
 Template.register.onRendered(function(){
+    if(sessionStorage.getItem("usernameHome")!="undefined"){
+        $('#username').val(sessionStorage.getItem("usernameHome"))
+    }
     $('.tooltipped').tooltip({delay: 50});
     $( "#register_form" ).validate({
         rules: {

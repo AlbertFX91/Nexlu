@@ -57,7 +57,6 @@ Template.publication.helpers({
     },
 
     tags: function(){
-        console.log(this.playersTagged);
         return this.playersTagged;
     }
 });
@@ -188,6 +187,6 @@ Template.publication.events({
     },
     'click .tags_modal': function(e){
         e.preventDefault();
-        $('#modal-tag').openModal();
+        $(e.target).next().openModal();
     }
 });

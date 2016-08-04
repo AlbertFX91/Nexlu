@@ -18,5 +18,16 @@ Template.menu.events({
     'mouseleave .boton-logo-nav':function(){
         $('#text-logo-lu').css('color', 'transparent');
         $('#text-logo-ne').css('color', 'transparent');
+    },
+    'click .search_modal': function(e){
+        e.preventDefault();
+        $('.modal_search').openModal();
+    }
+});
+
+Template.menuLogged.events({
+    'click .search_modal': function(e){
+        e.preventDefault();
+        $('.modal_search').openModal();
     }
 });

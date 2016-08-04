@@ -28,3 +28,22 @@ body{
     display: inline-block;
     color: white;
 }
+
+#inputRegisterHome{
+    padding:10px;
+    background-color: rgba(44,50,63,.7);
+    justify-content: center;
+    width: 650px;
+    margin: 0 auto;
+}
+
+#usernameHome{
+    color:white;
+}
+
+#titleHome{
+    margin-bottom: 100px;
+    margin-top: -10%;
+    font-family: proxima-nova,sans-serif;;
+    text-shadow: 2px 2px 2px #000;
+}
