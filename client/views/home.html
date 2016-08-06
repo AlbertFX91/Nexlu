@@ -20,32 +20,13 @@
                     <a class="boton-two" href="/">
                         <i id="icon_two" class="fa fa-sort-desc fa-4x" aria-hidden="true"></i>
                     </a>
-                    <div class="row username_facebook_google">
-                        <div class="col s12 m12">
-                            <div id="modal_username" class="modal">
-                                <div class="modal-content">
-                                    <h4 style="color:black">{{_ "send_username"}}</h4>
-                                    <div class="input-field m10 col s12">
-                                        <i class="material-icons prefix blue-text">account_circle</i>
-                                        <input id="username" type="text" class="form-control" autocomplete="off">
-                                        <label for="username">{{_ "username"}}</label>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#!" id="send_username" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
-                                    <a href="{{pathFor 'home'}}" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
     <div style="height: 300px">
     </div>
     <div style="height: 40%; background-color: #E0E0DE">
-        <div class="row">
+        <div class="row" style="margin-bottom:0 !important;">
             <h4 style="margin-left:10px;padding-top: 30px;">{{_ "home.title_features"}}<strong> Nexlu!</strong></h4>
             <div class="col s6 m3">
                 <i class="large material-icons" style="margin-top: 30px;color:#1ebfff">supervisor_account</i>
@@ -111,5 +92,26 @@
                 <a id="to-level-five"></a>
             </div>
         </div>
+    </div>
+    <div class="Site-content">
+        <div class="row username_facebook_google">
+            <div class="col s12 m12">
+                <div id="modal_username" class="modal">
+                    <div class="modal-content">
+                        <h4 style="color:black">{{_ "send_username"}}</h4>
+                        <div class="input-field m10 col s12">
+                            <i class="material-icons prefix blue-text">account_circle</i>
+                            <input id="username" type="text" class="form-control" autocomplete="off">
+                            <label for="username">{{_ "username"}}</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" id="send_username" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
+                        <a href="{{pathFor 'home'}}" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </template>
