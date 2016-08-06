@@ -62,7 +62,8 @@
                             <h4>{{_ "timeline.users-tag"}}</h4>
                             {{#each tags}}
                                 <li>
-                                    {{username}}
+                                    <a target="_blank" href="{{ pathFor 'profile' username=username }}">{{username}}</a>
+                                    {{description}}
                                 </li>
                             {{/each}}
 
