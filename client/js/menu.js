@@ -4,12 +4,24 @@ Template.menu.events({
     },
     'click #logout': function(event){
   		$('#user-menu').trigger('mouseleave');
-        Meteor.logout(function(err) {
-            if (!err) {
-                Router.go("/");
-                Materialize.toast('<b>' + TAPi18n.__("logout_success") + '</b>', 2700);
-            }
-        });
+  			Meteor.logout(function(err) {
+                if (!err) {
+                    Router.go("/");
+                    Materialize.toast('<b>' + TAPi18n.__("logout_success") + '</b>', 2700);
+                }
+            });
+    },
+    'mouseenter .boton-logo-nav':function(){
+        $('#text-logo-ne').css('color', 'white');
+        $('#text-logo-lu').css('color', 'white');
+    },
+    'mouseleave .boton-logo-nav':function(){
+        $('#text-logo-lu').css('color', 'transparent');
+        $('#text-logo-ne').css('color', 'transparent');
+    },
+    'click .search_modal': function(e){
+        e.preventDefault();
+        $('.modal_search').openModal();
     }
 });
 Template.menuLogged.helpers({
@@ -38,6 +50,10 @@ Template.menuLogged.helpers({
 });
 
 Template.menuLogged.events({
+    'click .search_modal': function(e){
+        e.preventDefault();
+        $('.modal_search').openModal();
+    },
     'click #badge-button': function(e){
         e.preventDefault();
         if($("#notif-container").css("display") == "none"){
@@ -52,5 +68,5 @@ Template.menuLogged.events({
         e.preventDefault();
         Meteor.call("notification.remove.all");
         $('#remove-all-notif-modal').closeModal()
-    },
+    }
 });

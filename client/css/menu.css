@@ -41,6 +41,28 @@
     cursor:pointer;
 }
 
+#text-logo-ne{
+    line-height: 0px;
+    color: transparent;
+    font-size: 60px;
+    font-weight: 400;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
+#text-logo-lu {
+    line-height: 0px;
+    color: transparent;
+    font-size: 60px;
+    font-weight: 400;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
 #div1{
     border-color: transparent;
     border-bottom-color: #fff;

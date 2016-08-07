@@ -12,11 +12,23 @@
                 </div>
             </div>
             <div class="col s8 m8">
-                <div class="content-settings">
-                    Cambiar nombre
-                    Email
-                    Eliminar seguidores
-                    Eliminar seguidos
+                <div class="content-general" style="padding: 10px">
+                    <h5>{{_ "general.title"}}</h5>
+                    <p>{{_ "general.p1"}}</p>
+                    <p>{{_ "general.p2"}}</p>
+                    <div>
+                        <p>{{_ "general.p3"}}:</p>
+                        <em>{{email_user}}</em>
+                    </div>
+                    <form id="email_form" class="email_form" method="post">
+                        <p>{{_ "general.p4"}}:</p>
+                        <input  id="email" name="email" pattern="^[_A-Za-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$"
+                                class="form-control" type="email" autocomplete="off"
+                                style="color: black !important;">
+                        <br/>
+                        <button type="submit" class="btn btn-default">{{_ "settings.save_changes"}}</button>
+                    </form>
+
                 </div>
             </div>
         </div>
