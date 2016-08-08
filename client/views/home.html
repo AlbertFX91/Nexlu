@@ -1,7 +1,23 @@
 <template name="home">
 
     <div class="Site-content">
-        <div class="cardbg"></div>
+        <div class="cardbg">
+            <div class="homepage-hero-module hide-on-med-and-down">
+                <div class="video-container">
+                    <div class="filter"></div>
+                    <video autoplay loop class="fillWidth">
+                        <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/PC-Typing.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                        <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/PC-Typing.mp4" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                    </video>
+                </div>
+            </div>
+        </div>
+        <div class="cardbg-mobile hide-on-large-only" style="margin-top: -20%">
+            <div class="poster ">
+                <div class="filter"></div>
+                <img src="/coverr/typing.jpg" alt="">
+            </div>
+        </div>
         <div class="container" style="margin-top: 10%">
             <div class="row">
                 <div class="col s12 center-align">
