@@ -85,7 +85,7 @@ Template.images_input_modal.events({
     },
 
     "click #button-save-images": function(){
-        if(!uploadingImages()) {
+        if(ImagesLocals.find({}).fetch().length != 0 && !uploadingImages()) {
             $("#input-images-modal").css("cursor","wait")
             msg = TAPi18n.__('images.uploading')+'&nbsp;&nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i>';
             Toasts.throw(msg);
