@@ -85,7 +85,7 @@ Template.images_input_modal.events({
     },
 
     "click #button-save-images": function(){
-        if(!uploadingImages()) {
+        if(ImagesLocals.find({}).fetch().length != 0 && !uploadingImages()) {
             $("#input-images-modal").css("cursor","wait")
             msg = TAPi18n.__('images.uploading')+'&nbsp;&nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i>';
             Toasts.throw(msg);
@@ -103,7 +103,8 @@ Template.images_input_modal.events({
                     Session.set("numImagesUploaded", numImagesUploaded + 1);
                     var data = {
                         url: r.url,
-                        description: img.description
+                        description: img.description,
+                        usernameTagged: img.usernameTagged
                     };
                     Meteor.call("image.new", data, function (e, r) {
                     });
@@ -113,7 +114,7 @@ Template.images_input_modal.events({
                 var numImagesUploaded = Session.get("numImagesUploaded");
                 var numImagesToUpload = Session.get("numImagesToUpload");
                 var imagesFinished = Session.get("images.finished");
-                if (!imagesFinished && numImagesToUpload === numImagesUploaded) {
+                if (!imagesFinished && numImagesUploaded!=false && numImagesToUpload!=false && numImagesToUpload === numImagesUploaded) {
                     Toasts.throwTrans("images.uploaded_finished");
                     $("#input-images-modal").css("cursor","auto");
                     setTimeout(closeMainModal, 1000);
@@ -155,6 +156,9 @@ Template.images_input_modal.helpers({
     },
     numImagesToUpload: function(){
         return Session.get("numImagesToUpload");
+    },
+    classFlexed: function(){
+        return Session.get("img-prev-edit-id")? "":"modal-body-flexed";
     }
 });
 
@@ -171,7 +175,7 @@ function saveImgInBrowserByFile(file){
     reader.onload = function (e){
         //Declaramos que una vez cargado un fichero, insertaremos en la collection local ImagesLocales los datos del fichero,
         //así como los datos del fichero en una url, y un atributo auxiliar que nos indicará si se ha subido o no
-        var id = ImagesLocals.insert(_.extend({result: e.target.result, uploaded: false, description: file.name},file));
+        var id = ImagesLocals.insert(_.extend({result: e.target.result, uploaded: false, description: file.name, usernameTagged: []},file));
 
     };
     //Aquí leemos el fichero y se ejecutará la función onload una vez cargado

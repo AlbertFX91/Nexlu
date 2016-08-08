@@ -52,3 +52,24 @@
 .bio{
     text-align: center;
 }
+
+#followUser{
+    display: inline;
+    padding: 6px 10px 6px 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 5px 0 5px 10px;
+    cursor: pointer;
+    color: white;
+}
+
+#unfollowUser{
+    display: inline;
+    padding: 6px 10px 6px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px 0 5px 10px;
+    cursor: pointer;
+    color: white;
+    background-color:#70c050;
+}

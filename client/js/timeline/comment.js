@@ -13,7 +13,7 @@ Template.comment.helpers({
         return _.contains(this.playersDislike, Meteor.userId().trim());
     },
     isMine: function() {
-        if (this.player.trim() === Meteor.userId().trim())
+        if (Meteor.user() && this.player.trim() === Meteor.userId().trim())
             return true;
         return false;
     },
@@ -54,23 +54,24 @@ Template.comment.events({
     'submit .edit-comment': function(e) {
         e.preventDefault();
         var description = e.target.editComment.value;
+        var descriptionTrim = description.trim();
         var commentId = this.id;
         var valido = true;
         var error = $(e.target).find("#edit-comment-error");
         var label = $(e.target).find('#edit-comment-label');
-        if (description.trim() == ""){
+        if (descriptionTrim == ""){
             var texto = TAPi18n.__("error.comment-notBlank");
             error.text(texto);
             label.removeClass('active');
             valido = false;
-        } else if (description.length > 2000) {
+        } else if (descriptionTrim.length > 2000) {
             var texto = TAPi18n.__("error.comment-maxlength");
             error.text(texto);
             label.hide();
             valido = false;
         }
         if (valido) {
-            Meteor.call('editComment', commentId, description, function(err, response){
+            Meteor.call('editComment', commentId, descriptionTrim, function(err, response){
                 if (!err){
                     $(e.target).parents('#edit-comment-modal').closeModal();
                 }
@@ -97,7 +98,7 @@ Template.comment.events({
             }
         });
     },
-    'click #like': function (e) {
+    'click #like-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
         Meteor.call('likeComment', commentId, function(err, response){
@@ -106,7 +107,7 @@ Template.comment.events({
             }
         });
     },
-    'click #dislike': function (e) {
+    'click #dislike-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
         Meteor.call('dislikeComment', commentId, function(err, response){
@@ -115,7 +116,7 @@ Template.comment.events({
             }
         });
     },
-    'click #i-like': function (e) {
+    'click #i-like-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
         if (_.contains(this.playersLike, Meteor.userId())){
@@ -126,7 +127,7 @@ Template.comment.events({
             });
         }
     },
-    'click #i-dislike': function (e) {
+    'click #i-dislike-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
         if (_.contains(this.playersDislike, Meteor.userId())){

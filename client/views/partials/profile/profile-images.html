@@ -1,11 +1,16 @@
-<template name="profileImages">
+<template name="profileImagesUser">
     <div class="container div-profile">
-        {{> profileHeader}}
-        <div class="row profile-content">
-            <h1>{{_ "profile.Images"}}</h1>
-            {{#with images}}
-                {{> images_miniatures_container}}
-            {{/with}}
-        </div>
+        {{> profileHeaderUser}}
+        {{#if canSee}}
+            {{#if itsMe}}
+                {{> images_input_button}}
+            {{/if}}
+            <div class="row profile-content">
+                {{#with images}}
+                    {{> images_miniatures_container}}
+                {{/with}}
+            </div>
+        {{/if}}
+
     </div>
 </template>

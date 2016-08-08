@@ -7,7 +7,7 @@
                 <div class="col s4 center-align">
                     <ul class="collection-item">
                         <li>
-                            <a><img src="/example.png" class="circle" height="auto" width="100%" style="margin-right: auto;margin-left: auto;max-width: 120px;max-height: 120px; display: block"></a>
+                            <a><img src="../logo-justified.png" class="circle" height="auto" width="100%" style="margin-right: auto;margin-left: auto;max-width: 120px;max-height: 120px; display: block"></a>
                         </li>
                     </ul>
                 </div>
@@ -17,22 +17,22 @@
                     <ul class="company-box">
                         <li><a href="{{pathFor 'AboutUs'}}">{{_ "tag.about_us"}}</a></li>
                         <li><a href="{{pathFor 'Faq'}}">{{_ "tag.faq"}}</a></li>
-                        <li><a href="{{pathFor 'ContactUs'}}">{{_ "tag.contactUs"}}</a></li>
                         <li><a href="{{pathFor 'terms'}}">{{_ "tag.terms"}}</a></li>
                     </ul>
                 </div>
                 <div class="col s4 center-align">
                     <ul class="collection-item">
                         <li>
-                            <a href="#" class="icon icon-mono facebook">facebook</a>
-                            <a href="#" class="icon icon-mono twitter">twitter</a>
+                            <a target="_blank" href="https://www.facebook.com/nexlugames/" class="icon icon-mono facebook">facebook</a>
+                            <a target="_blank" href="https://twitter.com/nexlugames" class="icon icon-mono twitter">twitter</a>
                         </li>
                     </ul>
                 </div>
             </div>
+
             <div class="row center-align border-top-1 footer-bottom">
                 <p>
-                    &copy; 2016 Nexlu, Inc. &middot; <a href="”mailto:infonexlu@gmail.com">{{_ "tag.contact"}}</a>
+                    &copy; 2016 Nexlu, Inc. &middot; <a href="{{pathFor 'ContactUs'}}">{{_ "tag.contactUs"}}</a>
                 </p>
             </div>
             <div class="row hide-on-med-and-up footer">
@@ -49,8 +49,8 @@
                 <div class="col s12 center-align">
                     <ul class="collection-item">
                         <li>
-                            <a href="#" class="icon icon-mono facebook">facebook</a>
-                            <a href="#" class="icon icon-mono twitter">twitter</a>
+                            <a target="_blank" href="https://www.facebook.com/nexlugames/" class="icon icon-mono facebook">facebook</a>
+                            <a target="_blank" href="https://twitter.com/nexlugames" class="icon icon-mono twitter">twitter</a>
                         </li>
                     </ul>
                 </div>
@@ -74,12 +74,11 @@
                     <ul class="">
                         <li>
                             <h4 class="flow-text" style="font-weight: bold; display: inline-block; margin:0">Nexlu</h4><span style="color: white"> &middot; </span>
-                            <a href="{{pathFor 'AboutUs'}}">{{_ "tag.about_us"}}</a><span style="color: white"> &middot; </span>
-                            <a href="{{pathFor 'ContactUs'}}" style="margin-bottom: 1em; margin-top: 1em">{{_ "tag.contactUs"}}</a>
+                            <a href="{{pathFor 'ContactUs'}}">{{_ "tag.contactUs"}}</a><span style="color: white"> &middot; </span>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-facebook-official fa-2x" aria-hidden="true" style="padding: 5px"></i></a>
-                            <a href="#"><i class="fa fa-twitter-square fa-2x" aria-hidden="true" style="padding: 5px"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/nexlugames/"><i class="fa fa-facebook-official fa-2x" aria-hidden="true" style="padding: 5px"></i></a>
+                            <a target="_blank" href="https://twitter.com/nexlugames"><i class="fa fa-twitter-square fa-2x" aria-hidden="true" style="padding: 5px"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -89,8 +88,7 @@
                         <li>
                             <a href="{{pathFor 'terms'}}">{{_ "tag.terms"}}</a><span style="color: white"> &middot; </span>
                             <a href="{{pathFor 'Faq'}}">{{_ "tag.faq"}}</a><span style="color: white"> &middot; </span>
-                            <a href="{{pathFor 'ContactUs'}}">{{_ "tag.contactUs"}}</a><span style="color: white"> &middot; </span>
-                            <a href="#">{{_ "tag.prices"}}</a>
+                            <a href="{{pathFor 'AboutUs'}}">{{_ "tag.about_us"}}</a><span style="color: white"> &middot; </span>
                         </li>
                         <li class="border-top-1">
                             <p style="margin-top: 8px !important;">
@@ -104,3 +102,4 @@
         </div>
     </footer>
 </template>
+
