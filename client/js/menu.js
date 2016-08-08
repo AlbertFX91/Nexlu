@@ -38,15 +38,15 @@ Template.menuLogged.helpers({
     numNotifications: function(){
         var length = _.filter(Meteor.user().notifications, function(n){return !n.watched}).length;
         return length > 50? "+50":length
-    },
-    heightcss: function(){
-        var currentLocale = TAPi18n.getLanguage();
-        if(currentLocale == "en"){
-            return "218px";
+    }/*,
+    div1RightCSS: function(){
+        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        if(width >= 993){
+            return "143px";
         }else{
-            return "200px";
+            return "60px";
         }
-    }
+    }*/
 });
 
 Template.menuLogged.events({

@@ -70,11 +70,27 @@
     border-width: 0 8.5px 8.5px;
     display: none;
     position: absolute;
-    right: 200px;
     z-index: 1;
     height: 0;
     width: 0;
     top: 64px;
+}
+
+@media(max-width: 992px){
+    #div1{
+        right: 59px;
+    }
+    #notif-container{
+        right: 9%;
+    }
+}
+@media(min-width: 993px){
+    #div1{
+        right: 142px;
+    }
+    #notif-container{
+        right: 19%;
+    }
 }
 
 #notif-container{
@@ -88,7 +104,6 @@
     outline: none;
     overflow: hidden;
     position: fixed;
-    right: 19%;
     top: 70px;
     -moz-animation: gb__a .2s;
     animation: gb__a .2s;
