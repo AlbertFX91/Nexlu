@@ -8,6 +8,7 @@
     -webkit-flex-direction: row;
     flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap;
+    overflow-y: hidden;
 }
 .modal-col-img{
     flex: 3;

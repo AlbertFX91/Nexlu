@@ -156,6 +156,9 @@ Template.images_input_modal.helpers({
     },
     numImagesToUpload: function(){
         return Session.get("numImagesToUpload");
+    },
+    classFlexed: function(){
+        return Session.get("img-prev-edit-id")? "":"modal-body-flexed";
     }
 });
 
