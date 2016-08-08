@@ -108,11 +108,16 @@
     padding: 4px 6px;
     height: 60px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
 }
 
 .label-hidden-footer{
     height: 36px !important;
     width: auto !important;
+    margin-right: 10px;
 }
 
 .img-preview-options{
