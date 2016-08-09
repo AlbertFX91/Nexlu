@@ -29,6 +29,14 @@ Meteor.publish('user.one', function (username) {
     });
 });
 
+Meteor.publish('user.profile.one', function (username) {
+    return Meteor.users.find({username: username}, {
+        fields: Fields.user.profile
+    });
+});
+
+
+
 Meteor.publish('search.users', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -185,6 +193,30 @@ Meteor.publish(null, function() {
     return Meteor.users.find({_id: this.userId}, {fields: Fields.user.all});
 });
 
+Meteor.publish("user.following", function(username){
+   var user = Meteor.users.findOne({username: username});
+    if(user){
+        return Meteor.users.find({
+            followers: user._id
+        }, Fields.user.followingList);
+    }else{
+        throw new Meteor.Error( 500, 'User does not exist with username: '+username );
+    }
+});
+
+Meteor.publish("user.followers", function(username){
+    var user = Meteor.users.findOne({username: username});
+    if(user){
+        return Meteor.users.find({
+            _id: {$in: user.followers}
+        }, Fields.user.followingList);
+    }else{
+        throw new Meteor.Error( 500, 'User does not exist with username: '+username );
+    }
+});
+
+
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
@@ -201,13 +233,33 @@ Fields = {
             followers: 1,
             status: 1,
             avatar: 1,
-            private_profile: 1
+            private_profile: 1,
+            requestsFollow: 1,
+            notifications: 1
+        },
+        profile: {
+            _id: 1,
+            username: 1,
+            bio: 1,
+            followed: 1,
+            followers: 1,
+            avatar: 1,
+            private_profile: 1,
+            requestsFollow: 1
         },
         followed: {
             followed: 1
         },
         username: {
             username: 1
+        },
+        followingList: {
+            _id: 1,
+            username: 1,
+            followers: 1,
+            avatar: 1,
+            private_profile: 1,
+            requestsFollow: 1
         }
     },
     publication: {
@@ -230,7 +282,8 @@ Fields = {
         miniature: {
             _id: 1,
             owner: 1,
-            url: 1
+            url: 1,
+            createdAt: 1,
         },
         all: {
             _id: 1,

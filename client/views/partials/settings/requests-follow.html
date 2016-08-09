@@ -1,0 +1,44 @@
+<template name="requests_follow">
+    <div class="container settings-container">
+        <div class="row" style="border-radius: 5px; background-color:rgba( 0, 0, 0, 0.2 );
+        padding: 10px 3px 10px 3px;">
+            <div class="col s12 m12">
+                <div class="content-requests-follow" style="padding: 10px">
+                    <h5>{{_ "requests-follow.title"}}</h5>
+
+                    {{#if hasRequests}}
+                        {{#each requestsFollow}}
+                            <div class="request-row" >
+                                <div style="flex: 1">
+                                    <a href="{{ pathFor 'profile' username=userFrom.username }}">
+                                        {{> images_avatar user_id=userFrom._id max_size="50px" css="margin-left: auto; margin-right: auto;"}}
+                                    </a>
+                                </div>
+                                <div style="flex: 2">
+                                    {{userFrom.username}}
+                                </div>
+                                <div class="hide-on-large-only" style="flex: 1">
+                                    <a class="waves-effect waves-light btn green accept-request" style="padding: 0 10px;"><i class="material-icons left" style="margin: 0;">check_circle</i></a>
+                                </div>
+                                <div class="hide-on-large-only" style="flex: 1">
+                                    <a class="waves-effect waves-light btn red reject-request" style="padding: 0 10px;"><i class="material-icons left" style="margin: 0;">delete</i></a>
+                                </div>
+                                <div class="hide-on-med-and-down" style="flex: 2">
+                                    <a class="waves-effect waves-light btn green accept-request"><i class="material-icons left">check_circle</i>{{_ "tag.accept"}}</a>
+                                </div>
+                                <div class="hide-on-med-and-down" style="flex: 2">
+                                    <a class="waves-effect waves-light btn red reject-request"><i class="material-icons left">delete</i>{{_ "tag.reject"}}</a>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                    {{#unless hasRequests}}
+                        <div style="text-align: center;">
+                            <h5>{{_ "requests-follow.norequests" }}</h5> <i class="fa fa-bell" aria-hidden="true" style="font-size: 2em;"></i>
+                        </div>
+                    {{/unless}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

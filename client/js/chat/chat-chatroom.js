@@ -5,7 +5,7 @@ Template.chat_chatroom.onRendered(function(){
     Session.set("user.status","offline");
     setTimeout(function(){
         scrollDown();
-    }, 500);
+    }, 500); 
 });
 
 Template.chat_chatroom.events({

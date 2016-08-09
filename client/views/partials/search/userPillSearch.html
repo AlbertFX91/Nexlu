@@ -1,3 +1,6 @@
 <template name="userPillSearch">
-   <span data-username="{{username}}" class="click-profile row {{labelClass}}"><div class="col s6 m6">{{> images_avatar max_size="50px"}}</div><div class="col s6 m6">{{username}}</div> </span>
+    <div data-username="{{username}}" class="click-profile {{labelClass}}" style="display: flex; flex-direction: row;">
+        {{> images_avatar user_id=_id max_size="50px" css="flex: 1; margin-right: 5px;"}} <!--<div style="flex: 2;">{{username}}</div>-->
+        <div style="flex: 2;">{{username}}</div>
+    </div>
 </template>

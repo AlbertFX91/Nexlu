@@ -54,6 +54,9 @@ Template.images_show.helpers({
             return user.username;
         } )
         return dislikes_username; // lista con los usernames de los usuarios que le dieron dislikes.
+    },
+    tags: function(){
+        return this.playersTagged;
     }
 });
 
@@ -199,6 +202,10 @@ Template.images_show.events({
                 }
             }
         })
+    },
+    'click .tags_modal': function(e){
+        e.preventDefault();
+        $(e.target).next().openModal();
     }
 
 });
