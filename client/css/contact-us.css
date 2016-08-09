@@ -26,9 +26,11 @@
 #user-error, #email-error, #message-error{
     text-align: left;
     color: #e3157f !important;
+    padding: 0 !important;
+    font-size: 15px !important;
 }
 
-@media(max-width: 800px){
+@media screen and (max-width: 800px){
 
     div .header-contact-us{
         font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
@@ -47,6 +49,9 @@
     #contact_us_form textarea {
         width: 400px !important;
     }
+    #contactUs-message, #contactUs-username, #contactUs-email{
+        text-align: left !important;
+    }
 }
 
 #contact_us_form{
@@ -63,4 +68,16 @@
     resize: none;
     width: 500px;
     height: 30%;
+}
+#message{
+    border-radius: 10px;
+}
+
+#username-label, #email-label, #message-label{
+    font-size: 1.1rem !important;
+    color: white !important;
+}
+
+#contactUs-message, #contactUs-username, #contactUs-email{
+    text-align: right;
 }
