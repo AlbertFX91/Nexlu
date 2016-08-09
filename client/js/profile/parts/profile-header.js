@@ -1,30 +1,37 @@
-Template.profileHeader.helpers({
+Template.profileHeaderUser.onRendered(function(){
+    $("#textarea1").val(this.data.user.bio);
+    //Session.set("first_bio", true);
+});
+
+Template.profileHeaderUser.helpers({
     followed_pretty: function(){
-        return Prettify.compactInteger(this.me.followed.length);
+        return Prettify.compactInteger(this.user.followed.length);
     },
     followers_pretty: function(){
-        return Prettify.compactInteger(this.me.followers.length);
+        return Prettify.compactInteger(this.user.followers.length);
     },
     publications_pretty: function(){
         return Prettify.compactInteger(this.numPublication);
     },
-    'bio': function(){
-        Session.set("first_bio", false);
-        var user_id = Meteor.userId();
-        var user = Meteor.users.findOne(user_id);
-        var bio = user.bio;
-        if(Session.get("first_bio") == false) {
-            $("#textarea1").val(bio);
-        }
+    itsMe: function(){
+        return Meteor.user() && Meteor.user()._id == this.user._id;
+    },
+    bio: function(){
+        var bio = this.user.bio;
         return bio;
+    },
+    isFollowed: function(){
+        return _.contains(Meteor.user().followed,this.user._id);
+    },
+    canFollowUnfollow: function(){
+        return Meteor.user() && this.user._id != Meteor.user()._id;
+    },
+    hasRequestCreated: function(){
+        return _.find(this.user.requestsFollow, function(r){return r.from == Meteor.user()._id});
     }
 });
 
-Template.profileHeader.onRendered(function(){
-    Session.set("first_bio", true);
-});
-
-Template.profileHeader.events({
+Template.profileHeaderUser.events({
     'mouseenter .bio':function(){
         $('#bio').css('visibility', "visible");
     },
@@ -39,16 +46,16 @@ Template.profileHeader.events({
         event.preventDefault();
         var bio = document.getElementById('textarea1').value;
         Meteor.call("modify_bio", bio);
+    },
+    'click #followUser': function(event){
+        event.preventDefault();
+        var username = this.user.username;
+        Meteor.call("followUser", username);
+    },
+    'click #unfollowUser': function(event){
+        event.preventDefault();
+        var username = this.user.username;
+        Meteor.call("unfollow", username);
     }
 });
 
-Template.profileHeaderUser.helpers({
-    publications_pretty_user: function(){
-        var usernameProfile = this.username;
-        Meteor.call("findNumPublications", usernameProfile, function(e,r){
-            Session.set("findNumPublications",r);
-        });
-        var numPublications = Session.get("findNumPublications");
-        return numPublications;
-    }
-});

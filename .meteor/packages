@@ -53,3 +53,4 @@ mizzao:user-status      # Usado para comprobar que usuarios estan actualmente lo
 lookback:emoji
 tanis:bootstrap-social
 mizzao:autocomplete
+tmeasday:publish-counts # Cuenta el numero de elementos a los que me suscribo

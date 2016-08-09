@@ -7,6 +7,11 @@ Meteor.publish('publication.me.all', function () {
     return Publications.find({"owner.id": user_id}, {fields: Fields.publication.all});
 });
 
+Meteor.publish('publication.one.all', function (username) {
+    var user = Meteor.users.findOne({username: username});
+    return Publications.find({"owner.id": user._id}, {fields: Fields.publication.all});
+});
+
 Meteor.publish('user.me', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -17,6 +22,20 @@ Meteor.publish('user.me', function () {
         fields: Fields.user.all
     });
 });
+
+Meteor.publish('user.one', function (username) {
+    return Meteor.users.find({username: username}, {
+        fields: Fields.user.all
+    });
+});
+
+Meteor.publish('user.profile.one', function (username) {
+    return Meteor.users.find({username: username}, {
+        fields: Fields.user.profile
+    });
+});
+
+
 
 Meteor.publish('search.users', function () {
     var user_id = this.userId;
@@ -62,6 +81,11 @@ Meteor.publish('image.me.miniature', function(){
     return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
 });
 
+Meteor.publish('image.one.miniature', function(username){
+    var user_id = Meteor.users.findOne({username: username})._id;
+    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+});
+
 Meteor.publish('publication.me.none', function () {
     var user_id = this.userId;
     if (!user_id) {
@@ -70,6 +94,12 @@ Meteor.publish('publication.me.none', function () {
     }
     return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
 });
+
+Meteor.publish('publication.one.none', function (username) {
+    var user_id = Meteor.users.findOne({username: username})._id;
+    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
+});
+
 
 Meteor.publish('publication.user.none', function (usernameUser) {
     var user = Meteor.users.find({'username':usernameUser});
@@ -121,6 +151,13 @@ Meteor.publish('publication.tagged.all', function () {
     return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
 });
 
+Meteor.publish('publication.tagged.one.all', function (username) {
+    var user_id =  Meteor.users.findOne({username: username})._id;
+    return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
+});
+
+
+
 Meteor.publish("userProfile",function(username){
     var user=Meteor.users.findOne({"username":username});
     if(!user){
@@ -152,6 +189,63 @@ Meteor.publish("emojis", function(){
     return Emojis.find();
 });
 
+/**
+ * Publicación que conllevan las publicaciones propias y de los seguidores (para la
+ * implementación del scroll infinito).
+ */
+Meteor.publish('publication.me.followed.all', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    Counts.publish(this, 'all-publications', Publications.find(), {
+        noReady: true
+    });
+    var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
+    var followed_id = followed.followed;
+    return Publications.find({$or: [{"owner.id": {"$in": followed_id}},{"owner.id": user_id}]}, {fields: Fields.publication.all});
+});
+
+/**
+ * Publicación que conllevan las publicaciones propias y en las que está etiquetado el usuario pasado por parámetro (para la
+ * implementación del scroll infinito).
+ */
+Meteor.publish('publication.one.tagged.all', function (username) {
+    var user = Meteor.users.findOne({username: username});
+    var user_id = user._id;
+    Counts.publish(this, 'all-publications-profile', Publications.find(), {
+        noReady: true
+    });
+    return Publications.find({$or: [{"owner.id": user_id},  {playersTagged: {$elemMatch: {id: user_id}}}]}, {fields: Fields.publication.all});
+});
+
+Meteor.publish(null, function() {
+    return Meteor.users.find({_id: this.userId}, {fields: Fields.user.all});
+});
+
+Meteor.publish("user.following", function(username){
+   var user = Meteor.users.findOne({username: username});
+    if(user){
+        return Meteor.users.find({
+            followers: user._id
+        }, Fields.user.followingList);
+    }else{
+        throw new Meteor.Error( 500, 'User does not exist with username: '+username );
+    }
+});
+
+Meteor.publish("user.followers", function(username){
+    var user = Meteor.users.findOne({username: username});
+    if(user){
+        return Meteor.users.find({
+            _id: {$in: user.followers}
+        }, Fields.user.followingList);
+    }else{
+        throw new Meteor.Error( 500, 'User does not exist with username: '+username );
+    }
+});
+
 /*
 Diccionario para almacenar todos los fields que se mostraran al publicar una colección.
 Esto se realiza para poder centralizar los cambios. Si por ejemplo, se añaden nuevos atributos a un usuario,
@@ -166,13 +260,35 @@ Fields = {
             bio: 1,
             followed: 1,
             followers: 1,
-            status: 1
+            status: 1,
+            avatar: 1,
+            private_profile: 1,
+            requestsFollow: 1,
+            notifications: 1
+        },
+        profile: {
+            _id: 1,
+            username: 1,
+            bio: 1,
+            followed: 1,
+            followers: 1,
+            avatar: 1,
+            private_profile: 1,
+            requestsFollow: 1
         },
         followed: {
             followed: 1
         },
         username: {
             username: 1
+        },
+        followingList: {
+            _id: 1,
+            username: 1,
+            followers: 1,
+            avatar: 1,
+            private_profile: 1,
+            requestsFollow: 1
         }
     },
     publication: {
@@ -187,14 +303,16 @@ Fields = {
             comments: 1
         },
         none: {
-            _id: 1
+            _id: 1,
+            owner: 1
         }
     },
     image: {
         miniature: {
             _id: 1,
             owner: 1,
-            url: 1
+            url: 1,
+            createdAt: 1,
         },
         all: {
             _id: 1,

@@ -6,6 +6,22 @@ Template.images_preview_edit.helpers({
     },
     editing_description: function(){
         return Session.get("img-prev-edit-description");
+    },
+    settingsTextarea: function () {
+        return {
+            position: top,
+            limit: 5,
+            rules: [
+                {
+                    token: '@',
+                    collection: Meteor.users,
+                    field: 'username',
+                    options: '',
+                    template: Template.userPill,
+                    noMatchTemplate: Template.notMatch
+                }
+            ]
+        }
     }
 });
 
@@ -107,18 +123,33 @@ Template.images_preview_edit.events({
     },
     "click #edit-img-description-icon": function () {
         Session.set("img-prev-edit-description", true);
+        setTimeout(function(){
+            var textarea = document.getElementById('img-edit-description-input');
+            var id = Session.get("img-prev-edit-id");
+            var img = ImagesLocals.findOne(id);
+            textarea.value = img.description;
+        },100);
     },
     "click #img-edit-description-cancel": function() {
         Session.set("img-prev-edit-description", false);
     },
     "click #img-edit-description-save": function() {
+        var id = Session.get("img-prev-edit-id")
         var description = document.getElementById("img-edit-description-input").value;
-        var id = Session.get("img-prev-edit-id");
-        if(description.length==0){
+        var description = description.trim();
+        var valido = true;
+        if (description == ""){
             Errors.throwErrorTranslated("error.description_empty");
-        }else{
+            valido = false;
+        } else if (description.length > 5000) {
+            Errors.throwErrorTranslated("error.post-maxlength");
+            valido = false;
+        }
+        //Comprobación del etiquetado con '@'
+        var usernamesTagged = Util.validateTag(description);
+        if(valido){
             ImagesLocals.update(id, {
-                $set: { description: description }
+                $set: { description: description, usernameTagged: usernamesTagged }
             });
             Session.set("img-prev-edit-description", false);
             Toasts.throwTrans("toast.description_added");

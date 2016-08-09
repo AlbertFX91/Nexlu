@@ -8,6 +8,7 @@
     -webkit-flex-direction: row;
     flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap;
+    overflow-y: hidden;
 }
 .modal-col-img{
     flex: 3;
@@ -135,7 +136,7 @@
     -webkit-justify-content: flex-end;
 }
 #img-edit-description-input{
-    color: black;
+    color: black !important;
 }
 
 #img-edit-description-save, #img-edit-description-cancel{

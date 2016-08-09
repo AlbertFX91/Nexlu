@@ -1,22 +1,20 @@
-<template name="profileTimeline">
-    <div class="container div-profile">
-        {{> profileHeader}}
-        <div class="row profile-content">
-            <div class="col s12" style="">
-                {{> newPublication}}
-                {{#each publications}}
-                    {{> publication}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
-</template>
-
-<template name="profileUser">
+<template name="profileTimelineUser">
     <div class="container div-profile">
         {{> profileHeaderUser}}
-        <div class="row profile-content">
-            <h1>Timeline</h1>
-        </div>
+        {{#if canSee}}
+            <div class="row profile-content">
+                <div class="col s12" style="">
+                    {{#if itsMe}}
+                        {{> newPublication}}
+                    {{/if}}
+                    {{#each publications}}
+                        {{> publication}}
+                    {{/each}}
+                    {{#if moreResults}}
+                        <button id="showMoreResults" type="button">Loading...</button>
+                    {{/if}}
+                </div>
+            </div>
+        {{/if}}
     </div>
 </template>

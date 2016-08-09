@@ -40,8 +40,11 @@
     "description_added": "Description added"
   },
   "error": {
-    "not_found": "404. Oops, the route could not be found.",
-    "login_credentials_wrong": "username and/or password wrong",
+
+    "not_found-logo": "Click the logo below to try returning to Nexlu",
+    "not_found-title": "I AM ERROR",
+    "not_found": "We can't find this page",
+    "login_credentials_wrong": "Username and/or password wrong",
     "login_credentials-facebook_wrong": "Login with Facebook canceled",
     "login_credentials-google_wrong": "Login with Google canceled",
     "login_credentials-twitter_wrong": "Login with Twitter canceled",
@@ -90,7 +93,10 @@
     "following": "Following",
     "post": "Post",
     "remove": "Delete",
-    "comment": "Comment"
+    "comment": "Comment",
+    "forgot_password": "Forgot Password",
+    "accept": "Accept",
+    "reject": "Reject"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -99,6 +105,20 @@
     "contact": "Mail contact"
   },
   "home": {
+    "title_features":"This are the main features that you will find in",
+    "features1":"You can follow and see all the activity of other users.",
+    "features2":"We have implemented a chat to talk with your friends!",
+    "features3":"Post what you want and upload photos to show your feat!",
+    "features4":"Find your friends and follow them to see their posts and images.",
+    "title_mobile":"All adapted to mobile devices",
+    "mobile1":"Chat with friends",
+    "mobile2":"Post and comment publications",
+    "mobile3":"Upload and edit photos",
+    "title_newfeatures":"Soon will be the following features!",
+    "newfeatures1":"Getting trophies within the web.",
+    "newfeatures2":"Create groups with your friends.",
+    "newfeatures3":"Video preview in publications.",
+    "newfeatures4":"Games for users to follow and see all the news.",
     "intro": "Play and enjoy with us!"
   },
   "email": {
@@ -147,7 +167,9 @@
     "images": "images",
     "Images": "Images",
     "followed": "Followed",
-    "followers": "Followers"
+    "followers": "Followers",
+    "follow": "Follow",
+    "inprocess": "In process"
   },
 
   "timeline": {
@@ -164,7 +186,8 @@
     "hide-comments": "Hide comments",
     "edit-comment": "Edit comment",
     "remove-comment": "Are you sure to delete this comment?",
-    "comment": "Comment on the publication..."
+    "comment": "Comment on the publication...",
+    "users-tag": "Users tagged"
   },
 
   "faq": {
@@ -213,17 +236,71 @@
     "settings": "Settings",
     "general": "General",
     "privacity": "Privacity",
-    "password": "Change password"
+    "password": "Change password",
+    "save_changes": "Save changes",
+    "requests-follow": "Requests for follow"
   },
 
   "privacity":{
     "title": "Configuration and tool of privacity",
+    "account": "This account is private.",
     "p1": "In this configuration we give you the option to change the privacy of your profile Nexlu.",
     "p2": "If you choose the option of having a private account other users may not:",
     "p3": "Follow : Until you accept the request of the user who wants to follow this they can not see your photos and publications.",
     "p4": "You will not appear in searches.",
     "public": "Public",
     "private": "Private"
-  }
+  },
 
+  "general":{
+    "title": "General configurations",
+    "p1":"With this configuration you can change your email.",
+    "p2":"You must know that you can't change it by a email used.",
+    "p3":"Email current",
+    "p4":"New email",
+    "email_change_success":"Email changed successfully"
+  },
+  "requests-follow":{
+    "title": "Requests for follow",
+    "norequests": "No pending requests"
+  },
+
+  "notification":{
+    "header": "Notifications",
+    "no-notifications": "You don't have any notification",
+    "remove-all-notifications": "Remove all your notifications?",
+    "notif-like-pub": "<b>%s</b> likes your publication",
+    "notif-like-img": "<b>%s</b> likes your image",
+    "notif-like-comment": "<b>%s</b> likes your comment",
+    "notif-tag-pub": "<b>%s</b> has tagged you in a publication",
+    "notif-tag-img": "<b>%s</b> has tagged you in a image",
+    "notif-follow": "<b>%s</b> has started following you",
+    "notif-wants-follow": "<b>%s</b> wants to follow you",
+    "notif-msg-chat": "<b>%s</b> has send you a message while you wasn't here",
+    "notif-comment": "<b>%s</b> has commented in your publication"
+  },
+
+  "change_password":{
+    "title": "Change password",
+    "p1":"Change the password if you want it.",
+    "p2":"The password must have lowercase, two uppercase and numbers.",
+    "p3":"New password",
+    "p4":"Confirm password",
+    "p5":"Current password",
+    "password_change_success":"Password changed successfully",
+    "error_password_change_success":"Current password incorrect"
+  },
+
+  "forgot":{
+    "title": "Reset my password",
+    "text": "Enter your email and a reset password link will be sent to you",
+    "send-password": "Send password reset",
+    "email_subject": "[NEXLU] Reset password",
+    "email_title": "Your new password, %s!",
+    "email_message1": "We are very sad because you forgot your password.",
+    "email_message2": "Here's your new password <strong>%s</strong>",
+    "email_message3": "We recommend that you change your password. To do this, go to 'change password' in your 'settings'.",
+    "email_message4": "See you soon!",
+    "email-sent": "Email has been sent!"
+  }
 }

@@ -3,8 +3,7 @@
     <div class="card web-color-1 container" style="margin-right: auto; margin-left: auto;">
         <div class="card-content text-color-3 publication-content">
             <div class="text-color-1 publication-header">
-                <a>
-                    <!--<img src="/example.png" class="circle" height="auto" width="100%" style="max-width: 50px;max-height: 50px; vertical-align: middle;margin-right: 10px">-->
+                <a href="{{ pathFor 'profile' username=owner.username }}">
                     {{> images_avatar user_id=owner.id max_size="50px" css="vertical-align: middle; margin-right:10px;"}}
                 </a>
                 <div class="publication-header-center">
@@ -71,8 +70,25 @@
         <div class="card-action text-color-1 publication-details">
             <div class="text-color-1">
                 {{#if tagged_pretty}}
-                    <i class="fa fa-tags fa-1" aria-hidden="true"></i>
-                    {{_ "timeline.with"}} {{tagged_pretty}}
+                    <div class="tags_modal" style="cursor: pointer">
+                        <i class="fa fa-tags fa-1" aria-hidden="true"></i>
+                        {{_ "timeline.with"}} {{tagged_pretty}}
+                    </div>
+                    <div id="modal-tag" class="modal bottom-sheet">
+                        <div class="modal-content" style="color:black !important">
+                            <h4>{{_ "timeline.users-tag"}}</h4>
+                            {{#each tags}}
+                                <li>
+                                    <a target="_blank" href="{{ pathFor 'profile' username=username }}">{{username}}</a>
+                                    {{description}}
+                                </li>
+                            {{/each}}
+
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
+                        </div>
+                    </div>
                 {{else}}
                     <i class="fa fa-tags fa-1" aria-hidden="true"></i>
                     {{_ "timeline.no-tags"}}
@@ -103,7 +119,7 @@
                 </div>
                 <div class="hide">
                     {{#each comments}}
-                        {{> comment}}
+                        {{> images_comment}}
                     {{/each}}
                 </div>
             </div>
@@ -111,7 +127,7 @@
         {{#if currentUser}}
             <div class="card-action new-comment">
                 {{#with this}}
-                    {{> newComment}}
+                    {{> images_newComment}}
                 {{/with}}
             </div>
         {{/if}}

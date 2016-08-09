@@ -5,7 +5,6 @@ Template.register.events({
         var password_register = document.getElementById('password_register').value;
         var confirmpassword = document.getElementById('confirmpassword').value;
         var private_profile = document.getElementById('private_checkbox').checked;
-        console.log(aux);
         var email = document.getElementById('email').value;
         var user = [username, password_register, email, confirmpassword, private_profile];
         Meteor.call("user_create", user);
@@ -41,6 +40,9 @@ $.validator.addMethod("coincidencePassword", function() {
 });
 
 Template.register.onRendered(function(){
+    if(sessionStorage.getItem("usernameHome")!="undefined"){
+        $('#username').val(sessionStorage.getItem("usernameHome"))
+    }
     $('.tooltipped').tooltip({delay: 50});
     $( "#register_form" ).validate({
         rules: {
