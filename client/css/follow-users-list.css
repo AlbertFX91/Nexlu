@@ -25,7 +25,7 @@
 }
 
 .following-row{
-    display: flex;
+   /* display: flex; */
     align-items: center;
     flex-flow: row nowrap;
     justify-content: flex-start;
