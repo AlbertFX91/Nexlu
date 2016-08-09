@@ -13,33 +13,37 @@ Template.register.events({
     }
 });
 
-$.validator.addMethod("usernameUnique", function(value, element) {
-    Meteor.call("checkUniqueUser", value, function(e,r){
-        Session.set("usernameUnique",r);
-    });
-    return Session.get("usernameUnique");
-});
+Meteor.startup(function(){
+    Tracker.autorun(function(){
+        $.validator.addMethod("usernameUnique", function(value, element) {
+            Meteor.call("checkUniqueUser", value, function(e,r){
+                Session.set("usernameUnique",r);
+            });
+            return Session.get("usernameUnique");
+        }, TAPi18n.__("error.username_error_duplicated"));
 
-$.validator.addMethod("emailUnique", function(value, element) {
-    Meteor.call("checkUniqueEmail", value, function(e,r){
-        Session.set("emailUnique",r);
-    });
-    return Session.get("emailUnique");
-});
+        $.validator.addMethod("emailUnique", function(value, element) {
+            Meteor.call("checkUniqueEmail", value, function(e,r){
+                Session.set("emailUnique",r);
+            });
+            return Session.get("emailUnique");
+        }, TAPi18n.__("error.email_error_duplicated"));
 
-$.validator.addMethod("coincidencePassword", function(value, element) {
-    var password_register = document.getElementById('password_register').value;
-    var confirmpassword = document.getElementById('confirmpassword').value;
-    var coindicende = true;
-    if(password_register != confirmpassword){
-        coindicende = false;
-    }
-    return coindicende;
-});
+        $.validator.addMethod("coincidencePassword", function(value, element) {
+            var password_register = document.getElementById('password_register').value;
+            var confirmpassword = document.getElementById('confirmpassword').value;
+            var coindicende = true;
+            if(password_register != confirmpassword){
+                coindicende = false;
+            }
+            return coindicende;
+        }, TAPi18n.__("error.password_error_coincidence"));
 
-$.validator.addMethod("emailPattern", function(value, element){
-    return /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/.test(value);
-}, TAPi18n.__("error.email_error_patron"));
+        $.validator.addMethod("emailPattern", function(value, element){
+            return /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/.test(value);
+        }, TAPi18n.__("error.email_error_patron"));
+    })
+});
 
 Template.register.onRendered(function(){
     if(sessionStorage.getItem("usernameHome")!="undefined"){
@@ -75,25 +79,22 @@ Template.register.onRendered(function(){
             username: {
                 required: TAPi18n.__("error.username_error_empty"),
                 minlength: TAPi18n.__("error.username_error_minlength"),
-                maxlength: TAPi18n.__("error.username_error_maxlength"),
-                usernameUnique: TAPi18n.__("error.username_error_duplicated")
+                maxlength: TAPi18n.__("error.username_error_maxlength")
             },
             email: {
-                required: TAPi18n.__("error.email_error_empty"),
-                emailUnique: TAPi18n.__("error.email_error_duplicated")
+                required: TAPi18n.__("error.email_error_empty")
             },
             password_register: {
                 required: TAPi18n.__("error.password_error_empty"),
                 minlength: TAPi18n.__("error.password_error_minlength"),
                 maxlength: TAPi18n.__("error.password_error_maxlength"),
-                pattern: TAPi18n.__("error.password_error_pattern"),
+                pattern: TAPi18n.__("error.password_error_pattern")
             },
             confirmpassword: {
                 required: TAPi18n.__("error.confirmpassword_error_empty"),
                 minlength: TAPi18n.__("error.password_error_minlength"),
                 maxlength: TAPi18n.__("error.password_error_maxlength"),
-                pattern: TAPi18n.__("error.password_error_pattern"),
-                coincidencePassword: TAPi18n.__("error.password_error_coincidence")
+                pattern: TAPi18n.__("error.password_error_pattern")
             }
         }
     });
