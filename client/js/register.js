@@ -13,23 +13,21 @@ Template.register.events({
     }
 });
 
-$.validator.addMethod("usernameUnique", function() {
-    var usernameRegister = document.getElementById('username').value;
-    Meteor.call("checkUniqueUser", usernameRegister, function(e,r){
+$.validator.addMethod("usernameUnique", function(value, element) {
+    Meteor.call("checkUniqueUser", value, function(e,r){
         Session.set("usernameUnique",r);
     });
     return Session.get("usernameUnique");
 });
 
-$.validator.addMethod("emailUnique", function() {
-    var emailRegister = document.getElementById('email').value;
-    Meteor.call("checkUniqueEmail", emailRegister, function(e,r){
+$.validator.addMethod("emailUnique", function(value, element) {
+    Meteor.call("checkUniqueEmail", value, function(e,r){
         Session.set("emailUnique",r);
     });
     return Session.get("emailUnique");
 });
 
-$.validator.addMethod("coincidencePassword", function() {
+$.validator.addMethod("coincidencePassword", function(value, element) {
     var password_register = document.getElementById('password_register').value;
     var confirmpassword = document.getElementById('confirmpassword').value;
     var coindicende = true;
@@ -38,6 +36,10 @@ $.validator.addMethod("coincidencePassword", function() {
     }
     return coindicende;
 });
+
+$.validator.addMethod("emailPattern", function(value, element){
+    return /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/.test(value);
+}, TAPi18n.__("error.email_error_patron"));
 
 Template.register.onRendered(function(){
     if(sessionStorage.getItem("usernameHome")!="undefined"){
@@ -54,7 +56,8 @@ Template.register.onRendered(function(){
             },
             email: {
                 required: true,
-                emailUnique: true
+                emailUnique: true,
+                emailPattern: true
             },
             password_register: {
                 required: true,
@@ -77,7 +80,7 @@ Template.register.onRendered(function(){
             },
             email: {
                 required: TAPi18n.__("error.email_error_empty"),
-                emailUnique: TAPi18n.__("error.email_error_duplicated"),
+                emailUnique: TAPi18n.__("error.email_error_duplicated")
             },
             password_register: {
                 required: TAPi18n.__("error.password_error_empty"),
@@ -94,8 +97,4 @@ Template.register.onRendered(function(){
             }
         }
     });
-});
-
-Template.register.helpers({
-
 });
