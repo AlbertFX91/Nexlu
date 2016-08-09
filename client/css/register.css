@@ -47,7 +47,6 @@
 .register-form input{
     margin-bottom: 5px;
     height: 40px;
-    border-radius: 10px;
 }
 
 #email{
@@ -78,10 +77,11 @@
     text-align: left;
     color: #e3157f !important;
     padding: 0 !important;
+    font-size: 15px !important;
 }
 
 #username-error, #username-error:active{
-    margin-top: 6%;
+    margin-top: 30px;
     transform: translateY(0%) !important;
 }
 
@@ -97,9 +97,13 @@
         float: left;
     }
     div .logbutton{
-        margin-left: 25%;
+        margin-left: 24%;
     }
     div #username-label, #confirmpassword-label, #email-label, #password-label{
         text-align: left;
     }
+}
+
+div #username-label, #confirmpassword-label, #email-label, #password-label{
+    font-size: 1.1rem !important;
 }
