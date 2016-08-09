@@ -15,18 +15,30 @@ Template.register.events({
 
 Meteor.startup(function(){
     Tracker.autorun(function(){
+        if(!Session.get("usernameUnique") && $( "#username" )[0] != undefined){
+            $( "#username" ).valid();
+        }
         $.validator.addMethod("usernameUnique", function(value, element) {
             Meteor.call("checkUniqueUser", value, function(e,r){
                 Session.set("usernameUnique",r);
             });
-            return Session.get("usernameUnique");
+            var result = Session.get("usernameUnique");
+            if (result == undefined)
+                return true;
+            return result;
         }, TAPi18n.__("error.username_error_duplicated"));
 
+        if(!Session.get("emailUnique") && $( "#email" )[0] != undefined){
+            $( "#email" ).valid();
+        }
         $.validator.addMethod("emailUnique", function(value, element) {
             Meteor.call("checkUniqueEmail", value, function(e,r){
                 Session.set("emailUnique",r);
             });
-            return Session.get("emailUnique");
+            var result = Session.get("emailUnique");
+            if (result == undefined)
+                return true;
+            return result;
         }, TAPi18n.__("error.email_error_duplicated"));
 
         $.validator.addMethod("coincidencePassword", function(value, element) {
@@ -50,9 +62,6 @@ Meteor.startup(function(){
 });
 
 Template.register.onRendered(function(){
-    if(sessionStorage.getItem("usernameHome")!="undefined"){
-        $('#username').val(sessionStorage.getItem("usernameHome"))
-    }
     $('.tooltipped').tooltip({delay: 50});
     $( "#register_form" ).validate({
         rules: {
@@ -101,4 +110,8 @@ Template.register.onRendered(function(){
             }
         }
     });
+    if(sessionStorage.getItem("usernameHome")!="undefined" && $( "#username" )[0] != undefined){
+        $('#username').val(sessionStorage.getItem("usernameHome"));
+        $('#username').valid();
+    }
 });

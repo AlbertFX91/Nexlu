@@ -57,7 +57,7 @@ Meteor.methods({
     },
 
     'checkUniqueUser': function (usernameRegister) {
-        return Meteor.users.find({'username': usernameRegister}).fetch().length == 0
+        return Meteor.users.find({'username': usernameRegister}).fetch().length == 0;
     },
 
     'checkUniqueEmail': function (emailRegister) {
