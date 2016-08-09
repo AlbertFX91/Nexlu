@@ -25,15 +25,12 @@
                         </div>
                         <div class="row">
                             <div class="col m4 s12" >
-                                <span class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{_ "error.password_error_patron"}}">
-                                        <label id="password-label" for="password_register">
-                                            <i class="material-icons">info_outline</i>
-                                            {{_ "password"}}:
-                                        </label>
-                                </span>
+                                <label id="password-label" for="password_register">
+                                    {{_ "password"}}:
+                                </label>
                             </div>
                             <div class="col m8 s12">
-                                <input name="password_register"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password_register" class="form-control" type="password">
+                                <input name="password_register" id="password_register" class="form-control" type="password">
                             </div>
                         </div>
                         <div class="row">
@@ -43,7 +40,7 @@
                                 </label>
                             </div>
                             <div class="col m8 s12">
-                                <input name="confirmpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirmpassword" class="form-control" type="password">
+                                <input name="confirmpassword" id="confirmpassword" class="form-control" type="password">
                             </div>
                         </div>
                         <div class="row">

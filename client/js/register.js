@@ -42,6 +42,10 @@ Meteor.startup(function(){
         $.validator.addMethod("emailPattern", function(value, element){
             return /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/.test(value);
         }, TAPi18n.__("error.email_error_patron"));
+
+        $.validator.addMethod("passwordPattern", function(value, element){
+            return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(value);
+        }, TAPi18n.__("error.password_error_pattern"));
     })
 });
 
@@ -67,6 +71,7 @@ Template.register.onRendered(function(){
                 required: true,
                 minlength: 8,
                 maxlength: 20,
+                passwordPattern: true
             },
             confirmpassword: {
                 required: true,
@@ -87,14 +92,12 @@ Template.register.onRendered(function(){
             password_register: {
                 required: TAPi18n.__("error.password_error_empty"),
                 minlength: TAPi18n.__("error.password_error_minlength"),
-                maxlength: TAPi18n.__("error.password_error_maxlength"),
-                pattern: TAPi18n.__("error.password_error_pattern")
+                maxlength: TAPi18n.__("error.password_error_maxlength")
             },
             confirmpassword: {
                 required: TAPi18n.__("error.confirmpassword_error_empty"),
                 minlength: TAPi18n.__("error.password_error_minlength"),
-                maxlength: TAPi18n.__("error.password_error_maxlength"),
-                pattern: TAPi18n.__("error.password_error_pattern")
+                maxlength: TAPi18n.__("error.password_error_maxlength")
             }
         }
     });
