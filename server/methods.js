@@ -166,7 +166,8 @@ Meteor.methods({
     },
     'getUsernameById': function (id) {
         var user = Meteor.users.findOne(id, {fields: {username: 1}});
-        return user.username;
+        if (user.username != undefined)
+            return user.username;
     },
     'editPublication': function (publicationId, description, usernamesTagged) {
         var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);

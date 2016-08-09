@@ -199,14 +199,25 @@ Meteor.publish('publication.me.followed.all', function () {
         this.ready();
         return;
     }
-
     Counts.publish(this, 'all-publications', Publications.find(), {
         noReady: true
     });
-
     var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
     var followed_id = followed.followed;
     return Publications.find({$or: [{"owner.id": {"$in": followed_id}},{"owner.id": user_id}]}, {fields: Fields.publication.all});
+});
+
+/**
+ * Publicación que conllevan las publicaciones propias y en las que está etiquetado el usuario pasado por parámetro (para la
+ * implementación del scroll infinito).
+ */
+Meteor.publish('publication.one.tagged.all', function (username) {
+    var user = Meteor.users.findOne({username: username});
+    var user_id = user._id;
+    Counts.publish(this, 'all-publications-profile', Publications.find(), {
+        noReady: true
+    });
+    return Publications.find({$or: [{"owner.id": user_id},  {playersTagged: {$elemMatch: {id: user_id}}}]}, {fields: Fields.publication.all});
 });
 
 Meteor.publish(null, function() {
