@@ -32,14 +32,14 @@
 
 @media(min-height: 480px){
     .modal-body{
-        min-height: 250px !important;
-        max-height: 250px !important;
+        min-height: 400px !important;
+        max-height: 400px !important;
     }
 }
 @media(min-height: 700px){
     .modal-body{
-        min-height: 600px !important;
-        max-height: 600px !important;
+        min-height: 530px !important;
+        max-height: 530px !important;
     }
 }
 @media(min-height: 1024px){
