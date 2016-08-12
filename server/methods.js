@@ -87,7 +87,7 @@ Meteor.methods({
             var id = Publications.insert(image);
 
             var playersTagged = Meteor.call('constructPlayersTagged', data.usernameTagged);
-            Images.update(id, {
+            Publications.update(id, {
                 $set: {
                     playersTagged: playersTagged
                 }
@@ -525,7 +525,7 @@ Meteor.methods({
             throw new Meteor.Error(500, 'We cannot recover the user logged');
             return false;
         }
-        var image = Images.findOne(publication_id);
+        var image = Publications.findOne(publication_id);
         if (!image) {
             throw new Meteor.Error(500, 'We cannot recover the publication with id ' + publication_id);
             return false;
