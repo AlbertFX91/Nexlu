@@ -12,7 +12,7 @@ Template.publication.helpers({
         return Humanize.truncate(description, 200);
     },
     descriptionTruncate: function() {
-      return this.description.length >= 200;
+        return this.description.length >= 200;
     },
     iLike: function() {
         return _.contains(this.playersLike, Meteor.userId().trim());
@@ -37,7 +37,7 @@ Template.publication.helpers({
         }
     },
     hasComments: function() {
-      return this.comments.length > 0;
+        return this.comments.length > 0;
     },
     
     // TODO: Esto hay que hacerlo en el lado del server (methods):
@@ -114,6 +114,7 @@ Template.publication.events({
             if (!err){
                 $('#remove-pub-modal').closeModal();
                 $('.lean-overlay').remove();
+                Router.go('home');
             }
         });
     },
@@ -188,5 +189,44 @@ Template.publication.events({
     'click .tags_modal': function(e){
         e.preventDefault();
         $(e.target).next().openModal();
+    },
+
+    'click .publication-image-img': function(e){
+        $('#publication-image-modal').openModal();
+    },
+
+    'click #set-avatar-button': function(e) {
+        e.preventDefault();
+        Meteor.call("setAvatar", this._id, function(e,r){
+            if(e){
+                console.log(e);
+                Errors.throwErrorTranslated("error.occurred");
+            }else{
+                if(r){
+                    Toasts.throwTrans("images.setavatar_finished");
+                }
+            }
+        })
+    },
+    'click .tags_modal': function(e){
+        e.preventDefault();
+        $(e.target).next().openModal();
     }
+
+});
+
+Template.publication.onRendered(function (){
+    if(this.data == null){
+        Router.go('home');
+    }
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'right' // Displays dropdown with edge aligned to the left of button
+        }
+    );
 });
