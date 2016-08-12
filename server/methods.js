@@ -635,7 +635,7 @@ Meteor.methods({
         var user = Meteor.users.findOne(user_id);
         if (user) {
             if (user.avatar == undefined) {
-                return "https://s3-us-west-2.amazonaws.com/nexlu/logo-justified.png";
+                return "http://s3-us-west-2.amazonaws.com/nexlu/users/a229c44c-fc00-441b-af06-de9635f7cee6.png";
             } else {
                 return user.avatar.url;
             }
