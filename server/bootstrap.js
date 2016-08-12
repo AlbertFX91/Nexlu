@@ -62,9 +62,6 @@ Meteor.startup(function () {
 
         if (Publications.find().count() === 0){
             createPublications();
-        }
-
-        if (Images.find().count() === 0){
             createImages();
         }
 
@@ -73,7 +70,6 @@ Meteor.startup(function () {
     }else if (entorno == "preproduccion"){
         Meteor.users.remove({});
         ChatRooms.remove({});
-        Images.remove({});
         Publications.remove({});
         
         createUsers();
@@ -402,8 +398,6 @@ function createPublications(){
             }
         ]
     });
-
-
 }
 
 
@@ -414,7 +408,7 @@ function createImages(){
     var user4 = Meteor.users.findOne({username: 'user4'});
 
     //User 1
-    var img1_id = Images.insert({
+    var img1_id = Publications.insert({
         owner: 
             {
                 id: user1._id,
@@ -455,7 +449,7 @@ function createImages(){
         ],
         url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
     });
-    Images.insert({
+    Publications.insert({
         owner: 
             {
                 id: user1._id,
@@ -493,8 +487,7 @@ function createNotificacions() {
 
     var pub1 = Publications.find({"owner.id": user1._id}).fetch()[0];
 
-
-    var img1 = Images.find({"owner.id": user1._id}).fetch()[0];
+    var img1 = Publications.find({$and: [{"owner.id": user1._id}, {"url": {$exists:true, $ne: null}}]}).fetch()[0];
 
     var notifLikePub = {
         id: new Mongo.ObjectID()._str,
