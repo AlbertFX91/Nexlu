@@ -77,14 +77,14 @@ Meteor.methods({
                     username: user.username
                 },
                 createdAt: new Date(),
-                playersTagged: [], //TODO: Añadir etiquetas
+                playersTagged: [],
                 description: data.description,
                 playersLike: [],
                 playersDislike: [],
                 comments: [],
                 url: data.url
             };
-            var id = Images.insert(image);
+            var id = Publications.insert(image);
 
             var playersTagged = Meteor.call('constructPlayersTagged', data.usernameTagged);
             Images.update(id, {
@@ -105,7 +105,7 @@ Meteor.methods({
     'image.edit': function (publicationId, description, usernamesTagged) {
         var user = Meteor.user();
         var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
-        Images.update(publicationId, {
+        Publications.update(publicationId, {
             $set: {
                 description: description,
                 playersTagged: playersTagged
@@ -118,7 +118,7 @@ Meteor.methods({
         });
     },
     'image.remove': function (publicationId) {
-        Images.remove(publicationId);
+        Publications.remove(publicationId);
     },
     'image.like': function (publicationId) {
         var userId = Meteor.userId();
