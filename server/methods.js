@@ -189,43 +189,33 @@ Meteor.methods({
             }
         })
     },
-    'image.postComment': function (publicationId, comment) {
-        Images.update(publicationId, {
-            $push: {
-                comments: comment
-            }
-        });
-        var owner = Images.findOne(publicationId).owner.id;
-        NotificationService.createComment(owner, publicationId, "img");
-    },
-    'postComment': function (publicationId, comment) {
+    'comment.new': function (publicationId, comment) {
         Publications.update(publicationId, {
             $push: {
                 comments: comment
             }
         });
         var owner = Publications.findOne(publicationId).owner.id;
+        //TODO: Si es una imagen, cambiar el tercer parámetro por "img"
         NotificationService.createComment(owner, publicationId, "publication");
     },
-    'image.likeComment': function (commentId) {
-        var userId = Meteor.userId();
-        Images.update({"comments.id": commentId}, {
-            $push: {
-                "comments.$.playersLike": userId
+    'comment.edit': function (commentId, description) {
+        Publications.update({"comments.id": commentId}, {
+            $set: {
+                "comments.$.description": description
             }
-        });
-        Images.update({"comments.id": commentId}, {
-            $pull: {
-                "comments.$.playersDislike": userId
-            }
-        });
-        var img = Images.findOne({"comments.id": commentId});
-        var comment = _.find(img.comments, function (c) {
-            return c.id = commentId;
-        });
-        NotificationService.createLikeComment(comment.player, img._id, "img");
+        })
     },
-    'likeComment': function (commentId) {
+    'comment.remove': function (commentId) {
+        Publications.update({"comments.id": commentId}, {
+            $pull: {
+                comments: {
+                    id: commentId
+                }
+            }
+        });
+    },
+    'comment.like': function (commentId) {
         var userId = Meteor.userId();
         Publications.update({"comments.id": commentId}, {
             $push: {
@@ -241,22 +231,10 @@ Meteor.methods({
         var comment = _.find(pub.comments, function (p) {
             return p.id = commentId;
         });
+        //TODO: Si es una imagen, cambiar el tercer parámetro por "img"
         NotificationService.createLikeComment(comment.player, pub._id, "publication");
     },
-    'image.dislikeComment': function (commentId) {
-        var userId = Meteor.userId();
-        Images.update({"comments.id": commentId}, {
-            $push: {
-                "comments.$.playersDislike": userId
-            }
-        });
-        Images.update({"comments.id": commentId}, {
-            $pull: {
-                "comments.$.playersLike": userId
-            }
-        })
-    },
-    'dislikeComment': function (commentId) {
+    'comment.dislike': function (commentId) {
         var userId = Meteor.userId();
         Publications.update({"comments.id": commentId}, {
             $push: {
@@ -269,15 +247,7 @@ Meteor.methods({
             }
         })
     },
-    'image.removeLikeComment': function (commentId) {
-        var userId = Meteor.userId();
-        Images.update({"comments.id": commentId}, {
-            $pull: {
-                "comments.$.playersLike": userId
-            }
-        })
-    },
-    'removeLikeComment': function (commentId) {
+    'comment.remove.like': function (commentId) {
         var userId = Meteor.userId();
         Publications.update({"comments.id": commentId}, {
             $pull: {
@@ -285,53 +255,13 @@ Meteor.methods({
             }
         })
     },
-    'image.removeDislikeComment': function (commentId) {
-        var userId = Meteor.userId();
-        Images.update({"comments.id": commentId}, {
-            $pull: {
-                "comments.$.playersDislike": userId
-            }
-        })
-    },
-    'removeDislikeComment': function (commentId) {
+    'comment.remove.dislike': function (commentId) {
         var userId = Meteor.userId();
         Publications.update({"comments.id": commentId}, {
             $pull: {
                 "comments.$.playersDislike": userId
             }
         })
-    },
-    'image.editComment': function (commentId, description) {
-        Images.update({"comments.id": commentId}, {
-            $set: {
-                "comments.$.description": description
-            }
-        })
-    },
-    'editComment': function (commentId, description) {
-        Publications.update({"comments.id": commentId}, {
-            $set: {
-                "comments.$.description": description
-            }
-        })
-    },
-    'image.removeComment': function (commentId) {
-        Images.update({"comments.id": commentId}, {
-            $pull: {
-                comments: {
-                    id: commentId
-                }
-            }
-        });
-    },
-    'removeComment': function (commentId) {
-        Publications.update({"comments.id": commentId}, {
-            $pull: {
-                comments: {
-                    id: commentId
-                }
-            }
-        });
     },
     'constructPlayersTagged': function (usernamesTagged) {
         var usernameLength = usernamesTagged.length;
