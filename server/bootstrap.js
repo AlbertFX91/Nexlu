@@ -61,8 +61,7 @@ Meteor.startup(function () {
         }
 
         if (Publications.find().count() === 0){
-            createPublications();
-            createImages();
+            createPublicationsAndImages();
         }
 
         createNotificacions();
@@ -74,8 +73,7 @@ Meteor.startup(function () {
         
         createUsers();
         createChatRooms();
-        createPublications();
-        createImages();
+        createPublicationsAndImages();
         createNotificacions();
     }
 
@@ -276,15 +274,83 @@ function createChatRooms(){
     });
 }
 
-function createPublications(){
+function createPublicationsAndImages(){
     var user1 = Meteor.users.findOne({username: 'user1'});
     var user2 = Meteor.users.findOne({username: 'user2'});
     var user3 = Meteor.users.findOne({username: 'user3'});
     var user4 = Meteor.users.findOne({username: 'user4'});
     var user5 = Meteor.users.findOne({username: 'user5'});
 
-    //User 1
+    /********** Images User 1 **********/
+    var img1_id = Publications.insert({
+        owner:
+        {
+            id: user1._id,
+            username: user1.username
+        },
+        createdAt: new Date('2016-06-03T12:00:00'),
+        playersTagged: [
+            {
+                id: user2._id,
+                username: user2.username
+            },
+            {
+                id: user3._id,
+                username: user3.username
+            }
+        ],
+        description: "My first image!!!",
+        playersLike: [user1._id, user2._id, user3._id],
+        playersDislike: [user4._id],
+        comments: [
+            {
+                id: new Mongo.ObjectID()._str,
+                createdAt: new Date('2016-06-03T12:05:00'),
+                description: "Nice publication!",
+                player: user2._id,
+                playersLike: [user1._id],
+                playersDislike: []
+            },
+            {
+                id: new Mongo.ObjectID()._str,
+                createdAt: new Date('2016-06-03T12:08:00'),
+                description: "Nice one dude!",
+                player: user3._id,
+                playersLike: [user1._id],
+                playersDislike: [user2._id]
+            }
+        ],
+        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg",
+        publication: pub1_id
+    });
     Publications.insert({
+        owner:
+        {
+            id: user1._id,
+            username: user1.username
+        }
+        ,
+        createdAt: new Date('2016-06-08T12:00:00'),
+        playersTagged: [],
+        description: "My second publication!!!",
+        playersLike: [],
+        playersDislike: [],
+        comments: [],
+        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/nexlu-filter.png"
+    });
+
+    /********* Avatar User1 *********/
+    Meteor.users.update(user1, {
+        $set: {
+            avatar:{
+                id: img1_id,
+                url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
+            }
+        }
+    });
+
+    /****** Publications User 1 ******/
+    var pub1_id = Publications.insert({
         owner:{
                 id: user1._id,
                 username: user1.username
@@ -320,7 +386,8 @@ function createPublications(){
                 playersLike: [user1._id],
                 playersDislike: [user2._id]
             }
-        ]
+        ],
+        images: [img1_id]
     });
     Publications.insert({
         owner:{
@@ -371,7 +438,7 @@ function createPublications(){
         comments: []
     });
 
-    //User 2
+    /****** Publications User 2 ******/
     Publications.insert({
         owner:{
                 id: user2._id,
@@ -399,84 +466,6 @@ function createPublications(){
         ]
     });
 }
-
-
-function createImages(){
-    var user1 = Meteor.users.findOne({username: 'user1'});
-    var user2 = Meteor.users.findOne({username: 'user2'});
-    var user3 = Meteor.users.findOne({username: 'user3'});
-    var user4 = Meteor.users.findOne({username: 'user4'});
-
-    //User 1
-    var img1_id = Publications.insert({
-        owner: 
-            {
-                id: user1._id,
-                username: user1.username
-            },
-        
-        createdAt: new Date('2016-06-03T12:00:00'),
-        playersTagged: [
-            {
-                id: user2._id,
-                username: user2.username
-            },
-            {
-                id: user3._id,
-                username: user3.username
-            }
-        ],
-        description: "My first image!!!",
-        playersLike: [user1._id, user2._id, user3._id],
-        playersDislike: [user4._id],
-        comments: [
-            {
-                id: new Mongo.ObjectID()._str,
-                createdAt: new Date('2016-06-03T12:05:00'),
-                description: "Nice publication!",
-                player: user2._id,
-                playersLike: [user1._id],
-                playersDislike: []
-            },
-            {
-                id: new Mongo.ObjectID()._str,
-                createdAt: new Date('2016-06-03T12:08:00'),
-                description: "Nice one dude!",
-                player: user3._id,
-                playersLike: [user1._id],
-                playersDislike: [user2._id]
-            }
-        ],
-        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
-    });
-    Publications.insert({
-        owner: 
-            {
-                id: user1._id,
-                username: user1.username
-            }
-        ,
-        createdAt: new Date('2016-06-08T12:00:00'),
-        playersTagged: [],
-        description: "My second publication!!!",
-        playersLike: [],
-        playersDislike: [],
-        comments: [],
-        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/nexlu-filter.png"
-    });
-
-    //Avatar User1
-    Meteor.users.update(user1, {
-        $set: {
-            avatar:{
-                id: img1_id,
-                url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
-            }
-        }
-    });
-
-}
-
 
 function createNotificacions() {
     var user1 = Meteor.users.findOne({username: 'user1'});
