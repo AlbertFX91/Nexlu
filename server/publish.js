@@ -78,12 +78,12 @@ Meteor.publish('image.me.miniature', function(){
         this.ready();
         return;
     }
-    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+    return Publications.find({$and: [{"owner.id": user_id}, {"url": {$exists:true, $ne: null}}]}, {fields: Fields.image.miniature});
 });
 
 Meteor.publish('image.one.miniature', function(username){
     var user_id = Meteor.users.findOne({username: username})._id;
-    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+    return Publications.find({$and: [{"owner.id": user_id}, {"url": {$exists:true, $ne: null}}]}, {fields: Fields.image.miniature});
 });
 
 Meteor.publish('publication.me.none', function () {
@@ -127,7 +127,7 @@ Meteor.publish('publication.followed.all', function () {
     return Publications.find({"owner.id": {"$in": followed_id}}, {fields: Fields.publication.all});
 });
 Meteor.publish('image.one', function(img_id){
-    return Images.find(img_id, {fields: Fields.image.all});
+    return Publications.find({$and: [{_id: img_id}, {"url": {$exists:true, $ne: null}}]}, {fields: Fields.image.all});
 });
 
 Meteor.publish("findUser", function(username) {
