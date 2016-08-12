@@ -122,27 +122,27 @@ Meteor.methods({
     },
     'image.like': function (publicationId) {
         var userId = Meteor.userId();
-        Images.update(publicationId, {
+        Publications.update(publicationId, {
             $push: {
                 playersLike: userId
             }
         });
-        Images.update(publicationId, {
+        Publications.update(publicationId, {
             $pull: {
                 playersDislike: userId
             }
         });
-        var ownerId = Images.findOne(publicationId).owner.id;
+        var ownerId = Publications.findOne(publicationId).owner.id;
         NotificationService.createLikeImg(ownerId, publicationId)
     },
     'image.dislike': function (publicationId) {
         var userId = Meteor.userId();
-        Images.update(publicationId, {
+        Publications.update(publicationId, {
             $push: {
                 playersDislike: userId
             }
         });
-        Images.update(publicationId, {
+        Publications.update(publicationId, {
             $pull: {
                 playersLike: userId
             }
@@ -150,7 +150,7 @@ Meteor.methods({
     },
     'image.remove.like': function (publicationId) {
         var userId = Meteor.userId();
-        Images.update(publicationId, {
+        Publications.update(publicationId, {
             $pull: {
                 playersLike: userId
             }
@@ -158,7 +158,7 @@ Meteor.methods({
     },
     'image.remove.dislike': function (publicationId) {
         var userId = Meteor.userId();
-        Images.update(publicationId, {
+        Publications.update(publicationId, {
             $pull: {
                 playersDislike: userId
             }
@@ -186,25 +186,6 @@ Meteor.methods({
     },
     'removePublication': function (publicationId) {
         Publications.remove(publicationId);
-    },
-    'postPublication': function (publication, usernamesTagged) {
-        var publicationId = Publications.insert(publication, function (err, response) {
-            if (err) {
-                console.log(err);
-            }
-        });
-        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
-        Publications.update(publicationId, {
-            $set: {
-                playersTagged: playersTagged
-            }
-        })
-        var user = Meteor.user();
-        _.each(playersTagged, function (p) {
-            if (p._id._id != user._id) {
-                NotificationService.createTagPub(p._id, publicationId);
-            }
-        });
     },
     'send_message_about': function (info) {
         Email.send({
