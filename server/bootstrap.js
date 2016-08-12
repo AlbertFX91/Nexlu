@@ -320,8 +320,7 @@ function createPublicationsAndImages(){
                 playersDislike: [user2._id]
             }
         ],
-        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg",
-        publication: pub1_id
+        url: "https://s3-us-west-2.amazonaws.com/nexlu/users/call-of-duty-small.jpg"
     });
     Publications.insert({
         owner:
@@ -389,6 +388,14 @@ function createPublicationsAndImages(){
         ],
         images: [img1_id]
     });
+
+    //Ahora editamos la img1, para asignarle un atributo que nos indique que su padre es pub1:
+    Publications.update(img1_id, {
+        $set: {
+            publication: pub1_id
+        }
+    });
+
     Publications.insert({
         owner:{
                 id: user1._id,
