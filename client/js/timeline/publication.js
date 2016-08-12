@@ -94,8 +94,10 @@ Template.publication.events({
         }
         //Comprobación del etiquetado con '@'
         var usernamesTagged = Util.validateTag(descriptionTrim);
+        //Comprobar si es una imagen o no
+        var isImage = this.url ? true : false;
         if (valido) {
-           Meteor.call('editPublication', publicationId, descriptionTrim, usernamesTagged, function(err, response){
+           Meteor.call('publication.edit', publicationId, descriptionTrim, usernamesTagged, isImage, function(err, response){
                if (!err){
                    $('#edit-pub-modal').closeModal();
                }
@@ -110,7 +112,7 @@ Template.publication.events({
     'submit .remove-post': function(e) {
         e.preventDefault();
         var publicationId = this._id;
-        Meteor.call('removePublication', publicationId, function(err, response){
+        Meteor.call('publication.remove', publicationId, function(err, response){
             if (!err){
                 $('#remove-pub-modal').closeModal();
                 $('.lean-overlay').remove();
@@ -133,8 +135,9 @@ Template.publication.events({
     'click #like': function (e) {
         e.preventDefault();
         var publicationId = this._id;
+        var isImage = this.url ? true : false;
         if (!_.contains(this.playersLike, Meteor.userId())){
-            Meteor.call('likePublication', publicationId, function(err, response){
+            Meteor.call('publication.like', publicationId, isImage, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -145,7 +148,7 @@ Template.publication.events({
         e.preventDefault();
         var publicationId = this._id;
         if (!_.contains(this.playersDislike, Meteor.userId())){
-            Meteor.call('dislikePublication', publicationId, function(err, response){
+            Meteor.call('publication.dislike', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -156,7 +159,7 @@ Template.publication.events({
         e.preventDefault();
         var publicationId = this._id;
         if (_.contains(this.playersLike, Meteor.userId())){
-            Meteor.call('removeLikePublication', publicationId, function(err, response){
+            Meteor.call('publication.remove.like', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -167,7 +170,7 @@ Template.publication.events({
         e.preventDefault();
         var publicationId = this._id;
         if (_.contains(this.playersDislike, Meteor.userId())){
-            Meteor.call('removeDislikePublication', publicationId, function(err, response){
+            Meteor.call('publication.remove.dislike', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }

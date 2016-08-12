@@ -53,7 +53,7 @@ Template.newPublication.events({
             comments: []
         };
         if (valido) {
-            Meteor.call('postPublication', publication, usernamesTagged, function(err, response) {
+            Meteor.call('publication.new', publication, usernamesTagged, function(err, response) {
                 if (!err){
                     var textarea = document.getElementById('newPublication');
                     textarea.value = "";

@@ -102,81 +102,18 @@ Meteor.methods({
             throw Meteor.Error("User not logued");
         }
     },
-    'image.edit': function (publicationId, description, usernamesTagged) {
-        var user = Meteor.user();
+    'publication.new': function (publication, usernamesTagged) {
+        var publicationId = Publications.insert(publication, function (err, response) {
+            if (err) {
+                console.log(err);
+            }
+        });
         var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Publications.update(publicationId, {
             $set: {
-                description: description,
                 playersTagged: playersTagged
             }
-        });
-        _.each(playersTagged, function (p) {
-            if (p._id._id != user._id) {
-                NotificationService.createTagImg(p._id, publicationId);
-            }
-        });
-    },
-    'image.remove': function (publicationId) {
-        Publications.remove(publicationId);
-    },
-    'image.like': function (publicationId) {
-        var userId = Meteor.userId();
-        Publications.update(publicationId, {
-            $push: {
-                playersLike: userId
-            }
-        });
-        Publications.update(publicationId, {
-            $pull: {
-                playersDislike: userId
-            }
-        });
-        var ownerId = Publications.findOne(publicationId).owner.id;
-        NotificationService.createLikeImg(ownerId, publicationId)
-    },
-    'image.dislike': function (publicationId) {
-        var userId = Meteor.userId();
-        Publications.update(publicationId, {
-            $push: {
-                playersDislike: userId
-            }
-        });
-        Publications.update(publicationId, {
-            $pull: {
-                playersLike: userId
-            }
         })
-    },
-    'image.remove.like': function (publicationId) {
-        var userId = Meteor.userId();
-        Publications.update(publicationId, {
-            $pull: {
-                playersLike: userId
-            }
-        })
-    },
-    'image.remove.dislike': function (publicationId) {
-        var userId = Meteor.userId();
-        Publications.update(publicationId, {
-            $pull: {
-                playersDislike: userId
-            }
-        })
-    },
-    'getUsernameById': function (id) {
-        var user = Meteor.users.findOne(id, {fields: {username: 1}});
-        if (user.username != undefined)
-            return user.username;
-    },
-    'editPublication': function (publicationId, description, usernamesTagged) {
-        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
-        Publications.update(publicationId, {
-            $set: {
-                description: description,
-                playersTagged: playersTagged
-            }
-        });
         var user = Meteor.user();
         _.each(playersTagged, function (p) {
             if (p._id._id != user._id) {
@@ -184,30 +121,27 @@ Meteor.methods({
             }
         });
     },
-    'removePublication': function (publicationId) {
-        Publications.remove(publicationId);
-    },
-    'send_message_about': function (info) {
-        Email.send({
-            to: "infonexlu@gmail.com",
-            from: info[0],
-            subject: info[0],
-            text: info[1] + "\n\n" + info[2]
+    'publication.edit': function (publicationId, description, usernamesTagged, isImage) {
+        var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
+        var user = Meteor.user();
+        Publications.update(publicationId, {
+            $set: {
+                description: description,
+                playersTagged: playersTagged
+            }
+        });
+        _.each(playersTagged, function (p) {
+            if (p._id._id != user._id && !isImage) {
+                NotificationService.createTagPub(p._id, publicationId);
+            } else if (p._id._id != user._id && isImage) {
+                NotificationService.createTagImg(p._id, publicationId);
+            }
         });
     },
-    'constructPlayersTagged': function (usernamesTagged) {
-        var usernameLength = usernamesTagged.length;
-        var playersTagged = [];
-        for (var i = 0; i < usernameLength; i++) {
-            var id = Meteor.users.findOne({"username": usernamesTagged[i]}, {fields: {_id: 1}});
-            playersTagged.push({
-                _id: id,
-                username: usernamesTagged[i]
-            })
-        }
-        return playersTagged;
+    'publication.remove': function (publicationId) {
+        Publications.remove(publicationId);
     },
-    'likePublication': function (publicationId) {
+    'publication.like': function (publicationId, isImage) {
         var userId = Meteor.userId();
         Publications.update(publicationId, {
             $push: {
@@ -220,9 +154,13 @@ Meteor.methods({
             }
         });
         var ownerId = Publications.findOne(publicationId).owner.id;
-        NotificationService.createLikePub(ownerId, publicationId)
+        if (isImage) {
+            NotificationService.createLikeImg(ownerId, publicationId);
+        } else {
+            NotificationService.createLikePub(ownerId, publicationId);
+        }
     },
-    'dislikePublication': function (publicationId) {
+    'publication.dislike': function (publicationId) {
         var userId = Meteor.userId();
         Publications.update(publicationId, {
             $push: {
@@ -235,7 +173,7 @@ Meteor.methods({
             }
         })
     },
-    'removeLikePublication': function (publicationId) {
+    'publication.remove.like': function (publicationId) {
         var userId = Meteor.userId();
         Publications.update(publicationId, {
             $pull: {
@@ -243,7 +181,7 @@ Meteor.methods({
             }
         })
     },
-    'removeDislikePublication': function (publicationId) {
+    'publication.remove.dislike': function (publicationId) {
         var userId = Meteor.userId();
         Publications.update(publicationId, {
             $pull: {
@@ -393,6 +331,31 @@ Meteor.methods({
                     id: commentId
                 }
             }
+        });
+    },
+    'constructPlayersTagged': function (usernamesTagged) {
+        var usernameLength = usernamesTagged.length;
+        var playersTagged = [];
+        for (var i = 0; i < usernameLength; i++) {
+            var id = Meteor.users.findOne({"username": usernamesTagged[i]}, {fields: {_id: 1}});
+            playersTagged.push({
+                _id: id,
+                username: usernamesTagged[i]
+            })
+        }
+        return playersTagged;
+    },
+    'getUsernameById': function (id) {
+        var user = Meteor.users.findOne(id, {fields: {username: 1}});
+        if (user.username != undefined)
+            return user.username;
+    },
+    'send_message_about': function (info) {
+        Email.send({
+            to: "infonexlu@gmail.com",
+            from: info[0],
+            subject: info[0],
+            text: info[1] + "\n\n" + info[2]
         });
     },
     'chatroom.exists': function (follower_id, my_id) {
