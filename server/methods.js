@@ -146,7 +146,14 @@ Meteor.methods({
             }
         });
     },
-    'publication.remove': function (publicationId) {
+    'publication.remove': function (publicationId, idFather) {
+        if (idFather != undefined) {
+            Publications.update(idFather, {
+                $pull: {
+                    images: publicationId
+                }
+            });
+        }
         Publications.remove(publicationId);
     },
     'publication.like': function (publicationId, isImage) {

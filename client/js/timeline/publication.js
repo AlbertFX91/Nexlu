@@ -112,7 +112,8 @@ Template.publication.events({
     'submit .remove-post': function(e) {
         e.preventDefault();
         var publicationId = this._id;
-        Meteor.call('publication.remove', publicationId, function(err, response){
+        var hasFather = this.publication ? this.publication : undefined;
+        Meteor.call('publication.remove', publicationId, hasFather, function(err, response){
             if (!err){
                 $('#remove-pub-modal').closeModal();
                 $('.lean-overlay').remove();
