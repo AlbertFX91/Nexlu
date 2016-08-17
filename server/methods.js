@@ -204,6 +204,11 @@ Meteor.methods({
             }
         })
     },
+    'getUrlByImageId': function (id) {
+        var image = Publications.findOne(id, {fields: {url: 1}});
+        if (image.url != undefined)
+            return image.url;
+    },
     'comment.new': function (publicationId, comment) {
         Publications.update(publicationId, {
             $push: {

@@ -66,6 +66,14 @@
                         {{/if}}
                     </div>
                 </div>
+            {{else}}
+                {{#if images}}
+                    <div id="slider-img-pub" class="owl-carousel">
+                        {{#each images}}
+                            {{> images_carousel}}
+                        {{/each}}
+                    </div>
+                {{/if}}
             {{/if}}
         </div>
         <div class="card-action text-color-1 publication-details">

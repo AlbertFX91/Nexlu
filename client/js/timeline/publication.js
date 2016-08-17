@@ -215,8 +215,12 @@ Template.publication.events({
     'click .tags_modal': function(e){
         e.preventDefault();
         $(e.target).next().openModal();
+    },
+    'click .img-carousel': function(e){
+        e.preventDefault();
+        var img_id = $(e.target).attr("data-id");
+        Router.go('images_show', {_id: img_id});
     }
-
 });
 
 Template.publication.onRendered(function (){
@@ -233,4 +237,19 @@ Template.publication.onRendered(function (){
             alignment: 'right' // Displays dropdown with edge aligned to the left of button
         }
     );
+    $(".owl-carousel").owlCarousel({
+        margin:10,
+        center:true,
+        items : 1,
+        itemsDesktop : false,
+        itemsDesktopSmall : false,
+        itemsTablet: false,
+        itemsMobile : false,
+        navText: ["anterior", "próximo"],
+        nav : true
+    });
+});
+
+$('.owl-carousel').on('click', '.item', function () {
+    console.log("click");
 });
