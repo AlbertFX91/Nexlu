@@ -1,8 +1,8 @@
 
 .input-field label.active {
-    font-size: 0.8rem;
-    -webkit-transform: translateY(-133%) !important;
-    transform: translateY(-133%) !important;
+    font-size: 1rem;
+    -webkit-transform: translateY(-142%) !important;
+    transform: translateY(-142%) !important;
 }
 
 .post {
