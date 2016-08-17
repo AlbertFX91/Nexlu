@@ -12,8 +12,13 @@
                     <label id="post-label" for="newPublication" style="text-align: left !important;">{{_ "timeline.whatsup"}}</label>
                 </div>
             </div>
-            <div class="post-action">
-                <div></div> <!-- TAGS -->
+            <div class="white-text post-action">
+                <div class="images-pub">
+                    {{> images_input_button_pub}}
+                    <div class="images-status">
+                        {{_ "images.selected"}}: {{images_selected}}
+                    </div>
+                </div>
                 <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>
             </div>
         </form>

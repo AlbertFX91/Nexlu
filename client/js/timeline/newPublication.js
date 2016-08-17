@@ -14,6 +14,9 @@ Template.newPublication.helpers({
                 }
             ]
         }
+    },
+    images_selected: function () {
+        return ImagesLocals.find({}).fetch().length;
     }
 });
 
@@ -59,6 +62,7 @@ Template.newPublication.events({
                     textarea.value = "";
                     $("#newPublication").trigger('autoresize');
                     $("#post-label").removeClass("active");
+                    Session.set("by-new-pub", false); //TODO:
                 }
             });
         }
@@ -72,4 +76,6 @@ Template.newPublication.events({
 
 Template.newPublication.onRendered(function(){
     $('#newPublication').characterCounter();
+    //Vaciamos las imagenes del navegador
+    ImagesLocals.remove({});
 });

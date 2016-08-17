@@ -24,6 +24,15 @@
     justify-content: space-between;
 }
 
+.images-pub {
+    display: flex;
+    align-items: center;
+}
+
+.images-status {
+    padding-left: 10px;
+}
+
 .post-header {
     padding: 10px 30px 10px 30px;
     display:flex;
