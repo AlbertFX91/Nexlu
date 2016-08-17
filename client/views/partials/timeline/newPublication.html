@@ -1,5 +1,5 @@
 <template name="newPublication">
-    <div class="card web-color-1">
+    <div id="new-publication-card" class="card web-color-1">
         <form class="confirm-post">
             <div class="post-header text-color-1">
                 <span id="post-error"></span>
@@ -16,7 +16,11 @@
                 <div class="images-pub">
                     {{> images_input_button_pub}}
                     <div class="images-status">
+                    {{#if uploadingImages}}
+                        {{{_ "images.uploading_progress" numImagesUploaded numImagesToUpload}}}
+                    {{else}}
                         {{_ "images.selected"}}: {{images_selected}}
+                    {{/if}}
                     </div>
                 </div>
                 <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>

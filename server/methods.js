@@ -97,12 +97,12 @@ Meteor.methods({
                     NotificationService.createTagImg(p._id, id);
                 }
             });
-
+            return id;
         } else {
             throw Meteor.Error("User not logued");
         }
     },
-    'publication.new': function (publication, usernamesTagged) {
+    'publication.new': function (publication, usernamesTagged, imagesId) {
         var publicationId = Publications.insert(publication, function (err, response) {
             if (err) {
                 console.log(err);
@@ -119,6 +119,13 @@ Meteor.methods({
             if (p._id._id != user._id) {
                 NotificationService.createTagPub(p._id, publicationId);
             }
+        });
+        _.each(imagesId, function (img) {
+            Publications.update(img, {
+                $set: {
+                    publication: publicationId
+                }
+            });
         });
     },
     'publication.edit': function (publicationId, description, usernamesTagged, isImage) {

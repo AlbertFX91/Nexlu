@@ -13,6 +13,7 @@ Template.images_input_button.events({
         Session.set("numImagesUploaded", false);
         Session.set("numImagesToUpload", false);
         Session.set("images.finished", false);
+        Session.set("by-new-pub", false);
         $('#input-images-modal').openModal({dismissible: false});
 
     }
