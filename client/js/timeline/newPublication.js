@@ -81,18 +81,18 @@ Template.newPublication.events({
                         path: "users"
                     }, function (e, r) {
                         var numImagesUploaded = Session.get("numImagesUploaded");
-                        Session.set("numImagesUploaded", numImagesUploaded + 1);
                         var data = {
                             url: r.url,
                             description: img.description,
                             usernameTagged: img.usernameTagged
                         };
                         Meteor.call("image.new", data, function (e, r) {
-                            if (!e) {
+                            if (!e){
                                 var imagesId = Session.get("imagesId");
                                 imagesId = _.extend([], imagesId);
                                 imagesId.push(r);
                                 Session.set("imagesId", imagesId);
+                                Session.set("numImagesUploaded", numImagesUploaded + 1);
                             }
                         });
                     });

@@ -111,9 +111,10 @@ Meteor.methods({
         var playersTagged = Meteor.call('constructPlayersTagged', usernamesTagged);
         Publications.update(publicationId, {
             $set: {
-                playersTagged: playersTagged
+                playersTagged: playersTagged,
+                images: imagesId
             }
-        })
+        });
         var user = Meteor.user();
         _.each(playersTagged, function (p) {
             if (p._id._id != user._id) {
