@@ -241,15 +241,10 @@ Template.publication.onRendered(function (){
         margin:10,
         center:true,
         items : 1,
-        itemsDesktop : false,
-        itemsDesktopSmall : false,
-        itemsTablet: false,
-        itemsMobile : false,
-        navText: ["anterior", "próximo"],
+        //itemsDesktop : false,
+        //itemsDesktopSmall : false,
+        //itemsTablet: false,
+        //itemsMobile : false,
         nav : true
     });
-});
-
-$('.owl-carousel').on('click', '.item', function () {
-    console.log("click");
 });
