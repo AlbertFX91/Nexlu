@@ -88,18 +88,11 @@ Template.newPublication.events({
                             usernameTagged: img.usernameTagged
                         };
                         Meteor.call("image.new", data, function (e, r) {
-                            if (!e){
-                                console.log("lo que devuelve el method de guardar imagen: "+r);
+                            if (!e) {
                                 var imagesId = Session.get("imagesId");
-                                console.log("lo que hay en el array de id's: "+imagesId);
                                 imagesId = _.extend([], imagesId);
-                                console.log("lo que hay en el array de id's despues de extend: "+imagesId);
                                 imagesId.push(r);
-                                console.log("lo que hay en el array de id's despues de push: "+imagesId);
                                 Session.set("imagesId", imagesId);
-                                console.log("lo que hay en el array de id's despues de guardar: " + Session.get("imagesId"));
-                            } else {
-                                console.log(e);
                             }
                         });
                     });
