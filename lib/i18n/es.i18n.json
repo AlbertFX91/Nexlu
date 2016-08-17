@@ -247,7 +247,9 @@
 
   "security":{
     "register": "Un perfil privado no puede ser visto por otros usuarios",
-    "privacity": "Privacidad"
+    "privacity": "Privacidad",
+    "public": "Publico",
+    "private": "Privado"
   },
 
   "settings": {
