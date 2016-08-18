@@ -95,7 +95,8 @@
     "comment": "Comment",
     "forgot_password": "Forgot Password",
     "accept": "Accept",
-    "reject": "Reject"
+    "reject": "Reject",
+    "nonsense": "Awesome application"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
