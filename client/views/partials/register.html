@@ -20,12 +20,12 @@
                                 <label id="email-label" for="email">{{_ "email.email"}}:</label>
                             </div>
                             <div class="col m8 s12">
-                                <input  id="email" name="email" pattern="^[_A-Za-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" class="form-control" type="email" autocomplete="off">
+                                <input  id="email" name="email" class="form-control" type="text" autocomplete="off">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col m4 s12" >
-                                <span class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{_ "error.password_error_patron"}}">
+                                <span class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{_ "error.password_error_pattern"}}">
                                         <label id="password-label" for="password_register">
                                             <i class="material-icons">info_outline</i>
                                             {{_ "password"}}:
@@ -33,7 +33,7 @@
                                 </span>
                             </div>
                             <div class="col m8 s12">
-                                <input name="password_register"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password_register" class="form-control" type="password">
+                                <input name="password_register" id="password_register" class="form-control" type="password">
                             </div>
                         </div>
                         <div class="row">
@@ -43,7 +43,7 @@
                                 </label>
                             </div>
                             <div class="col m8 s12">
-                                <input name="confirmpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirmpassword" class="form-control" type="password">
+                                <input name="confirmpassword" id="confirmpassword" class="form-control" type="password">
                             </div>
                         </div>
                         <div class="row">
