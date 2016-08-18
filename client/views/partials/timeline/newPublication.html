@@ -23,7 +23,17 @@
                     {{/if}}
                     </div>
                 </div>
-                <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>
+                <div id="pub-emoji-picker" class="animated fadeInUp">
+                    {{#each emojis}}
+                        <span data-id="{{_id}}" class="emoji-picker">{{{toHTML}}}</span>
+                    {{/each}}
+                </div>
+                <div class="input-options">
+                    <div id="pub-input-options" class="web-color-1">
+                        <span class="waves-effect waves-light btn post" id="emoji-select-button">{{> emoji ':smile:'}}</span>
+                    </div>
+                    <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>
+                </div>
             </div>
         </form>
     </div>

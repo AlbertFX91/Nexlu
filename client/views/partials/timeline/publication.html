@@ -1,6 +1,6 @@
 <template name="publication">
 
-    <div class="card web-color-1">
+    <div class="publication card web-color-1">
         <div class="card-content text-color-3 publication-content">
             <div class="text-color-1 publication-header">
                 <a href="{{ pathFor 'profile' username=owner.username }}">
@@ -48,7 +48,7 @@
                 </div>
                 <span data-livestamp="{{createdAt}}"></span>
             </div>
-            <div class="publication-description">{{#if descriptionTruncate}}{{descriptionTruncated}} <a id="read-more"> {{_ "timeline.read-more"}}</a>{{else}}{{description}}{{/if}}</div>
+            <div class="publication-description">{{#if descriptionTruncate}}{{#emoji}}{{descriptionTruncated}}{{/emoji}} <a id="read-more"> {{_ "timeline.read-more"}}</a>{{else}}{{#emoji}}{{descriptionTruncated}}{{/emoji}}{{/if}}</div>
 
             {{#if url}}
                 <div class="publication-image-container center-align" style="max-height: 500px">

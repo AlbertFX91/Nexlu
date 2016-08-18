@@ -26,6 +26,9 @@ Template.newPublication.helpers({
     },
     numImagesToUpload: function(){
         return Session.get("numImagesToUpload");
+    },
+    emojis: function(){
+        return Emojis.find().fetch().slice(0,20*6);
     }
 });
 
@@ -138,10 +141,28 @@ Template.newPublication.events({
         e.preventDefault();
         $("#post-label").show();
         document.getElementById('post-error').innerHTML = "";
+    },
+    'click span.emoji-picker': function(e){
+        var emoji_id = $(e.target).parent().attr("data-id");
+        var emoji = Emojis.findOne(emoji_id);
+        $("#newPublication").val($("#newPublication").val()+":"+emoji.alias+":");
+        $("#post-label").addClass("active");
+    },
+    'click #pub-input-options': function(){
+        var picker = $("#pub-emoji-picker");
+        if (picker.css("display")=="none") {
+            picker.css("display", "block");
+        }else if(picker.css("display")=="block"){
+            picker.removeClass("fadeInUp").addClass("fadeOutDown");
+            setTimeout(function(){
+                picker.removeClass("fadeOutDown").css("display","none").addClass("fadeInUp");
+            }, 1000);
+        }
     }
 });
 
 Template.newPublication.onRendered(function(){
+    Meteor.subscribe("emojis");
     $('#newPublication').characterCounter();
     //Vaciamos las imagenes del navegador
     ImagesLocals.remove({});

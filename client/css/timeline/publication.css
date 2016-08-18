@@ -31,13 +31,13 @@
     border-top: 1px dashed rgba(160, 160, 160, 0.2) !important;
 }
 
-.card a{
+.publication.card a{
     color: #9e9e9e !important;
     transition: none !important;
     text-transform: none !important;
 }
 
-.card a:hover{
+.publication.card a:hover{
     color: #7db3ce !important;
     cursor: pointer !important;
 }
@@ -171,4 +171,8 @@
 
 .owl-carousel{
     margin-top: 20px;
+}
+
+.owl-nav div{
+    background-color: #9e9e9e !important;
 }

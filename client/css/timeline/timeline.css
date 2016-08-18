@@ -24,6 +24,13 @@
     justify-content: space-between;
 }
 
+.input-options {
+    display:flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .images-pub {
     display: flex;
     align-items: center;
