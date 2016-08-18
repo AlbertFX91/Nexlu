@@ -98,7 +98,7 @@
     "following": "Siguiendo",
     "post": "Enviar",
     "remove": "Borrar",
-    "comment": "Commentar",
+    "comment": "Comentar",
     "forgot_password": "Olvidé la contraseña",
     "accept": "Aceptar",
     "reject": "Rechazar"
@@ -248,7 +248,9 @@
 
   "security":{
     "register": "Un perfil privado no puede ser visto por otros usuarios",
-    "privacity": "Privacidad"
+    "privacity": "Privacidad",
+    "public": "Publico",
+    "private": "Privado"
   },
 
   "settings": {

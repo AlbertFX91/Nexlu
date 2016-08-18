@@ -32,7 +32,7 @@
                                         </label>
                                 </span>
                             </div>
-                            <div class="col m8 s12">
+                            <div class="col m8 s12" style="color:white">
                                 <input name="password_register" id="password_register" class="form-control" type="password">
                             </div>
                         </div>
@@ -46,10 +46,10 @@
                                 <input name="confirmpassword" id="confirmpassword" class="form-control" type="password">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="security_div">
                             <div class="col m4 s5" >
                                 <span class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{_ "security.register"}}">
-                                    <label id="private" for="private">
+                                    <label id="private" for="private" style="font-size: 1.1rem;">
                                         <i class="material-icons">https</i>
                                         {{_ "security.privacity"}}:
                                     </label>
@@ -57,20 +57,20 @@
                             </div>
                             <div class="col m4 s6">
                             <div class="switch">
-                                    <label>
-                                        Public
+                                    <label style="font-size: 13px;">
+                                        {{_ "security.public"}}
                                         <input id="private_checkbox" name="private_checkbox" type="checkbox">
                                         <span class="lever"></span>
-                                        Private
+                                        {{_ "security.private"}}
                                     </label>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="width: 100%;">
                                 <hr class="col m12 s12">
                             </div>
                         </div>
                     </div>
-                    <div class="row continue">
+                    <div class="row continue" style="width: 100%;">
                         <div class="col m12 s12">
                             <button type="submit" id="register-buttom" class="finish btn btn-default logbutton">{{_ "finish"}}</button>
                         </div>

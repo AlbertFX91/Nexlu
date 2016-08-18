@@ -6,7 +6,7 @@ Template.change_password.events({
         var confirmpassword_changed = document.getElementById('confirmpassword_changed').value;
         Accounts.changePassword(password_current, password_changed, function(err){
             if(err){
-                Materialize.toast('<b>' + TAPi18n.__("change_password.error_password_change_success") + '</b>', 2700);
+                Errors.throwErrorTranslated("change_password.error_password_change_success");
             }else{
                 Router.go('/');
                 Materialize.toast('<b>' + TAPi18n.__("change_password.password_change_success") + '</b>', 2700);

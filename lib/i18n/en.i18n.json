@@ -229,7 +229,9 @@
 
   "security":{
     "register": "A private profile can't be see by other user",
-    "privacity": "Privacity"
+    "privacity": "Privacity",
+    "public": "Public",
+    "private": "Private"
   },
 
   "settings": {

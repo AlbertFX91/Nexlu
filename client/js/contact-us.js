@@ -11,6 +11,14 @@ Template.ContactUs.events({
 	}
 });
 
+Meteor.startup(function(){
+	Tracker.autorun(function(){
+		$.validator.addMethod("emailPattern", function(value, element){
+			return /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/.test(value);
+		}, TAPi18n.__("error.email_error_patron"));
+	})
+});
+
 Template.ContactUs.onRendered(function(){
 	$( "#contact_us_form" ).validate({
 		rules: {
@@ -21,6 +29,7 @@ Template.ContactUs.onRendered(function(){
 			},
 			email: {
 				required: true,
+				emailPattern: true
 			},
 			message: {
 				required: true,
@@ -35,8 +44,7 @@ Template.ContactUs.onRendered(function(){
 				maxlength: TAPi18n.__("error.username_error_maxlength")
 			},
 			email: {
-				required: TAPi18n.__("error.email_error_empty"),
-				pattern: TAPi18n.__("error.email_error_patron"),
+				required: TAPi18n.__("error.email_error_empty")
 			},
 			message: {
 				required: TAPi18n.__("error.message_error_empty"),
