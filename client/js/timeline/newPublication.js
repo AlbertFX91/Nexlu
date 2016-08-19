@@ -127,11 +127,21 @@ Template.newPublication.events({
             } else {
                 Meteor.call('publication.new', publication, usernamesTagged, [], function(err, response) {
                     if (!err){
+                        //Vaciamos el textarea, lo redimensionamos manualmente y desactivamos el label.
                         var textarea = document.getElementById('newPublication');
                         textarea.value = "";
                         $("#newPublication").trigger('autoresize');
                         $("#post-label").removeClass("active");
+                        //Borramos el array de Id's de las imagenes seleccionadas.
                         Session.set("imagesId", false);
+                        //cerramos la ventana de emoticonos si está abierta aún.
+                        var picker = $("#pub-emoji-picker");
+                        if(picker.css("display")=="block"){
+                            picker.removeClass("fadeInUp").addClass("fadeOutDown");
+                            setTimeout(function(){
+                                picker.removeClass("fadeOutDown").css("display","none").addClass("fadeInUp");
+                            }, 1000);
+                        }
                     }
                 });
             }
