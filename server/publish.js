@@ -199,11 +199,12 @@ Meteor.publish('publication.me.followed.all', function () {
         this.ready();
         return;
     }
-    Counts.publish(this, 'all-publications', Publications.find(), {
-        noReady: true
-    });
     var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
     var followed_id = followed.followed;
+
+    Counts.publish(this, 'all-publications', Publications.find({$and:[{$or: [{"owner.id": {"$in": followed_id}},{"owner.id": user_id}]}, {"url": {$exists:false}}]}), {
+        noReady: true
+    });
     return Publications.find({$and:[{$or: [{"owner.id": {"$in": followed_id}},{"owner.id": user_id}]}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
 });
 
@@ -214,7 +215,7 @@ Meteor.publish('publication.me.followed.all', function () {
 Meteor.publish('publication.one.tagged.all', function (username) {
     var user = Meteor.users.findOne({username: username});
     var user_id = user._id;
-    Counts.publish(this, 'all-publications-profile', Publications.find(), {
+    Counts.publish(this, 'all-publications-profile', Publications.find({$and:[{$or: [{"owner.id": user_id},  {playersTagged: {$elemMatch: {id: user_id}}}]}, {"url": {$exists:false}}]}), {
         noReady: true
     });
     return Publications.find({$and:[{$or: [{"owner.id": user_id},  {playersTagged: {$elemMatch: {id: user_id}}}]}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
