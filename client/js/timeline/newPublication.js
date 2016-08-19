@@ -36,6 +36,8 @@ Template.newPublication.events({
     'submit .confirm-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('newPublication').value;
+        var regex = /(<([^>]+)>)/ig;
+        description = description.replace(regex, "");
         var descriptionTrim = description.trim();
         var userId = Meteor.userId();
         var username = Meteor.user().username;

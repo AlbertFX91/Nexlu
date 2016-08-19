@@ -78,6 +78,8 @@ Template.publication.events({
     'submit .edit-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('editPublication').value;
+        var regex = /(<([^>]+)>)/ig;
+        description = description.replace(regex, "");
         var descriptionTrim = description.trim();
         var publicationId = this._id;
         var valido = true;
