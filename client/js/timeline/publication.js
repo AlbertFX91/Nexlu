@@ -68,10 +68,14 @@ Template.publication.events({
         }});
         var textarea = document.getElementById('editPublication');
         textarea.value = this.description;
+        Session.set("publication.editing", this._id);
         $("#editPublication").trigger('autoresize');
         $("#edit-post-label").addClass("active");
     },
     'click #remove-pub': function () {
+        Session.set("publication.removing", this._id);
+        var hasFather = this.publication ? this.publication : undefined;
+        Session.set("publication.removing.hasFather", hasFather);
         $('#remove-pub-modal').openModal();
     }
     ,
@@ -81,7 +85,8 @@ Template.publication.events({
         var regex = /(<([^>]+)>)/ig;
         description = description.replace(regex, "");
         var descriptionTrim = description.trim();
-        var publicationId = this._id;
+        //var publicationId = this._id;
+        var publicationId = Session.get("publication.editing");
         var valido = true;
         if (descriptionTrim == ""){
             var texto = TAPi18n.__("error.post-notBlank");
@@ -113,13 +118,15 @@ Template.publication.events({
     },
     'submit .remove-post': function(e) {
         e.preventDefault();
-        var publicationId = this._id;
-        var hasFather = this.publication ? this.publication : undefined;
+        //var publicationId = this._id;
+        var publicationId = Session.get("publication.removing");
+        //var hasFather = this.publication ? this.publication : undefined;
+        var hasFather = Session.get("publication.removing.hasFather");
         Meteor.call('publication.remove', publicationId, hasFather, function(err, response){
             if (!err){
                 $('#remove-pub-modal').closeModal();
                 $('.lean-overlay').remove();
-                Router.go('home');
+                //Router.go('home');
             }
         });
     },
