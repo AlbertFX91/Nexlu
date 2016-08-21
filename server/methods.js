@@ -93,8 +93,8 @@ Meteor.methods({
                 }
             });
             _.each(playersTagged, function (p) {
-                if (p._id._id != user._id) {
-                    NotificationService.createTagImg(p._id, id);
+                if (p.id._id != user._id) {
+                    NotificationService.createTagImg(p.id, id);
                 }
             });
             return id;
@@ -117,8 +117,8 @@ Meteor.methods({
         });
         var user = Meteor.user();
         _.each(playersTagged, function (p) {
-            if (p._id._id != user._id) {
-                NotificationService.createTagPub(p._id, publicationId);
+            if (p.id._id != user._id) {
+                NotificationService.createTagPub(p.id, publicationId);
             }
         });
         _.each(imagesId, function (img) {
@@ -139,10 +139,10 @@ Meteor.methods({
             }
         });
         _.each(playersTagged, function (p) {
-            if (p._id._id != user._id && !isImage) {
-                NotificationService.createTagPub(p._id, publicationId);
-            } else if (p._id._id != user._id && isImage) {
-                NotificationService.createTagImg(p._id, publicationId);
+            if (p.id._id != user._id && !isImage) {
+                NotificationService.createTagPub(p.id, publicationId);
+            } else if (p.id._id != user._id && isImage) {
+                NotificationService.createTagImg(p.id, publicationId);
             }
         });
     },
@@ -289,7 +289,7 @@ Meteor.methods({
         for (var i = 0; i < usernameLength; i++) {
             var id = Meteor.users.findOne({"username": usernamesTagged[i]}, {fields: {_id: 1}});
             playersTagged.push({
-                _id: id,
+                id: id,
                 username: usernamesTagged[i]
             })
         }

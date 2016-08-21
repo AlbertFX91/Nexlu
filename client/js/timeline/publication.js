@@ -39,7 +39,7 @@ Template.publication.helpers({
     hasComments: function() {
         return this.comments.length > 0;
     },
-    
+
     // TODO: Esto hay que hacerlo en el lado del server (methods):
     listLikes: function(likes){
         var likes_username = _.map(likes, function(id){
