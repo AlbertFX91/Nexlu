@@ -86,6 +86,7 @@
 
                 <!-- Panel de navegación lateral desplegado en dispositivos móviles -->
                 <ul class="side-nav" id="mobile">
+                    <li><a href="{{ pathFor 'home'}}">{{_ "tag.timeline"}}</a></li>
                     <li><a href="{{ pathFor 'profile' username=currentUser.username }}">{{_ "profile.my_profile"}}</a></li>
                     <li><a href="{{ pathFor 'settings' }}">{{_ "settings.settings"}}</a></li>
                     <li><a href="{{ pathFor 'requests-follow' }}">{{_ "settings.requests-follow"}}&nbsp;
