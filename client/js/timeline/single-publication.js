@@ -4,7 +4,6 @@ Template.singlePublication.onRendered(function(){
 
 Template.singlePublication.helpers({
     pub: function(){
-        console.log(this);
         return this;
     }
 });
