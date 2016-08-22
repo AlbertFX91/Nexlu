@@ -10,7 +10,8 @@ Template.login.events({
                 }else{
                     Toasts.throwTrans("toast.login_success");
                     $('#login-access').removeClass('login-open').addClass('login-close');
-                    setTimeout(function(){ Session.set('showLoginModal', false); }, 300);
+                    setTimeout(function(){ Session.set('showLoginModal', false); Router.go('home');}, 300)
+
                 }
             });
         }else{

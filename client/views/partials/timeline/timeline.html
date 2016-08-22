@@ -19,9 +19,12 @@
             </div>
             <div class="col s12 m8" style="">
                 {{> newPublication}}
-                {{#each publications}}
+                {{#each this}}
                     {{> publication}}
                 {{/each}}
+                {{#if moreResults}}
+                    <button id="showMoreResults" type="button">Loading...</button>
+                {{/if}}
             </div>
         </div>
     </div>
