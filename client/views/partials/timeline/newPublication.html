@@ -1,5 +1,5 @@
 <template name="newPublication">
-    <div class="card web-color-1">
+    <div id="new-publication-card" class="card web-color-1">
         <form class="confirm-post">
             <div class="post-header text-color-1">
                 <span id="post-error"></span>
@@ -12,9 +12,28 @@
                     <label id="post-label" for="newPublication" style="text-align: left !important;">{{_ "timeline.whatsup"}}</label>
                 </div>
             </div>
-            <div class="post-action">
-                <div></div> <!-- TAGS -->
-                <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>
+            <div class="white-text post-action">
+                <div class="images-pub">
+                    {{> images_input_button_pub}}
+                    <div class="images-status">
+                    {{#if uploadingImages}}
+                        {{{_ "images.uploading_progress" numImagesUploaded numImagesToUpload}}}
+                    {{else}}
+                        {{_ "images.selected"}}: {{images_selected}}
+                    {{/if}}
+                    </div>
+                </div>
+                <div id="pub-emoji-picker" class="animated fadeInUp">
+                    {{#each emojis}}
+                        <span data-id="{{_id}}" class="emoji-picker">{{{toHTML}}}</span>
+                    {{/each}}
+                </div>
+                <div class="input-options">
+                    <div id="pub-input-options" class="web-color-1">
+                        <span class="waves-effect waves-light btn post" id="emoji-select-button" style="display: flex;align-items: center;">{{> emoji ':smile:'}}</span>
+                    </div>
+                    <button type="submit" class="waves-effect waves-light btn post" >{{_ "tag.post"}}<i class="material-icons right">mode_edit</i></button>
+                </div>
             </div>
         </form>
     </div>

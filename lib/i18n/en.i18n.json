@@ -95,7 +95,8 @@
     "comment": "Comment",
     "forgot_password": "Forgot Password",
     "accept": "Accept",
-    "reject": "Reject"
+    "reject": "Reject",
+    "nonsense": "Funny game"
   },
   "about_us": {
     "ar": "Software engineering student. Specializing in web application development and guitar lover and music. Currently in the final year career and working in everis.",
@@ -148,7 +149,8 @@
     "uploaded_finished": "Uploaded finished",
     "uploading": "We're uploading your images",
     "setavatar": "Set as avatar",
-    "setavatar_finished": "Avatar changed successfully"
+    "setavatar_finished": "Avatar changed successfully",
+    "selected": "Images selected"
   },
   "contactUs":{
     "header": "Get in touch with us!",
@@ -228,7 +230,9 @@
 
   "security":{
     "register": "A private profile can't be see by other user",
-    "privacity": "Privacity"
+    "privacity": "Privacity",
+    "public": "Public",
+    "private": "Private"
   },
 
   "settings": {

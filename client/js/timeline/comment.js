@@ -71,7 +71,7 @@ Template.comment.events({
             valido = false;
         }
         if (valido) {
-            Meteor.call('editComment', commentId, descriptionTrim, function(err, response){
+            Meteor.call('comment.edit', commentId, descriptionTrim, function(err, response){
                 if (!err){
                     $(e.target).parents('#edit-comment-modal').closeModal();
                 }
@@ -91,7 +91,7 @@ Template.comment.events({
     'submit .remove-comment': function(e) {
         e.preventDefault();
         var commentId = this.id;
-        Meteor.call('removeComment', commentId, function(err, response){
+        Meteor.call('comment.remove', commentId, function(err, response){
             if (!err){
                 $(e.target).parents('#remove-comment-modal').closeModal();
                 $('.lean-overlay').remove();
@@ -101,7 +101,7 @@ Template.comment.events({
     'click #like-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
-        Meteor.call('likeComment', commentId, function(err, response){
+        Meteor.call('comment.like', commentId, function(err, response){
             if(err){
                 console.log(err);
             }
@@ -110,7 +110,7 @@ Template.comment.events({
     'click #dislike-c': function (e) {
         e.preventDefault();
         var commentId = this.id;
-        Meteor.call('dislikeComment', commentId, function(err, response){
+        Meteor.call('comment.dislike', commentId, function(err, response){
             if(err){
                 console.log(err);
             }
@@ -120,7 +120,7 @@ Template.comment.events({
         e.preventDefault();
         var commentId = this.id;
         if (_.contains(this.playersLike, Meteor.userId())){
-            Meteor.call('removeLikeComment', commentId, function(err, response){
+            Meteor.call('comment.remove.like', commentId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -131,7 +131,7 @@ Template.comment.events({
         e.preventDefault();
         var commentId = this.id;
         if (_.contains(this.playersDislike, Meteor.userId())){
-            Meteor.call('removeDislikeComment', commentId, function(err, response){
+            Meteor.call('comment.remove.dislike', commentId, function(err, response){
                 if(err){
                     console.log(err);
                 }
