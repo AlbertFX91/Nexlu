@@ -45,9 +45,10 @@
   },
 
   "error": {
-
-    "not_found": "404. Oops, la ruta no pudo ser encontrada.",
-    "login_credentials_wrong": "usuario y/o contraseña erronea",
+    "not_found-logo": "Clic en el logo para volver a Nexlu",
+    "not_found-title": "SOY UN ERROR",
+    "not_found": "No podemos encontrar la página",
+    "login_credentials_wrong": "Usuario y/o contraseña erronea",
     "login_credentials-facebook_wrong": "Inicio de sesión con Facebook cancelada",
     "login_credentials-google_wrong": "Inicio de sesión con Google cancelada",
     "login_credentials-twitter_wrong": "Inicio de sesión con Twitter cancelada",
@@ -66,8 +67,7 @@
     "description_empty": "Añade una descripción",
     "post-notBlank": "La publicación no debe estar vacía",
     "email_error_patron": "El correo debe ser del tipo ejemplo@ejemplo.com",
-    "password_error_pattern": "Formato inválido",
-    "password_error_patron": "La contraseña debe tener minúsculas, dos mayúsculas y números",
+    "password_error_pattern": "La contraseña debe tener minúsculas, mayúsculas y números",
     "message_error_empty": "El mensaje no puede estar vacio",
     "message_error_minlength": "El mensaje debe tener más de 20 caracteres",
     "message_error_maxlength": "El mensaje no puede superar los 300 caracteres",
@@ -98,8 +98,11 @@
     "following": "Siguiendo",
     "post": "Enviar",
     "remove": "Borrar",
-    "comment": "Commentar"
-
+    "comment": "Comentar",
+    "forgot_password": "Olvidé la contraseña",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "nonsense": "Juego divertido"
   },
 
   "about_us": {
@@ -111,7 +114,20 @@
   },
 
   "home": {
-
+    "title_features":"¡Estas son las principales funcionalidades que encontrarás en",
+    "features1":"Puedes seguir y ver toda la actividad de otros usuarios.",
+    "features2":"¡Hemos implementado un chat para poder hablar con tus amigos!",
+    "features3":"¡Publica lo que quieras y sube fotos para que muestres tus hazañas!",
+    "features4":"Busca a tus amigos y siguelos para ver sus publicaciones e imagenes.",
+    "title_mobile":"Todo adaptado a dispositivos móviles",
+    "mobile1":"Chatear con amigos",
+    "mobile2":"Publicar y comentar publicaciones",
+    "mobile3":"Subir y editar fotos",
+    "title_newfeatures":"¡Pronto estarán las siguientes funcionalidades!",
+    "newfeatures1":"Conseguir trofeos dentro de la web.",
+    "newfeatures2":"Crear grupos con tus amigos.",
+    "newfeatures3":"Previsualización de videos en las publicaciones.",
+    "newfeatures4":"Juegos para que los usuarios puedan seguirlos y ver todas las novedades.",
     "intro": "¡Juega y disfruta con nosotros!"
 
   },
@@ -147,7 +163,8 @@
     "uploaded_finished": "Subida finalizada",
     "uploading": "Estamos subiendo tus imágenes",
     "setavatar": "Seleccionar como avatar",
-    "setavatar_finished": "Cambiado avatar correctamente"
+    "setavatar_finished": "Cambiado avatar correctamente",
+    "selected": "Imágenes seleccionadas"
 
   },
 
@@ -168,7 +185,9 @@
     "images": "imágenes",
     "Images": "Imágenes",
     "followed": "Siguiendo",
-    "followers": "Seguidores"
+    "followers": "Seguidores",
+    "follow": "Seguir",
+    "inprocess": "En proceso"
   },
 
   "timeline": {
@@ -185,7 +204,8 @@
     "hide-comments": "Ocultar comentarios",
     "edit-comment": "Editar comentario",
     "remove-comment": "¿Está seguro de eliminar este comentario?",
-    "comment": "Comentar la publicación..."
+    "comment": "Comentar la publicación...",
+    "users-tag": "Usuarios etiquetados"
   },
 
   "faq": {
@@ -228,14 +248,18 @@
 
   "security":{
     "register": "Un perfil privado no puede ser visto por otros usuarios",
-    "privacity": "Privacidad"
+    "privacity": "Privacidad",
+    "public": "Publico",
+    "private": "Privado"
   },
 
   "settings": {
     "settings": "Configuración",
     "general": "General",
     "privacity": "Privacidad",
-    "password": "Cambiar contraseña"
+    "password": "Cambiar contraseña",
+    "save_changes": "Guardar cambios",
+    "requests-follow": "Solicitudes para seguirte"
   },
 
   "privacity":{
@@ -247,5 +271,58 @@
     "p4": "No aparecerás en las búsquedas.",
     "public": "Público",
     "private": "Privado"
+  },
+
+  "general":{
+    "title": "Configuraciones generales",
+    "p1":"En esta configuración puedes cambiar el correo electrónico.",
+    "p2":"Ten en cuenta que no puedes cambiarlo por un correo ya existente.",
+    "p3":"Correo actual",
+    "p4":"Nuevo correo",
+    "email_change_success":"Correo cambiado satisfactoriamente"
+  },
+
+  "change_password":{
+    "title": "Cambiar contraseña",
+    "p1":"Cambia la contraseña por otra si lo deseas.",
+    "p2":"La contraseña debe tener minúsculas, dos mayúsculas y números.",
+    "p3":"Nueva contraseña",
+    "p4":"Confirmar contraseña",
+    "p5":"Contraseña actual",
+    "password_change_success":"Contraseña cambiada satisfactoriamente",
+    "error_password_change_success":"Contraseña actual incorrecta"
+  },
+
+  "forgot": {
+    "title": "Reiniciar mi contraseña",
+    "text": "Introduce tu correo eletrónico y te mandaremos un correo para cambiarla",
+    "send-password": "Enviar correo",
+    "email_subject": "[NEXLU] Resetear contraseña",
+    "email_title": "Tu nueva contraseña, %s!",
+    "email_message1": "Estamos muy triste porque has olvidado tu contraseña.",
+    "email_message2": "Aquí tienes tu nueva contraseña <strong>%s</strong>",
+    "email_message3": "Te recomendamos que cambies tu contraseña. Para esto, accede a 'cambiar contraseña' en tus 'configuraciones'.",
+    "email_message4": "¡Nos vemos pronto!",
+    "email-sent": "¡El email ha sido enviado!"
+  },
+
+  "requests-follow":{
+    "title": "Solicitudes para seguirte",
+    "norequests": "No tiene solicitudes pendientes"
+  },
+
+  "notification":{
+    "header": "Notificaciones",
+    "no-notifications": "No tienes notificaciones",
+    "remove-all-notifications": "¿Quieres borrar todas las notificaciones?",
+    "notif-like-pub": "A <b>%s</b> le ha gustado tu publicación",
+    "notif-like-img": "A <b>%s</b> le ha gustado tu imagen",
+    "notif-like-comment": "A <b>%s</b> le ha gustado tu comentario",
+    "notif-tag-pub": "<b>%s</b> te ha etiquetado en una publicación",
+    "notif-tag-img": "<b>%s</b> te ha etiquetado en una imagen",
+    "notif-follow": "<b>%s</b> ha comenzado a seguirte",
+    "notif-wants-follow": "<b>%s</b> quiere seguirte",
+    "notif-msg-chat": "<b>%s</b> te ha hablado mientras no estabas",
+    "notif-comment": "<b>%s</b> ha comentado en tu publicación"
   }
 }

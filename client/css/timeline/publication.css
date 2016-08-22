@@ -31,13 +31,13 @@
     border-top: 1px dashed rgba(160, 160, 160, 0.2) !important;
 }
 
-.card a{
+.publication.card a{
     color: #9e9e9e !important;
     transition: none !important;
     text-transform: none !important;
 }
 
-.card a:hover{
+.publication.card a:hover{
     color: #7db3ce !important;
     cursor: pointer !important;
 }
@@ -113,7 +113,17 @@
     margin-right: 5px !important;
 }
 
+#like-c, #dislike-c {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
 #i-like, #i-dislike {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+#i-like-c, #i-dislike-c {
     margin-left: 5px !important;
     margin-right: 5px !important;
 }
@@ -122,7 +132,15 @@
     color: #00a2d3 !important;
 }
 
+#like-c:hover, #i-like-c {
+    color: #00a2d3 !important;
+}
+
 #dislike:hover, #i-dislike {
+    color: #b1070c !important;
+}
+
+#dislike-c:hover, #i-dislike-c {
     color: #b1070c !important;
 }
 
@@ -134,4 +152,27 @@
 #editPublication {
     max-height: 400px !important;
     overflow-y: auto !important;
+}
+
+#slider-img-pub .item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align:middle;
+    cursor: pointer;
+}
+
+#slider-img-pub .item {
+    max-width: 70%;
+    max-height: 400px;
+    margin:0 auto;
+    text-align:center;
+}
+
+.owl-carousel{
+    margin-top: 20px;
+}
+
+.owl-nav div{
+    background-color: #9e9e9e !important;
 }

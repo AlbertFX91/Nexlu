@@ -12,15 +12,19 @@
                     </div>
                 </div>
                 <div class="card web-color-1">
-                    <div class="card-content white-text">
+                    <div class="card-content white-text" style="text-align:center">
+                        {{ currentUser.bio }}
                     </div>
                 </div>
             </div>
             <div class="col s12 m8" style="">
                 {{> newPublication}}
-                {{#each publications}}
+                {{#each this}}
                     {{> publication}}
                 {{/each}}
+                {{#if moreResults}}
+                    <button id="showMoreResults" type="button">Loading...</button>
+                {{/if}}
             </div>
         </div>
     </div>

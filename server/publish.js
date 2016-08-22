@@ -4,12 +4,12 @@ Meteor.publish('publication.me.all', function () {
         this.ready();
         return;
     }
-    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.all});
+    return Publications.find({$and:[{"owner.id": user_id}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
 });
 
 Meteor.publish('publication.one.all', function (username) {
     var user = Meteor.users.findOne({username: username});
-    return Publications.find({"owner.id": user._id}, {fields: Fields.publication.all});
+    return Publications.find({$and:[{"owner.id": user._id}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
 });
 
 Meteor.publish('user.me', function () {
@@ -28,6 +28,14 @@ Meteor.publish('user.one', function (username) {
         fields: Fields.user.all
     });
 });
+
+Meteor.publish('user.profile.one', function (username) {
+    return Meteor.users.find({username: username}, {
+        fields: Fields.user.profile
+    });
+});
+
+
 
 Meteor.publish('search.users', function () {
     var user_id = this.userId;
@@ -70,12 +78,12 @@ Meteor.publish('image.me.miniature', function(){
         this.ready();
         return;
     }
-    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+    return Publications.find({$and: [{"owner.id": user_id}, {"url": {$exists:true, $ne: null}}]}, {fields: Fields.image.miniature});
 });
 
 Meteor.publish('image.one.miniature', function(username){
     var user_id = Meteor.users.findOne({username: username})._id;
-    return Images.find({'owner.id': user_id}, {fields: Fields.image.miniature});
+    return Publications.find({$and: [{"owner.id": user_id}, {"url": {$exists:true, $ne: null}}]}, {fields: Fields.image.miniature});
 });
 
 Meteor.publish('publication.me.none', function () {
@@ -84,12 +92,12 @@ Meteor.publish('publication.me.none', function () {
         this.ready();
         return;
     }
-    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
+    return Publications.find({$and:[{"owner.id": user_id}, {"url": {$exists:false}}]}, {fields: Fields.publication.none});
 });
 
 Meteor.publish('publication.one.none', function (username) {
     var user_id = Meteor.users.findOne({username: username})._id;
-    return Publications.find({"owner.id": user_id}, {fields: Fields.publication.none});
+    return Publications.find({$and:[{"owner.id": user_id}, {"url": {$exists:false}}]}, {fields: Fields.publication.none});
 });
 
 
@@ -100,7 +108,7 @@ Meteor.publish('publication.user.none', function (usernameUser) {
         this.ready();
         return;
     }
-    return Publications.find({owner: user_id}, {fields: Fields.publication.none});
+    return Publications.find({$and:[{owner: user_id}, {"url": {$exists:false}}]}, {fields: Fields.publication.none});
 });
 
 Meteor.publish("findBio", function () {
@@ -116,10 +124,10 @@ Meteor.publish('publication.followed.all', function () {
     }
     var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
     var followed_id = followed.followed;
-    return Publications.find({"owner.id": {"$in": followed_id}}, {fields: Fields.publication.all});
+    return Publications.find({$and:[{"owner.id": {"$in": followed_id}}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
 });
 Meteor.publish('image.one', function(img_id){
-    return Images.find(img_id, {fields: Fields.image.all});
+    return Publications.find({$and: [{_id: img_id}, {"url": {$exists:true, $ne: null}}]}, {fields: Fields.image.all});
 });
 
 Meteor.publish("findUser", function(username) {
@@ -131,7 +139,7 @@ Meteor.publish('user.all.username', function () {
 });
 
 Meteor.publish('publication.someone.all', function (publicationId) {
-    return Publications.find(publicationId, {fields: Fields.publication.all});
+    return Publications.find(publicationId, {fields: Fields.publicationOrImage.all});
 });
 
 Meteor.publish('publication.tagged.all', function () {
@@ -140,12 +148,12 @@ Meteor.publish('publication.tagged.all', function () {
         this.ready();
         return;
     }
-    return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
+    return Publications.find({$and:[{playersTagged: {$elemMatch: {id: user_id}}}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
 });
 
 Meteor.publish('publication.tagged.one.all', function (username) {
     var user_id =  Meteor.users.findOne({username: username})._id;
-    return Publications.find({playersTagged: {$elemMatch: {id: user_id}}}, {fields: Fields.publication.all});
+    return Publications.find({$and:[{playersTagged: {$elemMatch: {id: user_id}}}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
 });
 
 
@@ -181,8 +189,62 @@ Meteor.publish("emojis", function(){
     return Emojis.find();
 });
 
+/**
+ * Publicación que conllevan las publicaciones propias y de los seguidores (para la
+ * implementación del scroll infinito).
+ */
+Meteor.publish('publication.me.followed.all', function () {
+    var user_id = this.userId;
+    if (!user_id) {
+        this.ready();
+        return;
+    }
+    var followed = Meteor.users.findOne(user_id, {fields: Fields.user.followed});
+    var followed_id = followed.followed;
+
+    Counts.publish(this, 'all-publications', Publications.find({$and:[{$or: [{"owner.id": {"$in": followed_id}},{"owner.id": user_id}]}, {"url": {$exists:false}}]}), {
+        noReady: true
+    });
+    return Publications.find({$and:[{$or: [{"owner.id": {"$in": followed_id}},{"owner.id": user_id}]}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
+});
+
+/**
+ * Publicación que conllevan las publicaciones propias y en las que está etiquetado el usuario pasado por parámetro (para la
+ * implementación del scroll infinito).
+ */
+Meteor.publish('publication.one.tagged.all', function (username) {
+    var user = Meteor.users.findOne({username: username});
+    var user_id = user._id;
+    Counts.publish(this, 'all-publications-profile', Publications.find({$and:[{$or: [{"owner.id": user_id},  {playersTagged: {$elemMatch: {id: user_id}}}]}, {"url": {$exists:false}}]}), {
+        noReady: true
+    });
+    return Publications.find({$and:[{$or: [{"owner.id": user_id},  {playersTagged: {$elemMatch: {id: user_id}}}]}, {"url": {$exists:false}}]}, {fields: Fields.publication.all});
+});
+
 Meteor.publish(null, function() {
     return Meteor.users.find({_id: this.userId}, {fields: Fields.user.all});
+});
+
+Meteor.publish("user.following", function(username){
+   var user = Meteor.users.findOne({username: username});
+    if(user){
+        return Meteor.users.find({
+            followers: user._id
+        }, Fields.user.followingList);
+    }else{
+        throw new Meteor.Error( 500, 'User does not exist with username: '+username );
+    }
+});
+
+Meteor.publish("user.followers", function(username){
+    var user = Meteor.users.findOne({username: username});
+    if(user){
+        return Meteor.users.find({
+            _id: {$in: user.followers}
+        }, Fields.user.followingList);
+    }else{
+        throw new Meteor.Error( 500, 'User does not exist with username: '+username );
+    }
 });
 
 /*
@@ -201,13 +263,33 @@ Fields = {
             followers: 1,
             status: 1,
             avatar: 1,
-            private_profile: 1
+            private_profile: 1,
+            requestsFollow: 1,
+            notifications: 1
+        },
+        profile: {
+            _id: 1,
+            username: 1,
+            bio: 1,
+            followed: 1,
+            followers: 1,
+            avatar: 1,
+            private_profile: 1,
+            requestsFollow: 1
         },
         followed: {
             followed: 1
         },
         username: {
             username: 1
+        },
+        followingList: {
+            _id: 1,
+            username: 1,
+            followers: 1,
+            avatar: 1,
+            private_profile: 1,
+            requestsFollow: 1
         }
     },
     publication: {
@@ -219,7 +301,8 @@ Fields = {
             description: 1,
             playersLike: 1,
             playersDislike: 1,
-            comments: 1
+            comments: 1,
+            images: 1
         },
         none: {
             _id: 1,
@@ -230,7 +313,8 @@ Fields = {
         miniature: {
             _id: 1,
             owner: 1,
-            url: 1
+            url: 1,
+            createdAt: 1,
         },
         all: {
             _id: 1,
@@ -241,7 +325,23 @@ Fields = {
             description: 1,
             playersLike: 1,
             playersDislike: 1,
-            comments: 1
+            comments: 1,
+            publication: 1
+        }
+    },
+    publicationOrImage: {
+        all: {
+            _id: 1,
+            owner: 1,
+            url: 1,
+            createdAt: 1,
+            playersTagged: 1,
+            description: 1,
+            playersLike: 1,
+            playersDislike: 1,
+            comments: 1,
+            publication: 1,
+            images: 1
         }
     }
 };

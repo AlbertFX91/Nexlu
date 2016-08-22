@@ -4,7 +4,6 @@ Template.foo.onRendered(function(){
 
 Template.foo.helpers({
     settings: function() {
-        console.log(Meteor.users);
         return {
             position: "down",
             limit: 5,

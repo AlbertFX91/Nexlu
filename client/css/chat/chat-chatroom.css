@@ -62,6 +62,19 @@ i.offline{
     -webkit-justify-content: center;
     cursor: pointer;
 }
+
+#pub-input-options{
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#pub-input-options button {
+    padding: 0 1rem;
+}
+
 #emoji-select-button{
     margin-top: auto;
     margin-bottom: auto;
@@ -80,6 +93,17 @@ i.offline{
     bottom: 77px;
     z-index: 2;
     background-color: #263238;
+    display: none;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+#pub-emoji-picker{
+    height: 140px;
+    position: absolute;
+    bottom: 77px;
+    z-index: 2;
+    background-color: #384951;
     display: none;
     overflow-y: scroll;
     padding: 10px;
@@ -111,4 +135,10 @@ i.online{
 }
 i.offline{
     color: grey;
+}
+
+@media(max-width: 700px){
+    .chat-input{
+        width: 200px !important;
+    }
 }

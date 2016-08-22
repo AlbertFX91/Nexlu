@@ -5,7 +5,7 @@ Template.chat_chatroom.onRendered(function(){
     Session.set("user.status","offline");
     setTimeout(function(){
         scrollDown();
-    }, 500);
+    }, 500); 
 });
 
 Template.chat_chatroom.events({
@@ -45,6 +45,8 @@ Template.chat_chatroom.events({
 
 function sendMessage(){
     var messageToSend =  $("#message-input").val();
+    var regex = /(<([^>]+)>)/ig;
+    messageToSend = messageToSend.replace(regex, "");
     if(messageToSend.length!=0){
         var chatroom_id = Session.get("ChatRoom.id");
         Meteor.call("chatroom.send", chatroom_id, messageToSend, function(e, r){

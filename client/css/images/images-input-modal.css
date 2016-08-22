@@ -1,7 +1,8 @@
 #input-images-modal{
     width: 95% !important;
-    max-height: 80% !important;
     /*overflow-y: hidden !important;*/
+    max-height: none !important;
+    overflow-y: hidden;
 }
 .close-modal-button{
     position: absolute;
@@ -18,12 +19,38 @@
 }
 
 .modal-body{
+    min-height: 700px;
+    max-height: 700px;
+    overflow-y: scroll;
+}
 
+.modal-body-flexed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(min-height: 480px){
+    .modal-body{
+        min-height: 400px !important;
+        max-height: 400px !important;
+    }
+}
+@media(min-height: 700px){
+    .modal-body{
+        min-height: 530px !important;
+        max-height: 530px !important;
+    }
+}
+@media(min-height: 1024px){
+    .modal-body{
+        min-height: 700px !important;
+        max-height: 700px !important;
+    }
 }
 
 .modal-no-images{
-    text-align: center;
-    padding: 300px 0;
+
 }
 .images-modal-upload-img-row{
     width: 100px;
@@ -65,9 +92,6 @@
 }
 
 .modal-images{
-    min-height: 380px;
-    height: 600px;
-    overflow-y: scroll;
     padding: 25px 85px;
 }
 
@@ -108,11 +132,18 @@
     padding: 4px 6px;
     height: 60px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: end;
 }
 
 .label-hidden-footer{
     height: 36px !important;
     width: auto !important;
+    margin-right: 10px;
 }
 
 .img-preview-options{

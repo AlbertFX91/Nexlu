@@ -3,7 +3,7 @@ Template.publication.helpers({
         return Prettify.compactTags(this.playersTagged);
     },
     isMine: function() {
-        if (this.owner.id.trim() === Meteor.userId().trim())
+        if (Meteor.user() && this.owner.id.trim() === Meteor.userId().trim())
             return true;
         return false;
     },
@@ -12,7 +12,7 @@ Template.publication.helpers({
         return Humanize.truncate(description, 200);
     },
     descriptionTruncate: function() {
-      return this.description.length >= 200;
+        return this.description.length >= 200;
     },
     iLike: function() {
         return _.contains(this.playersLike, Meteor.userId().trim());
@@ -37,23 +37,27 @@ Template.publication.helpers({
         }
     },
     hasComments: function() {
-      return this.comments.length > 0;
+        return this.comments.length > 0;
     },
-    
+
     // TODO: Esto hay que hacerlo en el lado del server (methods):
     listLikes: function(likes){
         var likes_username = _.map(likes, function(id){
             var user = Meteor.users.findOne(id, {fields:{username:1}});
             return user.username;
-        } )
+        });
         return likes_username; // lista con los usernames de los usuarios que le dieron like.
     },
     listDislikes: function(dislikes){
         var dislikes_username = _.map(dislikes, function(id){
             var user = Meteor.users.findOne(id, {fields:{username:1}});
             return user.username;
-        } )
+        });
         return dislikes_username; // lista con los usernames de los usuarios que le dieron dislikes.
+    },
+
+    tags: function(){
+        return this.playersTagged;
     }
 });
 
@@ -61,21 +65,28 @@ Template.publication.events({
     'click #edit-pub': function () {
         $('#edit-pub-modal').openModal({complete:function(){
             document.getElementById('edit-post-error').innerHTML = "";
-        }})
+        }});
         var textarea = document.getElementById('editPublication');
         textarea.value = this.description;
+        Session.set("publication.editing", this._id);
         $("#editPublication").trigger('autoresize');
         $("#edit-post-label").addClass("active");
     },
     'click #remove-pub': function () {
+        Session.set("publication.removing", this._id);
+        var hasFather = this.publication ? this.publication : undefined;
+        Session.set("publication.removing.hasFather", hasFather);
         $('#remove-pub-modal').openModal();
     }
     ,
     'submit .edit-post': function(e) {
         e.preventDefault();
         var description = document.getElementById('editPublication').value;
+        var regex = /(<([^>]+)>)/ig;
+        description = description.replace(regex, "");
         var descriptionTrim = description.trim();
-        var publicationId = this._id;
+        //var publicationId = this._id;
+        var publicationId = Session.get("publication.editing");
         var valido = true;
         if (descriptionTrim == ""){
             var texto = TAPi18n.__("error.post-notBlank");
@@ -90,8 +101,10 @@ Template.publication.events({
         }
         //Comprobación del etiquetado con '@'
         var usernamesTagged = Util.validateTag(descriptionTrim);
+        //Comprobar si es una imagen o no
+        var isImage = this.url ? true : false;
         if (valido) {
-           Meteor.call('editPublication', publicationId, descriptionTrim, usernamesTagged, function(err, response){
+           Meteor.call('publication.edit', publicationId, descriptionTrim, usernamesTagged, isImage, function(err, response){
                if (!err){
                    $('#edit-pub-modal').closeModal();
                }
@@ -105,11 +118,15 @@ Template.publication.events({
     },
     'submit .remove-post': function(e) {
         e.preventDefault();
-        var publicationId = this._id;
-        Meteor.call('removePublication', publicationId, function(err, response){
+        //var publicationId = this._id;
+        var publicationId = Session.get("publication.removing");
+        //var hasFather = this.publication ? this.publication : undefined;
+        var hasFather = Session.get("publication.removing.hasFather");
+        Meteor.call('publication.remove', publicationId, hasFather, function(err, response){
             if (!err){
                 $('#remove-pub-modal').closeModal();
                 $('.lean-overlay').remove();
+                //Router.go('home');
             }
         });
     },
@@ -128,8 +145,9 @@ Template.publication.events({
     'click #like': function (e) {
         e.preventDefault();
         var publicationId = this._id;
+        var isImage = this.url ? true : false;
         if (!_.contains(this.playersLike, Meteor.userId())){
-            Meteor.call('likePublication', publicationId, function(err, response){
+            Meteor.call('publication.like', publicationId, isImage, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -140,7 +158,7 @@ Template.publication.events({
         e.preventDefault();
         var publicationId = this._id;
         if (!_.contains(this.playersDislike, Meteor.userId())){
-            Meteor.call('dislikePublication', publicationId, function(err, response){
+            Meteor.call('publication.dislike', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -151,7 +169,7 @@ Template.publication.events({
         e.preventDefault();
         var publicationId = this._id;
         if (_.contains(this.playersLike, Meteor.userId())){
-            Meteor.call('removeLikePublication', publicationId, function(err, response){
+            Meteor.call('publication.remove.like', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -162,7 +180,7 @@ Template.publication.events({
         e.preventDefault();
         var publicationId = this._id;
         if (_.contains(this.playersDislike, Meteor.userId())){
-            Meteor.call('removeDislikePublication', publicationId, function(err, response){
+            Meteor.call('publication.remove.dislike', publicationId, function(err, response){
                 if(err){
                     console.log(err);
                 }
@@ -180,5 +198,62 @@ Template.publication.events({
         $(e.target).prev().removeClass('hide');
         $(e.target).parent().next().addClass('hide');
         $(e.target).addClass('hide');
+    },
+    'click .tags_modal': function(e){
+        e.preventDefault();
+        $(e.target).next().openModal();
+    },
+
+    'click .publication-image-img': function(e){
+        $('#publication-image-modal').openModal();
+    },
+
+    'click #set-avatar-button': function(e) {
+        e.preventDefault();
+        Meteor.call("setAvatar", this._id, function(e,r){
+            if(e){
+                console.log(e);
+                Errors.throwErrorTranslated("error.occurred");
+            }else{
+                if(r){
+                    Toasts.throwTrans("images.setavatar_finished");
+                }
+            }
+        })
+    },
+    'click .tags_modal': function(e){
+        e.preventDefault();
+        $(e.target).next().openModal();
+    },
+    'click .img-carousel': function(e){
+        e.preventDefault();
+        var img_id = $(e.target).attr("data-id");
+        Router.go('images_show', {_id: img_id});
     }
+});
+
+Template.publication.onRendered(function (){
+    if(this.data == null){
+        Router.go('home');
+    }
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'right' // Displays dropdown with edge aligned to the left of button
+        }
+    );
+    $(".owl-carousel").owlCarousel({
+        margin:10,
+        center:true,
+        items : 1,
+        //itemsDesktop : false,
+        //itemsDesktopSmall : false,
+        //itemsTablet: false,
+        //itemsMobile : false,
+        nav : true
+    });
 });

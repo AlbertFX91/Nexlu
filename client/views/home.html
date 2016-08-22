@@ -1,38 +1,133 @@
 <template name="home">
 
-    <div class="cardbg"></div>
-    <div class="container" style="margin-top: 10%">
-        <div class="row">
-            <div class="col s12 center-align">
-                <h3 class="white-text" style="text-shadow: 2px 2px 2px #000;">{{_ "home.intro"}}</h3>
-				{{#if currentUser }}
-					<a class="btn btn-large" href="{{pathFor 'logout'}}">{{_ "logout"}}</a>
-                {{else}}
-                    <a class="btn btn-large" id="showLoginModal">
-                        {{_ "login"}}
-                    </a>
-				{{/if}}
-                <div class="row username_facebook_google">
-                    <div class="col s12 m12">
-                        <div id="modal_username" class="modal">
-                            <div class="modal-content">
-                                <h4 style="color:black">{{_ "send_username"}}</h4>
-                                <div class="input-field m10 col s12">
-                                    <i class="material-icons prefix blue-text">account_circle</i>
-                                    <input id="username" type="text" class="form-control" autocomplete="off">
-                                    <label for="username">{{_ "username"}}</label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" id="send_username" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
-                                <a href="{{pathFor 'home'}}" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
-                            </div>
+    <div class="Site-content">
+        <div class="cardbg">
+            <div class="homepage-hero-module hide-on-med-and-down">
+                <div class="video-container" style="width: 100% !important;">
+                    <div class="filter"></div>
+                    <video autoplay loop class="fillWidth">
+                        <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/PC-Typing.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                        <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/PC-Typing.mp4" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                    </video>
+                </div>
+            </div>
+        </div>
+        <div class="cardbg-mobile hide-on-large-only" style="left: inherit;margin-top: -20%">
+            <div class="poster ">
+                <div class="filter"></div>
+                <img src="/coverr/typing.jpg" alt="">
+            </div>
+        </div>
+        <div class="container" style="margin-top: 10%">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h1 class="white-text" id="titleHome">{{_ "home.intro"}}</h1>
+                    <div id="inputRegisterHome" class="row">
+                        <div class="col s12 m8">
+                            <i style="color:white" class="medium material-icons col s4 m4">perm_identity</i>
+                            <input class="col s8 m8" type="text" id="usernameHome" name="usernameHome" placeholder="{{_ "username"}}">
                         </div>
+                        <div class="col s12 m4">
+                            <a class="btn btn-large" id="registerHome">
+                                {{_ "register"}}
+                            </a>
+                        </div>
+                    </div>
+                    <a class="boton-two" href="/">
+                        <i id="icon_two" class="fa fa-sort-desc fa-4x" aria-hidden="true"></i>
+                    </a>
+            </div>
+        </div>
+    </div>
+    <div style="height: 300px">
+    </div>
+    <div style="height: 40%; background-color: #E0E0DE">
+        <div class="row" style="margin-bottom:0 !important;">
+            <h4 style="margin-left:10px;padding-top: 30px;text-align: center;">{{_ "home.title_features"}}<strong> Nexlu!</strong></h4>
+            <div class="col s6 m3 features-col">
+                <i class="large material-icons" style="margin-top: 30px;color:#1ebfff">supervisor_account</i>
+                <p>{{_ "home.features1"}}</p>
+            </div>
+            <div class="col s6 m3 features-col">
+                <i class="large material-icons" style="margin-top: 30px;color:#1ebfff">question_answer</i>
+                <p>{{_ "home.features2"}}</p>
+            </div>
+            <div class="col s6 m3 features-col">
+                <i class="large material-icons" style="margin-top: 30px;color:#1ebfff">dashboard</i>
+                <p>{{_ "home.features3"}}</p>
+            </div>
+            <div class="col s6 m3 features-col">
+                <i class="fa fa-search fa-4x" aria-hidden="true"  style="margin-top: 62px;color:#1ebfff"></i>
+                <p>{{_ "home.features4"}}</p>
+            </div>
+        </div>
+    </div>
+    <a class="section_two"></a>
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header" style="text-align: center;">{{_ "home.title_mobile"}}</h2>
+            <div class="row">
+                <div class="col s12 m12 l4 mobile-col">
+                    <p>{{_ "home.mobile1"}}</p>
+                    <img src="Mobile/first.png" style="height: 600px;max-width: 600px;max-height: 600px;margin-top: 4px;">
+                </div>
+                <div class="col s12 m12 l4 mobile-col">
+                    <p>{{_ "home.mobile2"}}</p>
+                    <img src="Mobile/second.png" style="height: 600px;max-width: 600px;max-height: 600px;margin-top: 4px;">
+                </div>
+                <div class="col s12 m12 l4 mobile-col">
+                    <p>{{_ "home.mobile3"}}</p>
+                    <img src="Mobile/third.png" style="height: 600px;max-width: 600px;max-height: 600px;margin-top: 4px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="parallax-container z-depth-3">
+        <div class="parallax"><img src="/parallax.jpg" style="opacity: 0.2;"></div>
+    </div>
+    <div class="Site-content">
+        <div style="height:  50%;background-image: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-215689.png)">
+            <div class="row">
+                <h4 style="margin:0 0 0 10px;padding-top: 20px;">{{_ "home.title_newfeatures"}}</h4>
+                <div class="col s6 m3 features-col">
+                    <i class="fa fa-trophy fa-4x" aria-hidden="true"  style="margin-top: 30px;color:#1ebfff"></i>
+                    <p>{{_ "home.newfeatures1"}}</p>
+                </div>
+                <div class="col s6 m3 features-col">
+                    <i class="fa fa-users fa-4x" aria-hidden="true"  style="margin-top: 30px;color:#1ebfff"></i>
+                    <p>{{_ "home.newfeatures2"}}</p>
+                </div>
+                <div class="col s6 m3 features-col">
+                    <i class="fa fa-play fa-4x" aria-hidden="true"  style="margin-top: 30px;color:#1ebfff"></i>
+                    <p>{{_ "home.newfeatures3"}}</p>
+                </div>
+                <div class="col s6 m3 features-col">
+                    <i class="fa fa-gamepad fa-4x" aria-hidden="true"  style="margin-top: 30px;color:#1ebfff"></i>
+                    <p>{{_ "home.newfeatures4"}}</p>
+                </div>
+                <a id="to-level-five"></a>
+            </div>
+        </div>
+    </div>
+    <div class="Site-content">
+        <div class="row username_facebook_google">
+            <div class="col s12 m12">
+                <div id="modal_username" class="modal">
+                    <div class="modal-content">
+                        <h4 style="color:black">{{_ "send_username"}}</h4>
+                        <div class="input-field m10 col s12">
+                            <i class="material-icons prefix blue-text">account_circle</i>
+                            <input id="username" type="text" class="form-control" autocomplete="off">
+                            <label for="username">{{_ "username"}}</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" id="send_username" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "send"}}</a>
+                        <a href="{{pathFor 'home'}}" class=" modal-action modal-close waves-effect waves-green btn-flat">{{_ "close"}}</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
+    </div>
 </template>

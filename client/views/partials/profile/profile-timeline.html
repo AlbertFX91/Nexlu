@@ -10,6 +10,9 @@
                     {{#each publications}}
                         {{> publication}}
                     {{/each}}
+                    {{#if moreResults}}
+                        <button id="showMoreResults" type="button">Loading...</button>
+                    {{/if}}
                 </div>
             </div>
         {{/if}}
