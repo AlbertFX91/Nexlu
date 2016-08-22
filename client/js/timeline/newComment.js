@@ -43,7 +43,7 @@ Template.newComment.events({
             playersDislike: []
         };
         if (valido) {
-            Meteor.call('postComment', publicationId, comment, function(err, response) {
+            Meteor.call('comment.new', publicationId, comment, function(err, response) {
                 if (!err){
                     e.target.newComment.value = "";
                     $("#newComment").trigger('autoresize');

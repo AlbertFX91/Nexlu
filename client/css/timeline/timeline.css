@@ -1,8 +1,8 @@
 
 .input-field label.active {
-    font-size: 0.8rem;
-    -webkit-transform: translateY(-133%) !important;
-    transform: translateY(-133%) !important;
+    font-size: 1rem;
+    -webkit-transform: translateY(-142%) !important;
+    transform: translateY(-142%) !important;
 }
 
 .post {
@@ -22,6 +22,22 @@
     flex-wrap:nowrap;
     align-items: center;
     justify-content: space-between;
+}
+
+.input-options {
+    display:flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.images-pub {
+    display: flex;
+    align-items: center;
+}
+
+.images-status {
+    padding-left: 10px;
 }
 
 .post-header {

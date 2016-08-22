@@ -149,7 +149,8 @@
     "uploaded_finished": "Uploaded finished",
     "uploading": "We're uploading your images",
     "setavatar": "Set as avatar",
-    "setavatar_finished": "Avatar changed successfully"
+    "setavatar_finished": "Avatar changed successfully",
+    "selected": "Images selected"
   },
   "contactUs":{
     "header": "Get in touch with us!",

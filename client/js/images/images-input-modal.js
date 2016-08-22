@@ -85,43 +85,48 @@ Template.images_input_modal.events({
     },
 
     "click #button-save-images": function(){
-        if(ImagesLocals.find({}).fetch().length != 0 && !uploadingImages()) {
-            $("#input-images-modal").css("cursor","wait")
-            msg = TAPi18n.__('images.uploading')+'&nbsp;&nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i>';
-            Toasts.throw(msg);
-            Session.set("uploadingImages", true);
-            var images = ImagesLocals.find({}).fetch();
-            Session.set("numImagesToUpload", images.length);
-            Session.set("numImagesUploaded", 0);
-            _.each(images, function (img) {
-                var img_file = Util.dataURItoFile(img);
-                S3.upload({
-                    file: img_file,
-                    path: "users"
-                }, function (e, r) {
-                    var numImagesUploaded = Session.get("numImagesUploaded");
-                    Session.set("numImagesUploaded", numImagesUploaded + 1);
-                    var data = {
-                        url: r.url,
-                        description: img.description,
-                        usernameTagged: img.usernameTagged
-                    };
-                    Meteor.call("image.new", data, function (e, r) {
+        var byNewPub = Session.get("by-new-pub");
+        if(!byNewPub){
+            if(ImagesLocals.find({}).fetch().length != 0 && !uploadingImages()) {
+                $("#input-images-modal").css("cursor","wait")
+                msg = TAPi18n.__('images.uploading')+'&nbsp;&nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i>';
+                Toasts.throw(msg);
+                Session.set("uploadingImages", true);
+                var images = ImagesLocals.find({}).fetch();
+                Session.set("numImagesToUpload", images.length);
+                Session.set("numImagesUploaded", 0);
+                _.each(images, function (img) {
+                    var img_file = Util.dataURItoFile(img);
+                    S3.upload({
+                        file: img_file,
+                        path: "users"
+                    }, function (e, r) {
+                        var numImagesUploaded = Session.get("numImagesUploaded");
+                        Session.set("numImagesUploaded", numImagesUploaded + 1);
+                        var data = {
+                            url: r.url,
+                            description: img.description,
+                            usernameTagged: img.usernameTagged
+                        };
+                        Meteor.call("image.new", data, function (e, r) {
+                        });
                     });
                 });
-            });
-            Tracker.autorun(function () {
-                var numImagesUploaded = Session.get("numImagesUploaded");
-                var numImagesToUpload = Session.get("numImagesToUpload");
-                var imagesFinished = Session.get("images.finished");
-                if (!imagesFinished && numImagesUploaded!=false && numImagesToUpload!=false && numImagesToUpload === numImagesUploaded) {
-                    Toasts.throwTrans("images.uploaded_finished");
-                    $("#input-images-modal").css("cursor","auto");
-                    setTimeout(closeMainModal, 1000);
-                    Session.set("images.finished", true);
+                Tracker.autorun(function () {
+                    var numImagesUploaded = Session.get("numImagesUploaded");
+                    var numImagesToUpload = Session.get("numImagesToUpload");
+                    var imagesFinished = Session.get("images.finished");
+                    if (!imagesFinished && numImagesUploaded!=false && numImagesToUpload!=false && numImagesToUpload === numImagesUploaded) {
+                        Toasts.throwTrans("images.uploaded_finished");
+                        $("#input-images-modal").css("cursor","auto");
+                        setTimeout(closeMainModal, 1000);
+                        Session.set("images.finished", true);
 
-                }
-            })
+                    }
+                })
+            }
+        } else {
+            if(!uploadingImages()) {closeMainModal()}
         }
     }
 });
@@ -194,13 +199,22 @@ function closeMainModal(){
     Session.set("uploadingImages", false);
     Session.set("numImagesUploaded", false);
     Session.set("numImagesToUpload", false);
-    $("#input-images-modal").closeModal({
-        complete: function(){
-            //Vaciamos las imagenes del navegador
-            ImagesLocals.remove({});
-            Session.set("img-prev-edit-id",false);
-        }
-    });
+    var byNewPub = Session.get("by-new-pub");
+    if (!byNewPub){
+        $("#input-images-modal").closeModal({
+            complete: function(){
+                //Vaciamos las imagenes del navegador
+                ImagesLocals.remove({});
+                Session.set("img-prev-edit-id",false);
+            }
+        });
+    } else {
+        $("#input-images-modal").closeModal({
+            complete: function(){
+                Session.set("img-prev-edit-id",false);
+            }
+        });
+    }
 }
 
 function uploadingImages(){
