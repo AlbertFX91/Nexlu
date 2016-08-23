@@ -126,7 +126,10 @@ Template.publication.events({
             if (!err){
                 $('#remove-pub-modal').closeModal();
                 $('.lean-overlay').remove();
-                //Router.go('home');
+                var currentRoute = Router.current().route.getName();
+                if(currentRoute == "images_show" || currentRoute == "singlePublication"){
+                    Router.go('home');
+                }
             }
         });
     },
