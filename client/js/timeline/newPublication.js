@@ -85,7 +85,6 @@ Template.newPublication.events({
                         file: img_file,
                         path: "users"
                     }, function (e, r) {
-                        var numImagesUploaded = Session.get("numImagesUploaded");
                         var data = {
                             url: r.url,
                             description: img.description,
@@ -97,6 +96,7 @@ Template.newPublication.events({
                                 imagesId = _.extend([], imagesId);
                                 imagesId.push(r);
                                 Session.set("imagesId", imagesId);
+                                var numImagesUploaded = Session.get("numImagesUploaded");
                                 Session.set("numImagesUploaded", numImagesUploaded + 1);
                             }else{
                                 console.log(e);
