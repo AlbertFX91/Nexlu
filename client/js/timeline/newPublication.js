@@ -98,6 +98,8 @@ Template.newPublication.events({
                                 imagesId.push(r);
                                 Session.set("imagesId", imagesId);
                                 Session.set("numImagesUploaded", numImagesUploaded + 1);
+                            }else{
+                                console.log(e);
                             }
                         });
                     });
