@@ -3,7 +3,7 @@ Template.follow_users_list.helpers({
         return _.contains(Meteor.user().followed,this._id);
     },
     canFollowUnfollow: function(){
-        return Meteor.user();
+        return Meteor.user() && this._id != Meteor.user()._id;
     },
     hasRequestCreated: function(){
         return _.find(this.requestsFollow, function(r){return r.from == Meteor.user()._id});
